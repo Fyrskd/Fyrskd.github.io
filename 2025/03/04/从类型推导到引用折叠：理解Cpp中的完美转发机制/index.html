@@ -20,28 +20,32 @@
     var CONFIG = {"hostname":"fyrskd.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Wplllll&#39;Blog">
-<meta property="og:url" content="http://fyrskd.github.io/index.html">
+  <meta name="description" content="从类型推导到引用折叠：理解C++中的完美转发机制 此文章用于个人总结，难免存在不严谨不正确之处 一、普通引用的用法与作用在C++中，引用（Reference）是一种别名机制，允许通过不同名称访问同一对象。引用分为两种：  左值引用（ $Lvalue Reference$ ）绑定到左值（具名对象、非临时对象），语法为 T&amp;。作用：避免拷贝，支持修改原对象。   123void modify(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从类型推导到引用折叠：理解Cpp中的完美转发机制">
+<meta property="og:url" content="http://fyrskd.github.io/2025/03/04/%E4%BB%8E%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC%E5%88%B0%E5%BC%95%E7%94%A8%E6%8A%98%E5%8F%A0%EF%BC%9A%E7%90%86%E8%A7%A3Cpp%E4%B8%AD%E7%9A%84%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="Wplllll&#39;Blog">
+<meta property="og:description" content="从类型推导到引用折叠：理解C++中的完美转发机制 此文章用于个人总结，难免存在不严谨不正确之处 一、普通引用的用法与作用在C++中，引用（Reference）是一种别名机制，允许通过不同名称访问同一对象。引用分为两种：  左值引用（ $Lvalue Reference$ ）绑定到左值（具名对象、非临时对象），语法为 T&amp;。作用：避免拷贝，支持修改原对象。   123void modify(">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-03T16:13:29.000Z">
+<meta property="article:modified_time" content="2025-03-03T16:13:47.428Z">
 <meta property="article:author" content="Fyrskd@gmail.com">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://fyrskd.github.io/">
+<link rel="canonical" href="http://fyrskd.github.io/2025/03/04/%E4%BB%8E%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC%E5%88%B0%E5%BC%95%E7%94%A8%E6%8A%98%E5%8F%A0%EF%BC%9A%E7%90%86%E8%A7%A3Cpp%E4%B8%AD%E7%9A%84%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91%E6%9C%BA%E5%88%B6/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Wplllll'Blog</title>
+  <title>从类型推导到引用折叠：理解Cpp中的完美转发机制 | Wplllll'Blog</title>
   
 
 
@@ -139,9 +143,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -157,10 +162,9 @@
       <meta itemprop="name" content="Wplllll'Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/03/04/%E4%BB%8E%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC%E5%88%B0%E5%BC%95%E7%94%A8%E6%8A%98%E5%8F%A0%EF%BC%9A%E7%90%86%E8%A7%A3Cpp%E4%B8%AD%E7%9A%84%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91%E6%9C%BA%E5%88%B6/" class="post-title-link" itemprop="url">从类型推导到引用折叠：理解Cpp中的完美转发机制</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          从类型推导到引用折叠：理解Cpp中的完美转发机制
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -173,7 +177,14 @@
               <time title="创建时间：2025-03-04 00:13:29 / 修改时间：00:13:47" itemprop="dateCreated datePublished" datetime="2025-03-04T00:13:29+08:00">2025-03-04</time>
             </span>
 
-          <br>
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -198,7 +209,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="从类型推导到引用折叠：理解C-中的完美转发机制"><a href="#从类型推导到引用折叠：理解C-中的完美转发机制" class="headerlink" title="从类型推导到引用折叠：理解C++中的完美转发机制"></a>从类型推导到引用折叠：理解C++中的完美转发机制</h1><hr>
+        <h1 id="从类型推导到引用折叠：理解C-中的完美转发机制"><a href="#从类型推导到引用折叠：理解C-中的完美转发机制" class="headerlink" title="从类型推导到引用折叠：理解C++中的完美转发机制"></a>从类型推导到引用折叠：理解C++中的完美转发机制</h1><hr>
 <p><strong>此文章用于个人总结，难免存在不严谨不正确之处</strong></p>
 <h2 id="一、普通引用的用法与作用"><a href="#一、普通引用的用法与作用" class="headerlink" title="一、普通引用的用法与作用"></a>一、普通引用的用法与作用</h2><p>在C++中，引用（Reference）是一种别名机制，允许通过不同名称访问同一对象。引用分为两种：</p>
 <ol>
@@ -397,115 +408,30 @@
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1a1SPYaEBY?vd_source=fd1ae0536243a7decff7832584033bb5">bilibili-完美转发</a></p>
 <p>Effective Modern c++_类型推导</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://fyrskd.github.io/2025/02/22/Solution-for-Cucumber/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Fyrskd@gmail.com">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wplllll'Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/02/22/Solution-for-Cucumber/" class="post-title-link" itemprop="url">Solution for Cucumber</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-02-22 00:56:19 / 修改时间：12:06:10" itemprop="dateCreated datePublished" datetime="2025-02-22T00:56:19+08:00">2025-02-22</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a target="_blank" rel="noopener" href="https://hydro.ac/d/njupt_111/p/1">题目链接</a></h3><h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>有多组测试数据，每组给定 $N,k,$ 请设计程序计算 $\displaystyle \prod_{x_{1}&#x3D;1}^{N} \prod_{x_{2}&#x3D;1}^{N} \ldots \prod_{x_{K}&#x3D;1}^{N} \operatorname{gcd}\left(x_{1}, x_{2} \ldots x_{K}\right) \quad$</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h5 id="注：下述-符号表示括号中的条件满足时为1，否则为-0-。-d-n-表示-d-是-n-的因子。"><a href="#注：下述-符号表示括号中的条件满足时为1，否则为-0-。-d-n-表示-d-是-n-的因子。" class="headerlink" title="注：下述 $[\ ]$ 符号表示括号中的条件满足时为1，否则为 $0$ 。 $d|n$表示$d$是$n$的因子。"></a>注：下述 $[\ ]$ 符号表示括号中的条件满足时为1，否则为 $0$ 。 $d|n$表示$d$是$n$的因子。</h5><p>一道莫比乌斯反演题</p>
-<p>设$d &#x3D; \displaystyle \operatorname{gcd}\left(x_{1}, x_{2} \ldots x_{K}\right) \quad$</p>
-<p>观察题目可知$d$ 的范围在$ [1, N] $之间，求出每一个$d$对应的次数后乘起来即为答案</p>
-<p>对于一个 $d$, 考虑它对答案的贡献次数即为满足</p>
-<p>$d &#x3D; \displaystyle \operatorname{gcd}\left(x_{1}, x_{2} \ldots x_{K}\right) \quad$的序列 $X$ 的个数，</p>
-<p>即<br>$$<br>\displaystyle \sum_{x_i \le N}{[ \operatorname{gcd} (x_{1}, x_{2} \ldots x_{K}) &#x3D;&#x3D; d]}<br>$$<br>此时$x_i$都为$d$的倍数，设$y_i &#x3D; x_i &#x2F; d$</p>
-<p>上式转换为<br>$$<br>\displaystyle \sum_{y_i \le \frac{N}{d}}{[ \operatorname{gcd} (y_{1}, y_{2} \ldots y_{K}) &#x3D;&#x3D; 1]}<br>$$</p>
-<p>由莫比乌斯反演的公式</p>
-<p>$$<br>\displaystyle \sum_{d|n}{\mu(d)} &#x3D; [n &#x3D;&#x3D; 1]<br>$$</p>
-<p>设$c &#x3D; \operatorname{gcd} (y_{1}, y_{2} \ldots y_{K})$</p>
-<p>上式转化为 </p>
-<p>$$<br>\displaystyle \sum_{y_i \le \frac{N}{d}} \sum_{c \le \frac{N}{d}}{\mu(c) * [ c | \operatorname{gcd} (y_{1}, y_{2} \ldots y_{K})]}<br>$$</p>
-<p>改变枚举顺序，变成 </p>
-<p>$$<br>\displaystyle \sum_{c \le \frac{N}{d}} \mu(c) * \sum_{y_i \le \frac{N}{d}}{[ c | \operatorname{gcd} (y_{1}, y_{2} \ldots y_{K})]}<br>$$</p>
-<p>此时只要 $y_i$ 是c的倍数即可，化简可得</p>
-<p>$$<br>\displaystyle \sum_{c \le \frac{N}{d}} \mu(c) * \sum_{\frac{y_i}{c} \le \frac{N}{dc}}{1}<br>$$</p>
-<p>即<br>$$<br>\displaystyle \sum_{c \le \frac{N}{d}} \mu(c) * (\frac{N}{dc})^{K}<br>$$</p>
-<p>最后总的答案即为<br>$$<br>\displaystyle \prod_{d&#x3D;1}^{N}{d^{\sum_{c \le \frac{N}{d}} \mu(c) * (\frac{N}{dc})^{K}}}<br>$$</p>
-<p>注意这道题的 $K$ 很大，并且 $K$ 在次数的次数上,需要在读入时使用欧拉降幂公式处理</p>
-<p>此时直接计算仍无法通过，通过预处理莫比乌斯函数的前缀和、预处理阶乘，并且分别在枚举 $d$ 和 $c$ 时使用数论分块即可通过此题</p>
-<p>此题仍可进一步化简，此处不再赘述</p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/02/22/Solution-for-Cucumber/" rel="prev" title="Solution for Cucumber">
+      <i class="fa fa-chevron-left"></i> Solution for Cucumber
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -558,6 +484,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC%E5%88%B0%E5%BC%95%E7%94%A8%E6%8A%98%E5%8F%A0%EF%BC%9A%E7%90%86%E8%A7%A3C-%E4%B8%AD%E7%9A%84%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91%E6%9C%BA%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">从类型推导到引用折叠：理解C++中的完美转发机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%99%AE%E9%80%9A%E5%BC%95%E7%94%A8%E7%9A%84%E7%94%A8%E6%B3%95%E4%B8%8E%E4%BD%9C%E7%94%A8"><span class="nav-number">1.1.</span> <span class="nav-text">一、普通引用的用法与作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%B8%87%E8%83%BD%E5%BC%95%E7%94%A8%EF%BC%88Universal-Reference%EF%BC%89%E7%9A%84%E7%94%A8%E6%B3%95%E4%B8%8E%E4%BD%9C%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">二、万能引用（Universal Reference）的用法与作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%B8%89%E7%A7%8D%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC%E5%9C%BA%E6%99%AF"><span class="nav-number">1.3.</span> <span class="nav-text">三、三种类型推导场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%8C%87%E9%92%88%E3%80%81%E5%B7%A6%E5%80%BC%E5%BC%95%E7%94%A8%E6%88%96%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8%E7%9A%84%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 指针、左值引用或右值引用的推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%B8%87%E8%83%BD%E5%BC%95%E7%94%A8%E7%9A%84%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 万能引用的推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%9D%9E%E6%8C%87%E9%92%88%E9%9D%9E%E5%BC%95%E7%94%A8%E7%9A%84%E6%8E%A8%E5%AF%BC%EF%BC%88%E6%8C%89%E5%80%BC%E4%BC%A0%E9%80%92%EF%BC%89"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. 非指针非引用的推导（按值传递）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%BC%95%E7%94%A8%E6%8A%98%E5%8F%A0%EF%BC%88Reference-Collapsing%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">四、引用折叠（Reference Collapsing）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81std-forward%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.5.</span> <span class="nav-text">五、std::forward的简单实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BF%9D%E7%95%99-const-%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.5.1.</span> <span class="nav-text">1. 保留 const 的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.5.2.</span> <span class="nav-text">2. 使用示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">1.6.</span> <span class="nav-text">六、总结</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -696,59 +623,6 @@
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
