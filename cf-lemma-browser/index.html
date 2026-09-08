@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CF 非平凡引理/定理浏览器</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Codeforces 知识库</p>
+          <h1>非平凡引理/定理索引浏览器</h1>
+        </div>
+        <div class="summary-grid" id="summaryGrid"></div>
+      </header>
+
+      <main class="layout">
+        <aside class="sidebar" aria-label="分类与筛选">
+          <section class="panel">
+            <label class="field-label" for="searchInput">搜索</label>
+            <input
+              id="searchInput"
+              class="search-input"
+              type="search"
+              placeholder="引理 / 题号 / 标题 / 证据"
+              autocomplete="off"
+            />
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">筛选</div>
+            <div class="segmented" role="group" aria-label="使用类型">
+              <button class="segment is-active" data-usage="all" type="button">全部</button>
+              <button class="segment" data-usage="directly_used" type="button">直接使用</button>
+              <button class="segment" data-usage="related_underlying_lemma" type="button">相关底层</button>
+            </div>
+            <label class="checkbox-row">
+              <input id="highOnlyToggle" type="checkbox" />
+              <span>仅高置信</span>
+            </label>
+          </section>
+
+          <section class="panel category-panel">
+            <div class="panel-heading">大类</div>
+            <nav id="categoryList" class="category-list" aria-label="引理大类"></nav>
+          </section>
+        </aside>
+
+        <section class="content">
+          <div class="toolbar">
+            <div>
+              <div class="result-title" id="resultTitle">全部引理/定理</div>
+              <div class="result-subtitle" id="resultSubtitle"></div>
+            </div>
+            <div class="sort-control">
+              <label for="sortSelect">排序</label>
+              <select id="sortSelect">
+                <option value="count">题目数</option>
+                <option value="rating">最高难度</option>
+                <option value="name">名称</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="workspace">
+            <section class="lemma-list" id="lemmaList" aria-label="引理列表"></section>
+            <section class="detail-panel" id="detailPanel" aria-label="引理详情"></section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
