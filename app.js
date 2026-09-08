@@ -234,7 +234,7 @@
 
   function renderParentList(groups) {
     if (!groups.length) {
-      elements.lemmaList.innerHTML = '<div class="empty-state">没有匹配的严格 lemma。</div>';
+      elements.lemmaList.innerHTML = '<div class="empty-state">没有匹配的非平凡引理/定理。</div>';
       return;
     }
     if (!groups.some((group) => group.name === state.selectedParent)) {
@@ -248,7 +248,7 @@
             <div class="lemma-name">${escapeHtml(group.name)}</div>
             <div class="lemma-meta">
               <span class="tag">${escapeHtml(categoryText)}</span>
-              <span class="tag">${group.sublemmas.size} 子 lemma</span>
+              <span class="tag">${group.sublemmas.size} 个子引理</span>
               <span class="tag">${group.entries.length} 题次</span>
               <span class="tag direct">${group.directCount} 直接</span>
               <span class="tag related">${group.relatedCount} 相关</span>
@@ -262,7 +262,7 @@
   function renderDetail(groups) {
     const group = groups.find((item) => item.name === state.selectedParent);
     if (!group) {
-      elements.detailPanel.innerHTML = '<div class="empty-state">选择一个大 lemma 查看子 lemma 和题目。</div>';
+      elements.detailPanel.innerHTML = '<div class="empty-state">选择一个大引理/定理查看子引理和题目。</div>';
       return;
     }
     const categories = Array.from(group.categories).sort((a, b) => categoryRank(a) - categoryRank(b)).join(" / ");
@@ -280,7 +280,7 @@
         <h2>${escapeHtml(group.name)}</h2>
         <div class="lemma-meta">
           <span class="tag">${escapeHtml(categories)}</span>
-          <span class="tag">${group.sublemmas.size} 个子 lemma</span>
+          <span class="tag">${group.sublemmas.size} 个子引理</span>
           <span class="tag">${group.entries.length} 条记录</span>
           <span class="tag high">${group.highCount} 高置信</span>
           <span class="tag medium">${group.mediumCount} 中置信</span>
@@ -346,8 +346,8 @@
   function render() {
     const currentEntries = filteredEntries();
     const groups = sortedParentGroups(summarizeByParent(currentEntries));
-    elements.resultTitle.textContent = state.category === "all" ? "全部严格 lemma" : state.category;
-    elements.resultSubtitle.textContent = `${groups.length} 个大 lemma，${currentEntries.length} 条题目记录`;
+    elements.resultTitle.textContent = state.category === "all" ? "全部非平凡引理/定理" : state.category;
+    elements.resultSubtitle.textContent = `${groups.length} 个大引理/定理，${currentEntries.length} 条题目记录`;
     renderCategories();
     renderParentList(groups);
     renderDetail(groups);
