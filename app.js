@@ -194,9 +194,9 @@
       ["扫描题目", summary.total_problems_scanned],
       ["有引理题", summary.problems_with_lemma_level_knowledge],
       ["无引理题", summary.problems_without_lemma_level_knowledge],
-      ["严格条目", summary.lemma_entries],
-      ["大引理", summary.unique_parent_lemmas],
-      ["子引理", summary.unique_sublemmas],
+      ["核心条目", summary.lemma_entries],
+      ["大定理", summary.unique_parent_lemmas],
+      ["子结论", summary.unique_sublemmas],
       ["已剔除", summary.removed_trivial_or_broad_entries],
       ["中/低置信", `${summary.medium_confidence_entries || 0}/${summary.low_confidence_entries || 0}`],
     ];
@@ -234,7 +234,7 @@
 
   function renderParentList(groups) {
     if (!groups.length) {
-      elements.lemmaList.innerHTML = '<div class="empty-state">没有匹配的非平凡引理/定理。</div>';
+      elements.lemmaList.innerHTML = '<div class="empty-state">没有匹配的核心非平凡定理。</div>';
       return;
     }
     if (!groups.some((group) => group.name === state.selectedParent)) {
@@ -248,7 +248,7 @@
             <div class="lemma-name">${escapeHtml(group.name)}</div>
             <div class="lemma-meta">
               <span class="tag">${escapeHtml(categoryText)}</span>
-              <span class="tag">${group.sublemmas.size} 个子引理</span>
+              <span class="tag">${group.sublemmas.size} 个子结论</span>
               <span class="tag">${group.entries.length} 题次</span>
               <span class="tag direct">${group.directCount} 直接</span>
               <span class="tag related">${group.relatedCount} 相关</span>
@@ -262,7 +262,7 @@
   function renderDetail(groups) {
     const group = groups.find((item) => item.name === state.selectedParent);
     if (!group) {
-      elements.detailPanel.innerHTML = '<div class="empty-state">选择一个大引理/定理查看子引理和题目。</div>';
+      elements.detailPanel.innerHTML = '<div class="empty-state">选择一个大定理查看子结论和题目。</div>';
       return;
     }
     const categories = Array.from(group.categories).sort((a, b) => categoryRank(a) - categoryRank(b)).join(" / ");
@@ -280,7 +280,7 @@
         <h2>${escapeHtml(group.name)}</h2>
         <div class="lemma-meta">
           <span class="tag">${escapeHtml(categories)}</span>
-          <span class="tag">${group.sublemmas.size} 个子引理</span>
+          <span class="tag">${group.sublemmas.size} 个子结论</span>
           <span class="tag">${group.entries.length} 条记录</span>
           <span class="tag high">${group.highCount} 高置信</span>
           <span class="tag medium">${group.mediumCount} 中置信</span>
@@ -346,8 +346,8 @@
   function render() {
     const currentEntries = filteredEntries();
     const groups = sortedParentGroups(summarizeByParent(currentEntries));
-    elements.resultTitle.textContent = state.category === "all" ? "全部非平凡引理/定理" : state.category;
-    elements.resultSubtitle.textContent = `${groups.length} 个大引理/定理，${currentEntries.length} 条题目记录`;
+    elements.resultTitle.textContent = state.category === "all" ? "全部核心非平凡定理" : state.category;
+    elements.resultSubtitle.textContent = `${groups.length} 个大定理，${currentEntries.length} 条题目记录`;
     renderCategories();
     renderParentList(groups);
     renderDetail(groups);
