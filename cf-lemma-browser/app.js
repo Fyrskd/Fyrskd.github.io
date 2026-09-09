@@ -129,7 +129,7 @@
       ["有引理题", summary.problems_with_lemma_level_knowledge],
       ["无引理题", summary.problems_without_lemma_level_knowledge],
       ["硬核条目", summary.lemma_entries],
-      ["大定理", summary.unique_parent_lemmas],
+      ["母结论", summary.unique_parent_lemmas],
       ["子结论", summary.unique_sublemmas],
       ["已剔除", summary.removed_trivial_or_broad_entries],
       ["低置信", summary.low_confidence_entries || 0],
@@ -181,7 +181,7 @@
   function renderDetail(groups) {
     const group = groups.find((item) => item.name === state.selectedParent);
     if (!group) {
-      elements.detailPanel.innerHTML = '<div class="empty-state">选择一个大定理查看具体子结论和题目。</div>';
+      elements.detailPanel.innerHTML = '<div class="empty-state">选择一个母结论查看具体子结论和题目。</div>';
       return;
     }
     const categories = Array.from(group.categories).sort((a, b) => categoryRank(a) - categoryRank(b)).join(" / ");
@@ -258,7 +258,7 @@
     const currentEntries = filteredEntries();
     const groups = sortedParentGroups(summarizeByParent(currentEntries));
     elements.resultTitle.textContent = state.category === "all" ? "全部硬核非平凡结论" : state.category;
-    elements.resultSubtitle.textContent = `${groups.length} 个大定理，${currentEntries.length} 条题目记录`;
+    elements.resultSubtitle.textContent = `${groups.length} 个母结论，${currentEntries.length} 条题目记录`;
     renderCategories();
     renderParentList(groups);
     renderDetail(groups);
