@@ -1,53 +1,66 @@
 (function () {
   "use strict";
 
-  const rawData = window.LEMMA_KNOWLEDGE || { summary: {}, records: [] };
-  const categoryOrder = ["数论结论", "组合计数", "图论定理", "博弈结论", "字符串周期", "几何结论", "代数/多项式", "概率期望", "构造不变量", "其他非显然结论"];
-  const state = { query: "", category: "all", usage: "all", highOnly: false, sort: "count", selectedParent: "" };
+  const rawData = window.CF_INSIGHTS_DATA || { summary: {}, contests: [], topics: [], columns: [] };
+  const state = {
+    query: "",
+    topic: "all",
+    minRating: "all",
+    status: "all",
+    contestType: "all",
+    sort: "date-desc",
+    view: "contests",
+    selectedKey: "",
+  };
+
   const elements = {
-    summaryGrid: document.getElementById("summaryGrid"),
+    summaryPanel: document.getElementById("summaryPanel"),
     searchInput: document.getElementById("searchInput"),
-    categoryList: document.getElementById("categoryList"),
-    highOnlyToggle: document.getElementById("highOnlyToggle"),
+    topicSelect: document.getElementById("topicSelect"),
+    minRatingSelect: document.getElementById("minRatingSelect"),
+    statusSelect: document.getElementById("statusSelect"),
+    contestTypes: document.getElementById("contestTypes"),
+    randomButton: document.getElementById("randomButton"),
     sortSelect: document.getElementById("sortSelect"),
     resultTitle: document.getElementById("resultTitle"),
     resultSubtitle: document.getElementById("resultSubtitle"),
-    lemmaList: document.getElementById("lemmaList"),
+    contestTable: document.getElementById("contestTable"),
     detailPanel: document.getElementById("detailPanel"),
+    navButtons: Array.from(document.querySelectorAll(".nav-button")),
   };
 
-  const entries = rawData.records.flatMap((record) =>
-    (record.lemmas || []).map((lemma) => {
-      const parentName = lemma.parent_lemma_name || lemma.lemma_name;
-      const sublemmaName = lemma.sublemma_name || lemma.lemma_name;
-      const searchText = [
-        record.problem_key, record.title, record.rating, parentName, sublemmaName,
-        lemma.lemma_category, lemma.usage_type, lemma.confidence, lemma.strict_level,
-        lemma.lemma_statement, lemma.why_nontrivial, lemma.evidence_basis,
-        lemma.evidence_excerpt, lemma.source_provenance,
-      ].filter(Boolean).join(" ").toLowerCase();
-      return {
-        problemKey: record.problem_key,
-        title: record.title,
-        rating: record.rating,
-        problemUrl: record.problem_url,
-        editorialUrl: record.editorial_url,
-        parentName,
-        sublemmaName,
-        parentStatement: lemma.parent_lemma_statement || "",
-        category: lemma.lemma_category,
-        usageType: lemma.usage_type,
-        statement: lemma.lemma_statement,
-        whyNontrivial: lemma.why_nontrivial,
-        evidenceBasis: lemma.evidence_basis,
-        evidenceExcerpt: lemma.evidence_excerpt,
-        sourceProvenance: lemma.source_provenance,
-        confidence: lemma.confidence,
-        strictLevel: lemma.strict_level || "core_theorem",
-        searchText,
-      };
-    })
+  const allProblems = rawData.contests.flatMap((contest) =>
+    contest.problems.map((problem) => ({
+      ...problem,
+      contestId: contest.id,
+      contestName: contest.name,
+      contestDate: contest.date,
+      contestType: contest.type,
+      contestUrl: contest.url,
+      searchText: [
+        problem.key,
+        problem.index,
+        problem.title,
+        problem.rating,
+        problem.primaryTopic,
+        ...(problem.secondaryTopics || []),
+        ...(problem.originalTags || []),
+        problem.statementBrief,
+        problem.transformedStatement,
+        ...(problem.keyObservations || []),
+        problem.solutionBrief,
+        contest.id,
+        contest.name,
+        contest.date,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase(),
+    }))
   );
+
+  const problemByKey = new Map(allProblems.map((problem) => [problem.key, problem]));
+  const topicRank = new Map((rawData.topics || []).map((topic, index) => [topic, index]));
 
   function escapeHtml(value) {
     return String(value ?? "")
@@ -58,254 +71,330 @@
       .replaceAll("'", "&#039;");
   }
 
-  function formatRating(value) {
-    return value === null || value === undefined ? "未评级" : String(value);
+  function ratingClass(rating) {
+    if (!Number.isFinite(rating)) return "rating-gray";
+    if (rating < 1200) return "rating-gray";
+    if (rating < 1400) return "rating-green";
+    if (rating < 1600) return "rating-cyan";
+    if (rating < 1900) return "rating-blue";
+    if (rating < 2100) return "rating-violet";
+    if (rating < 2400) return "rating-orange";
+    return "rating-red";
   }
 
-  function categoryRank(category) {
-    const index = categoryOrder.indexOf(category);
-    return index === -1 ? categoryOrder.length : index;
+  function statusText(status) {
+    if (status === "missing_editorial") return "缺题解正文";
+    if (status === "statement_derived") return "题面推导";
+    if (status === "manual_override") return "有本地题解";
+    return status || "未知";
   }
 
-  function usageText(value) {
-    if (value === "directly_used") return "直接使用";
-    if (value === "related_underlying_lemma") return "相关底层";
-    return value;
-  }
-
-  function confidenceText(value) {
-    if (value === "high") return "高置信";
-    if (value === "medium") return "中置信";
-    if (value === "low") return "低置信";
-    return value;
-  }
-
-  function usageClass(value) {
-    return value === "directly_used" ? "direct" : "related";
-  }
-
-  function filteredEntries() {
+  function problemMatches(problem) {
     const query = state.query.trim().toLowerCase();
-    return entries.filter((entry) => {
-      if (state.category !== "all" && entry.category !== state.category) return false;
-      if (state.usage !== "all" && entry.usageType !== state.usage) return false;
-      if (state.highOnly && entry.confidence !== "high") return false;
-      if (query && !entry.searchText.includes(query)) return false;
-      return true;
-    });
+    if (state.topic !== "all" && problem.primaryTopic !== state.topic) return false;
+    if (state.status !== "all" && problem.extractionStatus !== state.status) return false;
+    if (state.minRating !== "all" && Number(problem.rating || 0) < Number(state.minRating)) return false;
+    if (query && !problem.searchText.includes(query)) return false;
+    return true;
   }
 
-  function summarizeByParent(filtered) {
-    const groups = new Map();
-    for (const entry of filtered) {
-      if (!groups.has(entry.parentName)) {
-        groups.set(entry.parentName, { name: entry.parentName, statement: entry.parentStatement, categories: new Set(), entries: [], sublemmas: new Map(), directCount: 0, relatedCount: 0, highCount: 0, maxRating: 0 });
-      }
-      const group = groups.get(entry.parentName);
-      group.entries.push(entry);
-      group.categories.add(entry.category);
-      group.directCount += entry.usageType === "directly_used" ? 1 : 0;
-      group.relatedCount += entry.usageType === "related_underlying_lemma" ? 1 : 0;
-      group.highCount += entry.confidence === "high" ? 1 : 0;
-      group.maxRating = Math.max(group.maxRating, Number(entry.rating || 0));
-      if (!group.sublemmas.has(entry.sublemmaName)) group.sublemmas.set(entry.sublemmaName, []);
-      group.sublemmas.get(entry.sublemmaName).push(entry);
-    }
-    return Array.from(groups.values());
+  function visibleContests() {
+    const rows = rawData.contests
+      .filter((contest) => state.contestType === "all" || contest.type === state.contestType)
+      .map((contest) => ({
+        ...contest,
+        problems: contest.problems.filter((problem) => problemMatches({ ...problem, contestName: contest.name, contestDate: contest.date, contestType: contest.type, searchText: problemByKey.get(problem.key)?.searchText || "" })),
+      }))
+      .filter((contest) => contest.problems.length > 0);
+
+    rows.sort((left, right) => {
+      if (state.sort === "date-asc") return left.date.localeCompare(right.date) || left.id - right.id;
+      if (state.sort === "max-rating") return Number(right.maxRating || 0) - Number(left.maxRating || 0) || right.id - left.id;
+      if (state.sort === "problem-count") return right.problems.length - left.problems.length || right.id - left.id;
+      return right.date.localeCompare(left.date) || right.id - left.id;
+    });
+    return rows;
   }
 
-  function sortedParentGroups(groups) {
-    return groups.slice().sort((left, right) => {
-      if (state.sort === "name") return left.name.localeCompare(right.name, "zh-CN");
-      if (state.sort === "rating") return right.maxRating - left.maxRating || left.name.localeCompare(right.name, "zh-CN");
-      return right.entries.length - left.entries.length || left.name.localeCompare(right.name, "zh-CN");
-    });
+  function visibleProblems() {
+    return allProblems.filter(problemMatches);
   }
 
   function renderSummary() {
     const summary = rawData.summary || {};
     const metrics = [
-      ["扫描题目", summary.total_problems_scanned],
-      ["有引理题", summary.problems_with_lemma_level_knowledge],
-      ["无引理题", summary.problems_without_lemma_level_knowledge],
-      ["硬核条目", summary.lemma_entries],
-      ["母结论", summary.unique_parent_lemmas],
-      ["子结论", summary.unique_sublemmas],
-      ["已剔除", summary.removed_trivial_or_broad_entries],
-      ["低置信", summary.low_confidence_entries || 0],
+      ["竞赛", summary.contest_count],
+      ["题目", summary.total_problems],
+      ["有本地题解", summary.with_editorial_brief],
+      ["缺题解正文", summary.missing_editorial_brief],
+      ["人工覆写", summary.manual_override_count],
+      ["大知识点", summary.primary_topic_count],
+      ["难度范围", `${summary.rating_min || "-"}-${summary.rating_max || "-"}`],
     ];
-    elements.summaryGrid.innerHTML = metrics.map(([label, value]) => `
-      <div class="metric">
-        <div class="metric-value">${escapeHtml(value)}</div>
-        <div class="metric-label">${escapeHtml(label)}</div>
-      </div>
-    `).join("");
-  }
-
-  function renderCategories() {
-    const counts = new Map();
-    for (const entry of entries) counts.set(entry.category, (counts.get(entry.category) || 0) + 1);
-    const categories = Array.from(counts.keys()).sort((a, b) => categoryRank(a) - categoryRank(b) || a.localeCompare(b, "zh-CN"));
-    elements.categoryList.innerHTML = [{ name: "all", label: "全部", count: entries.length }, ...categories.map((name) => ({ name, label: name, count: counts.get(name) }))]
-      .map((item) => `
-        <button class="category-button ${state.category === item.name ? "is-active" : ""}" data-category="${escapeHtml(item.name)}" type="button">
-          <span>${escapeHtml(item.label)}</span>
-          <span class="count-pill">${escapeHtml(item.count)}</span>
-        </button>
-      `).join("");
-  }
-
-  function renderParentList(groups) {
-    if (!groups.length) {
-      state.selectedParent = "";
-      elements.lemmaList.innerHTML = '<div class="empty-state">没有匹配的硬核非平凡结论。</div>';
-      return;
-    }
-    if (!groups.some((group) => group.name === state.selectedParent)) state.selectedParent = groups[0].name;
-    elements.lemmaList.innerHTML = groups.map((group) => {
-      const categoryText = Array.from(group.categories).sort((a, b) => categoryRank(a) - categoryRank(b)).join(" / ");
-      return `
-        <button class="lemma-row ${group.name === state.selectedParent ? "is-active" : ""}" data-parent="${escapeHtml(group.name)}" type="button">
-          <div class="lemma-name">${escapeHtml(group.name)}</div>
-          <div class="lemma-meta">
-            <span class="tag">${escapeHtml(categoryText)}</span>
-            <span class="tag">${group.sublemmas.size} 个子结论</span>
-            <span class="tag">${group.entries.length} 题次</span>
-            <span class="tag direct">${group.directCount} 直接</span>
+    elements.summaryPanel.innerHTML = metrics
+      .map(
+        ([label, value]) => `
+          <div class="metric">
+            <div class="metric-value">${escapeHtml(value)}</div>
+            <div class="metric-label">${escapeHtml(label)}</div>
           </div>
-        </button>
-      `;
-    }).join("");
-  }
-
-  function renderDetail(groups) {
-    const group = groups.find((item) => item.name === state.selectedParent);
-    if (!group) {
-      elements.detailPanel.innerHTML = '<div class="empty-state">选择一个母结论查看具体子结论和题目。</div>';
-      return;
-    }
-    const categories = Array.from(group.categories).sort((a, b) => categoryRank(a) - categoryRank(b)).join(" / ");
-    const sublemmaSections = Array.from(group.sublemmas.entries())
-      .sort((left, right) => {
-        const leftRating = Math.max(...left[1].map((entry) => Number(entry.rating || 0)));
-        const rightRating = Math.max(...right[1].map((entry) => Number(entry.rating || 0)));
-        return rightRating - leftRating || left[0].localeCompare(right[0], "zh-CN");
-      })
-      .map(([name, subEntries]) => renderSublemmaSection(name, subEntries))
+        `,
+      )
       .join("");
-    elements.detailPanel.innerHTML = `
-      <div class="detail-header">
-        <h2>${escapeHtml(group.name)}</h2>
-        <div class="lemma-meta">
-          <span class="tag">${escapeHtml(categories)}</span>
-          <span class="tag">${group.sublemmas.size} 个子结论</span>
-          <span class="tag">${group.entries.length} 条记录</span>
-          <span class="tag high">${group.highCount} 高置信</span>
-        </div>
-        <p class="statement"><strong>入选口径：</strong>${escapeHtml(group.statement)}</p>
+  }
+
+  function renderControls() {
+    elements.topicSelect.innerHTML = [
+      '<option value="all">全部</option>',
+      ...rawData.topics.map((topic) => `<option value="${escapeHtml(topic)}">${escapeHtml(topic)} (${escapeHtml(rawData.topicCounts[topic] || 0)})</option>`),
+    ].join("");
+    elements.topicSelect.value = state.topic;
+    elements.minRatingSelect.innerHTML = ["all", 800, 1200, 1600, 1900, 2100, 2400, 2700, 3000]
+      .map((rating) => `<option value="${rating}">${rating === "all" ? "全部" : `${rating}+`}</option>`)
+      .join("");
+    elements.minRatingSelect.value = state.minRating;
+    elements.statusSelect.value = state.status;
+    const typeCounts = new Map();
+    for (const contest of rawData.contests) typeCounts.set(contest.type, (typeCounts.get(contest.type) || 0) + 1);
+    const items = [{ type: "all", label: "全部", count: rawData.contests.length }].concat(
+      rawData.contestTypes.map((type) => ({ type, label: type, count: typeCounts.get(type) || 0 })).filter((item) => item.count > 0),
+    );
+    elements.contestTypes.innerHTML = items
+      .map(
+        (item) => `
+          <button class="type-button ${state.contestType === item.type ? "is-active" : ""}" type="button" data-type="${escapeHtml(item.type)}">
+            ${escapeHtml(item.label)}<span class="count-pill">${escapeHtml(item.count)}</span>
+          </button>
+        `,
+      )
+      .join("");
+  }
+
+  function renderContestView() {
+    const rows = visibleContests();
+    const problemCount = rows.reduce((sum, contest) => sum + contest.problems.length, 0);
+    elements.resultTitle.textContent = "Contests";
+    elements.resultSubtitle.textContent = `Showing ${problemCount} of ${allProblems.length} problems in ${rows.length} contests`;
+    elements.contestTable.style.display = "";
+    if (!rows.length) {
+      elements.contestTable.innerHTML = '<tbody><tr><td class="empty-state">没有匹配的题目。</td></tr></tbody>';
+      renderDetail();
+      return;
+    }
+
+    if (!problemByKey.has(state.selectedKey) || !visibleProblems().some((problem) => problem.key === state.selectedKey)) {
+      state.selectedKey = rows[0].problems[0].key;
+    }
+
+    const columns = rawData.columns || ["A", "B", "C", "D", "E", "F", "G", "H", "I"];
+    const head = `
+      <thead>
+        <tr>
+          <th class="rank-head">#</th>
+          <th class="contest-head">Contest</th>
+          ${columns.map((column) => `<th>${escapeHtml(column)}</th>`).join("")}
+        </tr>
+      </thead>
+    `;
+    const body = rows
+      .map((contest, rowIndex) => {
+        const bySlot = new Map();
+        for (const problem of contest.problems) {
+          if (!bySlot.has(problem.slot)) bySlot.set(problem.slot, []);
+          bySlot.get(problem.slot).push(problem);
+        }
+        return `
+          <tr>
+            <td class="rank-cell">${rowIndex + 1}</td>
+            <td class="contest-cell">
+              <a class="contest-name" href="${escapeHtml(contest.url)}" target="_blank" rel="noreferrer">CF ${escapeHtml(contest.id)}</a>
+              <div>${escapeHtml(contest.name)}</div>
+              <div class="contest-meta">${escapeHtml(contest.date || "无日期")} · ${escapeHtml(contest.type)} · ${escapeHtml(contest.problemCount)} 题</div>
+            </td>
+            ${columns.map((column) => `<td class="problem-cell">${renderProblemStack(bySlot.get(column) || [])}</td>`).join("")}
+          </tr>
+        `;
+      })
+      .join("");
+    elements.contestTable.innerHTML = head + `<tbody>${body}</tbody>`;
+    renderDetail();
+  }
+
+  function renderProblemStack(problems) {
+    if (!problems.length) return "";
+    return `
+      <div class="problem-stack">
+        ${problems
+          .map((problem) => {
+            const full = problemByKey.get(problem.key) || problem;
+            return `
+              <button class="problem-chip ${state.selectedKey === problem.key ? "is-active" : ""} ${problem.extractionStatus === "missing_editorial" ? "is-missing" : ""}"
+                type="button" data-problem-key="${escapeHtml(problem.key)}" title="${escapeHtml(problem.title)}">
+                <div><span class="chip-index">${escapeHtml(problem.index)}</span> <span class="${ratingClass(problem.rating)}">${escapeHtml(problem.rating || "N/A")}</span></div>
+                <div class="chip-title">${escapeHtml(problem.title)}</div>
+                <div class="chip-meta"><span>${escapeHtml(full.primaryTopic)}</span><span>${escapeHtml(statusText(problem.extractionStatus))}</span></div>
+              </button>
+            `;
+          })
+          .join("")}
       </div>
-      <div class="sublemma-list">${sublemmaSections}</div>
     `;
   }
 
-  function renderSublemmaSection(sublemmaName, subEntries) {
-    const sortedEntries = subEntries.slice().sort((left, right) => Number(right.rating || 0) - Number(left.rating || 0) || left.problemKey.localeCompare(right.problemKey));
-    const first = sortedEntries[0];
-    return `
-      <section class="sublemma-section">
-        <div class="sublemma-head">
-          <div>
-            <h3>${escapeHtml(sublemmaName)}</h3>
-            <p><strong>子结论：</strong>${escapeHtml(first.statement)}</p>
-          </div>
-          <span class="tag">${sortedEntries.length} 题次</span>
-        </div>
-        <div class="problem-list">${sortedEntries.map(renderProblemCard).join("")}</div>
-      </section>
+  function renderTopicsView() {
+    const problems = visibleProblems().slice().sort((left, right) => {
+      const rank = (topicRank.get(left.primaryTopic) ?? 999) - (topicRank.get(right.primaryTopic) ?? 999);
+      return rank || Number(right.rating || 0) - Number(left.rating || 0) || left.key.localeCompare(right.key);
+    });
+    elements.resultTitle.textContent = "Topics";
+    elements.resultSubtitle.textContent = `Showing ${problems.length} of ${allProblems.length} problems`;
+    const groups = new Map();
+    for (const problem of problems) {
+      if (!groups.has(problem.primaryTopic)) groups.set(problem.primaryTopic, []);
+      groups.get(problem.primaryTopic).push(problem);
+    }
+    if (!problems.length) {
+      elements.contestTable.innerHTML = '<tbody><tr><td class="empty-state">没有匹配的题目。</td></tr></tbody>';
+      renderDetail();
+      return;
+    }
+    const html = `
+      <tbody><tr><td class="topic-view">
+        ${Array.from(groups.entries())
+          .map(
+            ([topic, items]) => `
+              <section class="topic-block">
+                <h2>${escapeHtml(topic)} <span class="count-pill">${escapeHtml(items.length)}</span></h2>
+                <div class="topic-problems">
+                  ${items
+                    .map((problem) => `<button type="button" data-problem-key="${escapeHtml(problem.key)}">${escapeHtml(problem.key)} · ${escapeHtml(problem.title)} · ${escapeHtml(problem.rating || "N/A")}</button>`)
+                    .join("")}
+                </div>
+              </section>
+            `,
+          )
+          .join("")}
+      </td></tr></tbody>
     `;
+    elements.contestTable.innerHTML = html;
+    if (!problemByKey.has(state.selectedKey) || !problems.some((problem) => problem.key === state.selectedKey)) {
+      state.selectedKey = problems[0].key;
+    }
+    renderDetail();
   }
 
-  function renderProblemCard(entry) {
-    return `
-      <article class="problem-card">
-        <div class="problem-head">
+  function renderDetail() {
+    const problem = problemByKey.get(state.selectedKey);
+    if (!problem) {
+      elements.detailPanel.innerHTML = '<div class="detail-empty">选择一道题查看题意、转换和关键观察。</div>';
+      return;
+    }
+    const observationHtml = problem.keyObservations.length
+      ? `<ul class="observations">${problem.keyObservations.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
+      : '<p class="muted">本地题解正文不足，未补写关键观察。</p>';
+    const tags = [problem.primaryTopic, ...(problem.secondaryTopics || [])];
+    elements.detailPanel.innerHTML = `
+      <article class="detail-content">
+        <div class="detail-top">
           <div>
-            <div class="problem-title">${escapeHtml(entry.problemKey)} · ${escapeHtml(entry.title)}</div>
-            <div class="problem-links">
-              <a href="${escapeHtml(entry.problemUrl)}" target="_blank" rel="noreferrer">原题</a>
-              <a href="${escapeHtml(entry.editorialUrl)}" target="_blank" rel="noreferrer">题解</a>
-            </div>
+            <h2 class="detail-title">${escapeHtml(problem.key)} · ${escapeHtml(problem.title)}</h2>
+            <div class="contest-meta">${escapeHtml(problem.contestName)} · ${escapeHtml(problem.contestDate || "无日期")}</div>
           </div>
-          <div class="rating">${escapeHtml(formatRating(entry.rating))}</div>
+          <div class="detail-rating ${ratingClass(problem.rating)}">${escapeHtml(problem.rating || "N/A")}</div>
         </div>
-        <div class="lemma-meta">
-          <span class="tag ${usageClass(entry.usageType)}">${escapeHtml(usageText(entry.usageType))}</span>
-          <span class="tag high">${escapeHtml(confidenceText(entry.confidence))}</span>
-          <span class="tag">${escapeHtml(entry.evidenceBasis)}</span>
+        <div class="detail-links">
+          <a href="${escapeHtml(problem.problemUrl)}" target="_blank" rel="noreferrer">原题</a>
+          <a href="${escapeHtml(problem.editorialUrl)}" target="_blank" rel="noreferrer">题解</a>
+          <a href="${escapeHtml(problem.contestUrl)}" target="_blank" rel="noreferrer">竞赛</a>
         </div>
-        <div class="detail-grid">
-          <div class="detail-label">为何非平凡</div>
-          <div>${escapeHtml(entry.whyNontrivial)}</div>
-          <div class="detail-label">证据来源</div>
-          <div>${escapeHtml(entry.sourceProvenance)}</div>
+        <div class="tag-row">
+          ${tags.map((tag, index) => `<span class="tag ${index === 0 ? "topic" : ""}">${escapeHtml(tag)}</span>`).join("")}
+          <span class="tag ${problem.extractionStatus === "missing_editorial" ? "missing" : ""}">${escapeHtml(statusText(problem.extractionStatus))}</span>
         </div>
-        <div class="excerpt"><strong>证据：</strong>${escapeHtml(entry.evidenceExcerpt)}</div>
+        <section class="detail-section">
+          <h3>题意</h3>
+          <p>${escapeHtml(problem.statementBrief)}</p>
+        </section>
+        <section class="detail-section">
+          <h3>转换</h3>
+          <p>${escapeHtml(problem.transformedStatement)}</p>
+        </section>
+        <section class="detail-section">
+          <h3>关键观察</h3>
+          ${observationHtml}
+        </section>
+        <section class="detail-section">
+          <h3>简要题解</h3>
+          <p>${escapeHtml(problem.solutionBrief)}</p>
+        </section>
+        <section class="detail-section">
+          <h3>原始标签</h3>
+          <p>${escapeHtml((problem.originalTags || []).join(", ") || "无")}</p>
+        </section>
       </article>
     `;
   }
 
   function render() {
-    const currentEntries = filteredEntries();
-    const groups = sortedParentGroups(summarizeByParent(currentEntries));
-    elements.resultTitle.textContent = state.category === "all" ? "全部硬核非平凡结论" : state.category;
-    elements.resultSubtitle.textContent = `${groups.length} 个母结论，${currentEntries.length} 条题目记录`;
-    renderCategories();
-    renderParentList(groups);
-    renderDetail(groups);
+    renderControls();
+    for (const button of elements.navButtons) {
+      button.classList.toggle("is-active", button.dataset.view === state.view);
+    }
+    if (state.view === "topics") renderTopicsView();
+    else renderContestView();
   }
 
   function bindEvents() {
-    elements.searchInput.addEventListener("input", (event) => {
-      state.query = event.target.value;
-      state.selectedParent = "";
+    elements.searchInput.addEventListener("input", () => {
+      state.query = elements.searchInput.value;
       render();
     });
-    elements.highOnlyToggle.addEventListener("change", (event) => {
-      state.highOnly = event.target.checked;
-      state.selectedParent = "";
+    elements.topicSelect.addEventListener("change", () => {
+      state.topic = elements.topicSelect.value;
       render();
     });
-    elements.sortSelect.addEventListener("change", (event) => {
-      state.sort = event.target.value;
+    elements.minRatingSelect.addEventListener("change", () => {
+      state.minRating = elements.minRatingSelect.value;
+      render();
+    });
+    elements.statusSelect.addEventListener("change", () => {
+      state.status = elements.statusSelect.value;
+      render();
+    });
+    elements.sortSelect.addEventListener("change", () => {
+      state.sort = elements.sortSelect.value;
+      render();
+    });
+    elements.contestTypes.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-type]");
+      if (!button) return;
+      state.contestType = button.dataset.type;
       render();
     });
     document.addEventListener("click", (event) => {
-      const categoryButton = event.target.closest("[data-category]");
-      if (categoryButton) {
-        state.category = categoryButton.dataset.category;
-        state.selectedParent = "";
-        render();
-        return;
-      }
-      const usageButton = event.target.closest("[data-usage]");
-      if (usageButton) {
-        state.usage = usageButton.dataset.usage;
-        state.selectedParent = "";
-        document.querySelectorAll("[data-usage]").forEach((button) => button.classList.remove("is-active"));
-        usageButton.classList.add("is-active");
-        render();
-        return;
-      }
-      const parentButton = event.target.closest("[data-parent]");
-      if (parentButton) {
-        state.selectedParent = parentButton.dataset.parent;
-        render();
-      }
+      const button = event.target.closest("[data-problem-key]");
+      if (!button) return;
+      state.selectedKey = button.dataset.problemKey;
+      render();
     });
+    elements.randomButton.addEventListener("click", () => {
+      const problems = visibleProblems();
+      if (!problems.length) return;
+      const next = problems[Math.floor(Math.random() * problems.length)];
+      state.selectedKey = next.key;
+      state.view = "contests";
+      render();
+    });
+    for (const button of elements.navButtons) {
+      button.addEventListener("click", () => {
+        state.view = button.dataset.view;
+        render();
+      });
+    }
   }
 
   renderSummary();
-  renderCategories();
+  renderControls();
   bindEvents();
   render();
 })();

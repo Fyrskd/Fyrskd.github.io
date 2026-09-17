@@ -3,60 +3,78 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CF 硬核非平凡子结论浏览器</title>
+    <title>CFTracker 本地题解扩展</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="app-shell">
-      <header class="topbar">
-        <div>
-          <p class="eyebrow">Codeforces 知识库</p>
-          <h1>硬核非平凡子结论浏览器</h1>
-        </div>
-        <div class="summary-grid" id="summaryGrid"></div>
-      </header>
-      <main class="layout">
-        <aside class="sidebar" aria-label="分类与筛选">
-          <section class="panel">
-            <label class="field-label" for="searchInput">搜索</label>
-            <input id="searchInput" class="search-input" type="search" placeholder="母结论 / 子结论 / 题号 / 证据" autocomplete="off" />
-          </section>
-          <section class="panel">
-            <div class="panel-heading">筛选</div>
-            <div class="segmented" role="group" aria-label="使用类型">
-              <button class="segment is-active" data-usage="all" type="button">全部</button>
-              <button class="segment" data-usage="directly_used" type="button">直接使用</button>
-              <button class="segment" data-usage="related_underlying_lemma" type="button">相关底层</button>
-            </div>
-            <label class="checkbox-row"><input id="highOnlyToggle" type="checkbox" /><span>仅高置信</span></label>
-          </section>
-          <section class="panel category-panel">
-            <div class="panel-heading">大类</div>
-            <nav id="categoryList" class="category-list" aria-label="引理大类"></nav>
-          </section>
-        </aside>
-        <section class="content">
-          <div class="toolbar">
+    <header class="navbar">
+      <a class="brand" href="https://cftracker.netlify.app/contests" target="_blank" rel="noreferrer">
+        <span class="brand-mark">CF</span>
+        <span>CFTracker 本地题解扩展</span>
+      </a>
+      <nav class="nav-links" aria-label="视图">
+        <button class="nav-button is-active" type="button" data-view="contests">Contests</button>
+        <button class="nav-button" type="button" data-view="topics">Topics</button>
+      </nav>
+      <div class="source-note">只使用本地题目 / 题解数据</div>
+    </header>
+
+    <main class="app">
+      <section class="summary" id="summaryPanel" aria-label="数据汇总"></section>
+
+      <section class="filters" aria-label="筛选">
+        <label class="search-wrap">
+          <span>搜索</span>
+          <input id="searchInput" type="search" placeholder="题号、标题、题意、关键观察" autocomplete="off" />
+        </label>
+        <label>
+          <span>大知识点</span>
+          <select id="topicSelect"></select>
+        </label>
+        <label>
+          <span>难度下限</span>
+          <select id="minRatingSelect"></select>
+        </label>
+        <label>
+          <span>题解状态</span>
+          <select id="statusSelect">
+            <option value="all">全部</option>
+            <option value="manual_override">有本地题解</option>
+            <option value="missing_editorial">缺题解正文</option>
+            <option value="statement_derived">题面推导</option>
+          </select>
+        </label>
+        <button id="randomButton" class="random-button" type="button">随机题目</button>
+      </section>
+
+      <section class="contest-types" id="contestTypes" aria-label="竞赛类型"></section>
+
+      <section class="content-grid">
+        <section class="table-panel">
+          <div class="table-toolbar">
             <div>
-              <div class="result-title" id="resultTitle">全部硬核非平凡结论</div>
+              <div class="result-title" id="resultTitle">Contests</div>
               <div class="result-subtitle" id="resultSubtitle"></div>
             </div>
-            <div class="sort-control">
-              <label for="sortSelect">排序</label>
+            <label class="compact-label">
+              <span>排序</span>
               <select id="sortSelect">
-                <option value="count">题目数</option>
-                <option value="rating">最高难度</option>
-                <option value="name">名称</option>
+                <option value="date-desc">日期新到旧</option>
+                <option value="date-asc">日期旧到新</option>
+                <option value="max-rating">最高难度</option>
+                <option value="problem-count">题目数</option>
               </select>
-            </div>
+            </label>
           </div>
-          <div class="workspace">
-            <section class="lemma-list" id="lemmaList" aria-label="引理列表"></section>
-            <section class="detail-panel" id="detailPanel" aria-label="引理详情"></section>
+          <div class="table-scroll">
+            <table class="contest-table" id="contestTable"></table>
           </div>
         </section>
-      </main>
-    </div>
+
+        <aside class="detail-panel" id="detailPanel" aria-label="题目详情"></aside>
+      </section>
+    </main>
+
     <script src="./data.js"></script>
     <script src="./app.js"></script>
   </body>
