@@ -40,8 +40,12 @@
           <select id="statusSelect">
             <option value="all">全部</option>
             <option value="manual_override">有本地题解</option>
+            <option value="ai_generated_with_editorial">AI 题解摘要</option>
+            <option value="ai_generated_partial_editorial">AI 部分题解</option>
             <option value="missing_editorial">缺题解正文</option>
+            <option value="statement_only_missing_editorial">仅题意</option>
             <option value="statement_derived">题面推导</option>
+            <option value="low_confidence">低置信度</option>
           </select>
         </label>
         <button id="randomButton" class="random-button" type="button">随机题目</button>

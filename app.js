@@ -84,8 +84,12 @@
 
   function statusText(status) {
     if (status === "missing_editorial") return "缺题解正文";
+    if (status === "statement_only_missing_editorial") return "仅题意";
     if (status === "statement_derived") return "题面推导";
     if (status === "manual_override") return "有本地题解";
+    if (status === "ai_generated_with_editorial") return "AI 题解摘要";
+    if (status === "ai_generated_partial_editorial") return "AI 部分题解";
+    if (status === "low_confidence") return "低置信度";
     return status || "未知";
   }
 
@@ -128,6 +132,7 @@
       ["有本地题解", summary.with_editorial_brief],
       ["缺题解正文", summary.missing_editorial_brief],
       ["人工覆写", summary.manual_override_count],
+      ["AI 摘要", summary.ai_override_count || 0],
       ["大知识点", summary.primary_topic_count],
       ["难度范围", `${summary.rating_min || "-"}-${summary.rating_max || "-"}`],
     ];

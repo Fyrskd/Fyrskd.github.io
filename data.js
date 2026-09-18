@@ -1,16 +1,17 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-09-17",
+  "generatedAt": "2026-09-18",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 938,
-    "with_statement_brief": 938,
-    "with_editorial_brief": 891,
-    "with_solution_brief": 938,
+    "total_problems": 954,
+    "with_statement_brief": 954,
+    "with_editorial_brief": 907,
+    "with_solution_brief": 954,
     "missing_editorial_brief": 46,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
+    "ai_override_count": 0,
     "primary_topic_count": 13,
-    "contest_count": 145,
+    "contest_count": 148,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -35,30 +36,31 @@ window.CF_INSIGHTS_DATA = {
     "交互",
     "图论与网络流",
     "字符串",
-    "基础实现与模拟",
     "博弈",
+    "基础实现与模拟",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 287,
+    "构造与贪心": 295,
     "字符串": 41,
-    "数论与同余": 79,
-    "博弈": 37,
+    "数论与同余": 80,
+    "博弈": 38,
     "基础实现与模拟": 38,
     "交互": 58,
     "树结构": 68,
-    "数据结构": 78,
-    "动态规划与状态设计": 92,
-    "组合计数与概率": 73,
-    "图论与网络流": 57,
+    "数据结构": 79,
+    "动态规划与状态设计": 94,
+    "组合计数与概率": 75,
+    "图论与网络流": 58,
     "几何": 19,
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
     "manual_override": 891,
     "missing_editorial": 46,
-    "statement_derived": 1
+    "statement_derived": 1,
+    "ok": 16
   },
   "contestTypes": [
     "Div. 1",
@@ -71,6 +73,505 @@ window.CF_INSIGHTS_DATA = {
     "Others"
   ],
   "contests": [
+    {
+      "id": 2264,
+      "name": "Codeforces Round 1121 (Div. 2)",
+      "date": "2026-09-13",
+      "url": "https://codeforces.com/contest/2264",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2264A",
+          "index": "A",
+          "slot": "A",
+          "title": "Rumb Needs a Hand",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2264/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/156680",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "implementation",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2264A Rumb Needs a Hand。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "For it to stay correct 之后 the reversal, it has to be paired with itself, 因为 its 值 occurs nowhere else in the 排列",
+            "因此 it 可以 只 be the middle 被选择 元素, and removing it changes nothing",
+            "The 答案 is YES if this sorts the 数组, and NO otherwise"
+          ],
+          "solutionBrief": "关键观察：For it to stay correct 之后 the reversal, it has to be paired with itself, 因为 its 值 occurs nowhere else in the 排列；因此 it 可以 只 be the middle 被选择 元素, and removing it changes nothing；The 答案 is YES if this sorts the 数组, and NO otherwise。做法：So, if the 数组 is already sorted, 选择 any one 元素。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2264B",
+          "index": "B",
+          "slot": "B",
+          "title": "Knife's Pill Farm",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2264/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/156680",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "组合计数与概率",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2264B Knife's Pill Farm。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "Write out the 分数 for a few terms and collect the coefficient of 每个 chosen 值",
+            "Fix the 最后一个 chosen 位置",
+            "之前 considering a_j, keep the m-1 smallest 值 之中 a_1,...,a_{j-1} in a max-heap, and let their sum be s"
+          ],
+          "solutionBrief": "关键观察：Write out the 分数 for a few terms and collect the coefficient of 每个 chosen 值；Fix the 最后一个 chosen 位置；之前 considering a_j, keep the m-1 smallest 值 之中 a_1,...,a_{j-1} in a max-heap, and let their sum be s。做法：其中 m-1 earlier 值 are best, and how 可以 we maintain them while moving this 位置 to the right?；The 复杂度 is O(n\\log(m+1)) time and O(m) extra memory。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2264C",
+          "index": "C",
+          "slot": "C",
+          "title": "Madamant's Skating Dynasty",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2264/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/156680",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "图论与网络流",
+            "树结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2264C Madamant's Skating Dynasty。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "因此 any such choices form a 合法 树",
+            "We cannot enumerate the 树",
+            "换个角度, 考虑 one 可行 边 at a time and add its 代价 once for 每个 树 containing it"
+          ],
+          "solutionBrief": "关键观察：因此 any such choices form a 合法 树；We cannot enumerate the 树；换个角度, 考虑 one 可行 边 at a time and add its 代价 once for 每个 树 containing it。做法：之后 sorting, 每个 parent lies to the right of their child。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2264D",
+          "index": "D",
+          "slot": "D",
+          "title": "Dr. Agos's Dark Mode",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2264/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/156680",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "数论与同余",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2264D Dr. Agos's Dark Mode。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "因此, this 子串 is divisible by 3 恰好 当 p_{l-1}=p_r",
+            "Now we 只 need to build a 字符串 with such balanced counts",
+            "Let q=\\lfloor n/3\\rfloor and 考虑 a 字符串 of 长度 3q+2"
+          ],
+          "solutionBrief": "关键观察：因此, this 子串 is divisible by 3 恰好 当 p_{l-1}=p_r；Now we 只 need to build a 字符串 with such balanced counts；Let q=\\lfloor n/3\\rfloor and 考虑 a 字符串 of 长度 3q+2。做法：因为 2\\equiv-1\\pmod 3, try an alternating 前缀 sum；The 复杂度 is O(n) time and O(n) memory per test case。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2264E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "A Prime Flood (Easy Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2264/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/156680",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "组合计数与概率",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "number theory"
+          ],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2264E1 A Prime Flood (Easy Version)。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "Let dp[x][y] be the 答案 for 最小 x and 最大 y",
+            "Let dp[x][y] be the largest 值 to 其中 the pair [x,y] 可以被 made equal",
+            "因此, if the 最小 and 最大 of a 子序列 become equal, 每个 值 之间 them becomes equal as well"
+          ],
+          "solutionBrief": "关键观察：Let dp[x][y] be the 答案 for 最小 x and 最大 y；Let dp[x][y] be the largest 值 to 其中 the pair [x,y] 可以被 made equal；因此, if the 最小 and 最大 of a 子序列 become equal, 每个 值 之间 them becomes equal as well。做法：使用 前缀 sums of the frequencies for the exponent, multiply 每个 计数 by dp[x][y], and add everything to the 答案。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2264E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "A Prime Flood (Hard Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2264/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/156680",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "组合计数与概率",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "number theory"
+          ],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2264E2 A Prime Flood (Hard Version)。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "Let dp[x][y] be the 答案 for 最小 x and 最大 y",
+            "Let r(y) be the product of the 不同 prime divisors of y",
+            "因此, the 行 可以 change 只 at 位置 satisfying r(y)\\mid x; call them blockers"
+          ],
+          "solutionBrief": "关键观察：Let dp[x][y] be the 答案 for 最小 x and 最大 y；Let r(y) be the product of the 不同 prime divisors of y；因此, the 行 可以 change 只 at 位置 satisfying r(y)\\mid x; call them blockers。做法：当 可以 dp[x][y] differ from dp[x][y-1]?。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2264F",
+          "index": "F",
+          "slot": "F",
+          "title": "Deranged Calculator",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2264/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/156680",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "组合计数与概率",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2264F Deranged Calculator。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "可以 immediately 注意到 if 我们要 to 使用 整数 constants in our program, 有 to make them 使用 workarounds such as n/n or (n+n+n)/n",
+            "To save 一些 长度, 可以 precompute a 动态规划 table, 其中 tells us a small construction for the constant i for 1<= i\\leq50",
+            "这意味着 可以 basically reuse all our work for the factorial case, but now 有 要求 a way to get a sufficiently precise approximation of e in our program"
+          ],
+          "solutionBrief": "关键观察：可以 immediately 注意到 if 我们要 to 使用 整数 constants in our program, 有 to make them 使用 workarounds such as n/n or (n+n+n)/n；To save 一些 长度, 可以 precompute a 动态规划 table, 其中 tells us a small construction for the constant i for 1<= i\\leq50；这意味着 可以 basically reuse all our work for the factorial case, but now 有 要求 a way to get a sufficiently precise approximation of e in our program。按这个转换实现即可。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2263,
+      "name": "Codeforces Round 1120 (Div. 2)",
+      "date": "2026-09-12",
+      "url": "https://codeforces.com/contest/2263",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2263A",
+          "index": "A",
+          "slot": "A",
+          "title": "Min Max Game",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2263/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2263A Min Max Game。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "If a 0 and 1 二者 exist on Bessie's turn, then she 可以 remove a 0, and similarly if a 0 and 1 二者 exist on Elsie's turn, then she 可以 remove a 1",
+            "因此 if 数量 1s >= 数量 0s, Bessie 会 win, 因为 she 可以 always ensure that 数量 1s is >= 数量 0s",
+            "If 数量 1s is < 数量 0s, then no matter 什么 Bessie does on her turn, the game 会 be flipped to Elsie having this 相同 winning 位置, so she 会 lose"
+          ],
+          "solutionBrief": "关键观察：If a 0 and 1 二者 exist on Bessie's turn, then she 可以 remove a 0, and similarly if a 0 and 1 二者 exist on Elsie's turn, then she 可以 remove a 1；因此 if 数量 1s >= 数量 0s, Bessie 会 win, 因为 she 可以 always ensure that 数量 1s is >= 数量 0s；If 数量 1s is < 数量 0s, then no matter 什么 Bessie does on her turn, the game 会 be flipped to Elsie having this 相同 winning 位置, so she 会 lose。按这个转换实现即可。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2263B",
+          "index": "B",
+          "slot": "B",
+          "title": "Min Matrices",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2263/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "博弈",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2263B Min Matrices。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "We claim that it is always 可行 to construct a satisfying matrix for n <= k <= 2n-1",
+            "Let x = k+1-n — then 1 <= x <= n",
+            "Then, place 1, ..., x in the 第一个 行, place x+1, ..., 2x - 1 in the 第一个 列 below the 1, and place 2x, ..., k on the main diagonal outside of the top-left x × x box as follows: \\begin{bmatrix} 1 & *s & x & & & \\\\ x+1 & & & & & \\\\ \\vdots & & & & & \\\\ 2x-1 & & & & & \\\\ & & & 2x & & \\\\ & & & & \\ddots…"
+          ],
+          "solutionBrief": "关键观察：We claim that it is always 可行 to construct a satisfying matrix for n <= k <= 2n-1；Let x = k+1-n — then 1 <= x <= n；Then, place 1, ..., x in the 第一个 行, place x+1, ..., 2x - 1 in the 第一个 列 below the 1, and place 2x, ..., k on the main diagonal outside of the top-left x × x box as follows: \\begin{bmatrix} 1 & *s & x & & & \\\\ x+1 & & & & & \\\\ \\vdots & & & & & \\\\ 2x-1 & & & & & \\\\ & & & 2x & & \\\\ & & & & \\ddots…。做法：we 必须 have n <= k。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2262,
+      "name": "Codeforces Round 1120 (Div. 1)",
+      "date": "2026-09-12",
+      "url": "https://codeforces.com/contest/2262",
+      "type": "Div. 1",
+      "problemCount": 7,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2262A1",
+          "index": "A1",
+          "slot": "A",
+          "title": "Floor of MEX (Easy Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2262/problem/A1",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2262A1 Floor of MEX (Easy Version)。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "Now, let us try greedily including 每个 数 可以 in [0, n]",
+            "The 只 reason why we cannot include a 数 is if it is in a bad range",
+            "可以 keep track of all these bad ranges 使用 a 前缀 sum, (e.g., for f(A, k) = x, increment p[kx], decrement p[k(x+1)], and 前缀 sum 遍历 p)"
+          ],
+          "solutionBrief": "关键观察：Now, let us try greedily including 每个 数 可以 in [0, n]；The 只 reason why we cannot include a 数 is if it is in a bad range；可以 keep track of all these bad ranges 使用 a 前缀 sum, (e.g., for f(A, k) = x, increment p[kx], decrement p[k(x+1)], and 前缀 sum 遍历 p)。按这个转换实现即可。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2262A2",
+          "index": "A2",
+          "slot": "A",
+          "title": "Floor of MEX (Hard Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2262/problem/A2",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "字符串",
+            "构造与贪心",
+            "几何"
+          ],
+          "originalTags": [
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2262A2 Floor of MEX (Hard Version)。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "If you sort these intervals, 可以 make the observation that including a 数 会 satisfy a range of these intervals",
+            "可以 使用 a simple DP maintaining the 最后一个 satisfied interval while looping through 数 0 to n-1, being careful not to 考虑 any 数 in bad intervals (可以 check this 使用 前缀 sums as in the 题解 to C1)",
+            "有 O(n \\log{n}) intervals, and 可以 speed up the DP 使用 前缀 sums to compute this in O(n \\log {n}); the 总计 复杂度 会 be O(n \\log^2 {n}) due to sorting"
+          ],
+          "solutionBrief": "关键观察：If you sort these intervals, 可以 make the observation that including a 数 会 satisfy a range of these intervals；可以 使用 a simple DP maintaining the 最后一个 satisfied interval while looping through 数 0 to n-1, being careful not to 考虑 any 数 in bad intervals (可以 check this 使用 前缀 sums as in the 题解 to C1)；有 O(n \\log{n}) intervals, and 可以 speed up the DP 使用 前缀 sums to compute this in O(n \\log {n}); the 总计 复杂度 会 be O(n \\log^2 {n}) due to sorting。按这个转换实现即可。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2262B",
+          "index": "B",
+          "slot": "B",
+          "title": "Culling Game",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2262/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "树结构",
+            "交互"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2262B Culling Game。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "考虑 the largest 元素 j < i, 其中 j \\in S",
+            "If we take the sum of all the active warriors' skills from j to i-1, that 会 be the skill level of the champion fighting i",
+            "If this sum is less 比 a_i, then we insert i 变成 the set, and update j = i"
+          ],
+          "solutionBrief": "关键观察：考虑 the largest 元素 j < i, 其中 j \\in S；If we take the sum of all the active warriors' skills from j to i-1, that 会 be the skill level of the champion fighting i；If this sum is less 比 a_i, then we insert i 变成 the set, and update j = i。做法：This requires a BIT/segment 树 to 询问 sums and process additions quickly。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2262C",
+          "index": "C",
+          "slot": "C",
+          "title": "Traveling the World",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2262/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "组合计数与概率",
+            "字符串"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "graphs",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2262C Traveling the World。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "That 必须 be M, and 因此, 每个 node goes from x \\to M - x",
+            "因此, 可以 只 visit 至多 2 nodes",
+            "因为 a directed 路径 必须 exist if it was good, that directed 路径 takes n - 1 边"
+          ],
+          "solutionBrief": "关键观察：That 必须 be M, and 因此, 每个 node goes from x \\to M - x；因此, 可以 只 visit 至多 2 nodes；因为 a directed 路径 必须 exist if it was good, that directed 路径 takes n - 1 边。做法：可以 now build the 路径 backwards。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2262D",
+          "index": "D",
+          "slot": "D",
+          "title": "PLUSworld",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2262/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "树结构",
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2262D PLUSworld。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "考虑 the SCCs S_k of the 图 其中 i has an out-边 to j for all a[i] <= j <= b[i]",
+            "Firstly, 可以 \"compress\" all nodes 其中 a[i] = b[i]",
+            "This is 因为 we 必须 visit one of the nodes in S_k, say i, increment and go to b[i], and then we cannot return to j to increment it to b[j]"
+          ],
+          "solutionBrief": "关键观察：考虑 the SCCs S_k of the 图 其中 i has an out-边 to j for all a[i] <= j <= b[i]；Firstly, 可以 \"compress\" all nodes 其中 a[i] = b[i]；This is 因为 we 必须 visit one of the nodes in S_k, say i, increment and go to b[i], and then we cannot return to j to increment it to b[j]。按这个转换实现即可。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2262E",
+          "index": "E",
+          "slot": "E",
+          "title": "Paired Bracket Sequences",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2262/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "字符串",
+            "代数、矩阵与多项式",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math"
+          ],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2262E Paired Bracket Sequences。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "Let's 计数, for 每个 0 <= k <= n, 数量 ways 可以 pick k common pairings and fill in the rest of the two bracket 序列",
+            "因此, if we 使用 the polynomial P(x)=求和_{r=0}^{n}C_r^2x^r, then the coefficient of x^{n-k} in P(x)^{k+1} counts the ways to 选择 the ordered region sizes and fill them in",
+            "可以 因此 使用 inclusion-exclusion, computing in decreasing 顺序 of k: A_k=B_k-求和_{j=k+1}^{n}C(j,k)A_j"
+          ],
+          "solutionBrief": "关键观察：Let's 计数, for 每个 0 <= k <= n, 数量 ways 可以 pick k common pairings and fill in the rest of the two bracket 序列；因此, if we 使用 the polynomial P(x)=求和_{r=0}^{n}C_r^2x^r, then the coefficient of x^{n-k} in P(x)^{k+1} counts the ways to 选择 the ordered region sizes and fill them in；可以 因此 使用 inclusion-exclusion, computing in decreasing 顺序 of k: A_k=B_k-求和_{j=k+1}^{n}C(j,k)A_j。按这个转换实现即可。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2262F",
+          "index": "F",
+          "slot": "F",
+          "title": "Rank Removal",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2262/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "题面正文缺失；仅能确认题目为 2262F Rank Removal。",
+          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "keyObservations": [
+            "We 会 使用 two facts: rank(M)=n 当且仅当 \\det(M)=1",
+            "Construct a bipartite 图 with n 行 点 and n 列 点, 其中 M_{i,j}=1 corresponds to an 边 之间 行 i and 列 j",
+            "Let X be 数量 ones initially in M"
+          ],
+          "solutionBrief": "关键观察：We 会 使用 two facts: rank(M)=n 当且仅当 \\det(M)=1；Construct a bipartite 图 with n 行 点 and n 列 点, 其中 M_{i,j}=1 corresponds to an 边 之间 行 i and 列 j；Let X be 数量 ones initially in M。做法：换个角度 of recomputing the determinant in O(n^3/w) to test removals and 之后 removals, 可以 使用 something called Woodbury Matrix Identity to speed it up to O(n^2/w)。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
     {
       "id": 2258,
       "name": "Codeforces Round 1118 (Div. 2)",
