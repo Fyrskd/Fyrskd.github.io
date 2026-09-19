@@ -4,9 +4,9 @@ window.CF_INSIGHTS_DATA = {
   "summary": {
     "total_problems": 954,
     "with_statement_brief": 954,
-    "with_editorial_brief": 898,
+    "with_editorial_brief": 907,
     "with_solution_brief": 954,
-    "missing_editorial_brief": 55,
+    "missing_editorial_brief": 46,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 0,
@@ -36,31 +36,31 @@ window.CF_INSIGHTS_DATA = {
     "交互",
     "图论与网络流",
     "字符串",
-    "基础实现与模拟",
     "博弈",
+    "基础实现与模拟",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 297,
+    "构造与贪心": 295,
     "字符串": 41,
     "数论与同余": 80,
-    "博弈": 37,
+    "博弈": 38,
     "基础实现与模拟": 38,
     "交互": 58,
     "树结构": 68,
     "数据结构": 79,
     "动态规划与状态设计": 94,
     "组合计数与概率": 75,
-    "图论与网络流": 57,
+    "图论与网络流": 58,
     "几何": 19,
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
     "manual_override": 891,
-    "missing_editorial": 55,
+    "missing_editorial": 46,
     "statement_derived": 1,
-    "ok": 7
+    "ok": 16
   },
   "contestTypes": [
     "Div. 1",
@@ -309,16 +309,22 @@ window.CF_INSIGHTS_DATA = {
           "title": "Min Max Game",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2263/problem/A",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
           "originalTags": [],
           "statementBrief": "题面正文缺失；仅能确认题目为 2263A Min Max Game。",
           "transformedStatement": "题面正文缺失，无法做可靠转换。",
-          "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留题面、原题链接和题解链接，避免根据旧总结或宽标签补写。",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "keyObservations": [
+            "If a 0 and 1 二者 exist on Bessie's turn, then she 可以 remove a 0, and similarly if a 0 and 1 二者 exist on Elsie's turn, then she 可以 remove a 1",
+            "因此 if 数量 1s >= 数量 0s, Bessie 会 win, 因为 she 可以 always ensure that 数量 1s is >= 数量 0s",
+            "If 数量 1s is < 数量 0s, then no matter 什么 Bessie does on her turn, the game 会 be flipped to Elsie having this 相同 winning 位置, so she 会 lose"
+          ],
+          "solutionBrief": "关键观察：If a 0 and 1 二者 exist on Bessie's turn, then she 可以 remove a 0, and similarly if a 0 and 1 二者 exist on Elsie's turn, then she 可以 remove a 1；因此 if 数量 1s >= 数量 0s, Bessie 会 win, 因为 she 可以 always ensure that 数量 1s is >= 数量 0s；If 数量 1s is < 数量 0s, then no matter 什么 Bessie does on her turn, the game 会 be flipped to Elsie having this 相同 winning 位置, so she 会 lose。按这个转换实现即可。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
         },
         {
           "key": "2263B",
@@ -327,18 +333,26 @@ window.CF_INSIGHTS_DATA = {
           "title": "Min Matrices",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2263/problem/B",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "组合计数与概率",
+            "博弈",
+            "代数、矩阵与多项式"
+          ],
           "originalTags": [
             "constructive algorithms"
           ],
           "statementBrief": "题面正文缺失；仅能确认题目为 2263B Min Matrices。",
           "transformedStatement": "题面正文缺失，无法做可靠转换。",
-          "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留题面、原题链接和题解链接，避免根据旧总结或宽标签补写。",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "keyObservations": [
+            "We claim that it is always 可行 to construct a satisfying matrix for n <= k <= 2n-1",
+            "Let x = k+1-n — then 1 <= x <= n",
+            "Then, place 1, ..., x in the 第一个 行, place x+1, ..., 2x - 1 in the 第一个 列 below the 1, and place 2x, ..., k on the main diagonal outside of the top-left x × x box as follows: \\begin{bmatrix} 1 & *s & x & & & \\\\ x+1 & & & & & \\\\ \\vdots & & & & & \\\\ 2x-1 & & & & & \\\\ & & & 2x & & \\\\ & & & & \\ddots…"
+          ],
+          "solutionBrief": "关键观察：We claim that it is always 可行 to construct a satisfying matrix for n <= k <= 2n-1；Let x = k+1-n — then 1 <= x <= n；Then, place 1, ..., x in the 第一个 行, place x+1, ..., 2x - 1 in the 第一个 列 below the 1, and place 2x, ..., k on the main diagonal outside of the top-left x × x box as follows: \\begin{bmatrix} 1 & *s & x & & & \\\\ x+1 & & & & & \\\\ \\vdots & & & & & \\\\ 2x-1 & & & & & \\\\ & & & 2x & & \\\\ & & & & \\ddots…。做法：we 必须 have n <= k。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
         }
       ]
     },
@@ -358,19 +372,25 @@ window.CF_INSIGHTS_DATA = {
           "title": "Floor of MEX (Easy Version)",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2262/problem/A1",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "字符串"
+          ],
           "originalTags": [
             "constructive algorithms",
             "greedy"
           ],
           "statementBrief": "题面正文缺失；仅能确认题目为 2262A1 Floor of MEX (Easy Version)。",
           "transformedStatement": "题面正文缺失，无法做可靠转换。",
-          "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留题面、原题链接和题解链接，避免根据旧总结或宽标签补写。",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "keyObservations": [
+            "Now, let us try greedily including 每个 数 可以 in [0, n]",
+            "The 只 reason why we cannot include a 数 is if it is in a bad range",
+            "可以 keep track of all these bad ranges 使用 a 前缀 sum, (e.g., for f(A, k) = x, increment p[kx], decrement p[k(x+1)], and 前缀 sum 遍历 p)"
+          ],
+          "solutionBrief": "关键观察：Now, let us try greedily including 每个 数 可以 in [0, n]；The 只 reason why we cannot include a 数 is if it is in a bad range；可以 keep track of all these bad ranges 使用 a 前缀 sum, (e.g., for f(A, k) = x, increment p[kx], decrement p[k(x+1)], and 前缀 sum 遍历 p)。按这个转换实现即可。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
         },
         {
           "key": "2262A2",
@@ -379,19 +399,27 @@ window.CF_INSIGHTS_DATA = {
           "title": "Floor of MEX (Hard Version)",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2262/problem/A2",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "字符串",
+            "构造与贪心",
+            "几何"
+          ],
           "originalTags": [
             "dp",
             "implementation"
           ],
           "statementBrief": "题面正文缺失；仅能确认题目为 2262A2 Floor of MEX (Hard Version)。",
           "transformedStatement": "题面正文缺失，无法做可靠转换。",
-          "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留题面、原题链接和题解链接，避免根据旧总结或宽标签补写。",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "keyObservations": [
+            "If you sort these intervals, 可以 make the observation that including a 数 会 satisfy a range of these intervals",
+            "可以 使用 a simple DP maintaining the 最后一个 satisfied interval while looping through 数 0 to n-1, being careful not to 考虑 any 数 in bad intervals (可以 check this 使用 前缀 sums as in the 题解 to C1)",
+            "有 O(n \\log{n}) intervals, and 可以 speed up the DP 使用 前缀 sums to compute this in O(n \\log {n}); the 总计 复杂度 会 be O(n \\log^2 {n}) due to sorting"
+          ],
+          "solutionBrief": "关键观察：If you sort these intervals, 可以 make the observation that including a 数 会 satisfy a range of these intervals；可以 使用 a simple DP maintaining the 最后一个 satisfied interval while looping through 数 0 to n-1, being careful not to 考虑 any 数 in bad intervals (可以 check this 使用 前缀 sums as in the 题解 to C1)；有 O(n \\log{n}) intervals, and 可以 speed up the DP 使用 前缀 sums to compute this in O(n \\log {n}); the 总计 复杂度 会 be O(n \\log^2 {n}) due to sorting。按这个转换实现即可。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
         },
         {
           "key": "2262B",
@@ -400,10 +428,12 @@ window.CF_INSIGHTS_DATA = {
           "title": "Culling Game",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2262/problem/B",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "数据结构"
+            "数据结构",
+            "树结构",
+            "交互"
           ],
           "originalTags": [
             "binary search",
@@ -413,10 +443,14 @@ window.CF_INSIGHTS_DATA = {
           ],
           "statementBrief": "题面正文缺失；仅能确认题目为 2262B Culling Game。",
           "transformedStatement": "题面正文缺失，无法做可靠转换。",
-          "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留题面、原题链接和题解链接，避免根据旧总结或宽标签补写。",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "keyObservations": [
+            "考虑 the largest 元素 j < i, 其中 j \\in S",
+            "If we take the sum of all the active warriors' skills from j to i-1, that 会 be the skill level of the champion fighting i",
+            "If this sum is less 比 a_i, then we insert i 变成 the set, and update j = i"
+          ],
+          "solutionBrief": "关键观察：考虑 the largest 元素 j < i, 其中 j \\in S；If we take the sum of all the active warriors' skills from j to i-1, that 会 be the skill level of the champion fighting i；If this sum is less 比 a_i, then we insert i 变成 the set, and update j = i。做法：This requires a BIT/segment 树 to 询问 sums and process additions quickly。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
         },
         {
           "key": "2262C",
@@ -425,11 +459,12 @@ window.CF_INSIGHTS_DATA = {
           "title": "Traveling the World",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2262/problem/C",
-          "editorialUrl": "",
-          "primaryTopic": "组合计数与概率",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
+          "primaryTopic": "图论与网络流",
           "secondaryTopics": [
-            "图论与网络流",
-            "构造与贪心"
+            "构造与贪心",
+            "组合计数与概率",
+            "字符串"
           ],
           "originalTags": [
             "combinatorics",
@@ -439,10 +474,14 @@ window.CF_INSIGHTS_DATA = {
           ],
           "statementBrief": "题面正文缺失；仅能确认题目为 2262C Traveling the World。",
           "transformedStatement": "题面正文缺失，无法做可靠转换。",
-          "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留题面、原题链接和题解链接，避免根据旧总结或宽标签补写。",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "keyObservations": [
+            "That 必须 be M, and 因此, 每个 node goes from x \\to M - x",
+            "因此, 可以 只 visit 至多 2 nodes",
+            "因为 a directed 路径 必须 exist if it was good, that directed 路径 takes n - 1 边"
+          ],
+          "solutionBrief": "关键观察：That 必须 be M, and 因此, 每个 node goes from x \\to M - x；因此, 可以 只 visit 至多 2 nodes；因为 a directed 路径 必须 exist if it was good, that directed 路径 takes n - 1 边。做法：可以 now build the 路径 backwards。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
         },
         {
           "key": "2262D",
@@ -451,10 +490,12 @@ window.CF_INSIGHTS_DATA = {
           "title": "PLUSworld",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2262/problem/D",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "图论与网络流"
+            "图论与网络流",
+            "树结构",
+            "数据结构"
           ],
           "originalTags": [
             "constructive algorithms",
@@ -463,10 +504,14 @@ window.CF_INSIGHTS_DATA = {
           ],
           "statementBrief": "题面正文缺失；仅能确认题目为 2262D PLUSworld。",
           "transformedStatement": "题面正文缺失，无法做可靠转换。",
-          "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留题面、原题链接和题解链接，避免根据旧总结或宽标签补写。",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "keyObservations": [
+            "考虑 the SCCs S_k of the 图 其中 i has an out-边 to j for all a[i] <= j <= b[i]",
+            "Firstly, 可以 \"compress\" all nodes 其中 a[i] = b[i]",
+            "This is 因为 we 必须 visit one of the nodes in S_k, say i, increment and go to b[i], and then we cannot return to j to increment it to b[j]"
+          ],
+          "solutionBrief": "关键观察：考虑 the SCCs S_k of the 图 其中 i has an out-边 to j for all a[i] <= j <= b[i]；Firstly, 可以 \"compress\" all nodes 其中 a[i] = b[i]；This is 因为 we 必须 visit one of the nodes in S_k, say i, increment and go to b[i], and then we cannot return to j to increment it to b[j]。按这个转换实现即可。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
         },
         {
           "key": "2262E",
@@ -475,19 +520,27 @@ window.CF_INSIGHTS_DATA = {
           "title": "Paired Bracket Sequences",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2262/problem/E",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "组合计数与概率",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "字符串",
+            "代数、矩阵与多项式",
+            "图论与网络流"
+          ],
           "originalTags": [
             "combinatorics",
             "math"
           ],
           "statementBrief": "题面正文缺失；仅能确认题目为 2262E Paired Bracket Sequences。",
           "transformedStatement": "题面正文缺失，无法做可靠转换。",
-          "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留题面、原题链接和题解链接，避免根据旧总结或宽标签补写。",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "keyObservations": [
+            "Let's 计数, for 每个 0 <= k <= n, 数量 ways 可以 pick k common pairings and fill in the rest of the two bracket 序列",
+            "因此, if we 使用 the polynomial P(x)=求和_{r=0}^{n}C_r^2x^r, then the coefficient of x^{n-k} in P(x)^{k+1} counts the ways to 选择 the ordered region sizes and fill them in",
+            "可以 因此 使用 inclusion-exclusion, computing in decreasing 顺序 of k: A_k=B_k-求和_{j=k+1}^{n}C(j,k)A_j"
+          ],
+          "solutionBrief": "关键观察：Let's 计数, for 每个 0 <= k <= n, 数量 ways 可以 pick k common pairings and fill in the rest of the two bracket 序列；因此, if we 使用 the polynomial P(x)=求和_{r=0}^{n}C_r^2x^r, then the coefficient of x^{n-k} in P(x)^{k+1} counts the ways to 选择 the ordered region sizes and fill them in；可以 因此 使用 inclusion-exclusion, computing in decreasing 顺序 of k: A_k=B_k-求和_{j=k+1}^{n}C(j,k)A_j。按这个转换实现即可。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
         },
         {
           "key": "2262F",
@@ -496,18 +549,26 @@ window.CF_INSIGHTS_DATA = {
           "title": "Rank Removal",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2262/problem/F",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心",
+            "代数、矩阵与多项式"
+          ],
           "originalTags": [
             "math"
           ],
           "statementBrief": "题面正文缺失；仅能确认题目为 2262F Rank Removal。",
           "transformedStatement": "题面正文缺失，无法做可靠转换。",
-          "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留题面、原题链接和题解链接，避免根据旧总结或宽标签补写。",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "keyObservations": [
+            "We 会 使用 two facts: rank(M)=n 当且仅当 \\det(M)=1",
+            "Construct a bipartite 图 with n 行 点 and n 列 点, 其中 M_{i,j}=1 corresponds to an 边 之间 行 i and 列 j",
+            "Let X be 数量 ones initially in M"
+          ],
+          "solutionBrief": "关键观察：We 会 使用 two facts: rank(M)=n 当且仅当 \\det(M)=1；Construct a bipartite 图 with n 行 点 and n 列 点, 其中 M_{i,j}=1 corresponds to an 边 之间 行 i and 列 j；Let X be 数量 ones initially in M。做法：换个角度 of recomputing the determinant in O(n^3/w) to test removals and 之后 removals, 可以 使用 something called Woodbury Matrix Identity to speed it up to O(n^2/w)。",
+          "extractionStatus": "ok",
+          "editorialQuality": "complete"
         }
       ]
     },
@@ -8409,6 +8470,8 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/151052",
           "primaryTopic": "博弈",
           "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计",
             "几何"
           ],
           "originalTags": [
@@ -8424,7 +8487,7 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：胜负不是模拟轮流减数，而是看 Bob 能否一直把差值 q-p 维持到目标比例。检查两个条件：必须 p<q，且 min(p/2,q/3) 至少为 q-p；都满足则 Bob 能逼到 2/3，否则 Alice 避开。",
           "extractionStatus": "manual_override",
-          "editorialQuality": "url_only"
+          "editorialQuality": "partial"
         },
         {
           "key": "2196B",
@@ -9065,8 +9128,8 @@ window.CF_INSIGHTS_DATA = {
           "primaryTopic": "动态规划与状态设计",
           "secondaryTopics": [
             "数论与同余",
-            "字符串",
-            "交互"
+            "组合计数与概率",
+            "字符串"
           ],
           "originalTags": [
             "bitmasks",
@@ -9082,7 +9145,7 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：先代数化简，把整段生成数组的和压缩成最终值 c_n 的函数。再用 DP 统计所有补全能到达哪些 c_n，配合位集优化状态集合，最后把每个可达终值代回公式求和。",
           "extractionStatus": "manual_override",
-          "editorialQuality": "url_only"
+          "editorialQuality": "partial"
         },
         {
           "key": "2187E",
@@ -26638,7 +26701,8 @@ window.CF_INSIGHTS_DATA = {
           "primaryTopic": "组合计数与概率",
           "secondaryTopics": [
             "组合计数与概率",
-            "动态规划与状态设计"
+            "动态规划与状态设计",
+            "图论与网络流"
           ],
           "originalTags": [
             "combinatorics",
@@ -26655,7 +26719,7 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：不是枚举染色，而是枚举平移。对某个平移，处在同一轨道的小立方体必须同色，因此固定方案数是 k^{轨道数}；三维轨道数由各维循环长度的 lcm/gcd 关系算出。最后对所有平移固定点数取平均。",
           "extractionStatus": "manual_override",
-          "editorialQuality": "url_only"
+          "editorialQuality": "partial"
         }
       ]
     },
