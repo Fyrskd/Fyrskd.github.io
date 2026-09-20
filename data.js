@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
   "topicCounts": {
     "构造与贪心": 295,
     "字符串": 41,
-    "数论与同余": 80,
+    "数论与同余": 81,
     "博弈": 38,
     "基础实现与模拟": 38,
     "交互": 58,
     "树结构": 68,
     "数据结构": 79,
-    "动态规划与状态设计": 94,
+    "动态规划与状态设计": 93,
     "组合计数与概率": 75,
     "图论与网络流": 58,
     "几何": 19,
@@ -92,6 +92,7 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/156680",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
+            "图论与网络流",
             "组合计数与概率",
             "动态规划与状态设计"
           ],
@@ -100,8 +101,8 @@ window.CF_INSIGHTS_DATA = {
             "sortings",
             "two pointers"
           ],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2264A Rumb Needs a Hand。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "判断 whether Mr.",
+          "transformedStatement": "把题目先看成：判断 whether Mr.",
           "keyObservations": [
             "For it to stay correct 之后 the reversal, it has to be paired with itself, 因为 its 值 occurs nowhere else in the 排列",
             "因此 it 可以 只 be the middle 被选择 元素, and removing it changes nothing",
@@ -129,8 +130,8 @@ window.CF_INSIGHTS_DATA = {
             "data structures",
             "greedy"
           ],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2264B Knife's Pill Farm。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "Knife's Pill Farm time limit per test 1.5 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Mr. 什么 is the 最大 pill 分数 Mr.",
+          "transformedStatement": "把题目先看成：Knife's Pill Farm time limit per test 1.5 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Mr. 什么 is the 最大 pill 分数 Mr.",
           "keyObservations": [
             "Write out the 分数 for a few terms and collect the coefficient of 每个 chosen 值",
             "Fix the 最后一个 chosen 位置",
@@ -152,15 +153,15 @@ window.CF_INSIGHTS_DATA = {
           "secondaryTopics": [
             "组合计数与概率",
             "图论与网络流",
-            "树结构"
+            "数论与同余"
           ],
           "originalTags": [
             "combinatorics",
             "math",
             "sortings"
           ],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2264C Madamant's Skating Dynasty。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "求sum of the costs of all 合法 dynasties Madamant 可以 form, 取模 998 244 353.",
+          "transformedStatement": "把题目先看成：求sum of the costs of all 合法 dynasties Madamant 可以 form, 取模 998 244 353.",
           "keyObservations": [
             "因此 any such choices form a 合法 树",
             "We cannot enumerate the 树",
@@ -190,8 +191,8 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "strings"
           ],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2264D Dr. Agos's Dark Mode。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "帮助 him construct such a pattern.",
+          "transformedStatement": "把题目先看成：帮助 him construct such a pattern.",
           "keyObservations": [
             "因此, this 子串 is divisible by 3 恰好 当 p_{l-1}=p_r",
             "Now we 只 need to build a 字符串 with such balanced counts",
@@ -209,9 +210,9 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2264/problem/E1",
           "editorialUrl": "https://codeforces.com/blog/entry/156680",
-          "primaryTopic": "动态规划与状态设计",
+          "primaryTopic": "数论与同余",
           "secondaryTopics": [
-            "数论与同余",
+            "动态规划与状态设计",
             "组合计数与概率",
             "构造与贪心"
           ],
@@ -220,8 +221,8 @@ window.CF_INSIGHTS_DATA = {
             "dp",
             "number theory"
           ],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2264E1 A Prime Flood (Easy Version)。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "求sum of f(b) 遍历 all non-empty 子序列 b of a, 取模 998 244 353.",
+          "transformedStatement": "把题目先看成：求sum of f(b) 遍历 all non-empty 子序列 b of a, 取模 998 244 353.",
           "keyObservations": [
             "Let dp[x][y] be the 答案 for 最小 x and 最大 y",
             "Let dp[x][y] be the largest 值 to 其中 the pair [x,y] 可以被 made equal",
@@ -250,8 +251,8 @@ window.CF_INSIGHTS_DATA = {
             "dp",
             "number theory"
           ],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2264E2 A Prime Flood (Hard Version)。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "求sum of f(b) 遍历 all non-empty 子序列 b of a, 取模 998 244 353.",
+          "transformedStatement": "把题目先看成：求sum of f(b) 遍历 all non-empty 子序列 b of a, 取模 998 244 353.",
           "keyObservations": [
             "Let dp[x][y] be the 答案 for 最小 x and 最大 y",
             "Let r(y) be the product of the 不同 prime divisors of y",
@@ -273,15 +274,15 @@ window.CF_INSIGHTS_DATA = {
           "secondaryTopics": [
             "动态规划与状态设计",
             "组合计数与概率",
-            "数论与同余"
+            "几何"
           ],
           "originalTags": [
             "constructive algorithms",
             "implementation",
             "math"
           ],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2264F Deranged Calculator。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "Deranged Calculator time limit per test 2 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Hacks are disabled on this problem. Your job is to make a 合法 DC program that, for 每个 整数 n (2 <= n <= k), calculates 数量 derangements of the 序列 [1, 2, ..., n], 当 n is 给定 as input to the DC program.",
+          "transformedStatement": "把题目先看成：Deranged Calculator time limit per test 2 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Hacks are disabled on this problem. Your job is to make a 合法 DC program that, for 每个 整数 n (2 <= n <= k), calculates 数量 derangements of the 序列 [1, 2, ..., n], 当 n is 给定 as input to the DC program.",
           "keyObservations": [
             "可以 immediately 注意到 if 我们要 to 使用 整数 constants in our program, 有 to make them 使用 workarounds such as n/n or (n+n+n)/n",
             "To save 一些 长度, 可以 precompute a 动态规划 table, 其中 tells us a small construction for the constant i for 1<= i\\leq50",
@@ -312,11 +313,13 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "博弈",
           "secondaryTopics": [
-            "组合计数与概率"
+            "组合计数与概率",
+            "动态规划与状态设计",
+            "构造与贪心"
           ],
           "originalTags": [],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2263A Min Max Game。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "Min Max Game time limit per test 1 second memory limit per test 256 megabytes input standard input 输出 standard 输出 Bessie and Elsie are playing a game on a binary 数组 a of 长度 n. Assuming 二者 players play optimally, 判断 who wins.",
+          "transformedStatement": "把题目先看成：Min Max Game time limit per test 1 second memory limit per test 256 megabytes input standard input 输出 standard 输出 Bessie and Elsie are playing a game on a binary 数组 a of 长度 n. Assuming 二者 players play optimally, 判断 who wins.",
           "keyObservations": [
             "If a 0 and 1 二者 exist on Bessie's turn, then she 可以 remove a 0, and similarly if a 0 and 1 二者 exist on Elsie's turn, then she 可以 remove a 1",
             "因此 if 数量 1s >= 数量 0s, Bessie 会 win, 因为 she 可以 always ensure that 数量 1s is >= 数量 0s",
@@ -336,15 +339,15 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
+            "动态规划与状态设计",
             "组合计数与概率",
-            "博弈",
-            "代数、矩阵与多项式"
+            "博弈"
           ],
           "originalTags": [
             "constructive algorithms"
           ],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2263B Min Matrices。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "Min Matrices time limit per test 1.5 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Farmer John heard from Elsie that Bessie's favorite 数 is k, so he wants to surprise her with a handcrafted present. For a 2D matrix B, let f(B) denote the set of the 最小 元素 of 每个 行 and 每个 列 of B.",
+          "transformedStatement": "把题目先看成：Min Matrices time limit per test 1.5 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Farmer John heard from Elsie that Bessie's favorite 数 is k, so he wants to surprise her with a handcrafted present. For a 2D matrix B, let f(B) denote the set of the 最小 元素 of 每个 行 and 每个 列 of B.",
           "keyObservations": [
             "We claim that it is always 可行 to construct a satisfying matrix for n <= k <= 2n-1",
             "Let x = k+1-n — then 1 <= x <= n",
@@ -375,14 +378,16 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
+            "博弈",
+            "动态规划与状态设计",
             "字符串"
           ],
           "originalTags": [
             "constructive algorithms",
             "greedy"
           ],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2262A1 Floor of MEX (Easy Version)。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "任务是 construct any (possibly empty) subset B\\subseteq \\{0,1,...,n-1\\} 使得 f(B,k)=a_k for 每个 1 <= k <= n.",
+          "transformedStatement": "把题目先看成：任务是 construct any (possibly empty) subset B\\subseteq \\{0,1,...,n-1\\} 使得 f(B,k)=a_k for 每个 1 <= k <= n.",
           "keyObservations": [
             "Now, let us try greedily including 每个 数 可以 in [0, n]",
             "The 只 reason why we cannot include a 数 is if it is in a bad range",
@@ -402,16 +407,16 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "动态规划与状态设计",
           "secondaryTopics": [
-            "字符串",
             "构造与贪心",
-            "几何"
+            "博弈",
+            "数论与同余"
           ],
           "originalTags": [
             "dp",
             "implementation"
           ],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2262A2 Floor of MEX (Hard Version)。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "任务是 计数 多少 sets (including the empty set) B \\subseteq \\{0,1,...,n-1\\} 使得 f(B,k)=a_k for 每个 1 <= k <= n.",
+          "transformedStatement": "把题目先看成：任务是 计数 多少 sets (including the empty set) B \\subseteq \\{0,1,...,n-1\\} 使得 f(B,k)=a_k for 每个 1 <= k <= n.",
           "keyObservations": [
             "If you sort these intervals, 可以 make the observation that including a 数 会 satisfy a range of these intervals",
             "可以 使用 a simple DP maintaining the 最后一个 satisfied interval while looping through 数 0 to n-1, being careful not to 考虑 any 数 in bad intervals (可以 check this 使用 前缀 sums as in the 题解 to C1)",
@@ -432,8 +437,8 @@ window.CF_INSIGHTS_DATA = {
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
             "数据结构",
-            "树结构",
-            "交互"
+            "组合计数与概率",
+            "动态规划与状态设计"
           ],
           "originalTags": [
             "binary search",
@@ -441,8 +446,8 @@ window.CF_INSIGHTS_DATA = {
             "implementation",
             "two pointers"
           ],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2262B Culling Game。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "Culling Game time limit per test 2 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Bessie is making a show called Moojutsu Cowsen. Bessie finds forfeits boring, so 之前 running the tournament, she may remove 一些 sorcerers from the lineup.",
+          "transformedStatement": "把题目先看成：Culling Game time limit per test 2 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Bessie is making a show called Moojutsu Cowsen. Bessie finds forfeits boring, so 之前 running the tournament, she may remove 一些 sorcerers from the lineup.",
           "keyObservations": [
             "考虑 the largest 元素 j < i, 其中 j \\in S",
             "If we take the sum of all the active warriors' skills from j to i-1, that 会 be the skill level of the champion fighting i",
@@ -464,7 +469,7 @@ window.CF_INSIGHTS_DATA = {
           "secondaryTopics": [
             "构造与贪心",
             "组合计数与概率",
-            "字符串"
+            "数论与同余"
           ],
           "originalTags": [
             "combinatorics",
@@ -472,8 +477,8 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "math"
           ],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2262C Traveling the World。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "计数 数量 good rearrangements of the islands.",
+          "transformedStatement": "把题目先看成：计数 数量 good rearrangements of the islands.",
           "keyObservations": [
             "That 必须 be M, and 因此, 每个 node goes from x \\to M - x",
             "因此, 可以 只 visit 至多 2 nodes",
@@ -502,8 +507,8 @@ window.CF_INSIGHTS_DATA = {
             "graphs",
             "greedy"
           ],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2262D PLUSworld。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "判断 whether this is 可行.",
+          "transformedStatement": "把题目先看成：判断 whether this is 可行.",
           "keyObservations": [
             "考虑 the SCCs S_k of the 图 其中 i has an out-边 to j for all a[i] <= j <= b[i]",
             "Firstly, 可以 \"compress\" all nodes 其中 a[i] = b[i]",
@@ -525,14 +530,14 @@ window.CF_INSIGHTS_DATA = {
           "secondaryTopics": [
             "字符串",
             "代数、矩阵与多项式",
-            "图论与网络流"
+            "数论与同余"
           ],
           "originalTags": [
             "combinatorics",
             "math"
           ],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2262E Paired Bracket Sequences。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "对每个 0 <= k <= n, Farmer John 想知道 数量 ordered pairs (s,t) of balanced bracket 序列 of 长度 2n with 恰好 k common pairings.",
+          "transformedStatement": "把题目先看成：对每个 0 <= k <= n, Farmer John 想知道 数量 ordered pairs (s,t) of balanced bracket 序列 of 长度 2n with 恰好 k common pairings.",
           "keyObservations": [
             "Let's 计数, for 每个 0 <= k <= n, 数量 ways 可以 pick k common pairings and fill in the rest of the two bracket 序列",
             "因此, if we 使用 the polynomial P(x)=求和_{r=0}^{n}C_r^2x^r, then the coefficient of x^{n-k} in P(x)^{k+1} counts the ways to 选择 the ordered region sizes and fill them in",
@@ -554,13 +559,13 @@ window.CF_INSIGHTS_DATA = {
           "secondaryTopics": [
             "图论与网络流",
             "构造与贪心",
-            "代数、矩阵与多项式"
+            "博弈"
           ],
           "originalTags": [
             "math"
           ],
-          "statementBrief": "题面正文缺失；仅能确认题目为 2262F Rank Removal。",
-          "transformedStatement": "题面正文缺失，无法做可靠转换。",
+          "statementBrief": "Rank Removal time limit per test 2 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Farmer John is playing a game involving an n × n binary matrix M. 对每个 test case, 输出 the 最小 数量 moves and any 序列 of moves that achieves it.",
+          "transformedStatement": "把题目先看成：Rank Removal time limit per test 2 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Farmer John is playing a game involving an n × n binary matrix M. 对每个 test case, 输出 the 最小 数量 moves and any 序列 of moves that achieves it.",
           "keyObservations": [
             "We 会 使用 two facts: rank(M)=n 当且仅当 \\det(M)=1",
             "Construct a bipartite 图 with n 行 点 and n 列 点, 其中 M_{i,j}=1 corresponds to an 边 之间 行 i and 列 j",
