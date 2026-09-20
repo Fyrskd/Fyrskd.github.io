@@ -9,7 +9,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 46,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 0,
+    "ai_override_count": 16,
     "primary_topic_count": 13,
     "contest_count": 148,
     "rating_min": 800,
@@ -36,31 +36,31 @@ window.CF_INSIGHTS_DATA = {
     "交互",
     "图论与网络流",
     "字符串",
-    "博弈",
     "基础实现与模拟",
+    "博弈",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 295,
+    "构造与贪心": 291,
     "字符串": 41,
-    "数论与同余": 81,
+    "数论与同余": 80,
     "博弈": 38,
-    "基础实现与模拟": 38,
+    "基础实现与模拟": 39,
     "交互": 58,
     "树结构": 68,
-    "数据结构": 79,
-    "动态规划与状态设计": 93,
-    "组合计数与概率": 75,
+    "数据结构": 80,
+    "动态规划与状态设计": 94,
+    "组合计数与概率": 76,
     "图论与网络流": 58,
     "几何": 19,
-    "代数、矩阵与多项式": 11
+    "代数、矩阵与多项式": 12
   },
   "statusCounts": {
     "manual_override": 891,
     "missing_editorial": 46,
     "statement_derived": 1,
-    "ok": 16
+    "ai_generated_with_editorial": 16
   },
   "contestTypes": [
     "Div. 1",
@@ -90,26 +90,24 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2264/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/156680",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "基础实现与模拟",
           "secondaryTopics": [
-            "图论与网络流",
-            "组合计数与概率",
-            "动态规划与状态设计"
+            "构造与贪心"
           ],
           "originalTags": [
             "implementation",
             "sortings",
             "two pointers"
           ],
-          "statementBrief": "判断 whether Mr.",
-          "transformedStatement": "把题目先看成：判断 whether Mr.",
+          "statementBrief": "判断一个排列能否通过一次选定任意位置并反转其元素而变为升序。",
+          "transformedStatement": "只保留错位位置作为反转序列；反转后它们按左右对称配对，因此问题转为逐对检查原值是否等于对方位置的目标值。",
           "keyObservations": [
-            "For it to stay correct 之后 the reversal, it has to be paired with itself, 因为 its 值 occurs nowhere else in the 排列",
-            "因此 it 可以 只 be the middle 被选择 元素, and removing it changes nothing",
-            "The 答案 is YES if this sorts the 数组, and NO otherwise"
+            "所有错位元素都必须被选中，否则它们位置和值都不会改变，无法完成排序。",
+            "已在正确位置的元素不能帮助修复其他位置；若被选中后仍正确，只能作为反转序列的唯一中点，去掉它不影响结果。",
+            "因此只需按位置收集错位元素，并检查反转后每一对对称元素是否互换为目标值；数组已排序时选任意一个元素即可满足恰好操作一次。"
           ],
-          "solutionBrief": "关键观察：For it to stay correct 之后 the reversal, it has to be paired with itself, 因为 its 值 occurs nowhere else in the 排列；因此 it 可以 只 be the middle 被选择 元素, and removing it changes nothing；The 答案 is YES if this sorts the 数组, and NO otherwise。做法：So, if the 数组 is already sorted, 选择 any one 元素。",
-          "extractionStatus": "ok",
+          "solutionBrief": "收集所有满足 p[i]≠i+1 的位置。反转这些位置后，第一个必须变成最后一个所需的值，依次检查所有对称位置是否满足 p[bad[i]]=bad[k-1-i]+1。若原数组有序，选择单个位置即可；否则按检查结果输出。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
         {
@@ -122,23 +120,21 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/156680",
           "primaryTopic": "数据结构",
           "secondaryTopics": [
-            "构造与贪心",
-            "组合计数与概率",
-            "动态规划与状态设计"
+            "构造与贪心"
           ],
           "originalTags": [
             "data structures",
             "greedy"
           ],
-          "statementBrief": "Knife's Pill Farm time limit per test 1.5 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Mr. 什么 is the 最大 pill 分数 Mr.",
-          "transformedStatement": "把题目先看成：Knife's Pill Farm time limit per test 1.5 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Mr. 什么 is the 最大 pill 分数 Mr.",
+          "statementBrief": "按原顺序选出恰好 m 个评分，最大化加权相邻差值之和。",
+          "transformedStatement": "枚举最后选中的位置 j，将问题转为最大化 m·a_j 减去 j 前 m−1 个元素的最小和。",
           "keyObservations": [
-            "Write out the 分数 for a few terms and collect the coefficient of 每个 chosen 值",
-            "Fix the 最后一个 chosen 位置",
-            "之前 considering a_j, keep the m-1 smallest 值 之中 a_1,...,a_{j-1} in a max-heap, and let their sum be s"
+            "将加权差分展开后，得分等于 m·b_m−(b_1+…+b_{m−1})，因此只有最后一个元素获得正系数，其余元素都应尽量小。",
+            "固定最后选择的位置 j 后，最优方案必选 j 前的 m−1 个最小值；它们按原顺序天然构成合法子序列，无需再考虑排列。",
+            "从左到右扫描时，用大根堆维护此前 m−1 个最小值及其和；新元素作为末项计算答案，再加入堆并移除最大值，维护可供后续使用的最优集合。"
           ],
-          "solutionBrief": "关键观察：Write out the 分数 for a few terms and collect the coefficient of 每个 chosen 值；Fix the 最后一个 chosen 位置；之前 considering a_j, keep the m-1 smallest 值 之中 a_1,...,a_{j-1} in a max-heap, and let their sum be s。做法：其中 m-1 earlier 值 are best, and how 可以 we maintain them while moving this 位置 to the right?；The 复杂度 is O(n\\log(m+1)) time and O(m) extra memory。",
-          "extractionStatus": "ok",
+          "solutionBrief": "把得分化为 m·a_j 减去前面所选 m−1 个数之和。枚举最后位置 j，用大根堆维护此前 m−1 个最小值及其和，计算 m·a_j−sum，并在扫描后更新集合。复杂度 O(n log(m+1))，额外空间 O(m)。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
         {
@@ -149,10 +145,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2264/problem/C",
           "editorialUrl": "https://codeforces.com/blog/entry/156680",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "组合计数与概率",
           "secondaryTopics": [
-            "组合计数与概率",
-            "图论与网络流",
             "数论与同余"
           ],
           "originalTags": [
@@ -160,15 +154,16 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "sortings"
           ],
-          "statementBrief": "求sum of the costs of all 合法 dynasties Madamant 可以 form, 取模 998 244 353.",
-          "transformedStatement": "把题目先看成：求sum of the costs of all 合法 dynasties Madamant 可以 form, 取模 998 244 353.",
+          "statementBrief": "给定评分互异的滑冰者，求所有父强于子的有根树的代价总和。",
+          "transformedStatement": "排序评分后把每个位置视为独立选择一个右侧父节点的决策，并按每条可能的父子边在全部树中的出现次数计费。",
           "keyObservations": [
-            "因此 any such choices form a 合法 树",
-            "We cannot enumerate the 树",
-            "换个角度, 考虑 one 可行 边 at a time and add its 代价 once for 每个 树 containing it"
+            "排序后每个非最大评分的父节点只能位于其右侧，因此最大评分必为根；任意位置独立选择一个右侧父节点都会形成合法树。",
+            "固定边 i→j（j>i）后，其余每个子节点仍可独立选父节点，包含该边的树数量为 W_i=∏_{k≠i}(n-k-1)，且与 j 无关。",
+            "同一子节点 i 的所有出边可合并计算为 W_i·(右侧评分总和−(n−i−1)b_i)，从逐边计数降为后缀和与乘积计算。",
+            "W_i 用因子 n-k-1 的前缀积和后缀积相乘得到，避免除法并能在模意义下处理零因子。"
           ],
-          "solutionBrief": "关键观察：因此 any such choices form a 合法 树；We cannot enumerate the 树；换个角度, 考虑 one 可行 边 at a time and add its 代价 once for 每个 树 containing it。做法：之后 sorting, 每个 parent lies to the right of their child。",
-          "extractionStatus": "ok",
+          "solutionBrief": "将评分排序，最大值固定为根；对每个 i，枚举其右侧父节点的总边权，并乘以其他节点的选父方案数 W_i。用后缀和计算边权总和，用前后缀积求 W_i，整体复杂度 O(n log n)。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
         {
@@ -179,11 +174,10 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2264/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/156680",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "数论与同余",
           "secondaryTopics": [
             "字符串",
-            "数论与同余",
-            "组合计数与概率"
+            "构造与贪心"
           ],
           "originalTags": [
             "brute force",
@@ -191,15 +185,16 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "strings"
           ],
-          "statementBrief": "帮助 him construct such a pattern.",
-          "transformedStatement": "把题目先看成：帮助 him construct such a pattern.",
+          "statementBrief": "构造长度为 n 且至多含三个 1 的二进制串，使值为 3 的倍数的连续子串数量最少。",
+          "transformedStatement": "把每个位置前缀映射为交错和模 3 的余数；每个满足条件的子串对应一对相等的前缀余数，故只需平衡三类余数的出现次数。",
           "keyObservations": [
-            "因此, this 子串 is divisible by 3 恰好 当 p_{l-1}=p_r",
-            "Now we 只 need to build a 字符串 with such balanced counts",
-            "Let q=\\lfloor n/3\\rfloor and 考虑 a 字符串 of 长度 3q+2"
+            "定义交错前缀余数 p_i=Σ_{j=1..i}(-1)^j s_j mod 3 后，子串 [l,r] 可被 3 整除当且仅当 p_{l-1}=p_r，因此问题转为统计相同前缀余数的配对数。",
+            "若三种余数出现次数为 c_0,c_1,c_2，则目标值是 ΣC(c_i,2)；总次数固定为 n+1 时，三者相差不超过 1 才能最小化该值。",
+            "字符 0 不改变当前余数，字符 1 仅按位置奇偶使余数改变 ±1；至多三个 1 将前缀划成四个常值块，因此把变化位置放在约 n/3、2n/3 和末尾即可调平三种余数。",
+            "枚举两个前变化点各取 floor(n/3) 或其后一位，并枚举是否在末位放第三个 1；其中必有一个候选使三种前缀余数计数平衡，直接检验即可。"
           ],
-          "solutionBrief": "关键观察：因此, this 子串 is divisible by 3 恰好 当 p_{l-1}=p_r；Now we 只 need to build a 字符串 with such balanced counts；Let q=\\lfloor n/3\\rfloor and 考虑 a 字符串 of 长度 3q+2。做法：因为 2\\equiv-1\\pmod 3, try an alternating 前缀 sum；The 复杂度 is O(n) time and O(n) memory per test case。",
-          "extractionStatus": "ok",
+          "solutionBrief": "将可整除子串转化为相同交错前缀余数的配对，目标是让三种余数计数尽量均衡。n≥3 时枚举约在 n/3、2n/3 放置前两个 1，并尝试末位第三个 1，检验计数差是否至多为 1；n=1、2 特判。总复杂度为 O(n)。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
         {
@@ -210,26 +205,26 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2264/problem/E1",
           "editorialUrl": "https://codeforces.com/blog/entry/156680",
-          "primaryTopic": "数论与同余",
+          "primaryTopic": "动态规划与状态设计",
           "secondaryTopics": [
-            "动态规划与状态设计",
-            "组合计数与概率",
-            "构造与贪心"
+            "数论与同余",
+            "组合计数与概率"
           ],
           "originalTags": [
             "combinatorics",
             "dp",
             "number theory"
           ],
-          "statementBrief": "求sum of f(b) 遍历 all non-empty 子序列 b of a, 取模 998 244 353.",
-          "transformedStatement": "把题目先看成：求sum of f(b) 遍历 all non-empty 子序列 b of a, 取模 998 244 353.",
+          "statementBrief": "求所有非空子序列独立操作后能达到的最大统一水位之和。",
+          "transformedStatement": "把每个子序列压缩为最小值 x 与最大值 y，先求二者可统一到的最大值 dp[x][y]，再按频率统计具有该端点的子序列数。",
           "keyObservations": [
-            "Let dp[x][y] be the 答案 for 最小 x and 最大 y",
-            "Let dp[x][y] be the largest 值 to 其中 the pair [x,y] 可以被 made equal",
-            "因此, if the 最小 and 最大 of a 子序列 become equal, 每个 值 之间 them becomes equal as well"
+            "操作始终保持数值的相对顺序，因此只要最小值和最大值相等，中间所有值也必然相等；子序列贡献只由其最小值和最大值决定。",
+            "若 y 的某个质因子不整除 x，可先单独将 y 降为 y-1，得到 dp[x][y-1]；否则 y 的任一可用质因子都会同时使 x、y 降低，得到 dp[x-1][y-1]。",
+            "令 need[y] 为 y 的不同质因子乘积，则“y 的所有质因子都整除 x”等价于 x%need[y]==0，从而可按区间长度递推整个 dp 表。",
+            "固定最小值 x 和最大值 y 后，端点必须各选至少一个出现位置，中间值任意选，方案数为 (2^{c_x}-1)(2^{c_y}-1)2^{中间频数之和}。"
           ],
-          "solutionBrief": "关键观察：Let dp[x][y] be the 答案 for 最小 x and 最大 y；Let dp[x][y] be the largest 值 to 其中 the pair [x,y] 可以被 made equal；因此, if the 最小 and 最大 of a 子序列 become equal, 每个 值 之间 them becomes equal as well。做法：使用 前缀 sums of the frequencies for the exponent, multiply 每个 计数 by dp[x][y], and add everything to the 答案。",
-          "extractionStatus": "ok",
+          "solutionBrief": "预处理 need[y] 和 dp[x][y]：dp[x][x]=x，按区间长度使用上述两种转移。每组数据统计频率及前缀和，分别枚举相同端点或 x<y 的最小最大值，计算子序列数量并乘 dp[x][y] 累加。预处理 O(M^2)，单组 O(n^2)。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
         {
@@ -240,26 +235,26 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2264/problem/E2",
           "editorialUrl": "https://codeforces.com/blog/entry/156680",
-          "primaryTopic": "数论与同余",
+          "primaryTopic": "组合计数与概率",
           "secondaryTopics": [
             "动态规划与状态设计",
-            "组合计数与概率",
-            "构造与贪心"
+            "数论与同余"
           ],
           "originalTags": [
             "combinatorics",
             "dp",
             "number theory"
           ],
-          "statementBrief": "求sum of f(b) 遍历 all non-empty 子序列 b of a, 取模 998 244 353.",
-          "transformedStatement": "把题目先看成：求sum of f(b) 遍历 all non-empty 子序列 b of a, 取模 998 244 353.",
+          "statementBrief": "求原数组所有非空子序列在可执行质数减法后的最大统一水位之和。",
+          "transformedStatement": "按子序列最小值 x 和最大值 y 建立 dp[x][y]；固定 x 后只在 r(y) 整除 x 的阻塞位置更新，并将每行压成断点区间。",
           "keyObservations": [
-            "Let dp[x][y] be the 答案 for 最小 x and 最大 y",
-            "Let r(y) be the product of the 不同 prime divisors of y",
-            "因此, the 行 可以 change 只 at 位置 satisfying r(y)\\mid x; call them blockers"
+            "令 r(y) 为 y 的所有不同质因子的乘积，固定最小值 x 后，dp[x][y] 只有在 r(y) 整除 x 时才会改变，其余位置直接继承前值。",
+            "对每个 y 枚举 x=r(y),2r(y),…<y 即可生成所有变化位置；按断点压缩每行，并在断点处从上一行取得 dp[x-1][y-1]，避免遍历完整二维表。",
+            "最小值为 x、最大值为 y 且 x<y 的子序列数量可拆成 L_x·R_y，其中 L_x=C_x·2^{-S(x)}、R_y=C_y·2^{S(y-1)}，因此区间贡献能用 R 的前缀和一次计算。",
+            "最小值与最大值相同的子序列单独贡献 x(2^{c_x}-1)，而不同端点的每个压缩断点区间只需做一次加权区间求和。"
           ],
-          "solutionBrief": "关键观察：Let dp[x][y] be the 答案 for 最小 x and 最大 y；Let r(y) be the product of the 不同 prime divisors of y；因此, the 行 可以 change 只 at 位置 satisfying r(y)\\mid x; call them blockers。做法：当 可以 dp[x][y] differ from dp[x][y-1]?。",
-          "extractionStatus": "ok",
+          "solutionBrief": "用质因子乘积生成 dp 行的变化位置，并以断点压缩各行。按值频次将端点子序列数拆为左右权重，借助右权重前缀和累加所有断点区间，等端点情况单独处理。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
         {
@@ -272,24 +267,23 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/156680",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "动态规划与状态设计",
-            "组合计数与概率",
-            "几何"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "constructive algorithms",
             "implementation",
             "math"
           ],
-          "statementBrief": "Deranged Calculator time limit per test 2 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Hacks are disabled on this problem. Your job is to make a 合法 DC program that, for 每个 整数 n (2 <= n <= k), calculates 数量 derangements of the 序列 [1, 2, ..., n], 当 n is 给定 as input to the DC program.",
-          "transformedStatement": "把题目先看成：Deranged Calculator time limit per test 2 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Hacks are disabled on this problem. Your job is to make a 合法 DC program that, for 每个 整数 n (2 <= n <= k), calculates 数量 derangements of the 序列 [1, 2, ..., n], 当 n is 给定 as input to the DC program.",
+          "statementBrief": "构造一条不含数字常量的 DC 表达式，使其对 2≤n≤k 输出 n 的错排数。",
+          "transformedStatement": "把错排数计算转化为 round(n!/e)：先用阈值指示器在同一表达式中选择阶乘因子，再构造足够精确的 e 近似值。",
           "keyObservations": [
-            "可以 immediately 注意到 if 我们要 to 使用 整数 constants in our program, 有 to make them 使用 workarounds such as n/n or (n+n+n)/n",
-            "To save 一些 长度, 可以 precompute a 动态规划 table, 其中 tells us a small construction for the constant i for 1<= i\\leq50",
-            "这意味着 可以 basically reuse all our work for the factorial case, but now 有 要求 a way to get a sufficiently precise approximation of e in our program"
+            "对常数 x，round(n/(n+x)) 在 n≥x 时为 1、否则为 0，因此可用它筛选阶乘乘积中的每一项。",
+            "用筛选器将 ∏(j·[n≥j]+1) 转化为 n!：当 j≤n 时贡献 j，否则贡献 1，从而无需循环或递归。",
+            "错排数满足 D_n=round(n!/e)，因此目标可归约为构造阶乘并近似常数 e。",
+            "将 e=∑_{i=0}^{50}1/i! 改写为嵌套分式可复用公共因子，显著减少表达式长度，并足以保证 round(n!/e) 正确。"
           ],
-          "solutionBrief": "关键观察：可以 immediately 注意到 if 我们要 to 使用 整数 constants in our program, 有 to make them 使用 workarounds such as n/n or (n+n+n)/n；To save 一些 长度, 可以 precompute a 动态规划 table, 其中 tells us a small construction for the constant i for 1<= i\\leq50；这意味着 可以 basically reuse all our work for the factorial case, but now 有 要求 a way to get a sufficiently precise approximation of e in our program。按这个转换实现即可。",
-          "extractionStatus": "ok",
+          "solutionBrief": "用 n/n 等表达式构造常数，借助 round(n/(n+x)) 生成阈值指示器并拼出 n!；再用嵌套形式近似 e，输出 round(n!/e)。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
@@ -312,21 +306,18 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2263/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "博弈",
-          "secondaryTopics": [
-            "组合计数与概率",
-            "动态规划与状态设计",
-            "构造与贪心"
-          ],
+          "secondaryTopics": [],
           "originalTags": [],
-          "statementBrief": "Min Max Game time limit per test 1 second memory limit per test 256 megabytes input standard input 输出 standard 输出 Bessie and Elsie are playing a game on a binary 数组 a of 长度 n. Assuming 二者 players play optimally, 判断 who wins.",
-          "transformedStatement": "把题目先看成：Min Max Game time limit per test 1 second memory limit per test 256 megabytes input standard input 输出 standard 输出 Bessie and Elsie are playing a game on a binary 数组 a of 长度 n. Assuming 二者 players play optimally, 判断 who wins.",
+          "statementBrief": "两名玩家交替合并相邻元素，分别取最大值或最小值，判断最优策略下最终胜者。",
+          "transformedStatement": "将局面抽象为 0 与 1 的数量比较：Bessie 可在异值对中消去 0，Elsie 可消去 1，分析双方回合中的数量优势。",
           "keyObservations": [
-            "If a 0 and 1 二者 exist on Bessie's turn, then she 可以 remove a 0, and similarly if a 0 and 1 二者 exist on Elsie's turn, then she 可以 remove a 1",
-            "因此 if 数量 1s >= 数量 0s, Bessie 会 win, 因为 she 可以 always ensure that 数量 1s is >= 数量 0s",
-            "If 数量 1s is < 数量 0s, then no matter 什么 Bessie does on her turn, the game 会 be flipped to Elsie having this 相同 winning 位置, so she 会 lose"
+            "只要数组同时含有 0 和 1，就一定存在相邻异值对；Bessie 合并它可消去一个 0，Elsie 合并它可消去一个 1。",
+            "在 Bessie 回合统计 1 的数量不少于 0 时，她消去一个 0 后仍能让 Elsie 面对不劣于自己的对称局面，因此可维持优势直至结束。",
+            "若 Bessie 回合的 1 少于 0，她无法避免把相同的有利数量关系交给 Elsie；Elsie 随后消去 1，并持续保持 0 数量不少于 1。",
+            "没有 0 时最终值必为 1，没有 1 时最终值必为 0；因此胜负只由初始 1 和 0 的数量关系决定。"
           ],
-          "solutionBrief": "关键观察：If a 0 and 1 二者 exist on Bessie's turn, then she 可以 remove a 0, and similarly if a 0 and 1 二者 exist on Elsie's turn, then she 可以 remove a 1；因此 if 数量 1s >= 数量 0s, Bessie 会 win, 因为 she 可以 always ensure that 数量 1s is >= 数量 0s；If 数量 1s is < 数量 0s, then no matter 什么 Bessie does on her turn, the game 会 be flipped to Elsie having this 相同 winning 位置, so she 会 lose。按这个转换实现即可。",
-          "extractionStatus": "ok",
+          "solutionBrief": "统计数组中 1 和 0 的数量。若 1 的数量不少于 0，Bessie 可通过选择异值相邻对不断消去 0，最终获胜；否则 Elsie 能对称地保持 0 的优势并获胜。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
         {
@@ -338,23 +329,20 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2263/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "组合计数与概率",
-            "博弈"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms"
           ],
-          "statementBrief": "Min Matrices time limit per test 1.5 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Farmer John heard from Elsie that Bessie's favorite 数 is k, so he wants to surprise her with a handcrafted present. For a 2D matrix B, let f(B) denote the set of the 最小 元素 of 每个 行 and 每个 列 of B.",
-          "transformedStatement": "把题目先看成：Min Matrices time limit per test 1.5 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Farmer John heard from Elsie that Bessie's favorite 数 is k, so he wants to surprise her with a handcrafted present. For a 2D matrix B, let f(B) denote the set of the 最小 元素 of 每个 行 and 每个 列 of B.",
+          "statementBrief": "构造一个包含 1 到 n² 的 n×n 矩阵，使所有行列最小值的不同数量恰为 k。",
+          "transformedStatement": "先选出恰好 k 个标记数，使它们分别覆盖所有行列并各自成为某行或某列最小值，再用更大的数填满其余位置。",
           "keyObservations": [
-            "We claim that it is always 可行 to construct a satisfying matrix for n <= k <= 2n-1",
-            "Let x = k+1-n — then 1 <= x <= n",
-            "Then, place 1, ..., x in the 第一个 行, place x+1, ..., 2x - 1 in the 第一个 列 below the 1, and place 2x, ..., k on the main diagonal outside of the top-left x × x box as follows: \\begin{bmatrix} 1 & *s & x & & & \\\\ x+1 & & & & & \\\\ \\vdots & & & & & \\\\ 2x-1 & & & & & \\\\ & & & 2x & & \\\\ & & & & \\ddots…"
+            "每个数至多能同时成为一行最小值和一列最小值，因此不同最小值的数量至少为 n；而全局最小值 1 必同时占据一行和一列，数量至多为 2n-1。",
+            "令 x=k+1-n，则可行范围保证 1≤x≤n；把 1..x 放在首行、x+1..2x-1 放在首列其余位置，恰好覆盖前 2x-1 个目标最小值。",
+            "将 2x..k 依次放在左上 x×x 区域外的主对角线上后，每个目标数都成为某行或某列的最小值，且所有行列均被覆盖。",
+            "标记位置使用 1..k，空位全部填入更大的 k+1..n²，因此不会改变任何行列最小值。"
           ],
-          "solutionBrief": "关键观察：We claim that it is always 可行 to construct a satisfying matrix for n <= k <= 2n-1；Let x = k+1-n — then 1 <= x <= n；Then, place 1, ..., x in the 第一个 行, place x+1, ..., 2x - 1 in the 第一个 列 below the 1, and place 2x, ..., k on the main diagonal outside of the top-left x × x box as follows: \\begin{bmatrix} 1 & *s & x & & & \\\\ x+1 & & & & & \\\\ \\vdots & & & & & \\\\ 2x-1 & & & & & \\\\ & & & 2x & & \\\\ & & & & \\ddots…。做法：we 必须 have n <= k。",
-          "extractionStatus": "ok",
+          "solutionBrief": "可行当且仅当 n≤k≤2n-1。令 x=k+1-n，首行放 1..x，首列下方放 x+1..2x-1，再在外侧主对角线放 2x..k；其余位置填 k+1..n²。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
@@ -377,24 +365,21 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2262/problem/A1",
           "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "博弈",
-            "动态规划与状态设计",
-            "字符串"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms",
             "greedy"
           ],
-          "statementBrief": "任务是 construct any (possibly empty) subset B\\subseteq \\{0,1,...,n-1\\} 使得 f(B,k)=a_k for 每个 1 <= k <= n.",
-          "transformedStatement": "把题目先看成：任务是 construct any (possibly empty) subset B\\subseteq \\{0,1,...,n-1\\} 使得 f(B,k)=a_k for 每个 1 <= k <= n.",
+          "statementBrief": "根据给定数组 a_k，构造一个子集 B，使每个 k 的商集合 MEX 等于 a_k。",
+          "transformedStatement": "将每个 a_k 转化为一个必须为空的坏区间；求所有不落入任意坏区间的整数作为 B。",
           "keyObservations": [
-            "Now, let us try greedily including 每个 数 可以 in [0, n]",
-            "The 只 reason why we cannot include a 数 is if it is in a bad range",
-            "可以 keep track of all these bad ranges 使用 a 前缀 sum, (e.g., for f(A, k) = x, increment p[kx], decrement p[k(x+1)], and 前缀 sum 遍历 p)"
+            "当 a_k=x 时，集合必须在每个区间 [jk,(j+1)k-1]（0≤j<x）中至少取一个数，并且完全不能取坏区间 [kx,(x+1)k-1] 中的数。",
+            "所有约束的直接交集只是若干禁用区间；把所有未被任何禁用区间覆盖的数都加入 B，能最大化对必需区间的覆盖而不会破坏任何 MEX。",
+            "题目保证存在可行集合，因此每个必需区间中原见证集合的元素都不在禁用区间内；加入全部允许元素后，这些区间仍被覆盖，贪心构造必然有效。",
+            "每个坏区间可用差分数组做一次区间加法，前缀和判断每个数是否被禁用，从而在线性时间构造 B。"
           ],
-          "solutionBrief": "关键观察：Now, let us try greedily including 每个 数 可以 in [0, n]；The 只 reason why we cannot include a 数 is if it is in a bad range；可以 keep track of all these bad ranges 使用 a 前缀 sum, (e.g., for f(A, k) = x, increment p[kx], decrement p[k(x+1)], and 前缀 sum 遍历 p)。按这个转换实现即可。",
-          "extractionStatus": "ok",
+          "solutionBrief": "对每个 k，根据 a_k 将区间 [k·a_k,k·(a_k+1)-1] 标记为禁用。用差分数组合并所有禁区间，遍历 0..n-1，把未被禁用的数全部加入 B。存在性保证这些数仍覆盖每个 MEX 所需的前置商值。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
         {
@@ -406,24 +391,21 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2262/problem/A2",
           "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "构造与贪心",
-            "博弈",
-            "数论与同余"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "dp",
             "implementation"
           ],
-          "statementBrief": "任务是 计数 多少 sets (including the empty set) B \\subseteq \\{0,1,...,n-1\\} 使得 f(B,k)=a_k for 每个 1 <= k <= n.",
-          "transformedStatement": "把题目先看成：任务是 计数 多少 sets (including the empty set) B \\subseteq \\{0,1,...,n-1\\} 使得 f(B,k)=a_k for 每个 1 <= k <= n.",
+          "statementBrief": "给定由集合生成的数组，统计所有能生成同一数组的子集 B 的数量。",
+          "transformedStatement": "把每个数组条件抽象为若干区间必须被 B 命中、若干区间必须避开，再统计满足全部区间约束的子集。",
           "keyObservations": [
-            "If you sort these intervals, 可以 make the observation that including a 数 会 satisfy a range of these intervals",
-            "可以 使用 a simple DP maintaining the 最后一个 satisfied interval while looping through 数 0 to n-1, being careful not to 考虑 any 数 in bad intervals (可以 check this 使用 前缀 sums as in the 题解 to C1)",
-            "有 O(n \\log{n}) intervals, and 可以 speed up the DP 使用 前缀 sums to compute this in O(n \\log {n}); the 总计 复杂度 会 be O(n \\log^2 {n}) due to sorting"
+            "数组对集合的限制可统一表示为若干 good 区间至少选一个数、若干 bad 区间一个数也不能选，从而把 MEX 条件转成区间约束。",
+            "若一个 good 区间完全包含另一个 good 区间，满足内层区间必然满足外层区间，因此可删除外层区间；剩余区间的右端点互不相同，数量至多为 n。",
+            "将 good 区间排序后，选入某个数会同时满足其中连续的一段区间，因此按数字递增处理时只需维护最后已满足的区间。",
+            "用前缀和快速判断候选数字是否落入 bad 区间，避免逐个检查禁选范围，使 DP 转移保持较低复杂度。"
           ],
-          "solutionBrief": "关键观察：If you sort these intervals, 可以 make the observation that including a 数 会 satisfy a range of these intervals；可以 使用 a simple DP maintaining the 最后一个 satisfied interval while looping through 数 0 to n-1, being careful not to 考虑 any 数 in bad intervals (可以 check this 使用 前缀 sums as in the 题解 to C1)；有 O(n \\log{n}) intervals, and 可以 speed up the DP 使用 前缀 sums to compute this in O(n \\log {n}); the 总计 复杂度 会 be O(n \\log^2 {n}) due to sorting。按这个转换实现即可。",
-          "extractionStatus": "ok",
+          "solutionBrief": "先将数组条件转成 good 区间和 bad 区间约束，删除被其他 good 区间完全包含的区间并排序。逐个处理 0 到 n-1，用“最后满足的 good 区间”做 DP 状态；前缀和排除 bad 区间，前缀和优化转移，整体复杂度为 O(n log^2 n)。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
         {
@@ -434,27 +416,24 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2262/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/156688",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数据结构",
-            "组合计数与概率",
-            "动态规划与状态设计"
-          ],
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "data structures",
             "implementation",
             "two pointers"
           ],
-          "statementBrief": "Culling Game time limit per test 2 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Bessie is making a show called Moojutsu Cowsen. Bessie finds forfeits boring, so 之前 running the tournament, she may remove 一些 sorcerers from the lineup.",
-          "transformedStatement": "把题目先看成：Culling Game time limit per test 2 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Bessie is making a show called Moojutsu Cowsen. Bessie finds forfeits boring, so 之前 running the tournament, she may remove 一些 sorcerers from the lineup.",
+          "statementBrief": "依次删除指定法师，求每种剩余队列进行锦标赛时发生的弃权次数。",
+          "transformedStatement": "将删除倒放为位置插入，维护冠军会弃权于哪些索引；一次插入只需更新其左侧边界及右侧被新冠军连续击败的节点。",
           "keyObservations": [
-            "考虑 the largest 元素 j < i, 其中 j \\in S",
-            "If we take the sum of all the active warriors' skills from j to i-1, that 会 be the skill level of the champion fighting i",
-            "If this sum is less 比 a_i, then we insert i 变成 the set, and update j = i"
+            "把删除过程倒序处理为按原位置重新插入；每次插入后的状态对应一个删除前的答案，因此可在线维护当前弃权次数。",
+            "若 j 是插入位置左侧最近的弃权位置，则 j 到 i-1 的存活技能总和正是与 i 交手前的冠军技能，可据此判断 i 是否加入弃权位置集合 S。",
+            "插入点形成的新冠军可能连续击败右侧原有的弃权点；按位置向右删除这些已失效节点，直到遇到仍能击败冠军的节点，其他区域保持不变。",
+            "活动位置的技能总和用树状数组或线段树维护，弃权位置用有序集合维护，从而支持邻接查找、区间求和与动态更新。"
           ],
-          "solutionBrief": "关键观察：考虑 the largest 元素 j < i, 其中 j \\in S；If we take the sum of all the active warriors' skills from j to i-1, that 会 be the skill level of the champion fighting i；If this sum is less 比 a_i, then we insert i 变成 the set, and update j = i。做法：This requires a BIT/segment 树 to 询问 sums and process additions quickly。",
-          "extractionStatus": "ok",
+          "solutionBrief": "将删除倒序改为插入，维护所有发生弃权的位置集合 S。插入 i 时用左侧最近弃权点确定当前冠军，并以区间和判断是否新增弃权；再向右移除被新冠军击败的旧节点。用树状数组或线段树求活动技能和。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
         {
@@ -467,9 +446,8 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "图论与网络流",
           "secondaryTopics": [
-            "构造与贪心",
             "组合计数与概率",
-            "数论与同余"
+            "构造与贪心"
           ],
           "originalTags": [
             "combinatorics",
@@ -477,15 +455,16 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "math"
           ],
-          "statementBrief": "计数 数量 good rearrangements of the islands.",
-          "transformedStatement": "把题目先看成：计数 数量 good rearrangements of the islands.",
+          "statementBrief": "统计将严格递增的岛值重排后，能按规定转移访问每个位置恰好一次的排列数。",
+          "transformedStatement": "把每个位置映射为后缀最大值决定的唯一出边，问题转化为函数图存在覆盖所有顶点的有向路径，并分类其后缀最大值结构。",
           "keyObservations": [
-            "That 必须 be M, and 因此, 每个 node goes from x \\to M - x",
-            "因此, 可以 只 visit 至多 2 nodes",
-            "因为 a directed 路径 必须 exist if it was good, that directed 路径 takes n - 1 边"
+            "把每个岛值作为函数图顶点；若其位置后缀最大值为 s，则唯一可能出边是 v→s−v，因此全路径条件可转为函数图中的哈密顿路径。",
+            "好排列必须恰有两个后缀最大值：只有一个会形成二点循环，超过两个则至少有三条边指向 0，无法嵌入一条不重复的全路径。",
+            "两个后缀最大值必为 M=a_n 和末位值，且路径末端固定为 0→M；从后向前追溯时边在两组数间交替，形成关于步长 x 的等差序列。",
+            "令 k=⌊n/2⌋，只需尝试 x=M−a_{n−1} 与 M−a_{n−2}；生成两组序列并与原数组核对，匹配时两组内部可任意排列，贡献 k!(n−k−2)!。"
           ],
-          "solutionBrief": "关键观察：That 必须 be M, and 因此, 每个 node goes from x \\to M - x；因此, 可以 只 visit 至多 2 nodes；因为 a directed 路径 必须 exist if it was good, that directed 路径 takes n - 1 边。做法：可以 now build the 路径 backwards。",
-          "extractionStatus": "ok",
+          "solutionBrief": "将排列建成每点至多一条出边的函数图，证明好排列恰有两个后缀最大值，并由逆向路径得到步长 x 的两组等差值。仅检查两个候选 x，生成并排序核对全部值；通过时答案为 k!(n−k−2)!。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
         {
@@ -498,24 +477,23 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "图论与网络流",
-            "树结构",
-            "数据结构"
+            "图论与网络流"
           ],
           "originalTags": [
             "constructive algorithms",
             "graphs",
             "greedy"
           ],
-          "statementBrief": "判断 whether this is 可行.",
-          "transformedStatement": "把题目先看成：判断 whether this is 可行.",
+          "statementBrief": "通过从一个指定节点出发递增道路终点或沿道路移动，把数组 a 变为满足 i≤b_i 的数组 b。",
+          "transformedStatement": "将每个节点可修改的终点视为区间 [a_i,b_i] 的可达边，用 SCC 表示可反复访问区域，并要求其缩点结构支持一次行走完成修复。",
           "keyObservations": [
-            "考虑 the SCCs S_k of the 图 其中 i has an out-边 to j for all a[i] <= j <= b[i]",
-            "Firstly, 可以 \"compress\" all nodes 其中 a[i] = b[i]",
-            "This is 因为 we 必须 visit one of the nodes in S_k, say i, increment and go to b[i], and then we cannot return to j to increment it to b[j]"
+            "若存在 a_i>b_i，则该位置只能递增而无法降回 b_i，答案必然不存在。",
+            "把每个 i 的可达范围建成边集 a_i≤j≤b_i，并压缩 a_i=b_i 的节点后，所有需处理的 SCC 在缩点图中必须组成一条链，且每个 SCC 至多有一个出口。",
+            "满足 a_i<i=b_i 的节点至多一个；否则处理其中一个后会停在该点，无法再回到另一个节点。",
+            "含出口的 SCC 中，出口对应节点必须是该 SCC 的最大编号；否则修复后续节点时无法回到它，构造会失败。"
           ],
-          "solutionBrief": "关键观察：考虑 the SCCs S_k of the 图 其中 i has an out-边 to j for all a[i] <= j <= b[i]；Firstly, 可以 \"compress\" all nodes 其中 a[i] = b[i]；This is 因为 we 必须 visit one of the nodes in S_k, say i, increment and go to b[i], and then we cannot return to j to increment it to b[j]。按这个转换实现即可。",
-          "extractionStatus": "ok",
+          "solutionBrief": "先检查 a_i>b_i，并按区间边构图、压缩已固定节点，利用 SCC 和缩点链条件判定可行性。对每个 SCC 反向内部边建树，沿树逐步增大当前边，修复根后移动到出口；依次旋转根即可处理整条 SCC 链。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
         {
@@ -528,23 +506,22 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/156688",
           "primaryTopic": "组合计数与概率",
           "secondaryTopics": [
-            "字符串",
-            "代数、矩阵与多项式",
             "数论与同余"
           ],
           "originalTags": [
             "combinatorics",
             "math"
           ],
-          "statementBrief": "对每个 0 <= k <= n, Farmer John 想知道 数量 ordered pairs (s,t) of balanced bracket 序列 of 长度 2n with 恰好 k common pairings.",
-          "transformedStatement": "把题目先看成：对每个 0 <= k <= n, Farmer John 想知道 数量 ordered pairs (s,t) of balanced bracket 序列 of 长度 2n with 恰好 k common pairings.",
+          "statementBrief": "统计两条长度 2n 的平衡括号序列恰有 k 个相同配对的有序对数量。",
+          "transformedStatement": "先选出 k 个公共配对，将其视为嵌套森林；剩余内容划分为 k+1 个区域，用区域规模生成函数计数，再通过反演去除额外公共配对。",
           "keyObservations": [
-            "Let's 计数, for 每个 0 <= k <= n, 数量 ways 可以 pick k common pairings and fill in the rest of the two bracket 序列",
-            "因此, if we 使用 the polynomial P(x)=求和_{r=0}^{n}C_r^2x^r, then the coefficient of x^{n-k} in P(x)^{k+1} counts the ways to 选择 the ordered region sizes and fill them in",
-            "可以 因此 使用 inclusion-exclusion, computing in decreasing 顺序 of k: A_k=B_k-求和_{j=k+1}^{n}C(j,k)A_j"
+            "先指定恰好选中的 k 个公共配对，它们形成嵌套森林；删去这些配对及其内部后得到 k+1 个区域，区域剩余规模之和为 n-k。",
+            "规模为 r 的区域在两条序列中可独立填充，贡献 C_r^2，因此区域填充数由 P(x)=ΣC_r^2x^r 的系数统一表示。",
+            "给定区域规模后，k 个子区域可插入的总位置数恒为 2n-k+1，星球与条状物得到结构因子 C(2n,k)；循环引理再筛出合法的深度优先嵌套结构，需除以 k+1。",
+            "B_k 统计包含所选 k 个公共配对的序列对，而非恰有 k 个；关系 B_k=Σ_{j≥k}C(j,k)A_j，可按 k 递减用二项式反演得到答案。"
           ],
-          "solutionBrief": "关键观察：Let's 计数, for 每个 0 <= k <= n, 数量 ways 可以 pick k common pairings and fill in the rest of the two bracket 序列；因此, if we 使用 the polynomial P(x)=求和_{r=0}^{n}C_r^2x^r, then the coefficient of x^{n-k} in P(x)^{k+1} counts the ways to 选择 the ordered region sizes and fill them in；可以 因此 使用 inclusion-exclusion, computing in decreasing 顺序 of k: A_k=B_k-求和_{j=k+1}^{n}C(j,k)A_j。按这个转换实现即可。",
-          "extractionStatus": "ok",
+          "solutionBrief": "令 P(x)=Σ_{r=0}^n C_r^2x^r，先计算 B_k=C(2n,k)/(k+1)·[x^{n-k}]P(x)^{k+1}。再按 k 递减用 A_k=B_k-Σ_{j>k}C(j,k)A_j 求恰有 k 个公共配对的数量；多项式乘法可用 O(n^3) 或 FFT 优化。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
         {
@@ -555,24 +532,23 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2262/problem/F",
           "editorialUrl": "https://codeforces.com/blog/entry/156688",
-          "primaryTopic": "组合计数与概率",
+          "primaryTopic": "代数、矩阵与多项式",
           "secondaryTopics": [
-            "图论与网络流",
-            "构造与贪心",
-            "博弈"
+            "组合计数与概率"
           ],
           "originalTags": [
             "math"
           ],
-          "statementBrief": "Rank Removal time limit per test 2 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Farmer John is playing a game involving an n × n binary matrix M. 对每个 test case, 输出 the 最小 数量 moves and any 序列 of moves that achieves it.",
-          "transformedStatement": "把题目先看成：Rank Removal time limit per test 2 seconds memory limit per test 256 megabytes input standard input 输出 standard 输出 Farmer John is playing a game involving an n × n binary matrix M. 对每个 test case, 输出 the 最小 数量 moves and any 序列 of moves that achieves it.",
+          "statementBrief": "给定一个初始满秩的 n×n 二进制矩阵，每步按当前秩删去相应数量的 1，求清空矩阵的最少步数及操作序列。",
+          "transformedStatement": "把 1 看成行列二分图的边，用完美匹配奇偶性表示行列式；问题转为以每步至多删 n 条边并尽量保持行列式为 1。",
           "keyObservations": [
-            "We 会 使用 two facts: rank(M)=n 当且仅当 \\det(M)=1",
-            "Construct a bipartite 图 with n 行 点 and n 列 点, 其中 M_{i,j}=1 corresponds to an 边 之间 行 i and 列 j",
-            "Let X be 数量 ones initially in M"
+            "在 F₂ 上满秩等价于行列式为 1，而行列式是行列二分图完美匹配数的奇偶性；因此删边后只需检查被破坏的匹配数是否为偶数。",
+            "每步最多删除 n 个 1，所以至少需要 ⌈m/n⌉ 步；构造的核心是在前面各步保持满秩并删除 n 个 1，只让秩在最后两步下降。",
+            "当当前 1 的数量大于 3n 时，某列至少有三条边；三条边对应的完美匹配奇偶值中必有两个相同，删除这两条边不会改变行列式，因而可成对安全删除。",
+            "当 n 为奇数且需要先删除奇数条边时，若单边删除均不安全，可利用两个同一行的边和另一列的边组成 L 形三边；由完美匹配按列分解可保证存在一个保持行列式的 L 形删除。"
           ],
-          "solutionBrief": "关键观察：We 会 使用 two facts: rank(M)=n 当且仅当 \\det(M)=1；Construct a bipartite 图 with n 行 点 and n 列 点, 其中 M_{i,j}=1 corresponds to an 边 之间 行 i and 列 j；Let X be 数量 ones initially in M。做法：换个角度 of recomputing the determinant in O(n^3/w) to test removals and 之后 removals, 可以 使用 something called Woodbury Matrix Identity to speed it up to O(n^2/w)。",
-          "extractionStatus": "ok",
+          "solutionBrief": "下界为⌈m/n⌉。当 m>3n 时，通过安全删除一对边（奇数 n 时先删安全单边或 L 形三边）保持满秩并填满每步；剩余不多时选完美匹配置于对角线，删去较少的一侧使矩阵三角化，再处理对角线。用高斯消元测试每次删除是否合法。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
