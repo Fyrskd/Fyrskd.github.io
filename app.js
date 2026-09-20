@@ -2,6 +2,10 @@
   "use strict";
 
   const rawData = window.CF_INSIGHTS_DATA || { summary: {}, contests: [], topics: [], columns: [] };
+  const ACCOUNT_HANDLES_KEY = "cf-insights-account-handles-v1";
+  const ACCOUNT_CACHE_KEY = "cf-insights-account-cache-v1";
+  const CF_STATUS_ENDPOINT = "https://codeforces.com/api/user.status";
+  const STATUS_PAGE_SIZE = 10000;
   const state = {
     query: "",
     topic: "all",
@@ -11,6 +15,10 @@
     sort: "date-desc",
     view: "contests",
     selectedKey: "",
+    accountHandles: loadAccountHandles(),
+    accountCache: loadAccountCache(),
+    accountSyncing: false,
+    accountMessage: "",
   };
 
   const elements = {
@@ -26,6 +34,14 @@
     resultSubtitle: document.getElementById("resultSubtitle"),
     contestTable: document.getElementById("contestTable"),
     detailPanel: document.getElementById("detailPanel"),
+    accountsButton: document.getElementById("accountsButton"),
+    accountsDialog: document.getElementById("accountsDialog"),
+    accountHandleInput: document.getElementById("accountHandleInput"),
+    accountList: document.getElementById("accountList"),
+    accountStatus: document.getElementById("accountStatus"),
+    addAccountButton: document.getElementById("addAccountButton"),
+    syncAccountsButton: document.getElementById("syncAccountsButton"),
+    closeAccountsButton: document.getElementById("closeAccountsButton"),
     navButtons: Array.from(document.querySelectorAll(".nav-button")),
   };
 
@@ -61,6 +77,106 @@
 
   const problemByKey = new Map(allProblems.map((problem) => [problem.key, problem]));
   const topicRank = new Map((rawData.topics || []).map((topic, index) => [topic, index]));
+  const localProblemKeys = new Set(allProblems.map((problem) => problem.key));
+
+  function loadLocalJson(key, fallback) {
+    try {
+      const value = window.localStorage.getItem(key);
+      return value ? JSON.parse(value) : fallback;
+    } catch (_error) {
+      return fallback;
+    }
+  }
+
+  function saveLocalJson(key, value) {
+    try {
+      window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (_error) {
+      state.accountMessage = "浏览器无法保存账号缓存，请检查隐私模式或存储权限。";
+    }
+  }
+
+  function normalizeHandle(value) {
+    return String(value || "").trim().replace(/\s+/g, "");
+  }
+
+  function handleKey(handle) {
+    return normalizeHandle(handle).toLowerCase();
+  }
+
+  function loadAccountHandles() {
+    const value = loadLocalJson(ACCOUNT_HANDLES_KEY, []);
+    if (!Array.isArray(value)) return [];
+    const unique = new Map();
+    for (const raw of value) {
+      const handle = normalizeHandle(raw);
+      if (handle) unique.set(handleKey(handle), handle);
+    }
+    return Array.from(unique.values());
+  }
+
+  function loadAccountCache() {
+    const value = loadLocalJson(ACCOUNT_CACHE_KEY, {});
+    return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+  }
+
+  function saveAccountState() {
+    saveLocalJson(ACCOUNT_HANDLES_KEY, state.accountHandles);
+    saveLocalJson(ACCOUNT_CACHE_KEY, state.accountCache);
+  }
+
+  function solvedHandlesFor(problemKey) {
+    return state.accountHandles.filter((handle) => {
+      const entry = state.accountCache[handleKey(handle)];
+      return entry && Array.isArray(entry.acceptedKeys) && entry.acceptedKeys.includes(problemKey);
+    });
+  }
+
+  function accountSummaryText() {
+    const solvedCount = allProblems.filter((problem) => solvedHandlesFor(problem.key).length > 0).length;
+    if (!state.accountHandles.length) return "绑定账号";
+    return `账号 ${state.accountHandles.length} · 已过 ${solvedCount}`;
+  }
+
+  function sleep(milliseconds) {
+    return new Promise((resolve) => window.setTimeout(resolve, milliseconds));
+  }
+
+  async function fetchAcceptedProblems(handle) {
+    const acceptedKeys = new Set();
+    let from = 1;
+    let submissionCount = 0;
+    while (true) {
+      if (from > 1) await sleep(2100);
+      const params = new URLSearchParams({
+        handle,
+        from: String(from),
+        count: String(STATUS_PAGE_SIZE),
+      });
+      const response = await fetch(`${CF_STATUS_ENDPOINT}?${params.toString()}`);
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || payload.status !== "OK") {
+        const message = payload.comment || `HTTP ${response.status}`;
+        throw new Error(message);
+      }
+      const submissions = Array.isArray(payload.result) ? payload.result : [];
+      submissionCount += submissions.length;
+      for (const submission of submissions) {
+        if (submission.verdict !== "OK") continue;
+        const problem = submission.problem || {};
+        const key = `${problem.contestId || ""}${problem.index || ""}`;
+        if (localProblemKeys.has(key)) acceptedKeys.add(key);
+      }
+      if (submissions.length < STATUS_PAGE_SIZE) break;
+      from += STATUS_PAGE_SIZE;
+    }
+    return {
+      handle,
+      fetchedAt: new Date().toISOString(),
+      acceptedKeys: Array.from(acceptedKeys).sort(),
+      submissionCount,
+    };
+  }
 
   function escapeHtml(value) {
     return String(value ?? "")
@@ -162,6 +278,61 @@
       .join("");
   }
 
+  function renderAccountControls() {
+    if (!elements.accountsButton) return;
+    elements.accountsButton.textContent = accountSummaryText();
+    if (!elements.accountList) return;
+    if (!state.accountHandles.length) {
+      elements.accountList.innerHTML = '<div class="account-empty">还没有绑定账号。</div>';
+    } else {
+      elements.accountList.innerHTML = state.accountHandles
+        .map((handle) => {
+          const entry = state.accountCache[handleKey(handle)];
+          const synced = entry && entry.fetchedAt ? `同步于 ${new Date(entry.fetchedAt).toLocaleString()}` : "尚未同步";
+          const count = entry && Array.isArray(entry.acceptedKeys) ? entry.acceptedKeys.length : 0;
+          return `
+            <div class="account-item">
+              <div>
+                <strong>${escapeHtml(handle)}</strong>
+                <span>${escapeHtml(`${synced} · 本地已过 ${count} 题`)}</span>
+              </div>
+              <button type="button" class="account-remove" data-remove-account="${escapeHtml(handle)}">移除</button>
+            </div>
+          `;
+        })
+        .join("");
+    }
+    elements.accountStatus.textContent = state.accountMessage;
+    elements.syncAccountsButton.disabled = state.accountSyncing || !state.accountHandles.length;
+    elements.addAccountButton.disabled = state.accountSyncing;
+  }
+
+  async function syncAccounts() {
+    if (!state.accountHandles.length || state.accountSyncing) return;
+    state.accountSyncing = true;
+    state.accountMessage = "正在从 Codeforces 同步通过记录……";
+    renderAccountControls();
+    render();
+    const failures = [];
+    for (const handle of state.accountHandles) {
+      state.accountMessage = `正在同步 ${handle}……`;
+      renderAccountControls();
+      try {
+        state.accountCache[handleKey(handle)] = await fetchAcceptedProblems(handle);
+        saveAccountState();
+      } catch (error) {
+        failures.push(`${handle}: ${error instanceof Error ? error.message : "同步失败"}`);
+      }
+    }
+    state.accountSyncing = false;
+    state.accountMessage = failures.length
+      ? `部分账号同步失败：${failures.join("；")}`
+      : `同步完成：已检查 ${state.accountHandles.length} 个账号。`;
+    saveAccountState();
+    renderAccountControls();
+    render();
+  }
+
   function renderControls() {
     elements.topicSelect.innerHTML = [
       '<option value="all">全部</option>',
@@ -246,11 +417,14 @@
         ${problems
           .map((problem) => {
             const full = problemByKey.get(problem.key) || problem;
+            const solvedHandles = solvedHandlesFor(problem.key);
+            const solved = solvedHandles.length > 0;
+            const solvedLabel = solvedHandles.length > 1 ? `已过 ${solvedHandles.length} 个账号` : "已通过";
             return `
-              <button class="problem-chip ${state.selectedKey === problem.key ? "is-active" : ""} ${problem.extractionStatus === "missing_editorial" ? "is-missing" : ""}"
+              <button class="problem-chip ${state.selectedKey === problem.key ? "is-active" : ""} ${problem.extractionStatus === "missing_editorial" ? "is-missing" : ""} ${solved ? "is-solved" : ""}"
                 type="button" data-problem-key="${escapeHtml(problem.key)}" title="${escapeHtml(problem.title)}">
-                <div><span class="chip-index">${escapeHtml(problem.index)}</span> <span class="${ratingClass(problem.rating)}">${escapeHtml(problem.rating || "N/A")}</span></div>
-                <div class="chip-title">${escapeHtml(problem.title)}</div>
+                <div class="chip-head"><span><span class="chip-index">${escapeHtml(problem.index)}</span> <span class="${ratingClass(problem.rating)}">${escapeHtml(problem.rating || "N/A")}</span></span>${solved ? `<span class="solved-badge">${escapeHtml(solvedLabel)}</span>` : ""}</div>
+                <div class="chip-title ${ratingClass(problem.rating)}">${escapeHtml(problem.title)}</div>
                 <div class="chip-meta"><span>${escapeHtml(full.primaryTopic)}</span><span>${escapeHtml(statusText(problem.extractionStatus))}</span></div>
               </button>
             `;
@@ -286,7 +460,10 @@
                 <h2>${escapeHtml(topic)} <span class="count-pill">${escapeHtml(items.length)}</span></h2>
                 <div class="topic-problems">
                   ${items
-                    .map((problem) => `<button type="button" data-problem-key="${escapeHtml(problem.key)}">${escapeHtml(problem.key)} · ${escapeHtml(problem.title)} · ${escapeHtml(problem.rating || "N/A")}</button>`)
+                    .map((problem) => {
+                      const solved = solvedHandlesFor(problem.key).length > 0;
+                      return `<button type="button" class="${solved ? "is-solved" : ""}" data-problem-key="${escapeHtml(problem.key)}"><span class="${ratingClass(problem.rating)}">${escapeHtml(problem.key)} · ${escapeHtml(problem.title)}</span> · ${escapeHtml(problem.rating || "N/A")}${solved ? ' <span class="solved-inline">已通过</span>' : ""}</button>`;
+                    })
                     .join("")}
                 </div>
               </section>
@@ -312,6 +489,7 @@
       ? `<ul class="observations">${problem.keyObservations.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
       : '<p class="muted">本地题解正文不足，未补写关键观察。</p>';
     const tags = [problem.primaryTopic, ...(problem.secondaryTopics || [])];
+    const solvedHandles = solvedHandlesFor(problem.key);
     elements.detailPanel.innerHTML = `
       <article class="detail-content">
         <div class="detail-top">
@@ -329,6 +507,7 @@
         <div class="tag-row">
           ${tags.map((tag, index) => `<span class="tag ${index === 0 ? "topic" : ""}">${escapeHtml(tag)}</span>`).join("")}
           <span class="tag ${problem.extractionStatus === "missing_editorial" ? "missing" : ""}">${escapeHtml(statusText(problem.extractionStatus))}</span>
+          ${solvedHandles.length ? `<span class="tag solved-tag">${escapeHtml(solvedHandles.length > 1 ? `已通过 ${solvedHandles.length} 个账号` : `已通过 ${solvedHandles[0]}`)}</span>` : ""}
         </div>
         <section class="detail-section">
           <h3>题意</h3>
@@ -405,6 +584,47 @@
       state.view = "contests";
       render();
     });
+    elements.accountsButton?.addEventListener("click", () => {
+      renderAccountControls();
+      elements.accountsDialog.showModal();
+    });
+    elements.closeAccountsButton?.addEventListener("click", () => {
+      elements.accountsDialog.close();
+    });
+    elements.addAccountButton?.addEventListener("click", () => {
+      const handle = normalizeHandle(elements.accountHandleInput.value);
+      if (!handle) {
+        state.accountMessage = "请输入 Codeforces handle。";
+        renderAccountControls();
+        return;
+      }
+      if (!state.accountHandles.some((item) => handleKey(item) === handleKey(handle))) {
+        state.accountHandles.push(handle);
+        saveAccountState();
+      }
+      elements.accountHandleInput.value = "";
+      state.accountMessage = `已绑定 ${handle}，点击“同步通过记录”获取状态。`;
+      renderAccountControls();
+      render();
+    });
+    elements.accountHandleInput?.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        elements.addAccountButton.click();
+      }
+    });
+    elements.accountList?.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-remove-account]");
+      if (!button) return;
+      const handle = button.dataset.removeAccount;
+      state.accountHandles = state.accountHandles.filter((item) => handleKey(item) !== handleKey(handle));
+      delete state.accountCache[handleKey(handle)];
+      state.accountMessage = `已移除 ${handle}。`;
+      saveAccountState();
+      renderAccountControls();
+      render();
+    });
+    elements.syncAccountsButton?.addEventListener("click", syncAccounts);
     for (const button of elements.navButtons) {
       button.addEventListener("click", () => {
         state.view = button.dataset.view;
@@ -415,6 +635,7 @@
 
   renderSummary();
   renderControls();
+  renderAccountControls();
   bindEvents();
   render();
 })();

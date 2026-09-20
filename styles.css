@@ -348,11 +348,22 @@ select {
   cursor: pointer;
 }
 
+.problem-chip.is-solved {
+  border-color: #8ac9a5;
+  border-left-color: #2d9a65;
+  background: #effaf3;
+}
+
 .problem-chip:hover,
 .problem-chip.is-active {
   border-color: var(--blue);
   border-left-color: var(--blue);
   background: #f0f6ff;
+}
+
+.problem-chip.is-solved:hover,
+.problem-chip.is-solved.is-active {
+  background: #e7f7ed;
 }
 
 .problem-chip.is-missing {
@@ -363,6 +374,13 @@ select {
   font-weight: 850;
 }
 
+.chip-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
 .chip-title {
   display: -webkit-box;
   min-height: 34px;
@@ -371,6 +389,31 @@ select {
   color: #2a3541;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+
+.chip-title.rating-gray,
+.chip-title.rating-green,
+.chip-title.rating-cyan,
+.chip-title.rating-blue,
+.chip-title.rating-violet,
+.chip-title.rating-orange,
+.chip-title.rating-red {
+  font-weight: 800;
+}
+
+.solved-badge,
+.solved-inline {
+  display: inline-block;
+  flex: 0 0 auto;
+  padding: 1px 5px;
+  border: 1px solid #8ac9a5;
+  border-radius: 999px;
+  background: #dff4e7;
+  color: #17633d;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.35;
+  white-space: nowrap;
 }
 
 .chip-meta {
@@ -559,6 +602,122 @@ select {
   background: var(--surface-2);
   color: var(--text);
   cursor: pointer;
+}
+
+.topic-problems button.is-solved {
+  border-color: #8ac9a5;
+  background: #effaf3;
+}
+
+.topic-problems button.is-solved:hover {
+  background: #e7f7ed;
+}
+
+.solved-tag {
+  background: #dff4e7;
+  color: #17633d;
+}
+
+.accounts-dialog {
+  width: min(520px, calc(100vw - 28px));
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  color: var(--text);
+  box-shadow: 0 16px 50px rgba(15, 23, 42, 0.24);
+}
+
+.accounts-dialog::backdrop {
+  background: rgba(15, 23, 42, 0.42);
+}
+
+.dialog-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.dialog-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.dialog-header p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.dialog-close {
+  min-height: 32px;
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface-2);
+  cursor: pointer;
+}
+
+.account-add-row,
+.dialog-actions {
+  display: flex;
+  gap: 8px;
+  padding: 14px 16px 0;
+}
+
+.account-add-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.account-list {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px 0;
+}
+
+.account-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface-2);
+}
+
+.account-item strong,
+.account-item span {
+  display: block;
+}
+
+.account-item span,
+.account-empty,
+.account-status {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.account-remove {
+  min-height: 30px;
+  padding: 4px 8px;
+  border: 1px solid #e4b4b0;
+  border-radius: 6px;
+  background: #fff7f6;
+  color: var(--red);
+  cursor: pointer;
+}
+
+.account-status {
+  min-height: 18px;
+  margin: 12px 16px 0;
+}
+
+.dialog-actions {
+  padding-bottom: 16px;
 }
 
 .empty-state {

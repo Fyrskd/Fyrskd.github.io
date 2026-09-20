@@ -16,6 +16,7 @@
       <nav class="nav-links" aria-label="视图">
         <button class="nav-button is-active" type="button" data-view="contests">Contests</button>
         <button class="nav-button" type="button" data-view="topics">Topics</button>
+        <button class="nav-button" id="accountsButton" type="button">绑定账号</button>
       </nav>
       <div class="source-note">只使用本地题目 / 题解数据</div>
     </header>
@@ -79,6 +80,25 @@
         <aside class="detail-panel" id="detailPanel" aria-label="题目详情"></aside>
       </section>
     </main>
+
+    <dialog id="accountsDialog" class="accounts-dialog">
+      <div class="dialog-header">
+        <div>
+          <h2>Codeforces 账号</h2>
+          <p>只保存公开 handle，并从 Codeforces API 读取通过记录。</p>
+        </div>
+        <button id="closeAccountsButton" class="dialog-close" type="button" aria-label="关闭">关闭</button>
+      </div>
+      <div class="account-add-row">
+        <input id="accountHandleInput" type="text" placeholder="例如 tourist" autocomplete="off" />
+        <button id="addAccountButton" class="random-button" type="button">添加</button>
+      </div>
+      <div id="accountList" class="account-list"></div>
+      <p id="accountStatus" class="account-status"></p>
+      <div class="dialog-actions">
+        <button id="syncAccountsButton" class="random-button" type="button">同步通过记录</button>
+      </div>
+    </dialog>
 
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
