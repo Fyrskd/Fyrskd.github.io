@@ -58,6 +58,20 @@
       .replaceAll("'", "&#039;");
   }
 
+  function renderMath(root) {
+    if (typeof window.renderMathInElement !== "function") return;
+    window.renderMathInElement(root, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "\\[", right: "\\]", display: true },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "$", right: "$", display: false },
+      ],
+      throwOnError: false,
+      strict: "ignore",
+    });
+  }
+
   function formatRating(value) {
     return value === null || value === undefined ? "未评级" : String(value);
   }
@@ -206,6 +220,7 @@
       </div>
       <div class="sublemma-list">${sublemmaSections}</div>
     `;
+    renderMath(elements.detailPanel);
   }
 
   function renderSublemmaSection(sublemmaName, subEntries) {

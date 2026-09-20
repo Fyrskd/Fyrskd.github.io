@@ -71,6 +71,20 @@
       .replaceAll("'", "&#039;");
   }
 
+  function renderMath(root) {
+    if (typeof window.renderMathInElement !== "function") return;
+    window.renderMathInElement(root, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "\\[", right: "\\]", display: true },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "$", right: "$", display: false },
+      ],
+      throwOnError: false,
+      strict: "ignore",
+    });
+  }
+
   function ratingClass(rating) {
     if (!Number.isFinite(rating)) return "rating-gray";
     if (rating < 1200) return "rating-gray";
@@ -338,6 +352,7 @@
         </section>
       </article>
     `;
+    renderMath(elements.detailPanel);
   }
 
   function render() {
