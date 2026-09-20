@@ -1,11 +1,13 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-09-20",
+  "generatedAt": "2026-09-21",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
     "total_problems": 954,
+    "source_total_problems": 954,
+    "filtered_out_problems": 0,
     "with_statement_brief": 954,
     "with_editorial_brief": 907,
-    "with_solution_brief": 954,
+    "with_solution_brief": 908,
     "missing_editorial_brief": 46,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
@@ -2534,9 +2536,9 @@ window.CF_INSIGHTS_DATA = {
             "data structures"
           ],
           "statementBrief": "给一个非负整数网格。若两个相同正数格子之间存在一条简单路径，内部格子全为 0，且路径转弯次数不超过 2，则称这两个格子可连接；求可连接无序点对数量。",
-          "transformedStatement": "本地题解正文不足，本条只从题面整理：这是网格中同值正数端点、零格内部、最多两次转弯路径的可连接点对计数问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         }
@@ -3834,9 +3836,9 @@ window.CF_INSIGHTS_DATA = {
             "two pointers"
           ],
           "statementBrief": "简单版座位安排题。固定顺序来人，每人是内向、外向或中间型；桌数、每桌座位数较小，要求按性格约束尽量安排更多人入座。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是带顺序和桌子状态约束的最大可安排人数问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -3859,9 +3861,9 @@ window.CF_INSIGHTS_DATA = {
             "two pointers"
           ],
           "statementBrief": "困难版座位安排题。固定顺序来人，每人是内向、外向或中间型；桌数、每桌座位数给定，要求按性格约束尽量安排更多人入座。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是带顺序和桌子状态约束的最大可安排人数问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -4554,9 +4556,9 @@ window.CF_INSIGHTS_DATA = {
             "implementation"
           ],
           "statementBrief": "简单版中可用数字只有两个。给非负整数 a 和递增数字集合 d，求只由 d 中数字组成的非负整数 b，使 |a-b| 最小。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是限制十进制可用数字后的最近数问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -4642,9 +4644,9 @@ window.CF_INSIGHTS_DATA = {
             "math"
           ],
           "statementBrief": "简单版只有一次查询且操作固定。给含 -1 的数组片段和总和 m，要求对所有非负补全 c，求前缀和平方和 f(c) 的总和。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是带固定值和总和约束的组合求和问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -7142,9 +7144,9 @@ window.CF_INSIGHTS_DATA = {
             "trees"
           ],
           "statementBrief": "原本有一棵无向树，后来给每条边任意定向；现在只给出所有有序点对之间是否可达，要求判断是否存在对应的定向树并构造一棵。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是从可达矩阵反推出一棵有向树结构的问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -7532,9 +7534,9 @@ window.CF_INSIGHTS_DATA = {
             "two pointers"
           ],
           "statementBrief": "交互题。隐藏一个按变量顺序由最小值和最大值嵌套构成的函数。可询问若干输入值并得到函数值；中等版要求在询问限制内还原函数，再回答后续求值。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是通过函数值查询还原有序最小值/最大值表达式树的问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -7887,9 +7889,9 @@ window.CF_INSIGHTS_DATA = {
             "data structures"
           ],
           "statementBrief": "从全白 n×n 矩阵开始，依次把指定格子染黑；每次染色后判断矩阵是否存在两行两列形成交叉同色、且同列异色的禁形。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是一个黑格逐步加入的矩阵禁形在线判定题，简单版规模较小。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         }
@@ -8101,9 +8103,9 @@ window.CF_INSIGHTS_DATA = {
             "hashing"
           ],
           "statementBrief": "中等版同样从全白 n×n 矩阵开始，持久地把查询指定的格子染黑，并在每次操作后判断是否出现题目定义的四格禁形；规模更大。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是与 简单版相同的在线单调矩阵禁形判定问题，只是 n、q 更大。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -8892,9 +8894,9 @@ window.CF_INSIGHTS_DATA = {
             "trees"
           ],
           "statementBrief": "简单版给一棵带点权的树和至多 4 个目标异或值集合。计数删边集合，使删边后每个连通块的点权异或都属于目标集合。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是树上删边后按连通块异或值计数的问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -11170,9 +11172,9 @@ window.CF_INSIGHTS_DATA = {
             "probabilities"
           ],
           "statementBrief": "长度 n 的随机颜色串，每个位置独立均匀从 m 种颜色中选。定义正确度为非空回文子段数量，美丽值为正确度平方；求美丽值期望模质数。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：目标是计算所有回文子段有序对同时成立的概率之和。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -11259,9 +11261,9 @@ window.CF_INSIGHTS_DATA = {
             "math"
           ],
           "statementBrief": "交互题。隐藏整数 x∈[1,c]，询问一个进制 b：若 x<b 返回 -1，否则返回 x 在 b 进制下的数位和；要求在至多 k=4 次询问内猜出 x。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：通过不同进制下的数位和与 x<b 的边界反馈恢复隐藏整数，属于非自适应交互查询问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写交互策略。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -11725,9 +11727,9 @@ window.CF_INSIGHTS_DATA = {
             "number theory"
           ],
           "statementBrief": "构造长度为 n 的正整数序列，使相邻元素的 gcd 两两不同，并让序列中不同元素的种类数尽可能少；简单版 n≤700。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：需要同时满足相邻 gcd 的全异约束和使用不同数值种类数的最小化。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写构造。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -12714,9 +12716,9 @@ window.CF_INSIGHTS_DATA = {
             "trees"
           ],
           "statementBrief": "简单版给一棵以 1 为根的树和数组 a，计数排列 p，使每个点 u 的祖先中恰有 a_u 个点的排列值小于 p_u。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是树上祖先相对排名约束下的排列计数问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -16434,9 +16436,9 @@ window.CF_INSIGHTS_DATA = {
             "math"
           ],
           "statementBrief": "交互题。隐藏一个文本编辑器行宽 W；你可以提交若干单词长度组成的文章，交互方返回显示所需行数或表示无法显示。简单版没有所有询问文章长度总和限制。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是通过构造文章长度来反推出隐藏行宽的交互题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -16491,9 +16493,9 @@ window.CF_INSIGHTS_DATA = {
             "math"
           ],
           "statementBrief": "给长度 n 的二进制串计数问题。定义 f(r) 为反复同时删除所有 10 子串直到没有 10 后的结果；若 f(s)=f(反转(s))，则 s 是近回文串，要求计数。",
-          "transformedStatement": "把题目先看成：删除 10 的过程会持续抵消可配对的 1 和 0，最终只剩若干 0 后接若干 1；但本地没有抓到该题题解正文。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留题意和一个直接来自题面过程的转换说明，避免根据旧总结、困难版题解或宽标签补写伪题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -17427,9 +17429,9 @@ window.CF_INSIGHTS_DATA = {
             "interactive"
           ],
           "statementBrief": "交互题。隐藏括号串只含左括号和右括号，且两种括号都至少出现一次。每次可询问若干下标组成的串，并得到其中非空合法括号子串数量；简单版要求在 550 次询问内恢复原串。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是利用合法括号子串计数查询来恢复隐藏括号串的问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -17454,9 +17456,9 @@ window.CF_INSIGHTS_DATA = {
             "interactive"
           ],
           "statementBrief": "交互题。隐藏括号串只含左括号和右括号，且两种括号都至少出现一次。每次可询问若干下标组成的串，并得到其中非空合法括号子串数量；中等版要求在 200 次询问内恢复原串。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是利用合法括号子串计数查询来恢复隐藏括号串的问题，询问次数限制比 简单版更紧。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -17573,9 +17575,9 @@ window.CF_INSIGHTS_DATA = {
             "interactive"
           ],
           "statementBrief": "简单版交互题。隐藏排列 p，可询问一组位置或一组值对应的前若干大元素；查询次数有限，要求恢复整个排列。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是利用“前若干大值/位置”反馈恢复隐藏排列的交互题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -18248,9 +18250,9 @@ window.CF_INSIGHTS_DATA = {
             "dp"
           ],
           "statementBrief": "简单版从空数组开始，每次追加某个 1..s 的循环移位。给若干位置不等于某值的限制，计数长度恰为 n 的可构造数组。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是把数组分解为若干循环排列块，并满足位置禁值限制的计数问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -19112,9 +19114,9 @@ window.CF_INSIGHTS_DATA = {
             "number theory"
           ],
           "statementBrief": "一条长度 10^15 的路上有 n 个红绿灯，第 i 个灯在时间 t≡d_i (mod k) 时为红灯。人从查询位置出发、初始向正方向走；每秒先看当前位置红灯则掉头，再走一步，问是否会在 10^100 秒内离开路段。",
-          "transformedStatement": "把题目先看成：运动只在红绿灯位置可能改变方向；若本地题解正文缺失，不能可靠提炼有限状态图上的判环细节。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只清理题意和转换视角，保留原题链接与题解链接，避免根据旧总结或宽标签补写。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -22132,9 +22134,9 @@ window.CF_INSIGHTS_DATA = {
             "probabilities"
           ],
           "statementBrief": "有若干锁、对应真钥匙和若干假钥匙；玩家按固定顺序轮流尝试钥匙锁组合，成功会开锁并计分。简单版没有假钥匙，要求在所有人按当前最大成功概率行动时计算结果概率。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是一个带信息更新的钥匙试锁随机过程，目标是计算理性选择规则下的概率。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -24809,9 +24811,9 @@ window.CF_INSIGHTS_DATA = {
             "implementation"
           ],
           "statementBrief": "简单版中目标串只含 0 和 1。给初始二进制串 s，每次可交换相邻的两个同字符极大块；求最少操作使 s 匹配目标串 t，或判断无解。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是按同字符块交换来重排二进制串的最少操作问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -24895,9 +24897,9 @@ window.CF_INSIGHTS_DATA = {
             "graphs"
           ],
           "statementBrief": "给无向图、初始放置石子的顶点集合和目标顶点集合。每轮所有石子同时沿一条相邻边移动，且任意时刻一个顶点至多放一枚石子；判断是否存在合法移动序列到达目标。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是一个带同步移动和无碰撞约束的图上石子可达性判定题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -26260,9 +26262,9 @@ window.CF_INSIGHTS_DATA = {
             "number theory"
           ],
           "statementBrief": "给一个整数 x。每次可以从十进制表示中删除一段相邻的数字 33，或在 x>=33 时把 x 减去 33；判断能否把 x 变成 0。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是一个关于十进制删除相邻 33 与整体减 33 两种操作的可达性判定题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -26285,9 +26287,9 @@ window.CF_INSIGHTS_DATA = {
             "greedy"
           ],
           "statementBrief": "给定 n 和 k，要求构造一个长度为 n 的排列，使所有长度为 k 的连续子数组最小值之和尽量小。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是排列构造题，目标是让小数尽量覆盖更多长度为 k 的窗口。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -26313,9 +26315,9 @@ window.CF_INSIGHTS_DATA = {
             "strings"
           ],
           "statementBrief": "给一个以 1 开头的二进制串，选择两个非空子串，允许重叠，使它们按二进制数异或后的值最大，并输出两个子串区间。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是二进制子串异或最大化的区间选择问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -26342,9 +26344,9 @@ window.CF_INSIGHTS_DATA = {
             "two pointers"
           ],
           "statementBrief": "给参赛者分数和题目难度。对每个组大小 k，需要选若干题分成若干场比赛，使 Kevin 的总排名和最小。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是按比赛大小分组题目、最小化指定参赛者排名和的排序/分组问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -26367,9 +26369,9 @@ window.CF_INSIGHTS_DATA = {
             "greedy"
           ],
           "statementBrief": "要求给完全二分图的每条边染上 `1..n` 中的颜色，使任意同色边不形成环；若无法构造则输出不可行。",
-          "transformedStatement": "本地只有题面和题解链接，没有可用题解正文；本条只保留题意，不补写关键观察。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留题面、原题链接和题解链接，避免根据旧总结或宽标签补写。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -26397,9 +26399,9 @@ window.CF_INSIGHTS_DATA = {
             "trees"
           ],
           "statementBrief": "给两行正整数 a、b。一次选择区间 [l,r]，令 x 为该区间 b 的最小值，并把区间内每个 a_i 变成向上除以 x；求把所有 a_i 变成 1 的最少操作次数。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是带区间最小值作为除数的批量缩小问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -26424,9 +26426,9 @@ window.CF_INSIGHTS_DATA = {
             "math"
           ],
           "statementBrief": "统计 n×m、元素取自 1..v 的整数矩阵中，满足 min_i(max_j a_i,j) <= max_j(min_i a_i,j) 的矩阵数量，结果对 998244353 取模。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是比较“最弱行最大值”和“最强列最小值”的矩阵计数题，需统计满足该极值不等式的全部矩阵。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -26449,9 +26451,9 @@ window.CF_INSIGHTS_DATA = {
             "dp"
           ],
           "statementBrief": "给一个二进制串。每次选择位置 p，先对 p 左侧所有位置同时执行 t_i=max(t_i,t_{i+1})，再删除第 p 个字符；求经过任意次操作后能得到的不同非空二进制串数量。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：操作同时传播左侧的 1 并删除一个位置，目标是统计所有可达字符串的去重数量。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -26471,9 +26473,9 @@ window.CF_INSIGHTS_DATA = {
             "constructive algorithms"
           ],
           "statementBrief": "简单版给只含 L/R 的字符串 s，需要构造一个非负数组 a，使每个 L 位置等于其左侧不同值个数，每个 R 位置等于其右侧不同值个数；无解则报告。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是按左右不同值计数反向构造数组的问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -26497,9 +26499,9 @@ window.CF_INSIGHTS_DATA = {
             "math"
           ],
           "statementBrief": "困难版给只含 L/R 的字符串 s，需要计数非负数组 a，使每个 L 位置等于其左侧不同值个数，每个 R 位置等于其右侧不同值个数。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是按左右不同值计数约束来统计数组数量的问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         }
@@ -26807,9 +26809,9 @@ window.CF_INSIGHTS_DATA = {
             "sortings"
           ],
           "statementBrief": "给 2 行 n 列矩阵，可任意交换整列；交换后从左上走到右下，每步向右或向下，要求路径经过的 n+1 个格子和最大。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：路径等价于选择某一列下移，该列上下两个数都取，其它列只取上行或下行。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -26834,9 +26836,9 @@ window.CF_INSIGHTS_DATA = {
             "sortings"
           ],
           "statementBrief": "给定数组；一次操作可选一个位置，把该数加 1 后移到数组末尾。可操作任意次，求所有可达数组中字典序最小的一个。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是带“加一并移尾”操作的字典序最小可达数组问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -29634,9 +29636,9 @@ window.CF_INSIGHTS_DATA = {
             "math"
           ],
           "statementBrief": "给 n 个区间。一次扩展可把某个区间左端减一或右端加一；一个非空集合的分数是让集合内所有区间有公共交点所需的最少扩展次数。求所有非空集合分数之和。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：每个集合的代价等价于把这些区间扩到有公共交点的最小总扩展量。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -29992,9 +29994,9 @@ window.CF_INSIGHTS_DATA = {
             "greedy"
           ],
           "statementBrief": "简单版中，队伍成员按数组 a 排队，按数组 b 指定每张幻灯片的讲解者；每次讲完后只能把队首成员移到队列任意位置。判断整个演示是否可完成。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是一个队首取出、再任意插回的序列可行性判定题；简单版没有持久更新。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -30090,9 +30092,9 @@ window.CF_INSIGHTS_DATA = {
             "trees"
           ],
           "statementBrief": "给一个带权连通图和若干需要联网的房屋。最多安装 k 个服务器，每个需求房屋连接到某个服务器的代价是路径上最大边权；对每个 k 求最小总代价。",
-          "transformedStatement": "把题目先看成：在图上选择服务器集合，使所有指定点到最近服务器的瓶颈距离之和最小；本地缺少题解正文，暂不提炼关键观察。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留题面、原题链接和题解链接，避免根据旧总结或宽标签补写。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -30119,9 +30121,9 @@ window.CF_INSIGHTS_DATA = {
             "trees"
           ],
           "statementBrief": "给一个带权连通图和若干需要联网的房屋。最多安装 k 个服务器，每个需求房屋连接到某个服务器的代价是路径上最大边权；对每个 k 求最小总代价。",
-          "transformedStatement": "把题目先看成：在图上选择服务器集合，使所有指定点到最近服务器的瓶颈距离之和最小；本地缺少题解正文，暂不提炼关键观察。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留题面、原题链接和题解链接，避免根据旧总结或宽标签补写。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -30830,9 +30832,9 @@ window.CF_INSIGHTS_DATA = {
             "strings"
           ],
           "statementBrief": "交互题。隐藏一个长度为 n 的二进制串，每次可询问一个二进制串是否为其子串，要求在 2n 次询问内确定原串。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：核心任务是用子串存在性询问逐步还原隐藏二进制串。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -30854,9 +30856,9 @@ window.CF_INSIGHTS_DATA = {
             "greedy"
           ],
           "statementBrief": "给数组；一次操作可把某个位置减 1，并把右侧相邻位置加 1。可操作任意次，求最终最大值与最小值差的最小可能值。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是只能把数值向右搬运时，最小化全局极差的问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -30882,9 +30884,9 @@ window.CF_INSIGHTS_DATA = {
             "number theory"
           ],
           "statementBrief": "可以任意重排正整数数组，要求最小化所有前缀最大公约数之和。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是通过排列顺序控制前缀最大公约数下降速度的数论贪心/DP 问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -30913,9 +30915,9 @@ window.CF_INSIGHTS_DATA = {
             "trees"
           ],
           "statementBrief": "简单版中 u=v。树上两人轮流从当前点走到未被任何人访问过的相邻点，无法移动者输；要求判断 Bob 从指定单点路径位置出发时的胜者。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是树上双人不回访移动博弈的单起点版本。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },
@@ -30939,9 +30941,9 @@ window.CF_INSIGHTS_DATA = {
             "trees"
           ],
           "statementBrief": "树上两人从不同点出发轮流移动，不能走到任何已访问点，无法移动者输。给定不经过 1 的路径 u 到 v，要求分别判断 Bob 从路径上每个点出发时的胜者。",
-          "transformedStatement": "本地题解正文为空，本条只从题面整理：这是一个树上双人移动博弈，对同一路径上的多个 Bob 起点批量输出胜负。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         }
@@ -31100,9 +31102,9 @@ window.CF_INSIGHTS_DATA = {
             "number theory"
           ],
           "statementBrief": "给两个长度相同的数组，必须恰好选择一个连续区间，并交换该区间内两数组对应位置的元素。求交换后两数组最大公约数之和的最大值，以及达到最大值的区间数量。",
-          "transformedStatement": "本地题解正文不足，本条只从题面整理：这是一次区间交换后优化两数组整体最大公约数之和，并计数最优区间的问题。",
+          "transformedStatement": "",
           "keyObservations": [],
-          "solutionBrief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据旧总结或宽标签补写题解。",
+          "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
         },

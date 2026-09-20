@@ -7,10 +7,10 @@
   const CF_STATUS_ENDPOINT = "https://codeforces.com/api/user.status";
   const STATUS_PAGE_SIZE = 10000;
   const state = {
-    query: "",
     topic: "all",
-    minRating: "all",
-    status: "all",
+    minRating: "",
+    maxRating: "",
+    hasEditorial: false,
     contestType: "all",
     sort: "date-desc",
     view: "contests",
@@ -22,11 +22,10 @@
   };
 
   const elements = {
-    summaryPanel: document.getElementById("summaryPanel"),
-    searchInput: document.getElementById("searchInput"),
     topicSelect: document.getElementById("topicSelect"),
-    minRatingSelect: document.getElementById("minRatingSelect"),
-    statusSelect: document.getElementById("statusSelect"),
+    minRatingInput: document.getElementById("minRatingInput"),
+    maxRatingInput: document.getElementById("maxRatingInput"),
+    hasEditorialCheckbox: document.getElementById("hasEditorialCheckbox"),
     contestTypes: document.getElementById("contestTypes"),
     randomButton: document.getElementById("randomButton"),
     sortSelect: document.getElementById("sortSelect"),
@@ -53,25 +52,6 @@
       contestDate: contest.date,
       contestType: contest.type,
       contestUrl: contest.url,
-      searchText: [
-        problem.key,
-        problem.index,
-        problem.title,
-        problem.rating,
-        problem.primaryTopic,
-        ...(problem.secondaryTopics || []),
-        ...(problem.originalTags || []),
-        problem.statementBrief,
-        problem.transformedStatement,
-        ...(problem.keyObservations || []),
-        problem.solutionBrief,
-        contest.id,
-        contest.name,
-        contest.date,
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase(),
     }))
   );
 
@@ -212,23 +192,29 @@
     return "rating-red";
   }
 
-  function statusText(status) {
-    if (status === "missing_editorial") return "缺题解正文";
-    if (status === "statement_only_missing_editorial") return "仅题意";
-    if (status === "statement_derived") return "题面推导";
-    if (status === "manual_override") return "有本地题解";
-    if (status === "ai_generated_with_editorial") return "AI 题解摘要";
-    if (status === "ai_generated_partial_editorial") return "AI 部分题解";
-    if (status === "low_confidence") return "低置信度";
-    return status || "未知";
+  function hasSolution(problem) {
+    return problem.extractionStatus !== "missing_editorial";
+  }
+
+  function solutionStatusText(problem) {
+    return hasSolution(problem) ? "有题解" : "无题解";
+  }
+
+  function parseRatingBoundary(value) {
+    const text = String(value || "").trim();
+    if (!text) return null;
+    const rating = Number(text);
+    return Number.isFinite(rating) ? rating : null;
   }
 
   function problemMatches(problem) {
-    const query = state.query.trim().toLowerCase();
     if (state.topic !== "all" && problem.primaryTopic !== state.topic) return false;
-    if (state.status !== "all" && problem.extractionStatus !== state.status) return false;
-    if (state.minRating !== "all" && Number(problem.rating || 0) < Number(state.minRating)) return false;
-    if (query && !problem.searchText.includes(query)) return false;
+    if (state.hasEditorial && !hasSolution(problem)) return false;
+    const rating = Number(problem.rating);
+    const minRating = parseRatingBoundary(state.minRating);
+    const maxRating = parseRatingBoundary(state.maxRating);
+    if (minRating !== null && (!Number.isFinite(rating) || rating < minRating)) return false;
+    if (maxRating !== null && (!Number.isFinite(rating) || rating > maxRating)) return false;
     return true;
   }
 
@@ -237,7 +223,7 @@
       .filter((contest) => state.contestType === "all" || contest.type === state.contestType)
       .map((contest) => ({
         ...contest,
-        problems: contest.problems.filter((problem) => problemMatches({ ...problem, contestName: contest.name, contestDate: contest.date, contestType: contest.type, searchText: problemByKey.get(problem.key)?.searchText || "" })),
+        problems: contest.problems.filter(problemMatches),
       }))
       .filter((contest) => contest.problems.length > 0);
 
@@ -252,30 +238,6 @@
 
   function visibleProblems() {
     return allProblems.filter(problemMatches);
-  }
-
-  function renderSummary() {
-    const summary = rawData.summary || {};
-    const metrics = [
-      ["竞赛", summary.contest_count],
-      ["题目", summary.total_problems],
-      ["有本地题解", summary.with_editorial_brief],
-      ["缺题解正文", summary.missing_editorial_brief],
-      ["人工覆写", summary.manual_override_count],
-      ["AI 摘要", summary.ai_override_count || 0],
-      ["大知识点", summary.primary_topic_count],
-      ["难度范围", `${summary.rating_min || "-"}-${summary.rating_max || "-"}`],
-    ];
-    elements.summaryPanel.innerHTML = metrics
-      .map(
-        ([label, value]) => `
-          <div class="metric">
-            <div class="metric-value">${escapeHtml(value)}</div>
-            <div class="metric-label">${escapeHtml(label)}</div>
-          </div>
-        `,
-      )
-      .join("");
   }
 
   function renderAccountControls() {
@@ -339,11 +301,9 @@
       ...rawData.topics.map((topic) => `<option value="${escapeHtml(topic)}">${escapeHtml(topic)} (${escapeHtml(rawData.topicCounts[topic] || 0)})</option>`),
     ].join("");
     elements.topicSelect.value = state.topic;
-    elements.minRatingSelect.innerHTML = ["all", 800, 1200, 1600, 1900, 2100, 2400, 2700, 3000]
-      .map((rating) => `<option value="${rating}">${rating === "all" ? "全部" : `${rating}+`}</option>`)
-      .join("");
-    elements.minRatingSelect.value = state.minRating;
-    elements.statusSelect.value = state.status;
+    elements.minRatingInput.value = state.minRating;
+    elements.maxRatingInput.value = state.maxRating;
+    elements.hasEditorialCheckbox.checked = state.hasEditorial;
     const typeCounts = new Map();
     for (const contest of rawData.contests) typeCounts.set(contest.type, (typeCounts.get(contest.type) || 0) + 1);
     const items = [{ type: "all", label: "全部", count: rawData.contests.length }].concat(
@@ -425,7 +385,7 @@
                 type="button" data-problem-key="${escapeHtml(problem.key)}" title="${escapeHtml(problem.title)}">
                 <div class="chip-head"><span><span class="chip-index">${escapeHtml(problem.index)}</span> <span class="${ratingClass(problem.rating)}">${escapeHtml(problem.rating || "N/A")}</span></span>${solved ? `<span class="solved-badge">${escapeHtml(solvedLabel)}</span>` : ""}</div>
                 <div class="chip-title ${ratingClass(problem.rating)}">${escapeHtml(problem.title)}</div>
-                <div class="chip-meta"><span>${escapeHtml(full.primaryTopic)}</span><span>${escapeHtml(statusText(problem.extractionStatus))}</span></div>
+                <div class="chip-meta"><span>${escapeHtml(full.primaryTopic)}</span><span>${escapeHtml(solutionStatusText(problem))}</span></div>
               </button>
             `;
           })
@@ -506,7 +466,7 @@
         </div>
         <div class="tag-row">
           ${tags.map((tag, index) => `<span class="tag ${index === 0 ? "topic" : ""}">${escapeHtml(tag)}</span>`).join("")}
-          <span class="tag ${problem.extractionStatus === "missing_editorial" ? "missing" : ""}">${escapeHtml(statusText(problem.extractionStatus))}</span>
+          <span class="tag ${hasSolution(problem) ? "" : "missing"}">${escapeHtml(solutionStatusText(problem))}</span>
           ${solvedHandles.length ? `<span class="tag solved-tag">${escapeHtml(solvedHandles.length > 1 ? `已通过 ${solvedHandles.length} 个账号` : `已通过 ${solvedHandles[0]}`)}</span>` : ""}
         </div>
         <section class="detail-section">
@@ -544,20 +504,20 @@
   }
 
   function bindEvents() {
-    elements.searchInput.addEventListener("input", () => {
-      state.query = elements.searchInput.value;
-      render();
-    });
     elements.topicSelect.addEventListener("change", () => {
       state.topic = elements.topicSelect.value;
       render();
     });
-    elements.minRatingSelect.addEventListener("change", () => {
-      state.minRating = elements.minRatingSelect.value;
+    elements.minRatingInput.addEventListener("input", () => {
+      state.minRating = elements.minRatingInput.value;
       render();
     });
-    elements.statusSelect.addEventListener("change", () => {
-      state.status = elements.statusSelect.value;
+    elements.maxRatingInput.addEventListener("input", () => {
+      state.maxRating = elements.maxRatingInput.value;
+      render();
+    });
+    elements.hasEditorialCheckbox.addEventListener("change", () => {
+      state.hasEditorial = elements.hasEditorialCheckbox.checked;
       render();
     });
     elements.sortSelect.addEventListener("change", () => {
@@ -633,7 +593,6 @@
     }
   }
 
-  renderSummary();
   renderControls();
   renderAccountControls();
   bindEvents();

@@ -117,33 +117,6 @@ a:hover {
   padding: 18px;
 }
 
-.summary {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.metric {
-  padding: 12px 14px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-}
-
-.metric-value {
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 1.1;
-}
-
-.metric-label {
-  margin-top: 4px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
 .filters,
 .contest-types,
 .table-toolbar {
@@ -154,11 +127,8 @@ a:hover {
 
 .filters {
   margin-bottom: 10px;
-  padding: 12px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  box-shadow: var(--shadow);
+  padding: 2px 0 10px;
+  border-bottom: 1px solid var(--line);
 }
 
 .filters label,
@@ -170,8 +140,12 @@ a:hover {
   font-weight: 700;
 }
 
-.search-wrap {
-  flex: 1 1 340px;
+.filters .checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  white-space: nowrap;
 }
 
 input,
@@ -184,6 +158,42 @@ select {
   color: var(--text);
 }
 
+.filters select {
+  min-width: 120px;
+  padding-right: 28px;
+  border-color: transparent;
+  border-radius: 0;
+  background: transparent;
+}
+
+.filters select:hover,
+.filters select:focus {
+  border-bottom-color: var(--blue);
+  outline: none;
+}
+
+.filters input[type="number"] {
+  width: 104px;
+  min-width: 104px;
+  border-width: 0 0 1px;
+  border-radius: 0;
+  background: transparent;
+}
+
+.filters input[type="number"]:hover,
+.filters input[type="number"]:focus {
+  border-bottom-color: var(--blue);
+  outline: none;
+}
+
+.filters input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  min-height: 16px;
+  margin: 0;
+  accent-color: var(--green);
+}
+
 .random-button,
 .type-button {
   min-height: 38px;
@@ -193,6 +203,18 @@ select {
   background: #ffffff;
   color: var(--text);
   cursor: pointer;
+}
+
+.filters .random-button {
+  border-color: transparent;
+  background: transparent;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.filters .random-button:hover {
+  border-color: transparent;
+  background: #edf4fc;
 }
 
 .random-button:hover,
@@ -257,7 +279,7 @@ select {
 }
 
 .table-scroll {
-  max-height: calc(100vh - 274px);
+  max-height: calc(100vh - 205px);
   overflow: auto;
 }
 
@@ -726,10 +748,6 @@ select {
 }
 
 @media (max-width: 1100px) {
-  .summary {
-    grid-template-columns: repeat(4, minmax(110px, 1fr));
-  }
-
   .content-grid {
     grid-template-columns: 1fr;
   }
@@ -749,14 +767,6 @@ select {
 
   .nav-links {
     margin-left: 0;
-  }
-
-  .source-note {
-    white-space: normal;
-  }
-
-  .summary {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .table-toolbar {

@@ -3,52 +3,40 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CFTracker 本地题解扩展</title>
+    <title>CF补完计划</title>
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
   </head>
   <body>
     <header class="navbar">
-      <a class="brand" href="https://cftracker.netlify.app/contests" target="_blank" rel="noreferrer">
+      <a class="brand" href="./">
         <span class="brand-mark">CF</span>
-        <span>CFTracker 本地题解扩展</span>
+        <span>CF补完计划</span>
       </a>
       <nav class="nav-links" aria-label="视图">
         <button class="nav-button is-active" type="button" data-view="contests">Contests</button>
         <button class="nav-button" type="button" data-view="topics">Topics</button>
         <button class="nav-button" id="accountsButton" type="button">绑定账号</button>
       </nav>
-      <div class="source-note">只使用本地题目 / 题解数据</div>
     </header>
 
     <main class="app">
-      <section class="summary" id="summaryPanel" aria-label="数据汇总"></section>
-
       <section class="filters" aria-label="筛选">
-        <label class="search-wrap">
-          <span>搜索</span>
-          <input id="searchInput" type="search" placeholder="题号、标题、题意、关键观察" autocomplete="off" />
-        </label>
         <label>
           <span>大知识点</span>
           <select id="topicSelect"></select>
         </label>
         <label>
           <span>难度下限</span>
-          <select id="minRatingSelect"></select>
+          <input id="minRatingInput" type="number" min="0" step="100" inputmode="numeric" placeholder="不限" />
         </label>
         <label>
-          <span>题解状态</span>
-          <select id="statusSelect">
-            <option value="all">全部</option>
-            <option value="manual_override">有本地题解</option>
-            <option value="ai_generated_with_editorial">AI 题解摘要</option>
-            <option value="ai_generated_partial_editorial">AI 部分题解</option>
-            <option value="missing_editorial">缺题解正文</option>
-            <option value="statement_only_missing_editorial">仅题意</option>
-            <option value="statement_derived">题面推导</option>
-            <option value="low_confidence">低置信度</option>
-          </select>
+          <span>难度上限</span>
+          <input id="maxRatingInput" type="number" min="0" step="100" inputmode="numeric" placeholder="不限" />
+        </label>
+        <label class="checkbox-label">
+          <input id="hasEditorialCheckbox" type="checkbox" />
+          <span>只看有题解</span>
         </label>
         <button id="randomButton" class="random-button" type="button">随机题目</button>
       </section>
