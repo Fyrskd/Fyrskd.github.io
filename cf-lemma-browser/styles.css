@@ -338,6 +338,16 @@ select {
   background: #f7faf9;
   border-left: 4px solid var(--accent);
   border-radius: 6px;
+  overflow-wrap: anywhere;
+}
+
+.statement .katex-display,
+.problem-card .katex-display {
+  max-width: 100%;
+  margin: 0.55em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 3px 0;
 }
 
 .problem-list {

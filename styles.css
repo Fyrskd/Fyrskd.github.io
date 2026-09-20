@@ -503,6 +503,15 @@ select {
 
 .detail-section p {
   margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.detail-section .katex-display {
+  max-width: 100%;
+  margin: 0.55em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 3px 0;
 }
 
 .observations {
