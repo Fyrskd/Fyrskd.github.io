@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-21",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 954,
-    "source_total_problems": 954,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 954,
-    "with_editorial_brief": 907,
-    "with_solution_brief": 908,
-    "missing_editorial_brief": 46,
+    "total_problems": 1128,
+    "source_total_problems": 1727,
+    "filtered_out_problems": 599,
+    "with_statement_brief": 1128,
+    "with_editorial_brief": 915,
+    "with_solution_brief": 916,
+    "missing_editorial_brief": 212,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 16,
+    "ai_override_count": 24,
     "primary_topic_count": 13,
-    "contest_count": 148,
+    "contest_count": 188,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -31,38 +31,38 @@ window.CF_INSIGHTS_DATA = {
   "topics": [
     "构造与贪心",
     "动态规划与状态设计",
+    "树结构",
     "数论与同余",
     "数据结构",
     "组合计数与概率",
-    "树结构",
-    "交互",
     "图论与网络流",
+    "交互",
     "字符串",
-    "基础实现与模拟",
     "博弈",
+    "基础实现与模拟",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 291,
-    "字符串": 41,
-    "数论与同余": 81,
-    "博弈": 38,
+    "字符串": 49,
+    "构造与贪心": 384,
+    "图论与网络流": 67,
+    "动态规划与状态设计": 107,
+    "几何": 21,
+    "数据结构": 84,
+    "博弈": 42,
+    "组合计数与概率": 83,
+    "树结构": 91,
+    "数论与同余": 89,
+    "交互": 61,
     "基础实现与模拟": 39,
-    "交互": 58,
-    "树结构": 68,
-    "数据结构": 79,
-    "动态规划与状态设计": 95,
-    "组合计数与概率": 76,
-    "图论与网络流": 58,
-    "几何": 19,
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 24,
+    "missing_editorial": 212,
     "manual_override": 891,
-    "missing_editorial": 46,
-    "statement_derived": 1,
-    "ai_generated_with_editorial": 16
+    "statement_derived": 1
   },
   "contestTypes": [
     "Div. 1",
@@ -19920,7 +19920,7 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/142960",
           "primaryTopic": "动态规划与状态设计",
           "secondaryTopics": [
-            "动态规划与状态设计",
+            "组合计数与概率",
             "字符串",
             "数论与同余"
           ],
@@ -31173,6 +31173,5025 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "关键观察：把矩阵格子先按支配关系压缩，再做简单版同样的倒推。忽略 a 中没出现的值；对每个相关值、每列记录最大行，形成可选前沿。随后从 a 的末尾往前维护下一层赢点能覆盖哪些右下区域，判断当前层是否存在必胜前沿格。",
           "extractionStatus": "manual_override",
           "editorialQuality": "partial"
+        }
+      ]
+    },
+    {
+      "id": 2007,
+      "name": "Codeforces Round 969 (Div. 2)",
+      "date": "2024-08-30",
+      "url": "https://codeforces.com/contest/2007",
+      "type": "Div. 2",
+      "problemCount": 3,
+      "maxRating": 1500,
+      "problems": [
+        {
+          "key": "2007A",
+          "index": "A",
+          "slot": "A",
+          "title": "Dora's Set",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2007/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Dora's Set；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "2007B",
+          "index": "B",
+          "slot": "B",
+          "title": "Index and Maximum Value",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2007/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Index and Maximum Value；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "2007C",
+          "index": "C",
+          "slot": "C",
+          "title": "Dora and C++",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2007/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "博弈",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Dora and C++；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 2006,
+      "name": "Codeforces Round 969 (Div. 1)",
+      "date": "2024-08-30",
+      "url": "https://codeforces.com/contest/2006",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "2006A",
+          "index": "A",
+          "slot": "A",
+          "title": "Iris and Game on the Tree",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/2006/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "图论与网络流",
+            "博弈"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "games",
+            "graphs",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Iris and Game on the Tree；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "2006B",
+          "index": "B",
+          "slot": "B",
+          "title": "Iris and the Tree",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2006/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Iris and the Tree；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "2006C",
+          "index": "C",
+          "slot": "C",
+          "title": "Eri and Expanded Sets",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/2006/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "math",
+            "number theory",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Eri and Expanded Sets；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "2006D",
+          "index": "D",
+          "slot": "D",
+          "title": "Iris and Adjacent Products",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/2006/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "博弈",
+            "交互"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Iris and Adjacent Products；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "2006E",
+          "index": "E",
+          "slot": "E",
+          "title": "Iris's Full Binary Tree",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/2006/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Iris's Full Binary Tree；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "2006F",
+          "index": "F",
+          "slot": "F",
+          "title": "Dora's Paint",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/2006/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "图论与网络流",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "constructive algorithms",
+            "graphs",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Dora's Paint；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 2003,
+      "name": "Codeforces Round 968 (Div. 2)",
+      "date": "2024-08-25",
+      "url": "https://codeforces.com/contest/2003",
+      "type": "Div. 2",
+      "problemCount": 8,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "2003A",
+          "index": "A",
+          "slot": "A",
+          "title": "Turtle and Good Strings",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2003/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：Turtle and Good Strings；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2003B",
+          "index": "B",
+          "slot": "B",
+          "title": "Turtle and Piggy Are Playing a Game 2",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2003/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "数据结构"
+          ],
+          "originalTags": [
+            "games",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Turtle and Piggy Are Playing a Game 2；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2003C",
+          "index": "C",
+          "slot": "C",
+          "title": "Turtle and Good Pairs",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2003/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：Turtle and Good Pairs；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2003D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Turtle and a MEX Problem (Easy Version)",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2003/problem/D1",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "博弈",
+            "数据结构"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Turtle and a MEX Problem (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2003D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Turtle and a MEX Problem (Hard Version)",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/2003/problem/D2",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "图论与网络流",
+            "树结构"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Turtle and a MEX Problem (Hard Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2003E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Turtle and Inversions (Easy Version)",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/2003/problem/E1",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "divide and conquer",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Turtle and Inversions (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2003E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Turtle and Inversions (Hard Version)",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/2003/problem/E2",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "dp",
+            "greedy",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Turtle and Inversions (Hard Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2003F",
+          "index": "F",
+          "slot": "F",
+          "title": "Turtle and Three Sequences",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/2003/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "math",
+            "probabilities",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Turtle and Three Sequences；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 2001,
+      "name": "Codeforces Round 967 (Div. 2)",
+      "date": "2024-08-20",
+      "url": "https://codeforces.com/contest/2001",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "2001A",
+          "index": "A",
+          "slot": "A",
+          "title": "Make All Equal",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2001/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/132965",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "博弈"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Make All Equal；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "2001B",
+          "index": "B",
+          "slot": "B",
+          "title": "Generate Permutation",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2001/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/132965",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "博弈",
+            "几何"
+          ],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "题面已抓取：Generate Permutation；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "2001C",
+          "index": "C",
+          "slot": "C",
+          "title": "Guess The Tree",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2001/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/132965",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "树结构",
+            "交互",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "dfs and similar",
+            "divide and conquer",
+            "dsu",
+            "greedy",
+            "interactive",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Guess The Tree；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "2001D",
+          "index": "D",
+          "slot": "D",
+          "title": "Longest Max Min Subsequence",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2001/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/132965",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Longest Max Min Subsequence；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "2001E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Deterministic Heap (Easy Version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/2001/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/132965",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Deterministic Heap (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "2001E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Deterministic Heap (Hard Version)",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/2001/problem/E2",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Deterministic Heap (Hard Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 2002,
+      "name": "EPIC Institute of Technology Round August 2024 (Div. 1 + Div. 2)",
+      "date": "2024-08-11",
+      "url": "https://codeforces.com/contest/2002",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 1,
+      "maxRating": 2300,
+      "problems": [
+        {
+          "key": "2002D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "DFS Checker (Hard Version)",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/2002/problem/D2",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数据结构",
+            "字符串"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "hashing",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：DFS Checker (Hard Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1998,
+      "name": "Codeforces Round 965 (Div. 2)",
+      "date": "2024-08-10",
+      "url": "https://codeforces.com/contest/1998",
+      "type": "Div. 2",
+      "problemCount": 1,
+      "maxRating": 2100,
+      "problems": [
+        {
+          "key": "1998D",
+          "index": "D",
+          "slot": "D",
+          "title": "Determine Winning Islands in Race",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1998/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "graphs",
+            "greedy",
+            "shortest paths"
+          ],
+          "statementBrief": "题面已抓取：Determine Winning Islands in Race；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1991,
+      "name": "Pinely Round 4 (Div. 1 + Div. 2)",
+      "date": "2024-07-28",
+      "url": "https://codeforces.com/contest/1991",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 8,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1991A",
+          "index": "A",
+          "slot": "A",
+          "title": "Maximize the Last Element",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1991/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/132018",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Maximize the Last Element；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1991B",
+          "index": "B",
+          "slot": "B",
+          "title": "AND Reconstruction",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1991/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/132018",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：AND Reconstruction；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1991C",
+          "index": "C",
+          "slot": "C",
+          "title": "Absolute Zero",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1991/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/132018",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Absolute Zero；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1991D",
+          "index": "D",
+          "slot": "D",
+          "title": "Prime XOR Coloring",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1991/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/132018",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数论与同余",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Prime XOR Coloring；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1991F",
+          "index": "F",
+          "slot": "F",
+          "title": "Triangle Formation",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1991/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "交互"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Triangle Formation；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1991G",
+          "index": "G",
+          "slot": "G",
+          "title": "Grid Reset",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1991/problem/G",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "几何"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Grid Reset；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1991H",
+          "index": "H",
+          "slot": "H",
+          "title": "Prime Split Game",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1991/problem/H",
+          "editorialUrl": "",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "博弈",
+            "数论与同余",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dp",
+            "fft",
+            "games",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Prime Split Game；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1991I",
+          "index": "I",
+          "slot": "I",
+          "title": "Grid Game",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1991/problem/I",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "图论与网络流",
+            "交互"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "games",
+            "graph matchings",
+            "greedy",
+            "interactive"
+          ],
+          "statementBrief": "题面已抓取：Grid Game；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1995,
+      "name": "Codeforces Round 961 (Div. 2)",
+      "date": "2024-07-23",
+      "url": "https://codeforces.com/contest/1995",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1995A",
+          "index": "A",
+          "slot": "A",
+          "title": "Diagonals",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1995/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/131847",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Diagonals；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1995B1",
+          "index": "B1",
+          "slot": "B",
+          "title": "Bouquet (Easy Version)",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1995/problem/B1",
+          "editorialUrl": "https://codeforces.com/blog/entry/131847",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Bouquet (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1995B2",
+          "index": "B2",
+          "slot": "B",
+          "title": "Bouquet (Hard Version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1995/problem/B2",
+          "editorialUrl": "https://codeforces.com/blog/entry/131847",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "math",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Bouquet (Hard Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1995C",
+          "index": "C",
+          "slot": "C",
+          "title": "Squaring",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1995/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/131847",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "博弈",
+            "几何"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Squaring；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1995D",
+          "index": "D",
+          "slot": "D",
+          "title": "Cases",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1995/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/131847",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "字符串",
+            "博弈"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：Cases；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1995E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Let Me Teach You a Lesson (Easy Version)",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1995/problem/E1",
+          "editorialUrl": "",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "2-sat",
+            "data structures",
+            "dp",
+            "matrices",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Let Me Teach You a Lesson (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1990,
+      "name": "Codeforces Round 960 (Div. 2)",
+      "date": "2024-07-20",
+      "url": "https://codeforces.com/contest/1990",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1990A",
+          "index": "A",
+          "slot": "A",
+          "title": "Submission Bait",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1990/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/131738",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "games",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Submission Bait；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1990B",
+          "index": "B",
+          "slot": "B",
+          "title": "Array Craft",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1990/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/131738",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Array Craft；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1990C",
+          "index": "C",
+          "slot": "C",
+          "title": "Mad MAD Sum",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1990/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/131738",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Mad MAD Sum；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1990D",
+          "index": "D",
+          "slot": "D",
+          "title": "Grid Puzzle",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1990/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/131738",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "博弈",
+            "几何"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Grid Puzzle；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1990E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Catch the Mole(Easy Version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1990/problem/E1",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "交互",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dfs and similar",
+            "interactive",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Catch the Mole(Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1990F",
+          "index": "F",
+          "slot": "F",
+          "title": "Polygonal Segments",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1990/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "几何"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "dp",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Polygonal Segments；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1994,
+      "name": "Codeforces Round 959 sponsored by NEAR (Div. 1 + Div. 2)",
+      "date": "2024-07-18",
+      "url": "https://codeforces.com/contest/1994",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 8,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1994A",
+          "index": "A",
+          "slot": "A",
+          "title": "Diverse Game",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1994/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/131642",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Diverse Game；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1994B",
+          "index": "B",
+          "slot": "B",
+          "title": "Fun Game",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1994/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/131642",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "博弈"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Fun Game；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1994C",
+          "index": "C",
+          "slot": "C",
+          "title": "Hungry Games",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1994/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/131642",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "组合计数与概率",
+            "博弈"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Hungry Games；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1994D",
+          "index": "D",
+          "slot": "D",
+          "title": "Funny Game",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1994/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/131642",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余",
+            "树结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dsu",
+            "graphs",
+            "greedy",
+            "math",
+            "number theory",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Funny Game；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1994E",
+          "index": "E",
+          "slot": "E",
+          "title": "Wooden Game",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1994/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/131642",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "动态规划与状态设计",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "greedy",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Wooden Game；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1994F",
+          "index": "F",
+          "slot": "F",
+          "title": "Stardew Valley",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1994/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/131642",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Stardew Valley；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1994G",
+          "index": "G",
+          "slot": "G",
+          "title": "Minecraft",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1994/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/131642",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心",
+            "博弈"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Minecraft；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1994H",
+          "index": "H",
+          "slot": "H",
+          "title": "Fortnite",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1994/problem/H",
+          "editorialUrl": "",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余",
+            "交互"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "games",
+            "greedy",
+            "hashing",
+            "interactive",
+            "math",
+            "number theory",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：Fortnite；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1983,
+      "name": "Codeforces Round 956 (Div. 2) and ByteRace 2024",
+      "date": "2024-07-07",
+      "url": "https://codeforces.com/contest/1983",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1983A",
+          "index": "A",
+          "slot": "A",
+          "title": "Array Divisibility",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1983/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Array Divisibility；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1983B",
+          "index": "B",
+          "slot": "B",
+          "title": "Corner Twist",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1983/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "几何"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Corner Twist；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1983C",
+          "index": "C",
+          "slot": "C",
+          "title": "Have Your Cake and Eat It Too",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1983/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Have Your Cake and Eat It Too；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1983D",
+          "index": "D",
+          "slot": "D",
+          "title": "Swap Dilemma",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1983/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "divide and conquer",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Swap Dilemma；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1983E",
+          "index": "E",
+          "slot": "E",
+          "title": "I Love Balls",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1983/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余",
+            "博弈"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "题面已抓取：I Love Balls；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1983F",
+          "index": "F",
+          "slot": "F",
+          "title": "array-value",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1983/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "博弈"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "data structures",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：array-value；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1983G",
+          "index": "G",
+          "slot": "G",
+          "title": "Your Loss",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1983/problem/G",
+          "editorialUrl": "",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Your Loss；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1984,
+      "name": "Codeforces Global Round 26",
+      "date": "2024-06-09",
+      "url": "https://codeforces.com/contest/1984",
+      "type": "Global",
+      "problemCount": 1,
+      "maxRating": 1300,
+      "problems": [
+        {
+          "key": "1984C1",
+          "index": "C1",
+          "slot": "C",
+          "title": "Magnitude (Easy Version)",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1984/problem/C1",
+          "editorialUrl": "https://codeforces.com/blog/entry/130252",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Magnitude (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1981,
+      "name": "Codeforces Round 949 (Div. 2)",
+      "date": "2024-05-31",
+      "url": "https://codeforces.com/contest/1981",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1981A",
+          "index": "A",
+          "slot": "A",
+          "title": "Turtle and Piggy Are Playing a Game",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1981/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Turtle and Piggy Are Playing a Game；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1981B",
+          "index": "B",
+          "slot": "B",
+          "title": "Turtle and an Infinite Sequence",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1981/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "交互"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Turtle and an Infinite Sequence；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1981C",
+          "index": "C",
+          "slot": "C",
+          "title": "Turtle and an Incomplete Sequence",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1981/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Turtle and an Incomplete Sequence；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1981D",
+          "index": "D",
+          "slot": "D",
+          "title": "Turtle and Multiplication",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1981/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "图论与网络流",
+            "树结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Turtle and Multiplication；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1981E",
+          "index": "E",
+          "slot": "E",
+          "title": "Turtle and Intersected Segments",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1981/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构",
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dsu",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Turtle and Intersected Segments；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1981F",
+          "index": "F",
+          "slot": "F",
+          "title": "Turtle and Paths on a Tree",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1981/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "动态规划与状态设计",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Turtle and Paths on a Tree；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1975,
+      "name": "Codeforces Round 947 (Div. 1 + Div. 2)",
+      "date": "2024-05-25",
+      "url": "https://codeforces.com/contest/1975",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 9,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1975A",
+          "index": "A",
+          "slot": "A",
+          "title": "Bazoka and Mocha's Array",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1975/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Bazoka and Mocha's Array；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1975B",
+          "index": "B",
+          "slot": "B",
+          "title": "378QAQ and Mocha's Array",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1975/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：378QAQ and Mocha's Array；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1975C",
+          "index": "C",
+          "slot": "C",
+          "title": "Chamo and Mocha's Array",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1975/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Chamo and Mocha's Array；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1975D",
+          "index": "D",
+          "slot": "D",
+          "title": "Paint the Tree",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1975/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "图论与网络流",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "shortest paths",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Paint the Tree；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1975E",
+          "index": "E",
+          "slot": "E",
+          "title": "Chain Queries",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1975/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dfs and similar",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Chain Queries；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1975F",
+          "index": "F",
+          "slot": "F",
+          "title": "Set",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1975/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "combinatorics",
+            "dfs and similar",
+            "divide and conquer",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Set；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1975G",
+          "index": "G",
+          "slot": "G",
+          "title": "Zimpha Fan Club",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1975/problem/G",
+          "editorialUrl": "",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "代数、矩阵与多项式",
+            "几何"
+          ],
+          "originalTags": [
+            "fft",
+            "greedy",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：Zimpha Fan Club；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1975H",
+          "index": "H",
+          "slot": "H",
+          "title": "378QAQ and Core",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1975/problem/H",
+          "editorialUrl": "",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：378QAQ and Core；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1975I",
+          "index": "I",
+          "slot": "I",
+          "title": "Mind Bloom",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1975/problem/I",
+          "editorialUrl": "",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "博弈",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "题面已抓取：Mind Bloom；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1956,
+      "name": "Codeforces Round 939 (Div. 2)",
+      "date": "2024-04-13",
+      "url": "https://codeforces.com/contest/1956",
+      "type": "Div. 2",
+      "problemCount": 1,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1956E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Nene vs. Monsters (Easy Version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1956/problem/E1",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Nene vs. Monsters (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1942,
+      "name": "CodeTON Round 8 (Div. 1 + Div. 2, Rated, Prizes!)",
+      "date": "2024-03-30",
+      "url": "https://codeforces.com/contest/1942",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 1,
+      "maxRating": 1300,
+      "problems": [
+        {
+          "key": "1942C1",
+          "index": "C1",
+          "slot": "C",
+          "title": "Bessie's Birthday Cake (Easy Version)",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1942/problem/C1",
+          "editorialUrl": "https://codeforces.com/blog/entry/126942",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何",
+            "组合计数与概率",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "geometry",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Bessie's Birthday Cake (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1935,
+      "name": "Codeforces Round 932 (Div. 2)",
+      "date": "2024-03-05",
+      "url": "https://codeforces.com/contest/1935",
+      "type": "Div. 2",
+      "problemCount": 1,
+      "maxRating": 800,
+      "problems": [
+        {
+          "key": "1935A",
+          "index": "A",
+          "slot": "A",
+          "title": "Entertainment in MAC",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1935/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：Entertainment in MAC；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1929,
+      "name": "Codeforces Round 926 (Div. 2)",
+      "date": "2024-02-15",
+      "url": "https://codeforces.com/contest/1929",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2300,
+      "problems": [
+        {
+          "key": "1929A",
+          "index": "A",
+          "slot": "A",
+          "title": "Sasha and the Beautiful Array",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1929/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Sasha and the Beautiful Array；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1929B",
+          "index": "B",
+          "slot": "B",
+          "title": "Sasha and the Drawing",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1929/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "几何"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Sasha and the Drawing；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1929C",
+          "index": "C",
+          "slot": "C",
+          "title": "Sasha and the Casino",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1929/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "constructive algorithms",
+            "games",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Sasha and the Casino；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1929D",
+          "index": "D",
+          "slot": "D",
+          "title": "Sasha and a Walk in the City",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1929/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Sasha and a Walk in the City；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1929E",
+          "index": "E",
+          "slot": "E",
+          "title": "Sasha and the Happy Tree Cutting",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1929/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "动态规划与状态设计",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "greedy",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Sasha and the Happy Tree Cutting；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1929F",
+          "index": "F",
+          "slot": "F",
+          "title": "Sasha and the Wedding Binary Search Tree",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1929/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "组合计数与概率",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "data structures",
+            "dfs and similar",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Sasha and the Wedding Binary Search Tree；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1919,
+      "name": "Hello 2024",
+      "date": "2024-01-06",
+      "url": "https://codeforces.com/contest/1919",
+      "type": "Others",
+      "problemCount": 9,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1919A",
+          "index": "A",
+          "slot": "A",
+          "title": "Wallet Exchange",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1919/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "games",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Wallet Exchange；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1919B",
+          "index": "B",
+          "slot": "B",
+          "title": "Plus-Minus Split",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1919/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "字符串",
+            "博弈"
+          ],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Plus-Minus Split；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1919C",
+          "index": "C",
+          "slot": "C",
+          "title": "Grouping Increases",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1919/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Grouping Increases；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1919D",
+          "index": "D",
+          "slot": "D",
+          "title": "01 Tree",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1919/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "树结构",
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dsu",
+            "greedy",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：01 Tree；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1919E",
+          "index": "E",
+          "slot": "E",
+          "title": "Counting Prefixes",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1919/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心",
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "dp",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Counting Prefixes；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1919F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Wine Factory (Easy Version)",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1919/problem/F1",
+          "editorialUrl": "",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Wine Factory (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1919F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Wine Factory (Hard Version)",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1919/problem/F2",
+          "editorialUrl": "",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "flows",
+            "greedy",
+            "matrices"
+          ],
+          "statementBrief": "题面已抓取：Wine Factory (Hard Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1919G",
+          "index": "G",
+          "slot": "G",
+          "title": "Tree LGM",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1919/problem/G",
+          "editorialUrl": "",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "divide and conquer",
+            "games",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Tree LGM；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1919H",
+          "index": "H",
+          "slot": "H",
+          "title": "Tree Diameter",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1919/problem/H",
+          "editorialUrl": "",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "树结构",
+            "图论与网络流",
+            "数据结构"
+          ],
+          "originalTags": [
+            "interactive",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Tree Diameter；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1916,
+      "name": "Good Bye 2023",
+      "date": "2023-12-30",
+      "url": "https://codeforces.com/contest/1916",
+      "type": "Others",
+      "problemCount": 9,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1916A",
+          "index": "A",
+          "slot": "A",
+          "title": "2023",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1916/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：2023；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1916B",
+          "index": "B",
+          "slot": "B",
+          "title": "Two Divisors",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1916/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Two Divisors；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1916C",
+          "index": "C",
+          "slot": "C",
+          "title": "Training Before the Olympiad",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1916/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "字符串",
+            "交互"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "games",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Training Before the Olympiad；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1916D",
+          "index": "D",
+          "slot": "D",
+          "title": "Mathematical Problem",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1916/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何",
+            "数据结构",
+            "交互"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "geometry",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Mathematical Problem；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1916E",
+          "index": "E",
+          "slot": "E",
+          "title": "Happy Life in University",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1916/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Happy Life in University；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1916F",
+          "index": "F",
+          "slot": "F",
+          "title": "Group Division",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1916/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "树结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Group Division；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1916G",
+          "index": "G",
+          "slot": "G",
+          "title": "Optimizations From Chelsu",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1916/problem/G",
+          "editorialUrl": "",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "树结构",
+            "动态规划与状态设计",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "divide and conquer",
+            "dp",
+            "number theory",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Optimizations From Chelsu；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1916H1",
+          "index": "H1",
+          "slot": "H",
+          "title": "Matrix Rank (Easy Version)",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1916/problem/H1",
+          "editorialUrl": "",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "dp",
+            "math",
+            "matrices"
+          ],
+          "statementBrief": "题面已抓取：Matrix Rank (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1916H2",
+          "index": "H2",
+          "slot": "H",
+          "title": "Matrix Rank (Hard Version)",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1916/problem/H2",
+          "editorialUrl": "",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "字符串",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "matrices",
+            "string suffix structures"
+          ],
+          "statementBrief": "题面已抓取：Matrix Rank (Hard Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1896,
+      "name": "CodeTON Round 7 (Div. 1 + Div. 2, Rated, Prizes!)",
+      "date": "2023-11-25",
+      "url": "https://codeforces.com/contest/1896",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 1,
+      "maxRating": 3400,
+      "problems": [
+        {
+          "key": "1896H1",
+          "index": "H1",
+          "slot": "H",
+          "title": "Cyclic Hamming (Easy Version)",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1896/problem/H1",
+          "editorialUrl": "",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "brute force",
+            "divide and conquer",
+            "dp",
+            "fft",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Cyclic Hamming (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1891,
+      "name": "Codeforces Round 907 (Div. 2)",
+      "date": "2023-10-30",
+      "url": "https://codeforces.com/contest/1891",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1891A",
+          "index": "A",
+          "slot": "A",
+          "title": "Sorting with Twos",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1891/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Sorting with Twos；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1891B",
+          "index": "B",
+          "slot": "B",
+          "title": "Deja Vu",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1891/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Deja Vu；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1891C",
+          "index": "C",
+          "slot": "C",
+          "title": "Smilo and Monsters",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1891/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "组合计数与概率",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Smilo and Monsters；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1891D",
+          "index": "D",
+          "slot": "D",
+          "title": "Suspicious logarithms",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1891/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构",
+            "交互"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Suspicious logarithms；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1891E",
+          "index": "E",
+          "slot": "E",
+          "title": "Brukhovich and Exams",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1891/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "图论与网络流",
+            "博弈"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Brukhovich and Exams；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1891F",
+          "index": "F",
+          "slot": "F",
+          "title": "A Growing Tree",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1891/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：A Growing Tree；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1883,
+      "name": "Codeforces Round 905 (Div. 3)",
+      "date": "2023-10-22",
+      "url": "https://codeforces.com/contest/1883",
+      "type": "Div. 3",
+      "problemCount": 1,
+      "maxRating": 1400,
+      "problems": [
+        {
+          "key": "1883G1",
+          "index": "G1",
+          "slot": "G",
+          "title": "Dances (Easy version)",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1883/problem/G1",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Dances (Easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1867,
+      "name": "Codeforces Round 897 (Div. 2)",
+      "date": "2023-09-11",
+      "url": "https://codeforces.com/contest/1867",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1867A",
+          "index": "A",
+          "slot": "A",
+          "title": "green_gold_dog, array and permutation",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1867/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：green_gold_dog, array and permutation；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1867B",
+          "index": "B",
+          "slot": "B",
+          "title": "XOR Palindromes",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1867/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：XOR Palindromes；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1867C",
+          "index": "C",
+          "slot": "C",
+          "title": "Salyg1n and the MEX Game",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1867/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "交互",
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "games",
+            "greedy",
+            "interactive"
+          ],
+          "statementBrief": "题面已抓取：Salyg1n and the MEX Game；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1867D",
+          "index": "D",
+          "slot": "D",
+          "title": "Cyclic Operations",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1867/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "树结构",
+            "交互"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Cyclic Operations；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1867E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Salyg1n and Array (simple version)",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1867/problem/E1",
+          "editorialUrl": "",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心",
+            "博弈",
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Salyg1n and Array (simple version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1867E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Salyg1n and Array (hard version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1867/problem/E2",
+          "editorialUrl": "",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心",
+            "博弈",
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "interactive"
+          ],
+          "statementBrief": "题面已抓取：Salyg1n and Array (hard version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1867F",
+          "index": "F",
+          "slot": "F",
+          "title": "Most Different Tree",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1867/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "树结构",
+            "字符串",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "greedy",
+            "hashing"
+          ],
+          "statementBrief": "题面已抓取：Most Different Tree；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1863,
+      "name": "Pinely Round 2 (Div. 1 + Div. 2)",
+      "date": "2023-08-30",
+      "url": "https://codeforces.com/contest/1863",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 9,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1863A",
+          "index": "A",
+          "slot": "A",
+          "title": "Channel",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1863/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "图论与网络流",
+            "几何"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Channel；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1863B",
+          "index": "B",
+          "slot": "B",
+          "title": "Split Sort",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1863/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "博弈"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Split Sort；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1863C",
+          "index": "C",
+          "slot": "C",
+          "title": "MEX Repetition",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1863/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "博弈"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：MEX Repetition；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1863D",
+          "index": "D",
+          "slot": "D",
+          "title": "Two-Colored Dominoes",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1863/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Two-Colored Dominoes；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1863E",
+          "index": "E",
+          "slot": "E",
+          "title": "Speedrun",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1863/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "图论与网络流",
+            "树结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "greedy",
+            "math",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Speedrun；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1863F",
+          "index": "F",
+          "slot": "F",
+          "title": "Divide, XOR, and Conquer",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1863/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "字符串",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Divide, XOR, and Conquer；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1863G",
+          "index": "G",
+          "slot": "G",
+          "title": "Swaps",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1863/problem/G",
+          "editorialUrl": "",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "图论与网络流",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Swaps；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1863H",
+          "index": "H",
+          "slot": "H",
+          "title": "Goldberg Machine 3",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1863/problem/H",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Goldberg Machine 3；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1863I",
+          "index": "I",
+          "slot": "I",
+          "title": "Redundant Routes",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1863/problem/I",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Redundant Routes；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1864,
+      "name": "Harbour.Space Scholarship Contest 2023-2024 (Div. 1 + Div. 2)",
+      "date": "2023-08-26",
+      "url": "https://codeforces.com/contest/1864",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 9,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1864A",
+          "index": "A",
+          "slot": "A",
+          "title": "Increasing and Decreasing",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1864/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "交互"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Increasing and Decreasing；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1864B",
+          "index": "B",
+          "slot": "B",
+          "title": "Swap and Reverse",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1864/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "数论与同余",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：Swap and Reverse；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1864C",
+          "index": "C",
+          "slot": "C",
+          "title": "Divisor Chain",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1864/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Divisor Chain；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1864D",
+          "index": "D",
+          "slot": "D",
+          "title": "Matrix Cascade",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1864/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "data structures",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Matrix Cascade；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1864E",
+          "index": "E",
+          "slot": "E",
+          "title": "Guess Game",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1864/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数据结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "games",
+            "math",
+            "probabilities",
+            "sortings",
+            "strings",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Guess Game；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1864F",
+          "index": "F",
+          "slot": "F",
+          "title": "Exotic Queries",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1864/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "博弈",
+            "交互"
+          ],
+          "originalTags": [
+            "data structures",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Exotic Queries；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1864G",
+          "index": "G",
+          "slot": "G",
+          "title": "Magic Square",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1864/problem/G",
+          "editorialUrl": "",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Magic Square；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1864H",
+          "index": "H",
+          "slot": "H",
+          "title": "Asterism Stream",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1864/problem/H",
+          "editorialUrl": "",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "代数、矩阵与多项式",
+            "数论与同余",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "dp",
+            "math",
+            "matrices"
+          ],
+          "statementBrief": "题面已抓取：Asterism Stream；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1864I",
+          "index": "I",
+          "slot": "I",
+          "title": "Future Dominators",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1864/problem/I",
+          "editorialUrl": "",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "组合计数与概率",
+            "交互"
+          ],
+          "originalTags": [
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Future Dominators；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1858,
+      "name": "Codeforces Round 893 (Div. 2)",
+      "date": "2023-08-15",
+      "url": "https://codeforces.com/contest/1858",
+      "type": "Div. 2",
+      "problemCount": 1,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1858E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Rollbacks (Easy Version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1858/problem/E1",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心",
+            "几何"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Rollbacks (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1859,
+      "name": "Codeforces Round 892 (Div. 2)",
+      "date": "2023-08-12",
+      "url": "https://codeforces.com/contest/1859",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 3200,
+      "problems": [
+        {
+          "key": "1859A",
+          "index": "A",
+          "slot": "A",
+          "title": "United We Stand",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1859/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：United We Stand；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1859B",
+          "index": "B",
+          "slot": "B",
+          "title": "Olya and Game with Arrays",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1859/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Olya and Game with Arrays；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1859C",
+          "index": "C",
+          "slot": "C",
+          "title": "Another Permutation Problem",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1859/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "组合计数与概率",
+            "交互"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Another Permutation Problem；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1859D",
+          "index": "D",
+          "slot": "D",
+          "title": "Andrey and Escape from Capygrad",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1859/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "图论与网络流",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "dsu",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Andrey and Escape from Capygrad；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1859E",
+          "index": "E",
+          "slot": "E",
+          "title": "Maximum Monogonosity",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1859/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Maximum Monogonosity；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1859F",
+          "index": "F",
+          "slot": "F",
+          "title": "Teleportation in Byteland",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1859/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "数据结构",
+            "博弈"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "divide and conquer",
+            "graphs",
+            "shortest paths",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Teleportation in Byteland；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1827,
+      "name": "Codeforces Round 873 (Div. 1)",
+      "date": "2023-05-14",
+      "url": "https://codeforces.com/contest/1827",
+      "type": "Div. 1",
+      "problemCount": 1,
+      "maxRating": 2000,
+      "problems": [
+        {
+          "key": "1827B1",
+          "index": "B1",
+          "slot": "B",
+          "title": "Range Sorting (Easy Version)",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1827/problem/B1",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "动态规划与状态设计",
+            "树结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "dsu",
+            "greedy",
+            "trees",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Range Sorting (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1825,
+      "name": "Codeforces Round 872 (Div. 2)",
+      "date": "2023-05-08",
+      "url": "https://codeforces.com/contest/1825",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1000,
+      "problems": [
+        {
+          "key": "1825A",
+          "index": "A",
+          "slot": "A",
+          "title": "LuoTianyi and the Palindrome String",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1825/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：LuoTianyi and the Palindrome String；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1825B",
+          "index": "B",
+          "slot": "B",
+          "title": "LuoTianyi and the Table",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1825/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "交互"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：LuoTianyi and the Table；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1824,
+      "name": "Codeforces Round 872 (Div. 1)",
+      "date": "2023-05-08",
+      "url": "https://codeforces.com/contest/1824",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1824A",
+          "index": "A",
+          "slot": "A",
+          "title": "LuoTianyi and the Show",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1824/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：LuoTianyi and the Show；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1824B1",
+          "index": "B1",
+          "slot": "B",
+          "title": "LuoTianyi and the Floating Islands (Easy Version)",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1824/problem/B1",
+          "editorialUrl": "",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "树结构",
+            "数论与同余",
+            "博弈"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "probabilities",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：LuoTianyi and the Floating Islands (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1824B2",
+          "index": "B2",
+          "slot": "B",
+          "title": "LuoTianyi and the Floating Islands (Hard Version)",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1824/problem/B2",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数论与同余",
+            "博弈"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dfs and similar",
+            "math",
+            "probabilities",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：LuoTianyi and the Floating Islands (Hard Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1824C",
+          "index": "C",
+          "slot": "C",
+          "title": "LuoTianyi and XOR-Tree",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1824/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：LuoTianyi and XOR-Tree；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1824D",
+          "index": "D",
+          "slot": "D",
+          "title": "LuoTianyi and the Function",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1824/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "交互"
+          ],
+          "originalTags": [
+            "data structures"
+          ],
+          "statementBrief": "题面已抓取：LuoTianyi and the Function；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1824E",
+          "index": "E",
+          "slot": "E",
+          "title": "LuoTianyi and Cartridge",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1824/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：LuoTianyi and Cartridge；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1805,
+      "name": "Codeforces Round 862 (Div. 2)",
+      "date": "2023-04-02",
+      "url": "https://codeforces.com/contest/1805",
+      "type": "Div. 2",
+      "problemCount": 1,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1805F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Survival of the Weakest (easy version)",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1805/problem/F1",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "implementation",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Survival of the Weakest (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1806,
+      "name": "Codeforces Round 858 (Div. 2)",
+      "date": "2023-03-18",
+      "url": "https://codeforces.com/contest/1806",
+      "type": "Div. 2",
+      "problemCount": 1,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1806F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "GCD Master (easy version)",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1806/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/114048",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：GCD Master (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        }
+      ]
+    },
+    {
+      "id": 1799,
+      "name": "Codeforces Round 854 by cybercats (Div. 1 + Div. 2)",
+      "date": "2023-02-27",
+      "url": "https://codeforces.com/contest/1799",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 1,
+      "maxRating": 1900,
+      "problems": [
+        {
+          "key": "1799D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Hot Start Up (easy version)",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1799/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/113321",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流",
+            "博弈",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "题面已抓取：Hot Start Up (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1793,
+      "name": "Codeforces Round 852 (Div. 2)",
+      "date": "2023-02-12",
+      "url": "https://codeforces.com/contest/1793",
+      "type": "Div. 2",
+      "problemCount": 5,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1793A",
+          "index": "A",
+          "slot": "A",
+          "title": "Yet Another Promotion",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1793/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/112723",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Yet Another Promotion；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1793B",
+          "index": "B",
+          "slot": "B",
+          "title": "Fedya and Array",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1793/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/112723",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "博弈",
+            "几何"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Fedya and Array；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1793C",
+          "index": "C",
+          "slot": "C",
+          "title": "Dora and Search",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1793/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/112723",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "组合计数与概率",
+            "博弈"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Dora and Search；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1793D",
+          "index": "D",
+          "slot": "D",
+          "title": "Moscow Gorillas",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1793/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/112723",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "组合计数与概率",
+            "博弈"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "greedy",
+            "implementation",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Moscow Gorillas；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1793E",
+          "index": "E",
+          "slot": "E",
+          "title": "Velepin and Marketing",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1793/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/112723",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Velepin and Marketing；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1786,
+      "name": "Codeforces Round 850 (Div. 2, based on VK Cup 2022 - Final Round)",
+      "date": "2023-02-05",
+      "url": "https://codeforces.com/contest/1786",
+      "type": "Div. 2",
+      "problemCount": 1,
+      "maxRating": 800,
+      "problems": [
+        {
+          "key": "1786A1",
+          "index": "A1",
+          "slot": "A",
+          "title": "Non-alternating Deck (easy version)",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1786/problem/A1",
+          "editorialUrl": "https://codeforces.com/blog/entry/112875",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Non-alternating Deck (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1784,
+      "name": "VK Cup 2022 - Финальный раунд (Engine)",
+      "date": "2023-02-05",
+      "url": "https://codeforces.com/contest/1784",
+      "type": "Others",
+      "problemCount": 2,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1784A",
+          "index": "A",
+          "slot": "A",
+          "title": "Monsters (easy version)",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1784/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/112875",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "几何"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Monsters (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1784C",
+          "index": "C",
+          "slot": "C",
+          "title": "Monsters (hard version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1784/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/112875",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "字符串",
+            "博弈"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Monsters (hard version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1787,
+      "name": "TypeDB Forces 2023 (Div. 1 + Div. 2, Rated, Prizes!)",
+      "date": "2023-01-29",
+      "url": "https://codeforces.com/contest/1787",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 1,
+      "maxRating": 3400,
+      "problems": [
+        {
+          "key": "1787I",
+          "index": "I",
+          "slot": "I",
+          "title": "Treasure Hunt",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1787/problem/I",
+          "editorialUrl": "https://codeforces.com/blog/entry/112009",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Treasure Hunt；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1781,
+      "name": "VK Cup 2022 - Отборочный раунд (Engine)",
+      "date": "2023-01-15",
+      "url": "https://codeforces.com/contest/1781",
+      "type": "Others",
+      "problemCount": 2,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1781H1",
+          "index": "H1",
+          "slot": "H",
+          "title": "Window Signals (easy version)",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1781/problem/H1",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [],
+          "statementBrief": "题面已抓取：Window Signals (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1781H2",
+          "index": "H2",
+          "slot": "H",
+          "title": "Window Signals (hard version)",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1781/problem/H2",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [],
+          "statementBrief": "题面已抓取：Window Signals (hard version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1779,
+      "name": "Hello 2023",
+      "date": "2023-01-03",
+      "url": "https://codeforces.com/contest/1779",
+      "type": "Others",
+      "problemCount": 8,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1779A",
+          "index": "A",
+          "slot": "A",
+          "title": "Hall of Fame",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1779/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/110629",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "有 $n$ 个奖杯和对应的灯，字符串中的 `L` 表示灯照向左、`R` 表示照向右，且灯不照亮紧邻自己的奖杯。最多交换一次相邻两盏灯的位置（不改变方向），要求所有奖杯都被至少一盏灯照亮；输出不操作的 `0`、应交换的左端下标，或无解的 `-1`。",
+          "transformedStatement": "把全覆盖条件转化为寻找相邻的 `RL`：它的两盏灯分别覆盖左侧和右侧全部范围。原串没有 `RL` 时，只需把任意相邻的 `LR` 交换成 `RL`；若连异号相邻对都没有，则只能是统一字符串。",
+          "keyObservations": [
+            "相邻出现 `RL` 时，左侧灯向右、右侧灯向左，二者合起来覆盖全部奖杯，因此无需操作。",
+            "若不存在 `RL` 但存在 `LR`，交换这两个相邻灯后即可得到 `RL`，从而一次操作完成全覆盖。",
+            "若 `L` 与 `R` 从未相邻，则整串只能是全 `L` 或全 `R`；交换相同方向的灯没有效果，因此必然无解。"
+          ],
+          "solutionBrief": "扫描字符串：有 `RL` 就输出 `0`；否则找到任意 `LR`，输出其左端下标并交换；若两种字符都未形成相邻异号对，则输出 `-1`。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1779B",
+          "index": "B",
+          "slot": "B",
+          "title": "MKnez's ConstructiveForces Task",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1779/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/110629",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定长度 $n$，构造一个每个元素均为非零整数的数组，使每一对相邻元素之和都等于整个数组的总和；若不存在则报告无解。元素还必须位于 $[-5000,5000]$ 内，并输出任意一种合法数组。",
+          "transformedStatement": "先比较相邻位置的两个约束，得到数组满足 $s_{i-1}=s_{i+1}$，从而按奇偶性分类：偶数长度可用零总和交替序列，奇数长度归结为求两个交替值 $a,b$ 的线性方程并检查非零性。",
+          "keyObservations": [
+            "当 $n$ 为偶数时，交替放置 $-1,1$ 使总和与每个相邻二元组之和都为 $0$，因此必然可行。",
+            "相邻区间和相等会推出 $s_{i-1}=s_{i+1}$，所以奇数长度数组只能呈现两个数交替出现的形式。",
+            "令奇数 $n=2k+1$，交替数组的条件化为 $ka+(k-1)b=0$；取 $a=k-1,b=-k$ 可在 $k\\ge2$ 时保证两种数都非零。",
+            "当 $n=3$ 时上述方程强制 $a=0$，违反元素非零限制，因此无解。"
+          ],
+          "solutionBrief": "按 $n$ 分类构造：偶数输出交替的 $-1,1$；奇数且 $n\\ge5$ 令 $k=(n-1)/2$，输出 $k-1,-k$ 交替并以 $k-1$ 结尾；$n=3$ 输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1779C",
+          "index": "C",
+          "slot": "C",
+          "title": "Least Prefix Sum",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1779/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/110629",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定数组和位置 $m$，每次可任选一个元素并将其变号。要求第 $m$ 个非空前缀和不大于所有前缀和，求达到这一条件所需的最少变号操作次数。",
+          "transformedStatement": "令 $p_i$ 表示前 $i$ 个元素之和，把问题转化为消除左侧满足 $p_i<p_m$ 的前缀以及右侧低于 $p_m$ 的前缀；两部分分别通过最有利的单次翻转独立修复。",
+          "keyObservations": [
+            "左侧若有前缀和低于当前 $p_m$，取最靠近 $m$ 的违规位置；翻转区间内最大的元素可使 $p_m$ 下降最多，重复处理直到该侧无违规。",
+            "右侧违规时，翻转区间 $[m+1,x]$ 中最小的元素可使对应的右侧前缀和上升最多，因此左右两侧可分别用对称贪心修复。",
+            "从 $m$ 向左扫描并维护候选元素的最大堆；当 $p_i<p_m$ 时弹出堆顶并令 $p_m$ 减少 $2a_i$，其余前缀和无需更新。",
+            "每次选择能最大幅度修复当前违规的元素，任何其他选择都不会用更少操作达到同样的修复幅度，因此堆模拟得到最少翻转次数。"
+          ],
+          "solutionBrief": "记前缀和为 $p_i$。左右两侧独立处理：左侧从 $m$ 向左扫描，用最大堆在出现 $p_i<p_m$ 时翻转最大元素并更新 $p_m$；右侧对称使用最小堆提升违规前缀。两侧翻转次数之和即答案，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1779D",
+          "index": "D",
+          "slot": "D",
+          "title": "Boris and His Amazing Haircut",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1779/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/110629",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dp",
+            "dsu",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定当前发长数组 $a$、目标数组 $b$ 和若干只能各使用一次的剃刀。每次选择一把尺寸为 $x$ 的未使用剃刀及一个连续区间，把区间内每项改为 $\\min(a_i,x)$；可停止使用任意剃刀，判断能否恰好得到 $b$。",
+          "transformedStatement": "把问题转化为：从右向左决定哪些位置必须由尺寸等于目标值的剪切覆盖，并让一次剪切尽量向左延伸；单调栈维护仍可覆盖当前位置的操作，最后只需检查所需尺寸的多重集合是否被剃刀库存包含。",
+          "keyObservations": [
+            "若存在 $a_i<b_i$，任何操作只会降低发长，因此该位置不可能达到目标，答案必为 NO。",
+            "从右向左处理时，若当前位置需要下降到 $b_i$，必须使用尺寸为 $b_i$ 的剃刀；可将区间向左尽量扩展，只要覆盖位置的目标值不低于该尺寸。",
+            "维护当前仍可能覆盖当前位置的单调栈：栈顶尺寸小于 $b_i$ 时必须移除，否则会把某些位置剪得过短；若栈顶等于 $b_i$，当前位置可由已有操作满足。",
+            "记录所有必须使用的剃刀尺寸并与给定剃刀 multiset 比较，逐个尺寸检查需求次数不超过库存次数即可完成可行性判定。"
+          ],
+          "solutionBrief": "先检查所有 $a_i\\ge b_i$，再从右向左用单调栈确定必须执行的目标尺寸操作，并统计各尺寸需求；最后与剃刀库存按 multiset 比较。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1779E",
+          "index": "E",
+          "slot": "E",
+          "title": "Anya's Simultaneous Exhibition",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1779/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/110629",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "交互",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "interactive",
+            "sortings"
+          ],
+          "statementBrief": "给定一个任意的锦标赛关系：每对玩家中恰有一人能稳定击败另一人。正式比赛每次选两人，胜者留下、败者淘汰，共进行 $n-1$ 次；能通过某种选人顺序成为最后胜者的玩家称为候选大师。你最多可进行 $2n$ 次模拟，每次指定一名玩家与若干其他玩家对局，只获知其总胜场且不淘汰任何人，要求找出所有候选大师。",
+          "transformedStatement": "把玩家视为锦标赛有向图的顶点，胜者指向败者；候选大师等价于能沿有向路径到达所有顶点的玩家。问题进一步转化为通过模拟恢复出度，并找出出度不小于候选阈值 $w$ 的全部顶点。",
+          "keyObservations": [
+            "一个玩家能成为最终胜者，当且仅当它在比赛图中能沿有向边到达所有玩家；因此候选资格可转化为有向可达性。",
+            "锦标赛图的强连通分量按拓扑顺序排列时，最上方分量恰好是候选大师集合，且其中每个玩家的出度都严格高于其他分量玩家，从而候选集合等价于出度不小于某个阈值 $w$ 的玩家。",
+            "出度最高的玩家能在至多两条边内到达所有其他玩家，因此只需比较所有玩家的出度即可先找到一个候选大师。",
+            "按出度降序处理玩家，并用额外模拟判断新玩家是否击败当前候选集合中的至少一人；一旦确认候选边界，就能同步纳入边界之间的玩家，避免为每个玩家单独验证完整可达性。"
+          ],
+          "solutionBrief": "先让每名玩家与其余所有人进行一次模拟，得到全部出度并取最大者作为候选。再按出度降序，用至多 $n$ 次模拟定位阈值 $w$，输出所有出度不小于 $w$ 的玩家。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1779F",
+          "index": "F",
+          "slot": "F",
+          "title": "Xorcerer's Stones",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1779/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/110629",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根的树，每个节点有若干石子。一次施法可选一个节点，求其整棵子树内所有石子的异或值，并把该子树每个节点的石子数都改成这个值；最多施法 $2n$ 次，要求清空所有节点，否则输出 $-1$。",
+          "transformedStatement": "把一次偶数大小子树的施法看成将该子树对全树异或和的贡献删除；需要选取两两不存在祖先关系的偶数子树，使被删除的异或值等于当前全树异或和，随后根施法即可清空全树。",
+          "keyObservations": [
+            "若整棵树的异或和为 $0$，对根施法后所有节点都变为 $0$，因此问题可先化为让全树异或和归零。",
+            "对大小为偶数的子树施法后，该子树内部总异或变为 $0$，全树异或和恰好减少原子树异或值；奇数子树施法既不改变全树异或和，也会使其内部后续施法失去作用。",
+            "两个被选子树若存在祖先关系，前面的操作会被后面的操作抵消或变得无意义，所以只需选择两两互不为祖先的偶数子树。",
+            "在树上维护每个子树可获得的 $32$ 种异或值，合并子树时进行异或背包并记录选择，找到异或值等于根当前异或和的方案即可使全树归零。"
+          ],
+          "solutionBrief": "先处理全树异或和为 $0$ 或节点数为偶数的特例。否则在树上做 $32$ 状态异或背包，选择两两不可比的偶数子树，使其异或和等于全树异或和；依次施法后再对根施法即可，无法重构则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1779G",
+          "index": "G",
+          "slot": "G",
+          "title": "The Game of the Century",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1779/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/110629",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定由单位三角形组成的三角形道路网格，每条道路的所有单位路段有统一单向方向。可以翻转任意单位路段的方向，要求使任意两个交点之间都能互相到达，并求最少翻转数。",
+          "transformedStatement": "先看三条外边的方向：若一致，网格已满足强连通；否则把问题转化为为现有的“源点可达、汇点可达”结构补一条从汇点到源点的最小代价路径，其中沿原方向走代价为 $0$，逆向走代价为 $1$。",
+          "keyObservations": [
+            "当三条外边方向一致时，整个三角网格已经强连通，因此无需翻转任何路段。",
+            "方向不一致时，可将顶点标为 $A,B,C$，使所有交点都能从 $A$ 到达、且都能到达 $C$；因此只需额外建立一条 $C\\to A$ 的路径即可形成覆盖每个交点的有向环。",
+            "把待寻找的 $C\\to A$ 路径上的原方向边赋权 $0$、需要翻转的边赋权 $1$，答案就等于该图中的最短路长度。",
+            "最短路只需考虑靠近大三角形边界、且分别代表两种方向的六条道路；这些道路上的交点构成规模 $O(n)$ 的图，可用 $0$-$1$ BFS 求解。"
+          ],
+          "solutionBrief": "先判断三条外边方向是否一致；一致时答案为 $0$。否则确定唯一需要补上的 $C\\to A$ 方向，将六条关键道路上的边按是否需要翻转赋权 $0/1$，在规模 $O(n)$ 的图上运行 $0$-$1$ BFS，最短路长度即最少翻转数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1779H",
+          "index": "H",
+          "slot": "H",
+          "title": "Olympic Team Building",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1779/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/110629",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "meet-in-the-middle"
+          ],
+          "statementBrief": "给定 $n$ 名玩家及各自强度，反复把当前玩家等分成两队，强队获胜、败队全部淘汰；若两队同强则由 Iron 选择胜队。每轮规模减半，要求判断每名玩家是否可能通过选择分组和同强时的胜队成为最终唯一胜者。",
+          "transformedStatement": "从最终胜者的单元素集合开始逆推：每次向当前集合加入同样大小的未选玩家集合，且新增集合的强度和不超过当前集合，即可还原一次正向胜负。问题转化为判断每个单元素集合能否经过这些扩展覆盖全部玩家。",
+          "keyObservations": [
+            "把正向淘汰反过来看，当前规模为 $k$ 的幸存集合 $A$ 可加入同样大小的集合 $B$，当且仅当其总强度满足 $\\sum B\\leq\\sum A$，这样就对应 $A$ 击败 $B$。",
+            "若集合 $A$ 能扩展至全体玩家，且存在逐元素不小于 $A$ 的集合 $B$，则 $B$ 也能扩展成功；该支配关系允许删去无用状态，并使候选强度具有单调性。",
+            "固定一个候选玩家后，只保留支配关系下的极小代表集合；从规模 $2$ 扩展到规模 $4$、$8$ 时持续剔除被支配状态，使待处理集合数量控制在约 $8000$ 个以内。",
+            "规模 $8$ 的集合最后只需与剩余玩家中总强度最大的可行 $8$ 人组配对；这个 $8$-元素和问题在至多 $24$ 个元素上用折半枚举处理。"
+          ],
+          "solutionBrief": "将淘汰过程逆推为等规模集合的扩展，用支配关系筛掉不必要的候选。按规模 $1\\to2\\to4\\to8$ 维护代表状态，最后用最大和的贪心完成扩展，并对剩余元素用折半枚举解决 $8$-元素和；对候选强度利用单调性判定。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }

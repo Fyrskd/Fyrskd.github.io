@@ -3,7 +3,7 @@
 
   const rawData = window.CF_INSIGHTS_DATA || { summary: {}, contests: [], topics: [], columns: [] };
   const ACCOUNT_HANDLES_KEY = "cf-insights-account-handles-v1";
-  const ACCOUNT_CACHE_KEY = "cf-insights-account-cache-v1";
+  const ACCOUNT_CACHE_KEY = "cf-insights-account-cache-v2";
   const CF_STATUS_ENDPOINT = "https://codeforces.com/api/user.status";
   const STATUS_PAGE_SIZE = 10000;
   const state = {
@@ -59,6 +59,37 @@
   const topicRank = new Map((rawData.topics || []).map((topic, index) => [topic, index]));
   const localProblemKeys = new Set(allProblems.map((problem) => problem.key));
 
+  function normalizedProblemTitle(value) {
+    return String(value || "")
+      .toLowerCase()
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function contestFamilyKey(value) {
+    return String(value || "")
+      .toLowerCase()
+      .replace(/\s*\(\s*div\.\s*[12][^)]*\)/gi, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  const contestFamilyById = new Map(
+    (rawData.contests || []).map((contest) => [String(contest.id), contestFamilyKey(contest.name)]),
+  );
+  const equivalentProblemKeysBySignature = new Map();
+  for (const problem of allProblems) {
+    const signature = `${contestFamilyKey(problem.contestName)}|${normalizedProblemTitle(problem.title)}`;
+    const keys = equivalentProblemKeysBySignature.get(signature) || new Set();
+    keys.add(problem.key);
+    equivalentProblemKeysBySignature.set(signature, keys);
+  }
+  const equivalentProblemKeysByKey = new Map();
+  for (const keys of equivalentProblemKeysBySignature.values()) {
+    if (keys.size < 2) continue;
+    for (const key of keys) equivalentProblemKeysByKey.set(key, keys);
+  }
+
   function loadLocalJson(key, fallback) {
     try {
       const value = window.localStorage.getItem(key);
@@ -106,9 +137,12 @@
   }
 
   function solvedHandlesFor(problemKey) {
+    const equivalentKeys = equivalentProblemKeysByKey.get(problemKey) || new Set([problemKey]);
     return state.accountHandles.filter((handle) => {
       const entry = state.accountCache[handleKey(handle)];
-      return entry && Array.isArray(entry.acceptedKeys) && entry.acceptedKeys.includes(problemKey);
+      return entry
+        && Array.isArray(entry.acceptedKeys)
+        && entry.acceptedKeys.some((acceptedKey) => equivalentKeys.has(acceptedKey));
     });
   }
 
@@ -144,8 +178,16 @@
       for (const submission of submissions) {
         if (submission.verdict !== "OK") continue;
         const problem = submission.problem || {};
-        const key = `${problem.contestId || ""}${problem.index || ""}`;
+        const contestId = problem.contestId || submission.contestId || "";
+        const key = `${contestId}${problem.index || ""}`;
         if (localProblemKeys.has(key)) acceptedKeys.add(key);
+        const family = contestFamilyById.get(String(contestId));
+        const title = normalizedProblemTitle(problem.name);
+        if (!family || !title) continue;
+        const equivalentKeys = equivalentProblemKeysBySignature.get(`${family}|${title}`);
+        if (equivalentKeys) {
+          for (const equivalentKey of equivalentKeys) acceptedKeys.add(equivalentKey);
+        }
       }
       if (submissions.length < STATUS_PAGE_SIZE) break;
       from += STATUS_PAGE_SIZE;
