@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-21",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1148,
+    "total_problems": 1154,
     "source_total_problems": 1727,
-    "filtered_out_problems": 579,
-    "with_statement_brief": 1148,
-    "with_editorial_brief": 935,
-    "with_solution_brief": 936,
+    "filtered_out_problems": 573,
+    "with_statement_brief": 1154,
+    "with_editorial_brief": 941,
+    "with_solution_brief": 942,
     "missing_editorial_brief": 212,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 46,
+    "ai_override_count": 52,
     "primary_topic_count": 13,
-    "contest_count": 190,
+    "contest_count": 191,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 49,
-    "构造与贪心": 392,
-    "图论与网络流": 69,
+    "构造与贪心": 393,
+    "图论与网络流": 70,
     "动态规划与状态设计": 110,
-    "数论与同余": 92,
-    "组合计数与概率": 86,
-    "数据结构": 85,
+    "数论与同余": 93,
+    "组合计数与概率": 88,
+    "数据结构": 86,
     "几何": 20,
     "树结构": 92,
     "博弈": 42,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 42,
+    "ai_generated_with_editorial": 48,
     "ai_generated_partial_editorial": 2,
     "missing_editorial": 212,
     "manual_override": 891,
@@ -35895,6 +35895,195 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1777,
+      "name": "Codeforces Round 845 (Div. 2) and ByteRace 2023",
+      "date": "2023-01-21",
+      "url": "https://codeforces.com/contest/1777",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1777A",
+          "index": "A",
+          "slot": "A",
+          "title": "Everybody Likes Good Arrays!",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1777/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/111729",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个整数数组；若所有相邻元素奇偶性不同，则数组是好数组。每次可选择一对奇偶性相同的相邻元素，删除它们并在原位置放入乘积，求将数组变为好数组所需的最少操作次数。",
+          "transformedStatement": "只保留每个元素的奇偶性，把数组看成由 $0$ 和 $1$ 组成的连续段。一次合法操作只会让某个连续段长度减一，而不同连续段之间的边界不变，因此目标是把每段压缩到长度 $1$。",
+          "keyObservations": [
+            "把偶数映射为 $0$、奇数映射为 $1$ 后，合并两个相同奇偶性的相邻元素等价于删除其中一个，操作只会缩短对应连续段。",
+            "不同奇偶性相邻位置的数量始终不变，因此初始的每个同值连续段彼此独立，最终每段只能保留一个元素。",
+            "长度为 $L$ 的连续段必须进行 $L-1$ 次操作，所有段贡献相加后答案为 $n-$连续段数量，也等于 $n-1-$不同奇偶相邻对数量。"
+          ],
+          "solutionBrief": "将数组转为奇偶序列并统计连续段数量。每段长度为 $L$ 需要删去 $L-1$ 个元素，答案为 $n-$段数；也可遍历相邻元素，统计奇偶相同的位置数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1777B",
+          "index": "B",
+          "slot": "B",
+          "title": "Emordnilap",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1777/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/111729",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的排列 $p$，将其与自身的逆序拼接成长度 $2n$ 的数组，并把逆序对数量定义为 beauty。需要对全部 $n!$ 个排列分别计算 beauty，求这些 beauty 之和对 $10^9+7$ 取模。",
+          "transformedStatement": "不必逐个构造排列：把逆序对按原排列中的下标对分类。每对元素在 $p$ 与其逆序的拼接数组中固定形成四项序列，并且无论两元素大小关系如何都贡献两个逆序对。",
+          "keyObservations": [
+            "对原排列中任意下标对 $i<j$，两元素在拼接数组中的相对顺序为 $[p_i,p_j,p_j,p_i]$；无论 $p_i>p_j$ 还是相反，都恰好产生 $2$ 个逆序对，因此贡献与排列顺序无关。",
+            "所有下标对各自独立贡献 $2$ 个逆序对，所以任意排列的 beauty 都相同，等于 $2\\binom{n}{2}=n(n-1)$。",
+            "共有 $n!$ 个排列，故总和直接化为 $n(n-1)n!$，只需预处理阶乘并按模数计算。"
+          ],
+          "solutionBrief": "任取原排列中的下标对，分析其四个副本位置可知必贡献恰好 $2$ 个逆序对。因此每个排列的 beauty 为 $n(n-1)$，答案为 $n(n-1)n!\\bmod 10^9+7$；预处理阶乘后逐组计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1777C",
+          "index": "C",
+          "slot": "C",
+          "title": "Quiz Master",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1777/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/111729",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "math",
+            "number theory",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定 $n$ 名学生的能力值和主题 $1$ 到 $m$。学生能覆盖所有整除其能力值的主题，选择一个队伍使每个主题都至少被一名成员覆盖，并最小化队伍中最大与最小能力值之差；无解输出 $-1$。",
+          "transformedStatement": "把队伍覆盖条件转化为：排序后的能力值窗口中，每个主题 $1..m$ 都出现至少一个倍数。问题因此变成寻找覆盖全部主题的最小窗口值域。",
+          "keyObservations": [
+            "将候选队伍扩展为排序后数组中的连续窗口不会破坏覆盖性，因此只需寻找覆盖全部主题的最短值域窗口。",
+            "窗口左端右移后可能失去已覆盖主题；为恢复覆盖，右端不会左移，只需继续右移，因此双指针扫描不会遗漏最优窗口。",
+            "学生的能力值只会覆盖其不超过 $m$ 的因数；维护每个主题在窗口中的出现次数，次数从 $0$ 变正或回到 $0$ 时更新已覆盖主题数。",
+            "当已覆盖主题数等于 $m$ 时，窗口合法，当前答案就是右端能力值减左端能力值；扫描结束仍无合法窗口则无解。"
+          ],
+          "solutionBrief": "排序能力值后用双指针维护连续窗口。加入或移出学生时枚举其不超过 $m$ 的因数并更新频次与已覆盖主题数；窗口覆盖全部主题时取最小差值，否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1777D",
+          "index": "D",
+          "slot": "D",
+          "title": "Score of a Tree",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1777/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/111729",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "树结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "dfs and similar",
+            "dp",
+            "math",
+            "probabilities",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根的树，节点初值任意为 0 或 1。每个时刻节点的新值是上一时刻所有子节点值的按位异或，叶子变为 0；对每种初始配置，求从时刻 0 到 $10^{100}$ 的全体节点值总和，再把所有 $2^n$ 种配置的结果相加并取模。",
+          "transformedStatement": "把每个节点在各时刻的状态独立计数：时刻 $t$ 的值只由其子树中距离为 $t$ 的初始值异或决定，因此节点贡献只取决于它到子树叶子的最长距离 $d_u$。利用非空异或在全部配置中有一半为 1，将总问题转为求所有 $(d_u+1)/2$ 的和。",
+          "keyObservations": [
+            "时刻 $t$ 时节点 $u$ 的值等于其子树中距离 $u$ 恰为 $t$ 的所有初值异或；因此只需判断该层是否存在节点。",
+            "令 $d_u$ 为 $u$ 到其子树叶子的最长距离，则节点 $u$ 只有 $0\\le t\\le d_u$ 时可能贡献，贡献时涉及非空初值集合。",
+            "非空若干个独立二进制初值的异或在所有配置中恰有一半为 $1$，所以每个节点对期望总贡献为 $(d_u+1)/2$。",
+            "期望值可按节点和时间线性拆分，所有配置的总和等于 $2^n$ 乘以各节点贡献之和；$d_u$ 可由一次后序遍历求得。"
+          ],
+          "solutionBrief": "按后序遍历计算每个节点到子树叶子的最长距离 $d_u$，累加 $(d_u+1)/2$，再乘 $2^n$ 并对 $10^9+7$ 取模。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1777E",
+          "index": "E",
+          "slot": "E",
+          "title": "Edge Reverse",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1777/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/111729",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "dfs and similar",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定带权有向图，可以反转任意一些边，使至少存在一个节点能够到达所有节点；代价是被反转边权的最大值，不反转时为 $0$。求实现该条件的最小代价；若无论如何反转都做不到，输出 $-1$。",
+          "transformedStatement": "把候选代价 $c$ 转化为判定问题：权重不超过 $c$ 的边可视为双向边，询问所得图是否存在一个源点能到达全部节点。利用 SCC 缩点后的 DAG 定位唯一可能的源 SCC，再验证其可达性。",
+          "keyObservations": [
+            "固定代价 $c$ 后，所有权重不超过 $c$ 的边都可以按需要反转，因此在可达性判断中可等价视为双向边。",
+            "可行性关于 $c$ 单调：若某个代价能够得到全局可达源点，更大的代价只会增加可双向使用的边，因此答案可在权值范围上二分。",
+            "将当前图缩成 SCC 后得到 DAG；若存在一个 SCC 能到达全部 SCC，它必须是拓扑序中的首个候选，否则首个 SCC 无法被它到达。",
+            "从拓扑序首个 SCC 中任选节点做一次 DFS；若无法访问所有节点，则当前代价不可行，否则该候选源点满足要求。"
+          ],
+          "solutionBrief": "二分最大反转边权 $c$，把权重不超过 $c$ 的边视为双向边。每次用 SCC 缩点得到 DAG，取拓扑序首个 SCC 中的节点 DFS 验证能否到达全图；可行则收窄答案，否则增大 $c$。总复杂度为 $O((n+m)\\log C)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1777F",
+          "index": "F",
+          "slot": "F",
+          "title": "Comfortably Numb",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1777/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/111729",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "divide and conquer",
+            "strings",
+            "trees"
+          ],
+          "statementBrief": "给定一个非负整数数组，连续子数组的 numbness 定义为该子数组最大值与所有元素异或和的按位异或。需要在所有连续子数组中找出 numbness 的最大值。",
+          "transformedStatement": "把区间按其中最大元素递归划分；对于跨过该最大值的区间，最大值已固定，只需利用前缀异或将两侧端点配对，求对应表达式的最大值。",
+          "keyObservations": [
+            "以当前区间最大值 $a_x$ 为分界后，任意子数组要么完全位于左侧或右侧，要么包含 $x$，因此递归答案只需额外处理跨过 $x$ 的子数组。",
+            "对包含 $x$ 的子数组，其最大值固定为 $a_x$，目标可改写为最大化 $a_x\\oplus P_{i-1}\\oplus P_j$，其中 $P$ 是前缀异或，从而变成两个端点前缀值之间的最大异或查询。",
+            "枚举左右较短一侧的端点，并在另一侧的前缀异或字典树中查询最优配对，就能覆盖所有经过 $x$ 的子数组，同时把处理量降到较小子区间规模。",
+            "每次将较小字典树中的前缀值合并到较大者，采用小并大可将总插入次数控制在 $O(n\\log n)$，再乘字典树位数得到总复杂度 $O(n\\log n\\log A)$。"
+          ],
+          "solutionBrief": "递归按区间最大值划分左右子区间，先求两侧答案；对跨越最大值的区间，用两侧前缀异或建立二进制字典树，枚举较小侧并查询另一侧的最大异或值，最后小并大合并字典树。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
