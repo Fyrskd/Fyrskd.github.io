@@ -4,6 +4,7 @@
   const rawData = window.CF_INSIGHTS_DATA || { summary: {}, contests: [], topics: [], columns: [] };
   const ACCOUNT_HANDLES_KEY = "cf-insights-account-handles-v1";
   const ACCOUNT_CACHE_KEY = "cf-insights-account-cache-v2";
+  const LEGACY_ACCOUNT_CACHE_KEY = "cf-insights-account-cache-v1";
   const CF_STATUS_ENDPOINT = "https://codeforces.com/api/user.status";
   const STATUS_PAGE_SIZE = 10000;
   const state = {
@@ -129,8 +130,10 @@
   }
 
   function loadAccountCache() {
-    const value = loadLocalJson(ACCOUNT_CACHE_KEY, {});
-    return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+    const value = loadLocalJson(ACCOUNT_CACHE_KEY, null);
+    if (value && typeof value === "object" && !Array.isArray(value)) return value;
+    const legacyValue = loadLocalJson(LEGACY_ACCOUNT_CACHE_KEY, {});
+    return legacyValue && typeof legacyValue === "object" && !Array.isArray(legacyValue) ? legacyValue : {};
   }
 
   function saveAccountState() {

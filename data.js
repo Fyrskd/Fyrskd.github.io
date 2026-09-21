@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-21",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1160,
+    "total_problems": 1168,
     "source_total_problems": 1727,
-    "filtered_out_problems": 567,
-    "with_statement_brief": 1160,
-    "with_editorial_brief": 947,
-    "with_solution_brief": 948,
+    "filtered_out_problems": 559,
+    "with_statement_brief": 1168,
+    "with_editorial_brief": 955,
+    "with_solution_brief": 956,
     "missing_editorial_brief": 212,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 58,
+    "ai_override_count": 67,
     "primary_topic_count": 13,
     "contest_count": 192,
     "rating_min": 800,
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 50,
-    "构造与贪心": 394,
-    "图论与网络流": 70,
-    "动态规划与状态设计": 110,
-    "数论与同余": 96,
+    "构造与贪心": 395,
+    "图论与网络流": 71,
+    "动态规划与状态设计": 112,
+    "数论与同余": 98,
     "组合计数与概率": 88,
-    "数据结构": 86,
+    "数据结构": 88,
     "几何": 20,
     "树结构": 92,
     "交互": 62,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 54,
-    "ai_generated_partial_editorial": 2,
+    "ai_generated_with_editorial": 61,
+    "ai_generated_partial_editorial": 3,
     "missing_editorial": 212,
     "manual_override": 891,
     "statement_derived": 1
@@ -35867,9 +35867,244 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-01-29",
       "url": "https://codeforces.com/contest/1787",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 1,
+      "problemCount": 9,
       "maxRating": 3400,
       "problems": [
+        {
+          "key": "1787A",
+          "index": "A",
+          "slot": "A",
+          "title": "Exponential Equation",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1787/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/112009",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定整数 $n$，需要找出满足 $1\\le x,y\\le n$ 的整数对，使 $x^y\\cdot y+y^x\\cdot x=n$；若不存在则输出 $-1$，有多个答案时可任选其一。",
+          "transformedStatement": "将目标式因式分解为 $xy(x^{y-1}+y^{x-1})$，先判断其奇偶性：奇数 $n$ 不可能出现，偶数 $n$ 则用固定构造 $x=1,y=n/2$。",
+          "keyObservations": [
+            "当 $n$ 为偶数时取 $x=1,y=n/2$，两项分别为 $y$ 和 $y$，恰好得到 $n$，且满足取值范围。",
+            "恒有 $x^y y+y^x x=xy(x^{y-1}+y^{x-1})$ 为偶数：若 $x,y$ 中有偶数则显然成立；若二者均为奇数，括号内是两个奇数之和，因此也为偶数。"
+          ],
+          "solutionBrief": "利用表达式恒为偶数排除所有奇数 $n$；对偶数 $n$ 直接输出 $(1,n/2)$，因为结果为 $2 imes(n/2)=n$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1787B",
+          "index": "B",
+          "slot": "B",
+          "title": "Number Factorization",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1787/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/112009",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定整数 $n$，将其表示为若干个 $a_i^{p_i}$ 的乘积，其中每个 $a_i$ 是若干个互不重复质数的乘积，且 $p_i>0$。可以自由选择表示的长度，要求最大化 $\\sum a_i p_i$。",
+          "transformedStatement": "把每个幂 $a_i^{p_i}$ 拆成 $p_i$ 个相同的 $a_i$ 后，问题变为将 $n$ 的质因子多重集合划分成若干个互不含重复质数的组，使各组乘积之和最大；最优方案按指数层逐层取出所有当前存在的不同质因子。",
+          "keyObservations": [
+            "将 $a_i^{p_i}$ 展开为 $p_i$ 个相同的 $a_i$ 相乘后，可把所有指数设为 $1$，问题变成把质因子出现次数分组并最大化各组乘积之和。",
+            "每个分组中的质因子必须互不相同，因此同一质因子的多次出现只能分布到不同组；这使每一层至多取每种质因子一次。",
+            "每次都把当前仍有剩余次数的所有不同质因子放入同一组，其乘积最大；不断消耗这一层的一个出现次数即可得到最优分组。",
+            "若质因子分解为 $n=\\prod q_i^{c_i}$，答案等于按层计算的乘积之和：第 $k$ 层取所有满足 $c_i\\ge k$ 的 $q_i$ 相乘，并对所有非空层求和。"
+          ],
+          "solutionBrief": "先分解 $n$ 得到每个质因子的指数。按层处理：第 $k$ 层收集所有指数至少为 $k$ 的不同质因子，将它们的乘积加入答案；这等价于每次选取当前全部可用的不同质因子，依据题解中的贪心结论最优。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1787C",
+          "index": "C",
+          "slot": "C",
+          "title": "Remove the Bracket",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1787/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/112009",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定整数序列 $a$ 和阈值 $s$，对每个内部元素 $a_i$ 选择非负整数 $x_i,y_i$，满足 $x_i+y_i=a_i$ 且二者同时位于 $s$ 的同一侧。目标是最小化相邻拆分量乘积组成的表达式 $a_1x_2+y_2x_3+\\cdots+y_{n-1}a_n$。",
+          "transformedStatement": "把每个内部 $a_i$ 看成在一个合法连续区间内选择 $x_i$，并令 $y_i=a_i-x_i$。由于固定邻居后目标关于 $x_i$ 为线性函数，只需保留区间两个端点，再对端点选择序列做相邻转移 DP。",
+          "keyObservations": [
+            "条件 $(x_i-s)(y_i-s)\\ge 0$ 等价于 $x_i,y_i$ 同时不小于 $s$ 或同时不大于 $s$，因此固定 $a_i$ 后，合法的 $x_i$ 构成一个连续整数区间。",
+            "固定相邻位置的取值时，目标式关于 $x_i$ 是线性的；若前项系数小于后项系数，增大 $x_i$ 会使总值下降，因此最优值只需考虑该区间的两个端点。",
+            "每个内部元素只保留区间左右端点两种重写方式，原式即可转化为相邻端点选择之间的转移，使用 DP 累积最小值。"
+          ],
+          "solutionBrief": "由乘积条件求出每个 $x_i$ 的合法连续区间。目标式对单个 $x_i$ 呈线性，最优选择必在区间端点；将每项压缩为两个端点状态，按相邻选择的乘积贡献做 DP。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1787D",
+          "index": "D",
+          "slot": "D",
+          "title": "Game on Axis",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1787/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/112009",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 个点，第 $i$ 个点带数值 $a_i$；从点 $i$ 出发会跳到 $i+a_i$。开始前可选择一个 $x$ 和满足 $-n\\le y\\le n$ 的整数，将 $a_x$ 改为 $y$，然后从点 $1$ 开始移动；若最终跳到范围 $[1,n]$ 外则结束，若一直循环则不结束，求使游戏有限结束的不同 $(x,y)$ 数量。",
+          "transformedStatement": "把问题视为每个点仅有一条出边的函数图，并把所有越界位置压成同一个终点。于是目标变为：只修改一条出边，使从 $1$ 出发的路径到达终点而不是进入有向环。",
+          "keyObservations": [
+            "把每个点建成唯一出边 $i\\to i+a_i$，并将所有越界位置合并为终点；从 $1$ 出发最终到终点才表示游戏有限结束。",
+            "从 $1$ 出发直到越界或重复得到关键路径；修改不在关键路径上的出边不会影响本次游戏，因此这类修改天然有效。",
+            "初始可到达终点时，关键路径上的出边只能改向终点树中的其他连通部分、其前驱或自身；反向 DFS 得到各点子树大小，用于统计可行与非法修改。",
+            "初始路径形成环时，只有修改关键路径上的出边才能打破循环；应将其重定向到终点树中的节点，并同时满足 $-n\\le y\\le n$。"
+          ],
+          "solutionBrief": "将状态建成函数图并把所有越界位置合并为终点，找出从 $1$ 出发的关键路径。利用反向 DFS 统计终点树的子树规模：初始可结束时统计关键路径上的非法重定向；初始成环时枚举关键路径出边，将其接入终点树并计数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1787E",
+          "index": "E",
+          "slot": "E",
+          "title": "The Harmonization of XOR",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1787/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/112009",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定恰好包含 $1$ 到 $n$ 的数组，要把所有数字不重复地划分成恰好 $k$ 个非空子序列；每个子序列中所有数字的按位异或必须等于 $x$。若可行，输出任意划分，否则输出 NO。",
+          "transformedStatement": "把问题转化为先求最多能构造多少个异或和为 $x$ 的组：利用 $x$ 的最高位限制组数，并将数字配成 $[a,a\\oplus x]$ 等基本组；再用三个合法组并成一个组，把组数调整到目标值。",
+          "keyObservations": [
+            "设 $B$ 为 $x$ 的最高位，任何异或和为 $x$ 的组都必须含奇数个第 $B$ 位为 $1$ 的数，因此分组数不超过这类数的数量 $M$。",
+            "对第 $B$ 位为 $1$ 的数 $a$，其配对数 $a\\oplus x$ 更小，故可构造形如 $[a,a\\oplus x]$ 的合法组；若存在 $x$，还可单独形成 $[x]$。",
+            "三个异或和均为 $x$ 的组可以合并为一个组，因为 $x\\oplus x\\oplus x=x$，所以构造出最大数量后可每次减少两个组。"
+          ],
+          "solutionBrief": "按最高位为 $1$ 的数量构造尽可能多的组：优先配成 $[a,a\\oplus x]$，必要时保留 $[x]$，其余元素组成一个组。若最大组数不足 $k$，或无法通过反复将三个组并成一个组恰好降到 $k$，输出 NO；否则输出构造结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1787F",
+          "index": "F",
+          "slot": "F",
+          "title": "Inverse Transformation",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1787/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/112009",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的置换在第 $k$ 天的状态。每天所有位置 $x$ 的元素变为当前置换中位置 $a_x$ 的元素；要求构造一个可能的初始置换，使其经过 $k$ 天得到给定置换，并让 $\\sum_{i=1}^{n}1/f(i)$ 最小，其中 $f(i)$ 是从 $i$ 沿置换映射回到自身所需的最短正步数。",
+          "transformedStatement": "将置换视为若干有向环：第 $k$ 天的状态等价于在每个初始环上跳跃 $2^k$ 个位置。于是问题转化为根据终态环的长度和奇偶性反推、合并出环数最少的初始环。",
+          "keyObservations": [
+            "把置换看成若干有向环；经过一天后每个点跳到原环中后继第 $2$ 个位置，经过 $k$ 天就是跳 $2^k$ 个位置。",
+            "长度为 $l=p\\cdot2^q$（$p$ 为奇数）的初始环，前 $q$ 天逐步拆分，最终变成 $2^q$ 个长度为 $p$ 的环；若 $q>k$，第 $k$ 天仍会留下偶环。",
+            "每个长度为 $L$ 的环对 $\\sum 1/f(i)$ 的贡献是 $L\\cdot(1/L)=1$，因此目标等价于让初始置换的环数量最少。",
+            "给定置换中的同长度奇环可以按大小不超过 $2^k$ 的二次幂分组合并；偶环在第 $k$ 天尚未完全拆分，因此同长度偶环数量必须能按恰好 $2^k$ 个一组处理，否则无解。"
+          ],
+          "solutionBrief": "分解第 $k$ 天置换的环。奇长度环按允许的二次幂分组并合并以减少初始环数；偶长度环必须每 $2^k$ 个同长度环合并，否则输出 NO，再按环内顺序构造初始置换。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1787G",
+          "index": "G",
+          "slot": "G",
+          "title": "Colorful Tree Again",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1787/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/112009",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "trees"
+          ],
+          "statementBrief": "给定一棵带权且边带颜色的树，节点初始均未封锁；每次按查询参数对指定节点进行相应的封锁或解封。好路径必须是未封锁节点组成的简单路径，所有边颜色相同且包含该颜色的全部边；每次操作后输出最长好路径长度，无解输出 0。",
+          "transformedStatement": "先把每种颜色的全部边视为一个静态候选对象：只有它们本身构成简单路径时才保留该路径及长度。节点状态变化等价于删除或恢复所有经过该节点的候选路径，并按这些路径的 LCA 组织动态最大值。",
+          "keyObservations": [
+            "同一种颜色的全部边只有在其端点度数满足简单路径条件时，才能组成唯一候选好路径；否则该颜色不可能贡献答案。",
+            "由于一条边最多属于一条候选好路径，问题可先把每种颜色压缩成至多一条固定路径及其总长度。",
+            "封锁或解封节点只会影响经过该节点的候选路径；按候选路径的 LCA 分组后，受影响路径可拆分为跨越该点的祖先—子树路径和 LCA 等于该点的路径。",
+            "每个节点维护其 LCA 分组中的候选路径最大值，再用全局优先队列汇总各组当前最大值，即可在状态变化后取得全局最长有效路径。"
+          ],
+          "solutionBrief": "先检查每种颜色的边是否构成简单路径并记录长度，再按路径 LCA 分组维护。节点状态变化时更新经过该节点的候选路径，并用局部与全局优先队列维护最大有效长度。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1787H",
+          "index": "H",
+          "slot": "H",
+          "title": "Codeforces Scoreboard",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1787/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/112009",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "geometry"
+          ],
+          "statementBrief": "有 $n$ 道题，每题耗时恰好 1 分钟，只能同时解一道；若第 $i$ 题在第 $t$ 分钟提交，得分为 $\\max(b_i-k_i t,a_i)$。需要安排解题顺序，使解完全部题目的总分最大。",
+          "transformedStatement": "把每题的得分损失表示为 $\\min(k_i t,b_i-a_i)$，问题转为安排时间以最小化总损失。对处于线性段的题按 $k_i$ 降序占用连续时间，并用凸 DP 决定每题取线性段还是封顶段。",
+          "keyObservations": [
+            "将得分改写为 $b_i-\\min(k_i t,b_i-a_i)$ 后，最大化总分等价于最小化所有问题的“损失”之和，且总常数 $\\sum b_i$ 可预先扣除。",
+            "若某些问题处于线性损失 $k_i t$，按 $k_i$ 降序安排它们能使损失最小，因此它们依次占据时间 $1,2,\\ldots,j$；处于封顶损失 $b_i-a_i$ 的问题不受具体时间影响。",
+            "按 $k_i$ 降序处理问题，令 $f_{i,j}$ 表示前 $i$ 个问题中选 $j$ 个采用线性损失时的最小损失，可在加入第 $i$ 个问题时选择封顶代价或将其放在第 $j$ 个线性位置。",
+            "状态关于 $j$ 具有凸性，差分序列的变化只在由 $k_i j$ 与已有差分交叉的位置发生；因此可用平衡树维护差分序列，避免二次枚举状态。"
+          ],
+          "solutionBrief": "先将答案写成 $\\sum b_i-f$，按 $k_i$ 降序建立凸 DP：每题选择封顶损失或加入第 $j$ 个线性位置。维护 DP 差分序列的关键交点，用 treap 实现斜率优化。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1787I",
           "index": "I",
@@ -35878,18 +36113,16 @@ window.CF_INSIGHTS_DATA = {
           "rating": 3400,
           "problemUrl": "https://codeforces.com/contest/1787/problem/I",
           "editorialUrl": "https://codeforces.com/blog/entry/112009",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "数据结构",
           "secondaryTopics": [
-            "数据结构",
-            "数论与同余",
-            "组合计数与概率"
+            "构造与贪心"
           ],
           "originalTags": [
             "data structures",
             "divide and conquer",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Treasure Hunt；本地暂无可用题解正文。",
+          "statementBrief": "给定长度为 $n$ 的整数序列。对每个非空连续子段 $b$，在满足 $s>q$ 或 $t\\le q$ 的整数参数下，最大化前 $q$ 项之和与区间 $[s,t]$ 之和的总和（允许越界取 $0$、$s>t$ 表示空区间），得到其 beauty；求所有子段 beauty 之和并对 $998244353$ 取模。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
