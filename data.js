@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-21",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1141,
+    "total_problems": 1148,
     "source_total_problems": 1727,
-    "filtered_out_problems": 586,
-    "with_statement_brief": 1141,
-    "with_editorial_brief": 928,
-    "with_solution_brief": 929,
+    "filtered_out_problems": 579,
+    "with_statement_brief": 1148,
+    "with_editorial_brief": 935,
+    "with_solution_brief": 936,
     "missing_editorial_brief": 212,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 37,
+    "ai_override_count": 46,
     "primary_topic_count": 13,
     "contest_count": 190,
     "rating_min": 800,
@@ -33,8 +33,8 @@ window.CF_INSIGHTS_DATA = {
     "动态规划与状态设计",
     "数论与同余",
     "树结构",
-    "数据结构",
     "组合计数与概率",
+    "数据结构",
     "图论与网络流",
     "交互",
     "字符串",
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 49,
-    "构造与贪心": 389,
+    "构造与贪心": 392,
     "图论与网络流": 69,
-    "动态规划与状态设计": 109,
-    "数论与同余": 91,
-    "组合计数与概率": 84,
+    "动态规划与状态设计": 110,
+    "数论与同余": 92,
+    "组合计数与概率": 86,
     "数据结构": 85,
-    "几何": 21,
+    "几何": 20,
+    "树结构": 92,
     "博弈": 42,
-    "树结构": 91,
     "交互": 61,
     "基础实现与模拟": 39,
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 35,
+    "ai_generated_with_editorial": 42,
     "ai_generated_partial_editorial": 2,
     "missing_editorial": 212,
     "manual_override": 891,
@@ -35904,9 +35904,221 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-01-15",
       "url": "https://codeforces.com/contest/1781",
       "type": "Others",
-      "problemCount": 2,
+      "problemCount": 9,
       "maxRating": 3500,
       "problems": [
+        {
+          "key": "1781A",
+          "index": "A",
+          "slot": "A",
+          "title": "Parallel Projection",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1781/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "geometry",
+            "math"
+          ],
+          "statementBrief": "房间是底面为 $w\\times d$、高度为 $h$ 的长方体，笔记本在地面点 $(a,b)$，投影仪位于天花板点 $(f,g)$ 的正上方。电缆只能沿地面、墙面或天花板铺设，并且始终平行于长方体棱，求连接两者的最短长度。",
+          "transformedStatement": "先忽略固定的竖直高度，把问题化为矩形内两个点之间的轴平行路径：路径必须接触矩形的一条边；求经过四条边的最短水平长度，最后统一加上 $h$。",
+          "keyObservations": [
+            "墙面上的转折无需单独考虑，可把水平部分放在地面或天花板，竖直段固定贡献 $h$。",
+            "水平路线若经过前后两侧，最短长度分别为 $b+|a-f|+g$ 与 $(d-b)+|a-f|+(d-g)$。",
+            "水平路线若经过左右两侧，最短长度分别为 $a+|b-g|+f$ 与 $(w-a)+|b-g|+(w-f)$。",
+            "任意可行路线都可归入经过矩形某一边的情形，因此取四种水平长度最小值再加 $h$ 即得最优解。"
+          ],
+          "solutionBrief": "将三维问题压平成矩形内的二维轴平行路径。分别计算路径经过四条边时的最短长度，取最小值并加上固定的竖直距离 $h$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1781B",
+          "index": "B",
+          "slot": "B",
+          "title": "Going to the Cinema",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1781/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个人，每人声明：当其他参加者人数至少为 $a_i$ 时自己想参加，否则不想参加。需要选择一个参加人员集合，使每个人的实际选择都符合自己的声明，并统计所有合法集合的数量。",
+          "transformedStatement": "把问题按最终参加人数 $k$ 分类：参加者看到的其他人数是 $k-1$，未参加者看到的是 $k$。因此必须选取全部满足 $a_i<k$ 的人、排除全部满足 $a_i>k$ 的人，并要求不存在 $a_i=k$。",
+          "keyObservations": [
+            "固定总人数为 $k$ 后，$a_i<k$ 的人必须参加，$a_i>k$ 的人必须不参加，从而选择集合被唯一确定。",
+            "若存在 $a_i=k$，此人无论参加还是不参加都会违背诉求，因此该 $k$ 不可能产生合法方案。",
+            "总人数为 $k$ 可行当且仅当恰有 $k$ 个人的 $a_i<k$ 且没有人的 $a_i=k$；每个可行的 $k$ 对应一种方案。",
+            "将数组排序后，只需检查第 $k$ 个值小于 $k$、第 $k+1$ 个值大于 $k$，即可判断前缀是否构成合法集合。"
+          ],
+          "solutionBrief": "枚举参加人数 $k$，用计数数组统计 $a_i<k$ 的人数及 $a_i=k$ 的人数；满足前者等于 $k$ 且后者为零时答案加一。也可排序后检查相邻边界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1781C",
+          "index": "C",
+          "slot": "C",
+          "title": "Equal Frequencies",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1781/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的小写字符串 $s$，要构造同长度字符串 $t$。$t$ 中所有实际出现的字符必须拥有相同频率，要求通过尽量少地改变位置使 $s$ 变成这样的平衡字符串，并输出最少修改数及任意一种 $t$。",
+          "transformedStatement": "不直接最小化修改数，而是枚举平衡串包含的字符种类数 $k$；此时每种字符的目标频率固定为 $n/k$，问题转化为选择能保留最多原位置的 $k$ 个字符并完成剩余位置填充。",
+          "keyObservations": [
+            "把“最少修改位置”改写为“最多保留原字符的位置”，两者的目标完全等价，便于按字符贡献计算匹配数。",
+            "固定目标串使用的不同字符数为 $k$ 后，每个字符必须恰好出现 $n/k$ 次，因此只有满足 $n\\bmod k=0$ 的 $k$ 才可行。",
+            "若选择字符 $c$，它最多贡献 $\\min(n/k,\\operatorname{freq}_c)$ 个原位匹配；由于上限 $n/k$ 对所有字符相同，选择频率最高的 $k$ 个字符即可最大化总匹配数。",
+            "先保留所选字符已有的对应位置，再把频率不足产生的字符需求与频率过多产生的空位任意配对，既能补足每种字符的数量，又不会破坏已保留匹配。"
+          ],
+          "solutionBrief": "枚举所有满足 $1\\le k\\le26$ 且 $n\\bmod k=0$ 的不同字符数。对每个 $k$ 选频率最高的 $k$ 个字符，各保留其最多 $n/k$ 个原位置，再任意填补剩余需求，比较各方案的匹配数并输出修改最少者。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1781D",
+          "index": "D",
+          "slot": "D",
+          "title": "Many Perfect Squares",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1781/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个由 $n$ 个互不相同正整数组成的集合。可以选择一个满足 $0\\le x\\le10^{18}$ 的整数并同时加到所有元素上，要求最大化所得 $a_i+x$ 中为完全平方数的元素数量。",
+          "transformedStatement": "把“两个元素加同一个 $x$ 后同时成为平方数”改写为平方数差的分解：$a_j-a_i=(q-p)(q+p)$。枚举每对差值的因子以恢复可能的平方根和对应的 $x$，再在这些候选平移量上统一计数。",
+          "keyObservations": [
+            "若至少有两个数变成平方数，任取一对即可令差值满足 $a_j-a_i=q^2-p^2=(q-p)(q+p)$，因此只需枚举差值的因子。",
+            "设 $d=q-p$，则 $q+p=(a_j-a_i)/d$；两式解出的 $p,q$ 必须为非负整数，才能得到候选平移量 $x=p^2-a_i$。",
+            "最优解若包含至少两个平方数，必然对应某一对元素生成的候选 $x$；逐一计算候选的平方数数量即可覆盖最优答案。",
+            "答案至少为 $1$，所以只需检查所有合法候选 $x ext{（包括范围 }0 ext{ 到 }10^{18} ext{）}$并取最大值。"
+          ],
+          "solutionBrief": "枚举每对元素的差值及其因子 $d$，由 $q-p=d$、$q+p=(a_j-a_i)/d$ 求出整数 $p,q$，生成合法的 $x=p^2-a_i$。对每个候选 $x$ 统计有多少个 $a_k+x$ 是平方数，取最大值；若无双平方候选则答案为 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1781E",
+          "index": "E",
+          "slot": "E",
+          "title": "Rectangle Shrinking",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1781/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "greedy",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个高为 2、宽为 $10^9$ 的网格及若干可重叠矩形。每个矩形必须删除或替换为其内部任意非空子矩形，替换后所有保留矩形不能共用单元格；求最大覆盖面积并输出每个矩形的处理结果。",
+          "transformedStatement": "将目标改写为无交叠地表示初始矩形并集：按左端点逐步加入矩形，维护两行当前最右覆盖位置；双行矩形出现时，必要时从右侧裁掉已处理矩形，使新增区域完整保留。",
+          "keyObservations": [
+            "初始矩形覆盖的所有单元格都能被保留下来，因此最大面积等于初始矩形并集面积，问题转为把重叠部分裁掉而不损失并集。",
+            "按左端点处理后，单行矩形只需维护该行最右覆盖位置；完全落在已覆盖区间内就删除，否则从左侧裁到该位置之后。",
+            "双行矩形若其右端已被某一行覆盖，可删去对应行并退化为单行矩形；否则必须反向裁剪所有与其相交的已处理矩形，再令两行最右端都推进到该矩形的右端。",
+            "每个已处理矩形在双行矩形到来时至多被反向裁剪一次，因此用按右端点维护的优先队列处理相交矩形，可将逐个扫描的平方复杂度降为排序主导的 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "按左端点排序，维护两行最右覆盖位置。单行矩形从左侧裁剪；双行矩形先尝试删去已覆盖行，否则反向裁剪所有相交旧矩形并推进两行边界。用按右端点的优先队列保证每个旧矩形至多被处理一次。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1781F",
+          "index": "F",
+          "slot": "F",
+          "title": "Bracket Insertion",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1781/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "从空括号串开始重复 $n$ 次：均匀选择一个当前插入位置，以概率 $p=q\\cdot10^{-4}$ 插入“()”，否则插入“)(”。求最终括号串为合法括号序列的概率，并对 $998244353$ 取模。",
+          "transformedStatement": "把括号串改写成前缀平衡数组，初始为 $[0]$；每次均匀选择一个数组元素 $x$，按概率将其替换为 $[x,x+1,x]$ 或 $[x,x-1,x]$。目标变为整个过程中数组不出现负数。",
+          "keyObservations": [
+            "用前缀平衡表示括号串；插入“()”会把一个值 $x$ 替换为 $[x,x+1,x]$，插入“)(”则替换为 $[x,x-1,x]$，从而把字符串操作变成数组递归。",
+            "最终括号串合法等价于所有前缀平衡都非负，因为每次插入的括号对总和为零，末尾平衡始终为 $0$。",
+            "首次替换后，左右两个 $x$ 和中间的 $x\\pm1$ 会分别独立承受若干次操作；若三部分操作数为 $i,j,k$，它们在全局序列中的交错方式由二项式系数计数。",
+            "定义 $g(k,x)=\\sum_{i=0}^{k}C(k,i)f(i,x)f(k-i,x)$ 合并两侧相同状态的卷积，使每个 $f(n,x)$ 可在线性枚举 $j$ 后计算，总复杂度降为 $O(n^3)$。"
+          ],
+          "solutionBrief": "令 $f(n,x)$ 表示从单元素数组 $[x]$ 开始、再操作 $n$ 次且始终非负的加权方案数。按首次替换后的三段分配操作并用二项式系数计数交错顺序；用 $g$ 合并两侧卷积，按规模递推并取模，复杂度 $O(n^3)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1781G",
+          "index": "G",
+          "slot": "G",
+          "title": "Diverse Coloring",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1781/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "trees"
+          ],
+          "statementBrief": "给定一棵从根 1 开始依次增点的有根二叉树：第 $i$ 个点必须作为指定父节点 $p_i$ 的子节点加入，且每个点最多有两个孩子。每次加入后，要输出所有“每个点都有异色父子邻居”的白蓝染色中白蓝数量差的最小绝对值；最后还要输出达到最小值的一种染色。",
+          "transformedStatement": "把整棵树的染色转化为带根约束的子树合并问题：固定当前子树根为白色，用有符号差值和“根是否已满足异色邻居”描述可行方案，再通过翻转子树统一调整颜色与差值。",
+          "keyObservations": [
+            "将子树根固定为白色，并记录有符号差值“白色数减蓝色数”，可把绝对值最小化转成只需讨论少数常数状态。",
+            "翻转一个完整子树会保持其内部多样染色性质，同时改变该子树差值的符号，因此可用它调整根与子节点的颜色关系并合并子树。",
+            "除少数小型特殊子树外，任意子树都能构造差值 $0$ 或 $+1$；出现两个叶子子节点时可能产生差值 $-1$，特殊四点子树还可能产生 $+2$。",
+            "自底向上记录 $f(u,d,hasNeighbor)$，其中状态表示除根外是否都满足异色邻居条件，以及根是否已有异色邻居；由于 $d$ 只需保留常数范围，状态转移和重建均为线性规模。"
+          ],
+          "solutionBrief": "对每个子树固定根为白色，维护少量有符号差值及根是否已有异色邻居；通过翻转子树或单个根处理子树合并和特殊小树。自底向上求状态，再自顶向下依据翻转标记恢复最优染色，整体为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1781H1",
           "index": "H1",
@@ -35915,12 +36127,12 @@ window.CF_INSIGHTS_DATA = {
           "rating": 3200,
           "problemUrl": "https://codeforces.com/contest/1781/problem/H1",
           "editorialUrl": "https://codeforces.com/blog/entry/111783",
-          "primaryTopic": "几何",
+          "primaryTopic": "组合计数与概率",
           "secondaryTopics": [
-            "数论与同余"
+            "几何"
           ],
           "originalTags": [],
-          "statementBrief": "题面已抓取：Window Signals (easy version)；本地暂无可用题解正文。",
+          "statementBrief": "给定一个 $h\\times w$ 的窗户网格，其中至多两个窗户的灯损坏，其他窗户可独立选择开或关。船只看不出图案在房屋中的位置，因此仅通过平移、不能旋转或翻转的亮灯配置视为同一种；要求统计所有非空且可实现的不同信号数，结果模 $998244353$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -35935,12 +36147,12 @@ window.CF_INSIGHTS_DATA = {
           "rating": 3500,
           "problemUrl": "https://codeforces.com/contest/1781/problem/H2",
           "editorialUrl": "https://codeforces.com/blog/entry/111783",
-          "primaryTopic": "几何",
+          "primaryTopic": "组合计数与概率",
           "secondaryTopics": [
-            "数论与同余"
+            "几何"
           ],
           "originalTags": [],
-          "statementBrief": "题面已抓取：Window Signals (hard version)；本地暂无可用题解正文。",
+          "statementBrief": "给定一个有 $h$ 层、每层 $w$ 个窗口的网格，除最多两个损坏窗口外，其余窗口可独立开灯或关灯。非空的开灯配置构成信号，仅允许通过平移判断相同，不能旋转或翻转；求所有可实现的不同信号数量，答案对 $998244353$ 取模。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
