@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-21",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1134,
+    "total_problems": 1141,
     "source_total_problems": 1727,
-    "filtered_out_problems": 593,
-    "with_statement_brief": 1134,
-    "with_editorial_brief": 921,
-    "with_solution_brief": 922,
+    "filtered_out_problems": 586,
+    "with_statement_brief": 1141,
+    "with_editorial_brief": 928,
+    "with_solution_brief": 929,
     "missing_editorial_brief": 212,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 30,
+    "ai_override_count": 37,
     "primary_topic_count": 13,
-    "contest_count": 189,
+    "contest_count": 190,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -31,10 +31,10 @@ window.CF_INSIGHTS_DATA = {
   "topics": [
     "构造与贪心",
     "动态规划与状态设计",
-    "树结构",
     "数论与同余",
-    "组合计数与概率",
+    "树结构",
     "数据结构",
+    "组合计数与概率",
     "图论与网络流",
     "交互",
     "字符串",
@@ -45,13 +45,13 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 49,
-    "构造与贪心": 386,
-    "图论与网络流": 68,
-    "动态规划与状态设计": 108,
-    "数论与同余": 90,
+    "构造与贪心": 389,
+    "图论与网络流": 69,
+    "动态规划与状态设计": 109,
+    "数论与同余": 91,
     "组合计数与概率": 84,
+    "数据结构": 85,
     "几何": 21,
-    "数据结构": 84,
     "博弈": 42,
     "树结构": 91,
     "交互": 61,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 28,
+    "ai_generated_with_editorial": 35,
     "ai_generated_partial_editorial": 2,
     "missing_editorial": 212,
     "manual_override": 891,
@@ -35946,6 +35946,216 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1775,
+      "name": "Codeforces Round 843 (Div. 2)",
+      "date": "2023-01-10",
+      "url": "https://codeforces.com/contest/1775",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1775A1",
+          "index": "A1",
+          "slot": "A",
+          "title": "Gardener and the Capybaras (easy version)",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1775/problem/A1",
+          "editorialUrl": "https://codeforces.com/blog/entry/111286",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "给定一个只含字母 a、b 的字符串，要将其按顺序切成三个非空连续子串 $a,b,c$。要求 $b$ 同时不小于 $a,c$，或同时不大于 $a,c$；输出任意满足条件的三段划分。",
+          "transformedStatement": "把恢复名字转化为选择两个切点的判定问题：每个切点对确定三段子串，而合法性就是判断 $b$ 是否为三个子串中字典序的最大者或最小者。",
+          "keyObservations": [
+            "三段非空划分完全由两个切点决定，因此只需枚举所有切点对，候选数量为 $O(n^2)$。",
+            "题目条件等价于中间串 $b$ 同时不小于另外两串，或同时不大于另外两串；对每个划分直接比较三串即可判定。"
+          ],
+          "solutionBrief": "枚举字符串中的两个切点，得到三个非空子串 $a,b,c$；若满足 $a\\le b,c\\le b$ 或 $b\\le a,b\\le c$，立即输出该划分。所有切点对共 $O(n^2)$ 个。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1775A2",
+          "index": "A2",
+          "slot": "A",
+          "title": "Gardener and the Capybaras (hard version)",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1775/problem/A2",
+          "editorialUrl": "https://codeforces.com/blog/entry/111286",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定一个只含 `a`、`b` 的字符串，将其按顺序切成三个非空字符串 `a`、`b`、`c`，且中间串 `b` 要么同时不小于 `a`、`c`，要么同时不大于它们。输出任意满足条件的三段切分。",
+          "transformedStatement": "把问题转化为寻找一个切分位置：利用开头两个字符的模式决定短切分；特别处理前缀 `ab`，通过后续首个 `a` 或末尾两个 `b` 构造出明确的字典序关系。",
+          "keyObservations": [
+            "若前两字符不是 `ab`，将前三段设为单字符、单字符、后缀即可利用首字符关系保证字典序条件。",
+            "若前缀为 `ab` 且后面存在字符 `a`，应把第二段延伸到该 `a` 之前；这样第一段以 `a` 开头，第三段也以 `a` 开头，而第二段以 `b` 开头。",
+            "若前缀为 `ab` 且其余字符全为 `b`，则把末尾两个字符分别作为第二、第三段，前缀作为第一段，可直接满足第一段不大于第二段且第三段等于第二段。"
+          ],
+          "solutionBrief": "按字符串前缀分情况构造切分：前两字符为 `aa`、`bb` 或 `ba` 时取前三段为单字符和后缀；前缀为 `ab` 时寻找后续首个 `a`，否则把末尾两字符单独作为后两段。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1775B",
+          "index": "B",
+          "slot": "B",
+          "title": "Gardener and the Array",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1775/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/111286",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定由置位位置表示的整数数组，选择原数组的元素索引形成子序列；要求判断是否存在两条索引集合不同的子序列，使其中所有元素的按位或相同。输出 Yes 或 No。",
+          "transformedStatement": "把每个元素视为一个二进制位集合，并统计每个位覆盖了多少个元素。问题等价于判断是否存在一个元素，其全部位都能由其他元素覆盖；若存在，删除它与保留全部元素的按位或相同。",
+          "keyObservations": [
+            "若某个元素的所有置位都在整个数组中至少出现两次，则删除该元素不会改变全体元素的按位或，因此可构造两条不同子序列得到相同结果。",
+            "若每个元素都含有一个全局仅出现一次的置位，那么任意两条不同子序列的索引集合存在差异，该唯一置位会使它们的按位或不同。",
+            "因此只需统计每个置位在多少个数组元素中出现，并检查每个元素是否拥有出现次数为 $1$ 的置位。"
+          ],
+          "solutionBrief": "统计每个二进制位出现于多少个元素。若存在某个元素的所有置位出现次数都至少为 $2$，答案为 Yes；否则每个元素都有唯一置位，答案为 No。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1775C",
+          "index": "C",
+          "slot": "C",
+          "title": "Interesting Sequence",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1775/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/111286",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "math"
+          ],
+          "statementBrief": "给定整数 $n,x$，要求找最小的 $m\\ge n$，使连续整数 $n,n+1,\\ldots,m$ 的按位与等于 $x$。若不存在这样的 $m$，输出 $-1$。",
+          "transformedStatement": "把区间按位与看成逐位状态变化：随着右端点增大，每一位在其周期中的首次缺失会被永久清零；目标是找到一个终点，使所有应清零的位已清零、所有应保留的位尚未清零。",
+          "keyObservations": [
+            "若 $x$ 含有 $n$ 中为 $0$ 的位，则整个区间按位与不可能得到 $x$，因此必须满足 $(n\\&x)=x$。",
+            "连续整数按位与时，进位会从低位向高位逐步清除位，因此可达的 $x$ 必须是将 $n$ 的某个低位前缀清零后得到的结果。",
+            "对每个需要清零的位计算其首次变为 $0$ 的终点 $m_i$，取这些 $m_i$ 的最大值作为下界；所有需要保留的位必须在其首次清零位置之前，因此还需满足 $m_{zero}<m_{one}$。",
+            "单个位的取值按周期 $2^{i+1}$ 重复，前后各有长度 $2^i$ 的连续段，可据此直接求出每一位首次被清零的终点。"
+          ],
+          "solutionBrief": "先检查 $(n\\&x)=x$，并判断 $x$ 是否由 $n$ 清除某个低位前缀得到。对目标清零位求首次清零位置的最大值，对目标保留位求首次清零位置的最小值；若前者小于后者，答案为前者，否则为 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1775D",
+          "index": "D",
+          "slot": "D",
+          "title": "Friendly Spiders",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1775/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/111286",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "graphs",
+            "math",
+            "number theory",
+            "shortest paths"
+          ],
+          "statementBrief": "给定 $n$ 只蜘蛛及其腿数，若两只蜘蛛的腿数最大公约数大于 $1$，它们就能在 $1$ 秒内直接传递消息。消息可沿朋友关系逐次转发，要求求从第 $s$ 只到第 $t$ 只的最短时间并输出一条最优路线；若无法到达则报告无解。",
+          "transformedStatement": "把每只蜘蛛作为左部点、每个出现过的质数作为右部点；蜘蛛与其腿数包含的质数相连。原图的一次朋友传递等价于二分图中经过一个质因子点的两条边，于是问题转为二分图最短路。",
+          "keyObservations": [
+            "两只蜘蛛有边当且仅当它们的腿数含有同一个质因子，因此无需直接计算所有两两最大公约数，只需连接蜘蛛与其不同质因子。",
+            "将原图改为“蜘蛛—质因子”的二分图后，共享质因子的两只蜘蛛会通过同一质因子相连，避免显式建立可能很大的蜘蛛图。",
+            "原图中的一次传递对应二分图中的两条边，所以从起点到终点的二分图最短距离除以 $2$ 就是最少传递次数。",
+            "对每个 $a_i$ 只加入其不同质因子对应的边，并在 BFS 中记录前驱，可同时得到最短距离和一条最优路线。"
+          ],
+          "solutionBrief": "把每只蜘蛛与其腿数的不同质因子相连，构造蜘蛛—质因子二分图。对该图从 $s$ BFS 到 $t$，最短距离除以 $2$ 得传递次数，并通过前驱恢复路线；不可达则报告无解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1775E",
+          "index": "E",
+          "slot": "E",
+          "title": "The Human Equation",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1775/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/111286",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个整数序列，每次可选取任意子序列，并将其中奇数位置的数加 $1$、偶数位置的数减 $1$，或反向操作。求把整个序列变为全零所需的最少操作次数。",
+          "transformedStatement": "把数组改写为前缀和数组后，一次交替加减操作等价于对其中某个子序列统一加 $1$ 或统一减 $1$；问题转化为将所有前缀和归零，并最小化其最大值与最小值的高度差。",
+          "keyObservations": [
+            "令前缀和为 $p_0=0,\n p_i=\\sum_{j=1}^{i}a_j$，原数组中交替对所选子序列元素加减 $1$，会转化为前缀和数组某个子序列整体加 $1$ 或整体减 $1$。",
+            "前缀和中的负数可以通过重复执行整体加 $1$ 消除，正数可以通过重复执行整体减 $1$ 消除，因此分别需要 $-\\min p_i$ 和 $\\max p_i$ 次。",
+            "任意一次操作至多让前缀和的最大值与最小值之差缩小 $1$，所以操作次数至少为 $\\max p_i-\\min p_i$；按正负层次逐次消除可达到该下界。"
+          ],
+          "solutionBrief": "计算所有前缀和及其最大值、最小值，答案为 $\\max p_i-\\min p_i$。下界来自一次操作最多缩小差值 $1$，按层次消除负值和正值即可达到。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1775F",
+          "index": "F",
+          "slot": "F",
+          "title": "Laboratory on Pluto",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1775/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/111286",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "组合计数与概率",
+            "几何"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定由恰好 $n$ 个单位方格组成的实验室，方格可按平面网格任意相连；与外界相邻的边计入周长，要求周长最小。测试类型为 $u=1$ 时构造一种最优布局，$u=2$ 时求最优布局数量并对质数 $m$ 取模；旋转后的布局视为不同方案。",
+          "transformedStatement": "先把最优布局包在一个面积不小于 $n$ 且周长最小的矩形中，再从四个角删除恰好 $xy-n$ 个方格。为不增加周长，每个角的删除区域等价于行长单调不增的阶梯，问题转化为四个阶梯的总面积计数。",
+          "keyObservations": [
+            "固定最小周长的半周长 $p$ 后，只需枚举满足 $x+y=p$ 且 $xy\\ge n$ 的矩形；删去多余方格即可得到最优布局。",
+            "从最小周长矩形的四个角删格时，为保持周长不变，每个角的空缺必须形成边长单调不增的阶梯形，从而把几何布局转成阶梯序列计数。",
+            "四个角的阶梯彼此独立，布局是否合法只取决于四个阶梯删去的总格数是否等于 $xy-n$，因此可用状态 $dp[angles][sum][last]$ 合并计数。",
+            "阶梯新增一行的长度必须不超过上一行长度；完成一个角后重置为最大允许长度，这正好对应状态转移并避免重复统计。"
+          ],
+          "solutionBrief": "先由 $n$ 的平方根确定最小周长及候选矩形。构造时从矩形中删去角部方格；计数时把四角空缺表示为阶梯，用 $dp[angles][sum][last]$ 统计总删格数为 $xy-n$ 的方案，并将预处理优化到 $O(n)$，总复杂度为 $O(n+t\\sqrt n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
