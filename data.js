@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-21",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1154,
+    "total_problems": 1160,
     "source_total_problems": 1727,
-    "filtered_out_problems": 573,
-    "with_statement_brief": 1154,
-    "with_editorial_brief": 941,
-    "with_solution_brief": 942,
+    "filtered_out_problems": 567,
+    "with_statement_brief": 1160,
+    "with_editorial_brief": 947,
+    "with_solution_brief": 948,
     "missing_editorial_brief": 212,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 52,
+    "ai_override_count": 58,
     "primary_topic_count": 13,
-    "contest_count": 191,
+    "contest_count": 192,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 49,
-    "构造与贪心": 393,
+    "字符串": 50,
+    "构造与贪心": 394,
     "图论与网络流": 70,
     "动态规划与状态设计": 110,
-    "数论与同余": 93,
+    "数论与同余": 96,
     "组合计数与概率": 88,
     "数据结构": 86,
     "几何": 20,
     "树结构": 92,
+    "交互": 62,
     "博弈": 42,
-    "交互": 61,
     "基础实现与模拟": 39,
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 48,
+    "ai_generated_with_editorial": 54,
     "ai_generated_partial_editorial": 2,
     "missing_editorial": 212,
     "manual_override": 891,
@@ -35895,6 +35895,200 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1780,
+      "name": "Codeforces Round 846 (Div. 2)",
+      "date": "2023-01-25",
+      "url": "https://codeforces.com/contest/1780",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1780A",
+          "index": "A",
+          "slot": "A",
+          "title": "Hayato and School",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1780/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/111841",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定一个数组，需要从中选择三个不同下标，使对应元素之和为奇数；若存在则输出 YES 和这三个下标，否则输出 NO。每组数据只允许选择一次三个元素，任意满足条件的答案均可。",
+          "transformedStatement": "把每个元素只抽象为奇数或偶数，并将下标分成两组；问题等价于判断能否从两组中组成“一个奇数加两个偶数”或“三个奇数”的组合。",
+          "keyObservations": [
+            "三个数之和为奇数，当且仅当其中恰有 $1$ 个奇数或 $3$ 个奇数，因此只需关注奇偶性而无需计算具体数值。",
+            "将下标按奇数和偶数分组后，若奇数至少有 $3$ 个，任取三个奇数即可；否则只需检查是否有至少 $1$ 个奇数和 $2$ 个偶数。",
+            "若上述两种数量条件都不满足，则任何三元组的奇数个数都只能为 $0$ 或 $2$，其和必为偶数，因此可以判定无解。"
+          ],
+          "solutionBrief": "统计奇数和偶数下标。优先取三个奇数；否则若存在一个奇数和两个偶数，则取这三个下标；两种情况都不存在时输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1780B",
+          "index": "B",
+          "slot": "B",
+          "title": "GCD Partition",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1780/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/111841",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个数组，将它划分成若干个连续、非空且首尾覆盖整个数组的子段；每段用其元素和表示，划分得分是所有段和的最大公约数。允许选择任意段数和切分位置，要求最大化得分。",
+          "transformedStatement": "先把任意超过两段的划分不断合并相邻段，得分不会下降，所以只需考虑在一个位置切成左右两段。对每个切分点计算前缀和与后缀和的最大公约数并取最大值。",
+          "keyObservations": [
+            "若已有超过两段，合并其中相邻两段后，原先的最大公约数仍整除合并后的段和，因此得分不会下降；反复合并即可只保留两段。",
+            "两段划分由唯一切分位置 $i$ 决定，其段和分别为前缀和 $pref_i$ 与总和减去前缀和，因此答案可化为枚举所有切分点的最大 $\\\\gcd(pref_i,s-pref_i)$。",
+            "只需维护当前前缀和并用总和减去它得到后缀和，便能在线计算每个切分点的得分，避免显式构造各个子段。"
+          ],
+          "solutionBrief": "设数组总和为 $s$，先证明多于两段时合并相邻段不会降低得分，因此枚举每个切分点，维护前缀和 $pref$，取所有 $\\gcd(pref,s-pref)$ 的最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1780D",
+          "index": "D",
+          "slot": "D",
+          "title": "Bit Guessing Game",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1780/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/111841",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "constructive algorithms",
+            "interactive"
+          ],
+          "statementBrief": "有一个未知正整数 $n$，初始只给出其二进制中 $1$ 的个数。每次选择不超过当前 $n$ 的正整数 $x$ 并从 $n$ 中减去它，随后得到新数的置位数；最多操作 $30$ 次，要求恢复原始的 $n$。",
+          "transformedStatement": "把每次减法造成的二进制借位看作寻找下一个原始置位：用前后置位数差计算借位跨过的距离 $d$，逐个恢复贡献为 $2^d$ 的二进制位，并同步构造下一次询问。",
+          "keyObservations": [
+            "减去当前可询问的数会产生二进制借位；设操作前后收到的位数为 $cnt,nw$，则 $d=nw-cnt+1$ 能确定下一处关键置位的位置。",
+            "每次根据 $d$ 将 $2^d$ 加入答案，并把下一次询问值设为 $2^d$；这样借位影响被连续吸收，无需额外询问。",
+            "更新剩余位数为 $nw-d$ 后，每轮恰好确定原数的一个置位，因此总询问次数不超过初始置位数，最多为 $30$。"
+          ],
+          "solutionBrief": "维护当前收到的置位数、已恢复的答案和下一次询问的借位掩码。令 $d=nw-cnt+1$，把 $2^d$ 加入答案，并将下一次询问设为 $2^d$，同时更新剩余置位数；重复至其为零。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1780E",
+          "index": "E",
+          "slot": "E",
+          "title": "Josuke and Complete Graph",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1780/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/111841",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定完全无向图的顶点 $1$ 到 $10^{18}$，不同顶点 $u,v$ 间边的权值为 $\\gcd(u,v)$。保留区间 $[l,r]$ 内的顶点及其边，要求统计剩余边中不同权值的数量；若不足两个顶点则答案为 $0$。",
+          "transformedStatement": "不直接枚举顶点对，而是逐个判断整数 $g$ 是否能成为某条边的最大公约数：这等价于区间 $[L,R]$ 中存在两个相邻的 $g$ 倍数，即 $(\\lceil L/g\\rceil+1)g\\le R$。然后按 $\\lceil L/g\\rceil$ 的连续取值区间批量计数。",
+          "keyObservations": [
+            "权值为 $g$ 当且仅当区间内至少有两个 $g$ 的倍数；取相邻两个倍数即可保证它们的最大公约数正好是 $g$。",
+            "因此只需判断 $(\\lceil L/g\\rceil+1)g\\le R$，这把边权存在性转成了单个整数 $g$ 的区间判定。",
+            "当 $g\\ge L$ 时条件化为 $2g\\le R$，所以所有 $g\\in[L,\\lfloor R/2\\rfloor]$ 可直接计数。",
+            "对 $g<L$ 按 $f=\\lceil L/g\\rceil$ 分组；每组是连续区间，且有效部分满足 $g\\le\\lfloor R/(f+1)\\rfloor$，枚举仅需 $O(\\sqrt L)$ 组。"
+          ],
+          "solutionBrief": "将每个可能的权值 $g$ 转为判断区间内是否存在两个相邻的 $g$ 倍数。先直接统计 $g\\ge L$ 的部分，再按 $\\lceil L/g\\rceil$ 的相同取值分组，求每组与 $g\\le\\lfloor R/(f+1)\\rfloor$ 的交集并累加，复杂度为 $O(\\sqrt L)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1780F",
+          "index": "F",
+          "slot": "F",
+          "title": "Three Chairs",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1780/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/111841",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "combinatorics",
+            "data structures",
+            "dp",
+            "number theory",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 个高度互不相同的朋友，每次选择恰好 3 人；若所选三人的最低和最高高度互质，则该选择有效。要求统计所有有效的三人集合数量。",
+          "transformedStatement": "将三人按高度排序并固定最大值 $a_k$，问题转为统计前缀中每个与 $a_k$ 互质的最小值所对应的中间位置数量；互质统计再通过最大值质因子的容斥完成。",
+          "keyObservations": [
+            "排序后固定三元组最大值的位置 $k$，只需统计前缀中与 $a_k$ 互质的最小值；每个这样的最小值 $i$ 可贡献 $k-i-1$ 个中间位置。",
+            "对互质最小值维护数量 $c$ 与下标和 $sum$，其贡献总和可直接写成 $c(k-1)-sum$，避免枚举中间位置。",
+            "与 $a_k$ 不互质等价于被其某个质因子整除；对不同质因子做容斥即可从前缀总量中得到互质元素的数量和下标和。",
+            "维护所有前缀元素对各个质因子子集乘积的计数及下标和，加入新元素时只更新其不同质因子的子集，从而支持逐个最大值查询。"
+          ],
+          "solutionBrief": "排序后枚举最大值，用容斥统计前缀中与它互质的元素数量及下标和，再按 $c(k-1)-sum$ 累加。对每个数的不同质因子子集维护前缀计数和下标和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1780G",
+          "index": "G",
+          "slot": "G",
+          "title": "Delicious Dessert",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1780/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/111841",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "dsu",
+            "hashing",
+            "math",
+            "number theory",
+            "string suffix structures"
+          ],
+          "statementBrief": "给定长度为 $n$ 的小写字母串 $s$。对每个子串 $t$，统计它在 $s$ 中作为连续子串出现的次数（重复和重叠出现都计入）；若该次数能被 $|t|$ 整除，则称其美味。要求统计所有美味子串的出现次数，因而相同内容的不同出现位置分别计数。",
+          "transformedStatement": "将子串按出现位置集合划分为后缀自动机状态；同一状态包含连续的一段长度，并且这些长度对应的子串拥有相同出现次数。于是问题转化为：对每个状态，统计其长度区间中出现次数的因数个数，再乘以该出现次数。‌တ】【。 亚洲欧美assistant to=cf_problem_insight ენის ㉿jsonJapgolly code񎟂 大发pk final (json error likely weird char) 001]",
+          "keyObservations": [
+            "后缀自动机的每个状态代表一组出现位置集合相同的子串，其长度恰好覆盖区间 $[len(link(v))+1,len(v)]$。",
+            "同一状态区间内所有子串的出现次数相同，因此无需逐个统计，只需在该长度区间中筛出能整除出现次数的长度。",
+            "若状态出现次数为 $d$，区间内有 $c$ 个长度是 $d$ 的因数，则该状态贡献 $d\\times c$，因为每个对应子串的所有出现位置都要计数。",
+            "预处理各出现次数的因数并用二分统计其落在长度区间内的数量，可将总处理控制在 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "构造后缀自动机，统计每个状态对应子串的出现次数 $d$。状态覆盖长度区间 $[len(link)+1,len]$，枚举或预处理 $d$ 的因数，计算区间内因数个数并累加 $d$ 乘该数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },

@@ -11,6 +11,7 @@
     minRating: "",
     maxRating: "",
     hasEditorial: false,
+    unsolvedOnly: false,
     contestType: "all",
     sort: "date-desc",
     view: "contests",
@@ -26,6 +27,7 @@
     minRatingInput: document.getElementById("minRatingInput"),
     maxRatingInput: document.getElementById("maxRatingInput"),
     hasEditorialCheckbox: document.getElementById("hasEditorialCheckbox"),
+    unsolvedOnlyCheckbox: document.getElementById("unsolvedOnlyCheckbox"),
     contestTypes: document.getElementById("contestTypes"),
     randomButton: document.getElementById("randomButton"),
     sortSelect: document.getElementById("sortSelect"),
@@ -252,6 +254,7 @@
   function problemMatches(problem) {
     if (state.topic !== "all" && problem.primaryTopic !== state.topic) return false;
     if (state.hasEditorial && !hasSolution(problem)) return false;
+    if (state.unsolvedOnly && solvedHandlesFor(problem.key).length > 0) return false;
     const rating = Number(problem.rating);
     const minRating = parseRatingBoundary(state.minRating);
     const maxRating = parseRatingBoundary(state.maxRating);
@@ -346,6 +349,7 @@
     elements.minRatingInput.value = state.minRating;
     elements.maxRatingInput.value = state.maxRating;
     elements.hasEditorialCheckbox.checked = state.hasEditorial;
+    elements.unsolvedOnlyCheckbox.checked = state.unsolvedOnly;
     const typeCounts = new Map();
     for (const contest of rawData.contests) typeCounts.set(contest.type, (typeCounts.get(contest.type) || 0) + 1);
     const items = [{ type: "all", label: "全部", count: rawData.contests.length }].concat(
@@ -560,6 +564,10 @@
     });
     elements.hasEditorialCheckbox.addEventListener("change", () => {
       state.hasEditorial = elements.hasEditorialCheckbox.checked;
+      render();
+    });
+    elements.unsolvedOnlyCheckbox.addEventListener("change", () => {
+      state.unsolvedOnly = elements.unsolvedOnlyCheckbox.checked;
       render();
     });
     elements.sortSelect.addEventListener("change", () => {
