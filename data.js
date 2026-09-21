@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-21",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1128,
+    "total_problems": 1134,
     "source_total_problems": 1727,
-    "filtered_out_problems": 599,
-    "with_statement_brief": 1128,
-    "with_editorial_brief": 915,
-    "with_solution_brief": 916,
+    "filtered_out_problems": 593,
+    "with_statement_brief": 1134,
+    "with_editorial_brief": 921,
+    "with_solution_brief": 922,
     "missing_editorial_brief": 212,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 24,
+    "ai_override_count": 30,
     "primary_topic_count": 13,
-    "contest_count": 188,
+    "contest_count": 189,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -33,8 +33,8 @@ window.CF_INSIGHTS_DATA = {
     "动态规划与状态设计",
     "树结构",
     "数论与同余",
-    "数据结构",
     "组合计数与概率",
+    "数据结构",
     "图论与网络流",
     "交互",
     "字符串",
@@ -45,21 +45,22 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 49,
-    "构造与贪心": 384,
-    "图论与网络流": 67,
-    "动态规划与状态设计": 107,
+    "构造与贪心": 386,
+    "图论与网络流": 68,
+    "动态规划与状态设计": 108,
+    "数论与同余": 90,
+    "组合计数与概率": 84,
     "几何": 21,
     "数据结构": 84,
     "博弈": 42,
-    "组合计数与概率": 83,
     "树结构": 91,
-    "数论与同余": 89,
     "交互": 61,
     "基础实现与模拟": 39,
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 24,
+    "ai_generated_with_editorial": 28,
+    "ai_generated_partial_editorial": 2,
     "missing_editorial": 212,
     "manual_override": 891,
     "statement_derived": 1
@@ -35945,6 +35946,190 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1768,
+      "name": "Codeforces Round 842 (Div. 2)",
+      "date": "2023-01-05",
+      "url": "https://codeforces.com/contest/1768",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1768A",
+          "index": "A",
+          "slot": "A",
+          "title": "Greatest Convex",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1768/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/110901",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定整数 $k$，在 $1\\le x<k$ 中寻找最大的整数，使 $x!+(x-1)!$ 是 $k$ 的倍数；若不存在则输出 $-1$。需要对每个测试用例分别输出该最大值。",
+          "transformedStatement": "把阶乘和提取为 $(x-1)!(x+1)$，并优先检查取值上界 $x=k-1$；此时表达式恰好含有因子 $k$，从而将最大值问题化为直接验证边界构造。",
+          "keyObservations": [
+            "恒有 $x!+(x-1)!=(x-1)!(x+1)$，将阶乘和改写为乘积后可直接检验整除性。",
+            "取上界候选 $x=k-1$ 时，表达式变为 $(k-2)!\\cdot k$，必然是 $k$ 的倍数，因此该候选一定可行。",
+            "由于题目要求的范围是 $x<k$，任何可行解都不超过 $k-1$；结合上一结论可知答案恰为 $k-1$。"
+          ],
+          "solutionBrief": "利用恒等式 $x!+(x-1)!=(x-1)!(x+1)$。令 $x=k-1$ 后结果为 $(k-2)!\\cdot k$，必为 $k$ 的倍数；同时它已达到 $x<k$ 的最大可能值，所以每组直接输出 $k-1$，复杂度为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1768B",
+          "index": "B",
+          "slot": "B",
+          "title": "Quick Sort",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1768/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/110901",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列。每次可选择至多 $k$ 个元素，将它们按升序移到数组末尾；求把排列变为升序排列所需的最少操作次数。",
+          "transformedStatement": "把不参与任何操作的元素视为固定部分：它们会保留原相对顺序并最终出现在前面，因此目标变成最大化排列中按顺序出现的前缀 $1,2,\\ldots,w$；其余元素按每组至多 $k$ 个分批处理。",
+          "keyObservations": [
+            "若有 $w$ 个元素始终不参与操作，它们最终会按原相对顺序位于数组前缀，因此必须构成 $1,2,\\ldots,w$ 在原排列中的子序列。",
+            "为了减少操作次数，应最大化这样的连续值前缀长度 $w$；其余 $n-w$ 个元素每次最多处理 $k$ 个，所以操作数为 $\\left\\lceil\\frac{n-w}{k}\\right\\rceil$。",
+            "从排列左到右追踪下一个需要的值，能在线性时间内求出最大的 $w$，无需模拟具体移动过程。"
+          ],
+          "solutionBrief": "扫描排列，统计 $1,2,\\ldots$ 能否按顺序作为子序列出现，得到最大长度 $w$。保留这部分元素不操作，其余元素每次最多选 $k$ 个移到末尾并排序，答案为 $\\lceil(n-w)/k\\rceil$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1768C",
+          "index": "C",
+          "slot": "C",
+          "title": "Elemental Decompress",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1768/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/110901",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a$，要构造两个各包含 $1$ 到 $n$ 且每个数恰好一次的排列 $p,q$，使每个位置满足 $\\max(p_i,q_i)=a_i$；若无法构造则输出 NO，否则输出任意一组排列。",
+          "transformedStatement": "把每个 $a_i$ 看成当前位置必须由 $p_i$ 或 $q_i$ 提供的上界且至少一边要恰好取值 $a_i$：先分配所有目标值，再把两条排列中的空位用未使用且不超过对应目标的数补齐。",
+          "keyObservations": [
+            "每个数在数组 $a$ 中至多出现两次，因为每次出现都要求 $p_i$ 或 $q_i$ 使用该数，而两条排列各只能使用一次。",
+            "将 $a$ 排序后若存在 $a_i<i$，则前 $i$ 个位置的两条排列都无法提供足够多的小于 $i$ 的数，因此必然无解。",
+            "按 $a_i$ 从大到小处理，并优先把该值放入尚未使用它的排列，可保证每个位置至少有一项等于 $a_i$，为另一项留下不超过它的候选空间。",
+            "补全另一条排列时始终取尚未使用的最大值；若该值大于当前位置的 $a_i$，则会使最大值超过目标，立即判定无解。"
+          ],
+          "solutionBrief": "把元素按值从大到小处理：先将每个 $a_i$ 放入尚未使用该值的 $p$ 或 $q$，再用两边各自尚未使用的最大值补全空位。若补入值超过 $a_i$、出现重复或最终不满足最大值条件则输出 NO，否则输出两条排列；排序实现复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1768D",
+          "index": "D",
+          "slot": "D",
+          "title": "Lucky Permutation",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1768/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/110901",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列，每次可任选两个下标交换其元素。要求求出最少交换次数，使最终排列恰好有一个逆序对。",
+          "transformedStatement": "恰有一个逆序对的目标排列可表示为单位排列中仅交换相邻值 $k$ 与 $k+1$。将原排列建成函数图 $i\\to p_i$，问题转化为枚举一次改接两条边后图的环数，并最小化 $n-\\text{cycles}'$。",
+          "keyObservations": [
+            "恰有一个逆序对的排列只有 $n-1$ 种，必然是有序排列中某一对相邻值 $k,k+1$ 交换后的结果，因此只需枚举 $k$。",
+            "把排列表示为函数图 $i\\to p_i$ 后，原排列变为单位排列的最少交换次数是 $n-\\text{cycles}$，其中 cycles 为图中环的数量。",
+            "将值 $k$ 与 $k+1$ 交换等价于改接它们对应的两条入边；若两值在同一环中，环数增加 $1$，否则环数减少 $1$，从而可直接计算每个目标排列的代价。",
+            "用 DFS 为每个环标记编号，并预先记录每个值的位置，即可在 $O(n)$ 时间枚举所有相邻值对并取最小代价。"
+          ],
+          "solutionBrief": "先用 DFS 分解 $i\\to p_i$ 的环并统计 cycles。对每个 $k$，目标是交换值 $k,k+1$；根据二者是否同环得到新的环数，再取所有 $n-\\text{cycles}'$ 的最小值。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1768E",
+          "index": "E",
+          "slot": "E",
+          "title": "Partial Sorting",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1768/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/110901",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定长度为 $3n$ 的排列，每次可执行题面列出的两类操作，将排列逐步变为递增排列；记录中具体操作定义缺失。对每个排列令 $f(p)$ 为所需最少操作次数，要求所有 $(3n)!$ 个排列的 $f(p)$ 之和，并对素数 $M$ 取模。",
+          "transformedStatement": "把问题改写为统计 $f(p)\\le0,\\le1,\\le2,\\le3$ 的排列数量：前两层由前后长度为 $n$ 的区间条件决定，第二层的交集按中间值集合落入首段的个数分类，最后通过差分得到各精确次数。",
+          "keyObservations": [
+            "对任意排列，所需操作数最多为 $3$，因此只需统计 $f(p)=0,1,2,3$ 四类排列。",
+            "$f(p)=0$ 只有初始排列已经递增的情形；$f(p)\\leq1$ 等价于前 $n$ 个或后 $n$ 个位置满足相应的固定条件，使用容斥得到并集大小。",
+            "$f(p)\\leq2$ 等价于最小的 $n$ 个数全部位于前 $2n$ 个位置，或最大的 $n$ 个数全部位于后 $2n$ 个位置；两事件的交集按中间值组中出现在前段的数量 $i$ 分类计数。",
+            "得到各层累计数量后用差分恢复恰好需要 $k$ 次操作的排列数，答案为 $\\sum_{k=0}^{3}k\\cdot\\#\\{p:f(p)=k\\}$。"
+          ],
+          "solutionBrief": "设累计数量为 $C_k=\\#\\{p:f(p)\\le k\\}$。按前后区间条件用容斥计算 $C_0,C_1,C_2$，令 $C_3=(3n)!$，差分后计算 $C_1+2(C_2-C_1)+3(C_3-C_2)$；组合数用阶乘和逆元预处理，复杂度 $O(n)$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1768F",
+          "index": "F",
+          "slot": "F",
+          "title": "Wonderful Jump",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1768/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/110901",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定正整数数组，从位置 $1$ 出发，每次可从位置 $i$ 跳到不小于它的位置 $j$，费用是区间 $[i,j]$ 的最小元素乘以 $(j-i)^2$。要求对每个位置 $k$，求到达它所需的最小总费用。",
+          "transformedStatement": "将问题建模为有向无环图上的最短路：从 $i$ 到 $j$ 的转移代价为区间最小值乘距离平方。令 $A=\\max a_i$，依据一次长跳是否会被若干次一步跳跃替代，将前驱转移压缩为大区间最小值的近距离候选和小区间最小值在端点的候选。",
+          "keyObservations": [
+            "若区间最小值为 $m$、跳跃距离为 $d$，当 $m d^2>A d$ 时，连续走 $d$ 次一步跳跃的费用不超过它，因此只需考虑 $d\\le A/m$。",
+            "若区间最小值出现在内部位置 $k$，则在 $k$ 处分成两跳的费用为 $m((k-i)^2+(j-k)^2)$，严格小于一次跳跃费用，因此最优跳跃的最小值只能出现在端点。",
+            "当区间最小值至少为 $\\sqrt A$ 时，由距离上界只需检查距离不超过 $\\sqrt A$ 的前驱，从而每个位置只需处理 $O(\\sqrt A)$ 个候选。",
+            "当区间最小值小于 $\\sqrt A$ 时，最优候选的最小值在左端或右端：左端情况维护各小值在当前位置左侧的最右出现位置，右端情况从 $j-1$ 向左扫描到 $a_i\\le a_j$，扫描总次数按摊还计为 $O(\\sqrt A)$。"
+          ],
+          "solutionBrief": "设 $dp_j$ 为到达位置 $j$ 的最小费用。按区间最小值是否大于等于 $\\sqrt A$ 分类：大值只枚举近距离前驱；小值利用最小值必须在端点的性质，维护小值最右出现位置并进行按摊还线性扫描，总复杂度为 $O(n\\sqrt A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
