@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-21",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1168,
+    "total_problems": 1170,
     "source_total_problems": 1727,
-    "filtered_out_problems": 559,
-    "with_statement_brief": 1168,
-    "with_editorial_brief": 955,
-    "with_solution_brief": 956,
+    "filtered_out_problems": 557,
+    "with_statement_brief": 1170,
+    "with_editorial_brief": 957,
+    "with_solution_brief": 958,
     "missing_editorial_brief": 212,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 67,
+    "ai_override_count": 70,
     "primary_topic_count": 13,
     "contest_count": 192,
     "rating_min": 800,
@@ -38,8 +38,8 @@ window.CF_INSIGHTS_DATA = {
     "图论与网络流",
     "交互",
     "字符串",
-    "博弈",
     "基础实现与模拟",
+    "博弈",
     "几何",
     "代数、矩阵与多项式"
   ],
@@ -51,15 +51,15 @@ window.CF_INSIGHTS_DATA = {
     "数论与同余": 98,
     "组合计数与概率": 88,
     "数据结构": 88,
-    "几何": 20,
+    "几何": 21,
     "树结构": 92,
     "交互": 62,
-    "博弈": 42,
-    "基础实现与模拟": 39,
+    "基础实现与模拟": 41,
+    "博弈": 41,
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 61,
+    "ai_generated_with_editorial": 63,
     "ai_generated_partial_editorial": 3,
     "missing_editorial": 212,
     "manual_override": 891,
@@ -35776,8 +35776,8 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-02-05",
       "url": "https://codeforces.com/contest/1786",
       "type": "Div. 2",
-      "problemCount": 1,
-      "maxRating": 800,
+      "problemCount": 3,
+      "maxRating": 1300,
       "problems": [
         {
           "key": "1786A1",
@@ -35787,17 +35787,67 @@ window.CF_INSIGHTS_DATA = {
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/1786/problem/A1",
           "editorialUrl": "https://codeforces.com/blog/entry/112875",
-          "primaryTopic": "博弈",
+          "primaryTopic": "基础实现与模拟",
           "secondaryTopics": [],
           "originalTags": [
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Non-alternating Deck (easy version)；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 张同色牌，按步骤从牌堆顶发牌：第 $i$ 步发出 $i$ 张，顺序为第 1 步给 Alice，之后每两个步骤在 Alice 和 Bob 之间切换。若剩余牌不足以完成当前步骤，就把所有剩余牌给当前玩家并停止，求最终两人的牌数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1786A2",
+          "index": "A2",
+          "slot": "A",
+          "title": "Alternating Deck (hard version)",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1786/problem/A2",
+          "editorialUrl": "https://codeforces.com/blog/entry/112875",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 张从白色开始交替排列的牌，按第 $i$ 步取 $i$ 张：接收者依次为 Alice、Bob、Bob、Alice、Alice、Bob、Bob……；若剩余不足则全部发给当前接收者并停止。求结束时 Alice 和 Bob 各有多少张白牌、黑牌。",
+          "transformedStatement": "把牌堆视为由已取牌总数奇偶决定下一张颜色的序列，逐步处理长度为 $i$ 的区间；接收者按两步为一组切换，只需累计每个区间中两种奇偶位置的牌数。",
+          "keyObservations": [
+            "前 $k$ 步共发出 $k(k+1)/2$ 张牌，因此最多进行 $O(\\sqrt n)$ 步，逐步模拟足以处理 $n\\le 10^6$。",
+            "牌面颜色由已发牌总数的奇偶决定：当前总数为偶数时牌为白色，否则为黑色，因此无需显式存储牌堆。",
+            "第 $1,4,5,8,9,\\ldots$ 步属于 Alice，第 $2,3,6,7,\\ldots$ 步属于 Bob；按每两步切换一次接收者即可正确累计双方颜色数量。",
+            "当剩余牌数少于当前步长时，将剩余牌全部计入当前玩家并结束模拟，避免额外构造不完整步骤。"
+          ],
+          "solutionBrief": "从第 $1$ 步开始模拟，每步取 `min(i,剩余牌数)` 张。根据当前已取牌数的奇偶确定颜色，并按两步一组切换 Alice、Bob；牌取完后输出双方白牌和黑牌数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1786B",
+          "index": "B",
+          "slot": "B",
+          "title": "Cake Assembly Line",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1786/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/112875",
+          "primaryTopic": "几何",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "sortings"
+          ],
+          "statementBrief": "数轴上有 $n$ 个互不相交的蛋糕区间和 $n$ 个互不相交的巧克力喷洒区间。可以把传送带上的所有蛋糕整体平移一次，并且每个按钮最多按一次；要求每个蛋糕都被对应巧克力覆盖且没有巧克力落在蛋糕外，判断是否可行。",
+          "transformedStatement": "把每个蛋糕相对其对应巧克力区间的可行位置转成一个允许平移距离区间；统一平移传送带就是寻找这些区间的公共交集。",
+          "keyObservations": [
+            "由于蛋糕与巧克力区间都按位置严格分离且顺序一致，第 $i$ 个蛋糕只能对应第 $i$ 个巧克力区间，从而不需要考虑配对方案。",
+            "要让巧克力完全落在蛋糕内，第 $i$ 个蛋糕中心平移后必须位于区间 $[b_i+h-w,\\,b_i-h+w]$，这把覆盖条件转成了中心位置范围。",
+            "所有蛋糕同步平移同一个距离 $p$，因此必须同时满足 $b_i+h-w-a_i\\le p\\le b_i-h+w-a_i$；问题等价于判断这些区间是否有公共交集。"
+          ],
+          "solutionBrief": "对每个 $i$ 计算允许的平移区间 $[b_i+h-w-a_i,\\ b_i-h+w-a_i]$，维护所有左端点最大值与右端点最小值。若前者不超过后者，则存在统一平移量，输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
