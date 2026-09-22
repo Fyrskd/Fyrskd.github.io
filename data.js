@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1221,
+    "total_problems": 1228,
     "source_total_problems": 1742,
-    "filtered_out_problems": 521,
-    "with_statement_brief": 1221,
-    "with_editorial_brief": 1006,
-    "with_solution_brief": 1007,
+    "filtered_out_problems": 514,
+    "with_statement_brief": 1228,
+    "with_editorial_brief": 1013,
+    "with_solution_brief": 1014,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 129,
+    "ai_override_count": 136,
     "primary_topic_count": 13,
-    "contest_count": 198,
+    "contest_count": 199,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 54,
-    "构造与贪心": 409,
-    "图论与网络流": 72,
-    "动态规划与状态设计": 117,
+    "字符串": 55,
+    "构造与贪心": 411,
+    "图论与网络流": 73,
+    "动态规划与状态设计": 119,
     "数论与同余": 101,
     "组合计数与概率": 99,
-    "数据结构": 90,
+    "数据结构": 91,
     "几何": 23,
     "树结构": 96,
     "交互": 62,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 112,
+    "ai_generated_with_editorial": 119,
     "ai_generated_partial_editorial": 3,
     "missing_editorial": 214,
     "manual_override": 891,
@@ -35590,6 +35590,230 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "fetch_failed"
+        }
+      ]
+    },
+    {
+      "id": 1801,
+      "name": "Codeforces Round 857 (Div. 1)",
+      "date": "2023-03-09",
+      "url": "https://codeforces.com/contest/1801",
+      "type": "Div. 1",
+      "problemCount": 7,
+      "maxRating": 3400,
+      "problems": [
+        {
+          "key": "1801A",
+          "index": "A",
+          "slot": "A",
+          "title": "The Very Beautiful Blanket",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1801/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/113857",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定 $n\\times m$ 的非负整数矩阵，要求每个 $4\\times4$ 子矩阵中所有元素的按位异或和满足题设条件，并尽量让矩阵中的数字互不相同。输出不同数字的最大数量及任意一个满足条件的矩阵。",
+          "transformedStatement": "把问题视为构造一个足够大的、所有元素唯一且每个 $4\\times4$ 区域异或合法的模板；先生成 $256\\times256$ 模板，再截取左上角目标尺寸。模板按 $2\\times2$ 块编码，使低两位和块编号的高位贡献分别抵消。",
+          "keyObservations": [
+            "不同数字的数量上界就是格子总数 $n\\cdot m$，因此目标可转化为构造所有元素互不相同的合法矩阵。",
+            "先构造 $256\\times256$ 的通用矩阵，再取其左上角 $n\\times m$ 子矩阵；因为合法性对缩小后的子矩阵保持不变。",
+            "将矩阵划分为 $2\\times2$ 块，并让第 $i$ 个块依次放置 $4i,4i+1,4i+2,4i+3$，利用低两位与高位分别异或消去，保证任意要求的 $4\\times4$ 子矩阵异或和为零。",
+            "$256\\times256$ 构造中的每个元素都不同，所以任意左上角子矩阵也能达到 $n\\cdot m$ 个不同数字。"
+          ],
+          "solutionBrief": "预处理一个 $256\\times256$ 矩阵：每个 $2\\times2$ 块填入连续四个数，块编号按行优先递增。对每组 $n,m$ 输出 $n\\cdot m$，并截取该矩阵左上角区域；低位和高位的异或分别抵消，满足所有 $4\\times4$ 条件。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1801B",
+          "index": "B",
+          "slot": "B",
+          "title": "Buying gifts",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1801/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/113857",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个部门，每个部门有价格为 $a_i、b_i$ 的两家店。每个部门必须只选一家，并把买到的礼物给两位朋友中的一位；两人都至少收到一件礼物，目标是最小化两人所获最高价之差。",
+          "transformedStatement": "将每个部门的选择视为把 $a_i$ 分配给第一位朋友或把 $b_i$ 分配给第二位朋友，并枚举第二位朋友的最高价所在位置；排序后，前缀被迫分配给第一位，后缀只需寻找能改善第一位最高价的候选。",
+          "keyObservations": [
+            "按 $b_i$ 降序处理时，若第 $i$ 个部门把礼物给第二位朋友，则此前所有部门都必须给第一位朋友，否则当前 $b_i$ 不会是第二位朋友的最高价。",
+            "固定第二位朋友的最高价为 $b_i$ 后，前缀中的第一位最高价只需维护为 $m$；后缀里 $a_j\\le m$ 的选择不会改变答案，只有 $a_j>m$ 的候选需要考虑。",
+            "对后缀候选最小化 $|a_j-b_i|$ 时，只需检查不小于和不大于 $b_i$ 的两个邻值，并验证其满足超过当前上界的条件。",
+            "删除当前元素并维护后缀 $a_j$ 的有序 multiset，即可在每个位置用 $O(\\log n)$ 找到这两个邻值。"
+          ],
+          "solutionBrief": "按 $b_i$ 降序排序，枚举第二位朋友获得最高价的部门；维护前缀 $a$ 的最大值，并在后缀 multiset 中查询最接近 $b_i$ 的可行 $a_j$，取最小差值。总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1801C",
+          "index": "C",
+          "slot": "C",
+          "title": "Music Festival",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1801/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/113857",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有若干张按固定顺序收录歌曲的专辑，必须选择一个专辑播放顺序，且每张专辑要完整播放、不能调整歌曲顺序。歌曲若比之前听过的所有歌曲都更酷，就增加 1 点印象，求能获得的最大印象。",
+          "transformedStatement": "把每张专辑重述为只包含依次刷新前缀最高酷值的序列；随后按酷值递增处理这些事件，用 DP 表示播放某张专辑后能达到的最大印象，并通过已结束专辑的最优值连接不同专辑。",
+          "keyObservations": [
+            "每张专辑只保留其前缀最大值首次出现的位置；被删除的歌曲不可能带来新的全局印象，因此压缩不改变最优答案。",
+            "按歌曲酷值从小到大处理时，专辑状态只需记录处理范围内以该专辑结尾时的最大印象值，当前歌曲既可接在本专辑后，也可作为切换到本专辑的首个提升。",
+            "当处理到某专辑的最大值后，该专辑可以作为已结束专辑参与后续转移；维护所有最大值更小的已结束专辑中的最大 DP 值即可完成跨专辑转移。"
+          ],
+          "solutionBrief": "先将每张专辑压缩为前缀最大值序列，再按酷值递增扫描。维护每张专辑的 DP 值及已结束专辑的最大值，按歌曲在压缩序列中的首个、中间或最后位置更新，最终取所有 DP 最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1801D",
+          "index": "D",
+          "slot": "D",
+          "title": "The way home",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1801/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/113857",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "graphs",
+            "greedy",
+            "shortest paths",
+            "sortings"
+          ],
+          "statementBrief": "从城市 $1$ 出发前往城市 $n$，只能乘坐有向航班；乘坐费用必须由当前金币支付。到达过的城市都可以每天表演赚钱，求到家所需的最少表演次数，无法到达则输出 $-1$。",
+          "transformedStatement": "把路径过程建模为状态 $(v,best)$：$v$ 是当前城市，$best$ 表示已经过城市中收益率最高者。每条航班转移时，若金币不足，就用该最高收益率一次补足费用，并以表演次数优先、剩余金币次优进行状态优化。",
+          "keyObservations": [
+            "到达某城市后，之前经过城市中的最高收益率决定后续赚钱效率，因此只需记录当前城市和历史最大 $w_i$ 的城市。",
+            "赚钱可以延后：只有当当前金币不足以支付下一班航班时，才按当前最高收益率一次补足所需场次，不会影响可行性或最优性。",
+            "固定状态下，航班转移后的代价先最小化表演次数、再最大化剩余金币；这个字典序可比较关系使状态能用 Dijkstra 松弛。",
+            "支付航班后若目的地收益率更高，就更新历史最高收益率，从而影响之后所有缺钱时的补款次数。"
+          ],
+          "solutionBrief": "设状态为 $(城市,历史最高收益率)$，维护达到该状态的最少表演次数及最多剩余金币。沿有向航班转移，缺钱时按最高收益率补足，再用字典序 Dijkstra 松弛，最终取到达城市 $n$ 的最小表演次数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1801E",
+          "index": "E",
+          "slot": "E",
+          "title": "Gasoline prices",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1801/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/113857",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "dsu",
+            "hashing",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，每个城市的油价必须是其整数区间 $[l_i,r_i]$ 内的值。每年给出两条等长路径，要求两条路径上按位置对应的油价全部相等；对每个查询前缀，求满足所有已给约束的油价分配方案数。",
+          "transformedStatement": "把每条路径约束视为一组对应位置的等价关系：相等关系形成顶点连通分量，分量的可行价格范围是所含区间的交集。算法进一步把路径对拆成 LCA 两侧的竖直幂长块，并在分层约束图中确定各次合并发生的时间。",
+          "keyObservations": [
+            "所有被约束相等的城市构成一个连通分量，其价格可选范围是各点区间的交集，因此总方案数始终等于所有分量交集长度的乘积。",
+            "一对等长路径的逐位置相等约束可递归拆成若干个长度为 $2^k$ 的对齐块，使每层只需处理块之间的对应关系。",
+            "树上任意路径可按两端到 LCA 的竖直段拆分，两个路径的对应关系因此能转化为少量竖直路径对，并用二进制提升定位块端点。",
+            "每个幂次层用 DSU 保留约束图的生成森林；森林边继续向下一层展开，非森林边则记录对应顶点首次被合并的查询时刻，从而按查询前缀增量维护答案。"
+          ],
+          "solutionBrief": "先将路径相等约束按 LCA 拆成幂长块，在各层用 DSU 构造森林并递归展开，得到带查询时刻的顶点合并边。按查询顺序处理这些边；合并分量时取价格区间交集并用乘积维护方案数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1801F",
+          "index": "F",
+          "slot": "F",
+          "title": "Another n-dimensional chocolate bar",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1801/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/113857",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "math",
+            "meet-in-the-middle",
+            "number theory"
+          ],
+          "statementBrief": "给定一个 $n$ 维长方体，每个维度有 $a_i$ 个等分小片。对每个维度选择切成 $b_i$ 段（$1\\le b_i\\le a_i$），完成所有维度的切割后得到 $\\prod_i b_i$ 块，要求至少 $k$ 块；最大化最小块体积乘以 $k$。",
+          "transformedStatement": "将每个维度对最小块体积的贡献表示为 $\\lfloor a_i/b_i\\rfloor/a_i$，并把尚需达到的份数作为 DP 状态。每次选择切分数 $c$ 后，后续只需满足 $\\lceil r/c\\rceil$ 份，因此可把相同需求值合并。",
+          "keyObservations": [
+            "把目标写成 $k\\prod_i\\lfloor a_i/b_i\\rfloor/a_i$，于是每个维度的选择只需给当前最小块体积乘上对应比例。",
+            "已切出的份数不必逐个记录：若还需至少 $r$ 份，当前维度切成 $c$ 份后只需继续满足 $\\lceil r/c\\rceil$，相同需求值的状态可以合并。",
+            "所有 $\\lceil k/i\\rceil$ 只有 $O(\\sqrt{k})$ 个不同值；对每个需求状态也只枚举会改变后续需求的转移，从而将状态转移总量降至 $O(nk^{3/4})$。"
+          ],
+          "solutionBrief": "令 DP 状态记录处理若干维后达到某个“仍需份数”代表值时，当前目标体积的最大值。选择当前维切成 $c$ 份，需求更新为 $\\lceil r/c\\rceil$，体积乘以 $\\lfloor a_i/c\\rfloor/a_i$；只保留商值变化对应的转移，复杂度为 $O(nk^{3/4})$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1801G",
+          "index": "G",
+          "slot": "G",
+          "title": "A task for substrings",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1801/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/113857",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "string suffix structures",
+            "strings"
+          ],
+          "statementBrief": "给定字符串 $t$、一组互不相同的字符串，以及多个区间 $[l,r]$。对每个区间，统计其中所有子串里，有多少个恰好等于集合中的某个字符串；每个符合条件的位置区间计一次。",
+          "transformedStatement": "将目标转成统计字典串在文本各位置结束或开始的匹配次数，并通过正向与反向扫描得到区间前后缀累计值。若一次字典串出现覆盖整个查询区间，则改为在该字典串内部统计，从而处理无法由边界累计直接消除的跨界匹配。",
+          "keyObservations": [
+            "区间内以某位置结尾的匹配串数量可沿文本扫描累加；反向扫描则能累计以某位置开头的数量，因此可用前缀和组合出区间内部匹配数，再扣除跨越区间边界的匹配。",
+            "若字典串的一次出现完整覆盖查询区间，区间内的匹配可转到这条字典串内部统计；这样能避免直接处理跨越查询边界的匹配。",
+            "查询按右端点随文本扫描处理，并按左端点组织候选；发现覆盖当前查询的字典串出现时即可转入该串内部计数，否则用全文的前后缀统计回答。"
+          ],
+          "solutionBrief": "用 Aho–Corasick 自动机及压缩失配链接统计文本中各位置结束的字典串匹配数，并对反转后的文本做对应统计。预处理前缀和后扫描文本处理查询：若查询被某次字典串出现覆盖，就在该字典串内部计数；否则用全文前后缀计数合并并扣除跨界项。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
