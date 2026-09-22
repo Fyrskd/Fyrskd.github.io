@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1257,
+    "total_problems": 1265,
     "source_total_problems": 1742,
-    "filtered_out_problems": 485,
-    "with_statement_brief": 1257,
-    "with_editorial_brief": 1042,
-    "with_solution_brief": 1043,
+    "filtered_out_problems": 477,
+    "with_statement_brief": 1265,
+    "with_editorial_brief": 1050,
+    "with_solution_brief": 1051,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 166,
+    "ai_override_count": 174,
     "primary_topic_count": 13,
-    "contest_count": 203,
+    "contest_count": 204,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 55,
-    "构造与贪心": 421,
-    "图论与网络流": 75,
-    "动态规划与状态设计": 122,
-    "数论与同余": 107,
-    "组合计数与概率": 102,
-    "数据结构": 92,
+    "构造与贪心": 424,
+    "图论与网络流": 76,
+    "动态规划与状态设计": 123,
+    "数论与同余": 108,
+    "组合计数与概率": 103,
+    "数据结构": 93,
     "几何": 24,
     "树结构": 97,
     "交互": 62,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 142,
+    "ai_generated_with_editorial": 150,
     "ai_generated_partial_editorial": 9,
     "missing_editorial": 214,
     "manual_override": 891,
@@ -35554,6 +35554,242 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1810,
+      "name": "CodeTON Round 4 (Div. 1 + Div. 2, Rated, Prizes!)",
+      "date": "2023-03-31",
+      "url": "https://codeforces.com/contest/1810",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 8,
+      "maxRating": 3200,
+      "problems": [
+        {
+          "key": "1810A",
+          "index": "A",
+          "slot": "A",
+          "title": "Beautiful Sequence",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1810/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/114521",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "给定一个整数序列，可以删除任意多个元素但必须保持剩余元素的相对顺序。若某个子序列存在位置 $j$ 使其第 $j$ 个元素等于 $j$，则原序列美丽；判断每组序列是否美丽。",
+          "transformedStatement": "把原数组第 $i$ 个元素看作最多能在子序列中占据第 $i$ 位的候选；若它的值不超过可用位置数 $i$，就能补选前面的元素让它恰好落在值对应的位置。因此问题转为检查是否存在 $a_i\\le i$。",
+          "keyObservations": [
+            "若原数组第 $i$ 个元素满足 $a_i\\le i$，可从它之前选出 $a_i-1$ 个元素，使它在子序列中位于第 $a_i$ 位，从而得到 good 子序列。",
+            "若某个子序列在第 $j$ 位取到原数组第 $i$ 个元素且值为 $j$，由于保持顺序必有 $j\\le i$，因此原数组必存在满足 $a_i\\le i$ 的位置。",
+            "因此美丽条件等价于存在一个 $i$ 使 $a_i\\le i$，无需枚举删除方案，只需逐项检查该不等式。"
+          ],
+          "solutionBrief": "顺序扫描数组，若存在 $a_i\\le i$ 就输出 YES，否则输出 NO。依据是该条件既能构造出 good 子序列，也由任意 good 子序列反推出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1810B",
+          "index": "B",
+          "slot": "B",
+          "title": "Candies",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1810/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/114521",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "初始有 $1$ 个糖果，每次可将当前数量变为 $2x-1$ 或 $2x+1$，两种操作可任意交替使用但总次数不超过 $40$。对每个给定的 $n$，构造一串操作使最终恰好得到 $n$，若无法做到则输出无解。",
+          "transformedStatement": "把每次操作看成在当前奇数的二进制末位前插入一位：操作 $2$ 插入 $1$，操作 $1$ 插入 $0$。因此问题等价于读取 $n$ 的二进制表示，去掉最低位后按位生成对应操作序列。",
+          "keyObservations": [
+            "每次操作都把当前数变为 $2x-1$ 或 $2x+1$，因此从初始的 $1$ 出发始终只能得到奇数；所有偶数可以直接判定无解。",
+            "对奇数 $x$，操作 $2x+1$ 会在二进制末位前插入 $1$，操作 $2x-1$ 会在末位前插入 $0$，所以目标奇数的二进制高位可以逐位决定操作。",
+            "目标数 $n$ 的二进制表示去掉最后一位后，每个 $1$ 对应操作 $2$、每个 $0$ 对应操作 $1$；按高位到低位执行即可还原 $n$，且操作次数不超过 $29$。"
+          ],
+          "solutionBrief": "偶数无法达到。对奇数 $n$，扫描其二进制表示中除最低位外的各位：位为 $1$ 输出操作 $2$，位为 $0$ 输出操作 $1$，按高位到低位执行即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1810C",
+          "index": "C",
+          "slot": "C",
+          "title": "Make It Permutation",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1810/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/114521",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定整数数组，可删除任意元素（每个代价为 $c$）或在任意位置插入任意正整数（每个代价为 $d$）。最终数组必须非空且是某个长度的排列，求达到这一目标的最小总代价。",
+          "transformedStatement": "先强制删除所有重复值，再将剩余不同值排序。枚举最终排列长度 $k$：保留不超过 $k$ 的值，删除更大的值，并插入缺失的 $1$ 到 $k$；由于区间内代价单调，只需检查已有值及全删后构造 $[1]$ 的方案。",
+          "keyObservations": [
+            "重复元素无论最终排列长度如何都必须删除，因此先去重并把这部分代价固定计入，剩余问题只需处理不同元素。",
+            "固定最终排列长度为 $k$ 后，保留所有不超过 $k$ 的不同数，删除其余数，并插入缺失的数；若当前有 $i$ 个数不超过 $k$，代价为 $(m-i)c+(k-i)d$。",
+            "当 $k\\in[a_i,a_{i+1})$ 时，删除代价不变而插入代价随 $k$ 增大，因此每个区间只需检查左端点，即检查出现过的数值。",
+            "还需单独考虑删除全部原数后插入 $1$，对应代价为 $mc+d$，从而保证最终排列非空。"
+          ],
+          "solutionBrief": "先删除重复元素并累计代价，排序保留的不同数。依次把每个不同数作为排列长度候选，计算删除大于该长度的数和补齐缺失数的代价，再与“全删后插入 1”的方案取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1810D",
+          "index": "D",
+          "slot": "D",
+          "title": "Climbing the Tree",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1810/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/114521",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "math"
+          ],
+          "statementBrief": "树高为未知正整数，蜗牛每天白天上升 $a$ 米、夜间下降 $b$ 米，最后一天到顶后不再下滑。按顺序处理事件：类型 1 给出某只蜗牛恰好用 $n$ 天到顶，判断该信息是否与已有信息相容；类型 2 给出 $a,b$，判断它到顶所需天数，无法唯一确定时输出 $-1$。",
+          "transformedStatement": "把每条类型 1 信息转化为树高 $h$ 的整数可行区间，并维护所有区间的交集。对类型 2，不求具体 $h$，而是检查当前可行区间两端对应的到达天数是否相同。",
+          "keyObservations": [
+            "已知蜗牛恰好第 $n$ 天到达时，树高必在连续整数区间内：$n=1$ 时为 $[1,a]$，否则为 $[(n-2)(a-b)+a+1,(n-1)(a-b)+a]$；因此所有信息可压缩为树高的一个可行区间。",
+            "新的类型 1 事件只需与当前可行区间求交；交集为空时该信息与此前记录矛盾，输出 $0$ 且保留原区间，否则更新区间并输出 $1$。",
+            "固定树高 $L$ 时，到达天数可由累计位移直接计算为 $\\max(1,\\lfloor(L-b-1)/(a-b)\\rfloor+1)$；只需分别计算当前区间两端，若结果相同则区间内所有树高天数一致。",
+            "类型 2 查询中，若区间两端的天数不同，说明不同可行树高会产生不同答案，无法确定具体天数，因此输出 $-1$。"
+          ],
+          "solutionBrief": "维护所有已知信息下树高的可行区间。类型 1 将其与由 $(a,b,n)$ 推出的区间求交；类型 2 用区间两端计算所需天数，结果相同则输出，否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1810E",
+          "index": "E",
+          "slot": "E",
+          "title": "Monsters",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1810/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/114521",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "给定一张无向图，每个顶点有一只危险值为 $a_i$ 的怪物。先选择一个危险值为 $0$ 的顶点击败怪物，之后只能沿边移动；到达未击败顶点时，必须已经击败至少 $a_i$ 只其他怪物才可击败它，问能否最终击败所有怪物。",
+          "transformedStatement": "把一次固定起点的行动抽象为不断扩张的连通顶点集：候选是当前集合的边界，已击败数量就是集合大小，始终加入边界中危险值最小且满足 $a_v\\le |S|$ 的顶点，并利用不同起点可达集合的包含关系剪枝。",
+          "keyObservations": [
+            "固定起点后，可达且已击败的顶点集合始终连通，因此下一步只需从其边界中选择危险值最小的顶点。",
+            "若当前已击败数量为 $k$，边界顶点的危险值不超过 $k$ 当且仅当它可以被加入；每加入一个顶点，$k$ 增加 $1$，继续更新边界。",
+            "若顶点 $v$ 已被固定起点 $u$ 的过程加入，则从 $v$ 出发能得到的集合包含于从 $u$ 出发能得到的集合；因此失败搜索中被覆盖的起点无需重复尝试。",
+            "按顶点顺序仅从尚未被先前搜索覆盖的 $a_i=0$ 顶点开始搜索，可保证不会漏掉成功起点；同一顶点被重复加入时集合规模至少翻倍，整体复杂度为 $O(n\\log^2 n)$。"
+          ],
+          "solutionBrief": "枚举未被覆盖的 $a_i=0$ 顶点作为起点。用有序集合维护当前连通集合的边界，反复取危险值最小者；若其值不超过已击败数量则加入，否则该起点失败。若某次覆盖全部顶点则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1810F",
+          "index": "F",
+          "slot": "F",
+          "title": "M-tree",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1810/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/114521",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "math",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定 $n$ 个整数，构造一棵每个非叶节点恰有 $m$ 个孩子的有根树，把这些整数任意排列到叶子上；每片叶子的值为其标记加根到叶子的深度，目标是最小化所有叶子值的最大值。每次修改一个数组元素后，输出当前最优值。",
+          "transformedStatement": "把每个数组元素 $a_i$ 看作一份权值 $m^{a_i}$，题目等价于求最小整数 $x$ 使总权值不超过 $m^x$，即求 $\\left\\lceil\\log_m\\sum_i m^{a_i}\\right\\rceil$；动态维护该总和的 $m$ 进制表示即可。",
+          "keyObservations": [
+            "答案不超过 $x$ 当且仅当 $m^x\\ge\\sum_i m^{a_i}$：从深度 $0$ 的一个可扩展节点开始，按 $a_i$ 从大到小安排叶子，剩余叶子统一扩展为 $m$ 个孩子即可完成可行性判定。",
+            "将各 $a_i$ 视为 $m$ 进制幂的贡献，按位做进位后每位计数均落在 $[0,m-1]$；这把树的构造问题转化为维护一个动态的 $m$ 进制数。",
+            "增加指数 $u$ 的一项时，找到右侧第一个数字小于 $m-1$ 的位置，将中间各位清零并让该位加一；删除时对称地找到第一个非零位，将中间各位置为 $m-1$ 并让该位减一，因此进位链可由区间覆盖维护。",
+            "设最高非零位为 $h$，若低于 $h$ 的位全为零，数值正好是 $m^h$，答案为 $h$；否则答案为 $h+1$，只需查询最高位及其下方是否存在非零位。"
+          ],
+          "solutionBrief": "维护数组元素对应的 $m$ 进制幂之和。用线段树保存各位的最小值、最大值并支持区间赋值，模拟单次加一或减一的进位链；由最高非零位及低位是否非零得到答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1810G",
+          "index": "G",
+          "slot": "G",
+          "title": "The Maximum Prefix",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1810/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/114521",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "给定最多长度为 $n$ 的随机数组，每个元素独立取 $1$ 或 $-1$，第 $i$ 个元素取 $1$ 的概率为 $p_i=x_i/y_i$。对每个长度 $k$，计算该数组最大前缀和（包含空前缀和 $0$）为 $S$ 时得分 $h_S$ 的期望值，并对 $k=1$ 到 $n$ 输出结果。",
+          "transformedStatement": "把数组从右向左构造，并把已处理后缀压缩成其最大前缀和 $j$。在此前缀继续加入元素时，$a_i=1$ 使状态变为 $j+1$，$a_i=-1$ 使状态变为 $\\max(j-1,0)$，最终从初始状态 $0$ 得到各长度答案。",
+          "keyObservations": [
+            "从右向左处理时，后缀对整段数组的唯一影响是其最大前缀和，因此可用一个整数状态表示后缀，而不必保留完整数组。",
+            "设后缀最大前缀和为 $j$，加入 $a_i=1$ 后状态变为 $j+1$，加入 $a_i=-1$ 后变为 $\\max(j-1,0)$，两种转移正好覆盖该位置的随机选择。",
+            "令 $dp_{i,j}$ 表示处理前 $i$ 个位置、初始后缀最大前缀和为 $j$ 时的期望得分，则空前缀满足 $dp_{0,j}=h_j$；对长度为 $k$ 的数组，答案等价于 $dp_{k,0}$。"
+          ],
+          "solutionBrief": "将数组从右向左加入，$dp_{i,j}$ 表示当前后缀最大前缀和为 $j$ 时的期望得分。以概率 $p_i$ 转移到 $j+1$，否则转移到 $\\max(j-1,0)$，初始化 $dp_{0,j}=h_j$，依次输出 $dp_{k,0}$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1810H",
+          "index": "H",
+          "slot": "H",
+          "title": "Last Number",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1810/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/114521",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math"
+          ],
+          "statementBrief": "给定多重集合 $S=\\{1,2,\\ldots,n\\}$，每次从当前集合删除最大值，并将最小值替换为“原最大值减原最小值”；共操作 $n-1$ 次。求最后剩下的唯一整数。",
+          "transformedStatement": "把过程切分为首次满足最大值不超过最小值两倍之前和之后两段：删除值形成由黄金比例决定的 Beatty 数列，最终剩余值则是这些删除值与分界集合元素的交错加减和。",
+          "keyObservations": [
+            "当当前集合排序为 $S_0\\le\\cdots\\le S_k$ 时，后续操作只会删除最大值并把最小值改为 $S_k-S_0$，因此最终结果等于交错加减式 $S_0(-1)^k+\\sum_{i=1}^k S_i(-1)^{i+1}$。",
+            "在首次满足最大值不超过最小值两倍之前，第 $i$ 次操作使用的最大值为 $d_i=n-⌈i/φ⌉+1$，其中 $φ=(\\sqrt5+1)/2$；这把动态集合转成了 Beatty 数列。",
+            "首次进入最大值不超过最小值两倍的操作位置由 $n-⌈x/φ⌉+1\\le2x$ 确定，之后最大值序列仍服从同一公式，因此只需确定交错求和的分界点。",
+            "将交错和拆成若干段后，答案归结为计算形如 $\\sum⌊Ci⌋$ 的区间和；也可利用相邻差值构成 Fibonacci 串，递归计算奇偶位置前缀和。"
+          ],
+          "solutionBrief": "先确定分界位置 $x$，证明每次被删除的最大值为 $n-⌈i/φ⌉+1$，再把最终交错和转成区间 floor sum。实现中用有理数逼近 $φ$ 并递归计算 floor sum，也可用 Fibonacci 串前缀和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
