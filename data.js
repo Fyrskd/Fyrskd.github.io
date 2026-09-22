@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1176,
+    "total_problems": 1180,
     "source_total_problems": 1733,
-    "filtered_out_problems": 557,
-    "with_statement_brief": 1176,
-    "with_editorial_brief": 962,
-    "with_solution_brief": 963,
+    "filtered_out_problems": 553,
+    "with_statement_brief": 1180,
+    "with_editorial_brief": 966,
+    "with_solution_brief": 967,
     "missing_editorial_brief": 213,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 76,
+    "ai_override_count": 82,
     "primary_topic_count": 13,
     "contest_count": 193,
     "rating_min": 800,
@@ -32,14 +32,14 @@ window.CF_INSIGHTS_DATA = {
     "构造与贪心",
     "动态规划与状态设计",
     "数论与同余",
-    "树结构",
     "组合计数与概率",
+    "树结构",
     "数据结构",
     "图论与网络流",
     "交互",
     "字符串",
-    "博弈",
     "基础实现与模拟",
+    "博弈",
     "几何",
     "代数、矩阵与多项式"
   ],
@@ -47,19 +47,19 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 50,
     "构造与贪心": 398,
     "图论与网络流": 71,
-    "动态规划与状态设计": 112,
+    "动态规划与状态设计": 113,
     "数论与同余": 98,
-    "组合计数与概率": 90,
+    "组合计数与概率": 92,
     "数据结构": 88,
     "几何": 21,
     "树结构": 92,
     "交互": 62,
+    "基础实现与模拟": 42,
     "博弈": 42,
-    "基础实现与模拟": 41,
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 68,
+    "ai_generated_with_editorial": 72,
     "ai_generated_partial_editorial": 3,
     "missing_editorial": 213,
     "manual_override": 891,
@@ -36040,8 +36040,8 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-02-05",
       "url": "https://codeforces.com/contest/1784",
       "type": "Others",
-      "problemCount": 2,
-      "maxRating": 2200,
+      "problemCount": 6,
+      "maxRating": 3400,
       "problems": [
         {
           "key": "1784A",
@@ -36051,21 +36051,45 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1000,
           "problemUrl": "https://codeforces.com/contest/1784/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/112875",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "博弈",
-            "几何"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Monsters (easy version)；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 个生命值为 $a_i$ 的怪物；每次 1 类法术使指定怪物受到 $1$ 点伤害且可无限使用，2 类法术最多使用一次。题面未给出 2 类法术的具体效果，要求击杀全部怪物时最少使用多少次 1 类法术。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1784B",
+          "index": "B",
+          "slot": "B",
+          "title": "Letter Exchange",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1784/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/112875",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "有 $m$ 个人，每人持有 3 张标有 $w,i,n$ 的纸片，且三种字母总数各为 $m$。每次选两个人，让双方各选一张纸片并交换，要求输出使每个人最终各有一个 $w$、$i$、$n$ 的最短交换序列。",
+          "transformedStatement": "把每个人的纸片状态转化为若干条“多出的字母→缺少的字母”的有向边；交换就是同时满足两条相反边，剩余需求则需要按三字母有向环分解。",
+          "keyObservations": [
+            "每个人把多出的字母指向缺少的字母；“win”贡献 0 条边，含两个相同字母贡献 1 条边，三个相同字母贡献 2 条边，从而把个人状态统一为有向边。",
+            "两条相反方向的边 $x\\to y$ 和 $y\\to x$ 可由对应两人直接交换一次同时满足，因此应优先成对消除。",
+            "消除所有二环后，各字母顶点仍满足入度等于出度；由于只有 $w,i,n$ 三个顶点，剩余边必然组成同向三环，每个三环可用两次交换解决。",
+            "二环需要 1 次交换、三环需要 2 次交换，按上述分解处理所有边即可达到最少交换次数。"
+          ],
+          "solutionBrief": "为每个缺少字母的需求建立“多出字母→缺少字母”的有向边。先配对相反边并直接交换；再将剩余边按三字母的同向三环处理，每个三环用两次交换，输出对应操作即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         },
         {
           "key": "1784C",
@@ -36077,20 +36101,104 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/112875",
           "primaryTopic": "数据结构",
           "secondaryTopics": [
-            "构造与贪心",
-            "字符串",
-            "博弈"
+            "构造与贪心"
           ],
           "originalTags": [
             "data structures",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Monsters (hard version)；本地暂无可用题解正文。",
+          "statementBrief": "给定按顺序排列的怪物，怪物存活当且仅当生命值至少为 $1$。一类法术可无限次施放，每次使一个怪物受到 $1$ 点伤害；二类法术最多施放一次。对每个前缀 $1..k$，求杀死其中全部怪物所需的一类法术最少次数，但给定片段未说明二类法术的具体效果。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1784D",
+          "index": "D",
+          "slot": "D",
+          "title": "Wooden Spoon",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1784/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/112875",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp"
+          ],
+          "statementBrief": "有 $2^n$ 名编号各不相同的玩家参加单败淘汰赛，比赛树是高度为 $n$ 的满二叉树；每场比赛中编号较小者获胜。对所有玩家放入括号的 $(2^n)!$ 种排列，按题面定义的 $n$ 个条件唯一确定 Wooden Spoon 获得者，要求分别统计每名玩家获奖的排列数。",
+          "transformedStatement": "将每个括号排列改写为从冠军 $1$ 到 Wooden Spoon 获得者的递增击败链 $1=a_0<a_1<\\dots<a_n$。固定这条链后，逐层逆向填充各个子括号并计算方案数，再对所有递增链做带乘积权值的 DP。",
+          "keyObservations": [
+            "冠军到 Wooden Spoon 获得者可唯一表示为递增序列 $1=a_0<a_1<\\dots<a_n$，其中 $a_i$ 是倒数第 $i$ 场被冠军链击败的玩家，从而把全树条件转成链上的局部计数。",
+            "固定这条递增序列后，逆着比赛顺序放置选手；放置 $a_{n-i}$ 时，只需从编号更大的未用选手中选出 $2^{i-1}-1$ 人组成其子括号，再乘以该子括号的排列数。",
+            "固定序列的方案数可拆成各位置因子 $f(a_i,i)$ 的乘积，因此只需统计所有递增序列的乘积和，而不必直接枚举整棵比赛树。",
+            "状态 $d(x,i)$ 表示以 $x$ 结尾的长度为 $i+1$ 的递增序列的乘积和；转移只依赖前一层编号小于 $x$ 的前缀和，可用累加和将总复杂度降为 $O(n2^n)$。"
+          ],
+          "solutionBrief": "令 $N=2^n$。枚举冠军链 $1=a_0<\\dots<a_n$，逆序计算每个位置形成子括号的组合与排列因子；用 $d(x,i)$ 累加所有以 $x$ 结尾的链，并以前缀和优化转移。最终 $d(x,n)$ 即玩家 $x$ 的答案，复杂度为 $O(n2^n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1784E",
+          "index": "E",
+          "slot": "E",
+          "title": "Infinite Game",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1784/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/112875",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流",
+            "博弈",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "dp",
+            "games",
+            "probabilities"
+          ],
+          "statementBrief": "给定由 a、b、? 组成的串，将每个 ? 替换后无限重复该串。按顺序进行回合，每局先赢两回合者获胜并立即开始下一局；统计无限过程中爱丽丝获胜局数占比大于、等于或小于一半的替换方案数，结果取模 $998244353$。",
+          "transformedStatement": "把一个完整周期看成作用在四种局内比分 $0:0、1:0、0:1、1:1$ 上的带权函数映射：终点记录周期后的比分，权值记录爱丽丝局数减鲍勃局数。无限过程变成从 $0:0$ 出发在该函数图中迭代，最终只需判断可达环的权值总和。",
+          "keyObservations": [
+            "把一个周期串对四种局内比分状态的影响表示为带权函数图：边的终点是处理完整周期后的比分，边权是该周期内爱丽丝获胜局数减去鲍勃获胜局数。",
+            "无限重复周期对应从 $0:0$ 出发不断沿函数图走；暂态只出现有限次，因此最终结果只由可达环上边权总和的正负决定。",
+            "固定可达环的顶点集合后，DP 无需保存四条边权，只需保存该集合内边权之和；处理完字符串后再检查终点映射是否确实产生目标环。",
+            "枚举四个顶点的环集合共 $2^4$ 种，结合位置、四个终点和一个权值和进行计数，将原本需要记录多个独立权值的状态压缩到约 $O(n^2)$ 规模。"
+          ],
+          "solutionBrief": "对每种环顶点集合分别做 DP，逐字符维护四个比分状态经过当前前缀后的终点，以及环集合内边权总和。完成后筛选出实际可达环，并按环权值和的正、零、负分别计入三类答案，整体复杂度为 $O(n^2)$，常数较大。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1784F",
+          "index": "F",
+          "slot": "F",
+          "title": "Minimums or Medians",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1784/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/112875",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [],
+          "statementBrief": "初始集合为 $\\{1,2,\\ldots,2n\\}$，恰好进行 $k$ 次操作；每次可删除当前集合中的两个最小数，或删除当前排序后位于中间的两个中位数。求所有可能得到的不同最终集合数量，答案对 $998244353$ 取模。",
+          "transformedStatement": "把每次选择编码为字符串：$L$ 表示删两个最小数，$M$ 表示删两个中位数。通过保持删除结果不变的交换规则把字符串化为规范形，再按其中前置 $M$ 数和后缀 $M$ 数进行组合计数，并对重复最终集合去重。",
+          "keyObservations": [
+            "把操作记为 $L$（删除两个最小数）和 $M$（删除两个中位数）；交换子串 $LMM\\to MLM$ 不改变被删除的数，因此可化为唯一的规范形。",
+            "规范形由若干个前置 $M$、至多一个 $L$，以及不含连续 $M$ 的后缀组成；固定前置 $M$ 数 $p$ 和后缀 $M$ 数 $q$ 后，后缀方案数为 $\\binom{k-p-q-1}{q}$。",
+            "当 $k\\le (n-1)/2$ 时，不同的 $(p,q)$ 会产生不同的最左未删除区间，且后缀中 $L$ 的不同位置造成不同的中位数删除位置，因此规范形与最终集合一一对应。",
+            "当 $k>(n-1)/2$ 时按最终集合最小元素选取唯一规范代表，并筛掉最左未删除区间为空的 $(p,q)$；固定 $q$ 后合法 $p$ 连成区间，利用 $\\sum_{i=0}^{r}\\binom{i}{q}=\\binom{r+1}{q+1}$ 将求和降为 $O(n)$。"
+          ],
+          "solutionBrief": "将操作序列编码为 $L/M$，用 $LMM\\to MLM$ 化为规范形。按 $p,q$ 计数不含连续 $M$ 的后缀；大 $k$ 时按最小剩余元素去重，再用范德蒙德式求和将枚举优化到 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
