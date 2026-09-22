@@ -1,19 +1,19 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-09-21",
+  "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1170,
-    "source_total_problems": 1727,
-    "filtered_out_problems": 557,
-    "with_statement_brief": 1170,
-    "with_editorial_brief": 957,
-    "with_solution_brief": 958,
-    "missing_editorial_brief": 212,
+    "total_problems": 1175,
+    "source_total_problems": 1733,
+    "filtered_out_problems": 558,
+    "with_statement_brief": 1175,
+    "with_editorial_brief": 961,
+    "with_solution_brief": 962,
+    "missing_editorial_brief": 213,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 70,
+    "ai_override_count": 75,
     "primary_topic_count": 13,
-    "contest_count": 192,
+    "contest_count": 193,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -38,30 +38,30 @@ window.CF_INSIGHTS_DATA = {
     "图论与网络流",
     "交互",
     "字符串",
-    "基础实现与模拟",
     "博弈",
+    "基础实现与模拟",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
     "字符串": 50,
-    "构造与贪心": 395,
+    "构造与贪心": 397,
     "图论与网络流": 71,
     "动态规划与状态设计": 112,
     "数论与同余": 98,
-    "组合计数与概率": 88,
+    "组合计数与概率": 90,
     "数据结构": 88,
     "几何": 21,
     "树结构": 92,
     "交互": 62,
+    "博弈": 42,
     "基础实现与模拟": 41,
-    "博弈": 41,
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 63,
+    "ai_generated_with_editorial": 67,
     "ai_generated_partial_editorial": 3,
-    "missing_editorial": 212,
+    "missing_editorial": 213,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -35846,6 +35846,162 @@ window.CF_INSIGHTS_DATA = {
             "所有蛋糕同步平移同一个距离 $p$，因此必须同时满足 $b_i+h-w-a_i\\le p\\le b_i-h+w-a_i$；问题等价于判断这些区间是否有公共交集。"
           ],
           "solutionBrief": "对每个 $i$ 计算允许的平移区间 $[b_i+h-w-a_i,\\ b_i-h+w-a_i]$，维护所有左端点最大值与右端点最小值。若前者不超过后者，则存在统一平移量，输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1785,
+      "name": "Codeforces Round 850 (Div. 1, based on VK Cup 2022 - Final Round)",
+      "date": "2023-02-05",
+      "url": "https://codeforces.com/contest/1785",
+      "type": "Div. 1",
+      "problemCount": 5,
+      "maxRating": 3400,
+      "problems": [
+        {
+          "key": "1785B",
+          "index": "B",
+          "slot": "B",
+          "title": "Letter Exchange",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1785/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/112493",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $m$ 个人，每人持有 3 张标有 w、i、n 的纸，总数中三种字母各有 $m$ 张。一次交换由两人各选一张纸同时互换，要求输出最少交换次数，使每人最终各持有一个 w、一个 i 和一个 n。",
+          "transformedStatement": "将每个人当前的多余字母到缺少字母建成有向边；一次人与人交换等价于处理两条边：反向边可同时消除，相接边则消除中间需求并合并首尾边。",
+          "keyObservations": [
+            "把每个缺少字母的多余字母表示为有向边 $a\\to b$，表示该人应交出 $a$ 并得到 $b$；因此每人的字符串至多贡献两条边。",
+            "一对反向边 $a\\to b$ 与 $b\\to a$ 可以通过一次交换同时消除，两个相关人员直接变为正确状态，因此应优先配对。",
+            "两条相接边 $a\\to b$ 与 $b\\to c$ 的一次交换会消除中间节点的缺陷，并把剩余需求合并为 $a\\to c$；这对应无法直接反向配对的情况。",
+            "由于每个字母总数已经平衡，图中各点入度等于出度；任意两点间边数差的绝对值相同，即循环流量。反向配对不改变它，而链式操作每次最多改变 $1$，所以链式操作次数至少为循环流量，按此消除循环即可达到最少交换次数。"
+          ],
+          "solutionBrief": "为每个字符串建立多余字母到缺少字母的边，先配对反向边并记录交换，再处理剩余相接边。循环流量给出必须进行的链式交换下界，该过程可达到下界，因而交换次数最少。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1785C",
+          "index": "C",
+          "slot": "C",
+          "title": "Monsters (hard version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1785/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/112493",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有若干怪物，单体法术可对任意一只存活怪物造成 1 点伤害；全体法术最多使用一次，每次对所有存活怪物造成 1 点伤害，若有怪物死亡就自动重复。对每个前缀，求杀死全部怪物所需单体法术次数的最小值。",
+          "transformedStatement": "把全体法术的自动重复过程抽象为长度为 $H$ 的连锁，并为每个触发等级 $1$ 到 $H$ 选择一只血量足够的怪物；单体法术次数转化为匹配差值之和，再通过反向删除维护每个前缀的最优匹配。",
+          "keyObservations": [
+            "把一次全体伤害的连锁看成依次触发伤害等级 $1,2,\u0001dots,H$，需要将这些等级匹配给血量足够的不同怪物，并最小化匹配产生的差值。",
+            "可行的最大 $H$ 严格优于更小的 $H$；若仍有怪物血量超过 $H$，当前方案还不可能最优，因此应优先维持最大的可行连锁长度。",
+            "反向删除怪物时，若被删怪物未参与匹配，原方案仍最优；若它参与了等级 $h$，只需寻找替代者，否则降低 $H$。",
+            "存在最优的有序匹配，因此替代被删怪物时选择最小的可行血量即可；这样不会破坏其余匹配，并保持总代价最小。"
+          ],
+          "solutionBrief": "将每个前缀的答案转为反向删除怪物并维护最大连锁长度 $H$ 及其匹配代价。删除匹配成员时用最小可行怪物替换，无法替换则降低 $H$；删除未匹配成员则无需改变方案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1785D",
+          "index": "D",
+          "slot": "D",
+          "title": "Wooden Spoon",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1785/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/112493",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "$2^n$ 名按编号区分的玩家被任意安排到单败淘汰赛的叶子上，比赛中编号较小者获胜。木勺得主需依次满足：首场输掉、击败他的人下一场输掉，并沿此链持续到决赛；对每个玩家统计其成为木勺得主的安排数。",
+          "transformedStatement": "将编号反转后视为技能值，使每场比赛由技能值较大者获胜；从根节点反复进入败者所在的子树，直到叶子。问题转化为计算每个技能值成为这条下降路径终点的概率，再乘以全部排列数。",
+          "keyObservations": [
+            "把“木勺”条件唯一地改写为：从根节点开始，每次进入当前比赛的败者所在子树，直到到达叶子；因此每个排列只对应一个最终叶子。",
+            "将较小编号获胜反转为较大编号获胜后，设当前到达深度为 $d$、节点赢家技能为 $s$，则任意小于 $s$ 的玩家出现在 $s$ 子树中的条件概率相同，这个均匀性是不变量。",
+            "经过 $d$ 次下降后子树大小固定为 $2^{n-d}$；按子树划分并指定下一步败者 $x$ 计数时，组合数可拆成只依赖 $x$ 与只依赖 $s$ 的因子。",
+            "转移中的一部分只依赖状态下标，因而可用前缀和配合乘法批量计算所有 $x$ 的转移，而不必逐对枚举。"
+          ],
+          "solutionBrief": "反转编号使较大技能获胜，在完整二叉树上定义 $dp[d][s]$ 为下降 $d$ 次后到达赢家技能 $s$ 的概率。利用子树内较小技能均匀分布，用组合数计算转移；因转移可因式分解，借助前缀和优化，最后乘以 $(2^n)!$ 得到各玩家的排列数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1785E",
+          "index": "E",
+          "slot": "E",
+          "title": "Infinite Game",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1785/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/112493",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "字符串",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "games"
+          ],
+          "statementBrief": "给定一个由 `a`、`b` 和 `?` 组成的字符串，将每个 `?` 替换为 `a` 或 `b` 后无限重复。按顺序进行回合，每个 set 在某位玩家先赢下两回合时结束，再开始下一个 set；统计所有替换方案中 Alice 长期赢得超过一半、恰好一半和少于一半 set 的数量。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1785F",
+          "index": "F",
+          "slot": "F",
+          "title": "Minimums or Medians",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1785/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/112493",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心",
+            "字符串"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "two pointers"
+          ],
+          "statementBrief": "初始集合是 $1$ 到 $2n$ 的所有整数。恰好进行 $k$ 次操作，每次删除当前集合中两个最小数，或删除位于正中间的两个中位数；要求不同最终集合的数量，结果对 $998244353$ 取模。",
+          "transformedStatement": "把每个最终集合表示为删除位置的二进制串，并按取最小数操作次数 $t$ 及中位数操作跨过 $n,n+1$ 的平衡量 $b$ 分类：前部删除被固定，后部只需选择若干偶长度连续删除段。",
+          "keyObservations": [
+            "任意时刻剩余数组满足位置和值同奇偶，即 $a[i]\\equiv i\\pmod 2$；因此非空最终集合的最小元素必为奇数。",
+            "若最终最小剩余数为 $2t+1$，则可等价地安排恰好 $t$ 次取最小值操作；此前作用在该数左侧的中位数操作都能替换为取最小值操作。",
+            "固定取最小值次数 $t$ 后，若有 $b$ 个区间 $[1,n]$ 内的数由中位数操作删除，则被删数必为 $[n-b+1,n]$，并且还必须删除 $[n+1,n+b]$。",
+            "在上述固定参数下，区间 $[n+b+1,n+k]$ 中可删除任意若干个数，但每个连续删除段长度必须为偶数；从 $x$ 个候选位置删去 $2s$ 个数的方案数为 $\\binom{x-s}{s}$，再对可行的 $t,b$ 汇总。"
+          ],
+          "solutionBrief": "将最终集合视为二进制保留串，按取最小值次数 $t$ 和中位数删除平衡量 $b$ 分类。利用必删区间与偶长度删除段性质，把每类方案数写成 $\\binom{x-s}{s}$，再利用可行参数形成连续范围并转置求和。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
