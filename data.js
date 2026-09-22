@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1189,
+    "total_problems": 1195,
     "source_total_problems": 1742,
-    "filtered_out_problems": 553,
-    "with_statement_brief": 1189,
-    "with_editorial_brief": 974,
-    "with_solution_brief": 975,
+    "filtered_out_problems": 547,
+    "with_statement_brief": 1195,
+    "with_editorial_brief": 980,
+    "with_solution_brief": 981,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 91,
+    "ai_override_count": 97,
     "primary_topic_count": 13,
-    "contest_count": 194,
+    "contest_count": 195,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 50,
-    "构造与贪心": 401,
+    "字符串": 51,
+    "构造与贪心": 403,
     "图论与网络流": 71,
-    "动态规划与状态设计": 113,
+    "动态规划与状态设计": 114,
     "数论与同余": 99,
     "组合计数与概率": 95,
     "数据结构": 88,
     "几何": 22,
-    "树结构": 93,
+    "树结构": 95,
     "交互": 62,
     "基础实现与模拟": 42,
     "博弈": 42,
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 80,
+    "ai_generated_with_editorial": 86,
     "ai_generated_partial_editorial": 3,
     "missing_editorial": 214,
     "manual_override": 891,
@@ -36197,6 +36197,193 @@ window.CF_INSIGHTS_DATA = {
             "当 $k>(n-1)/2$ 时按最终集合最小元素选取唯一规范代表，并筛掉最左未删除区间为空的 $(p,q)$；固定 $q$ 后合法 $p$ 连成区间，利用 $\\sum_{i=0}^{r}\\binom{i}{q}=\\binom{r+1}{q+1}$ 将求和降为 $O(n)$。"
           ],
           "solutionBrief": "将操作序列编码为 $L/M$，用 $LMM\\to MLM$ 化为规范形。按 $p,q$ 计数不含连续 $M$ 的后缀；大 $k$ 时按最小剩余元素去重，再用范德蒙德式求和将枚举优化到 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1778,
+      "name": "Codeforces Round 848 (Div. 2)",
+      "date": "2023-02-01",
+      "url": "https://codeforces.com/contest/1778",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1778A",
+          "index": "A",
+          "slot": "A",
+          "title": "Flip Flop Sum",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1778/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/112149",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个只含 $1$ 和 $-1$ 的数组，必须恰好选择一对相邻元素，同时将这两个数的符号翻转一次。求操作后数组元素和的最大值。",
+          "transformedStatement": "把每个相邻位置视为一个候选操作，其收益仅可能是 $+4$、$0$ 或 $-4$；问题因此转化为求所有相邻对中的最大收益，并将它加到原数组和上。",
+          "keyObservations": [
+            "翻转相邻两个数时，若它们异号，总和不变；若同为 $1$，总和减少 $4$；若同为 $-1$，总和增加 $4$，因此操作收益只由这对数的取值决定。",
+            "操作必须恰好进行一次，所以只需检查所有相邻位置并选择收益最大的那一对，不需要考虑多次操作之间的影响。"
+          ],
+          "solutionBrief": "遍历所有相邻数对，比较翻转后的总和变化：同为 $-1$ 时增加 $4$，异号时不变，同为 $1$ 时减少 $4$。选取变化最大的相邻数对，答案为原总和加上该变化，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1778B",
+          "index": "B",
+          "slot": "B",
+          "title": "The Forbidden Permutation",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1778/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/112149",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个排列 $p$、一个由不同数字组成的数组 $a$ 和整数 $d$。每步可以交换排列中相邻的两个元素；若每对相邻的 $a_i,a_{i+1}$ 在排列中的位置都满足 $1\\le pos(a_{i+1})-pos(a_i)\\le d$，则数组合格，求让数组合格所需的最少交换次数。",
+          "transformedStatement": "把目标改写为逐对修复：每个相邻数对都必须在排列中保持给定先后顺序，且位置差不超过 $d$。由于只需让其中一对满足条件，就能使数组合格，答案取各违规数对的最小修复代价。",
+          "keyObservations": [
+            "数组是否合格只由相邻元素对决定：对每对相邻的 $x,y$，必须满足 $1\\le pos(y)-pos(x)\\le d$，因此可以分别计算每对的最小修复代价。",
+            "若 $y$ 在 $x$ 后方但距离超过 $d$，把两者间距缩短到 $d$ 即可，所需交换次数为 $d-(pos(y)-pos(x))+1$；还要确认两侧有足够空间。",
+            "若把 $y$ 移到 $x$ 前面，就能消除当前相邻对的违规；交换代价由两者当前距离决定，因此每对只需比较这两种修复方式。"
+          ],
+          "solutionBrief": "记录排列中每个数的位置。对每组相邻的 $a_i,a_{i+1}$，若位置差已在 $1$ 到 $d$ 之间则代价为 $0$；否则比较缩短间距和调换先后顺序两种修复的交换代价，并检查缩短间距是否有足够空间。答案是所有相邻对中的最小代价。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1778C",
+          "index": "C",
+          "slot": "C",
+          "title": "Flexible String",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1778/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/112149",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "strings"
+          ],
+          "statementBrief": "给定等长字符串 $a$、$b$，可以选择至多 $k$ 种在 $a$ 中出现的字符，使这些字符对应的位置能够调整为与 $b$ 匹配。要求最大化满足 $a[l,r]=b[l,r]$ 的连续区间 $(l,r)$ 数量。",
+          "transformedStatement": "把每个候选字符集合固定后，每个位置就能独立判定为匹配：当 $a_i=b_i$ 或 $a_i$ 属于所选集合时，该位置匹配。于是问题转为在所有大小为 $\\min(k,u)$ 的字符集合中，最大化匹配位置所形成的连续段贡献之和。",
+          "keyObservations": [
+            "某个字符一旦被选入集合，字符串 $a$ 中该字符出现的位置都可视为能与 $b$ 对应位置匹配；因此只需枚举 $a$ 中的字符子集，不必考虑其他字母。",
+            "允许选择更多字符不会减少可匹配位置，所以最优方案可直接使用 $\\min(k,u)$ 个不同字符，其中 $u$ 是 $a$ 中不同字符的数量。",
+            "一段连续匹配区间内的任意子区间也都匹配；长度为 $c$ 的区间贡献 $c(c+1)/2$ 个答案，可将计数转化为各连续匹配段的长度求和。"
+          ],
+          "solutionBrief": "枚举从 $a$ 的不同字符中选出的 $\\min(k,u)$ 个字符。固定选择后，从左到右判断位置是否相等或 $a_i$ 被选中，将连续可匹配位置划分成若干段；每段长度为 $c$ 时累加 $c(c+1)/2$，取所有选择中的最大值。复杂度为 $O(n\\binom{u}{m})$，其中 $m=\\min(k,u)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1778D",
+          "index": "D",
+          "slot": "D",
+          "title": "Flexible String Revisit",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1778/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/112149",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的二进制串，每步等概率选取一个位置并翻转第一个串该位置的字符。求两个串首次变得相同所需步数的期望，并对 $998244353$ 取模。",
+          "transformedStatement": "把两个串的状态压缩为当前不同位置的数量 $x$：一步后以 $x/n$ 的概率转到 $x-1$，以 $(n-x)/n$ 的概率转到 $x+1$。问题因此转化为求这个一维随机游走从初始差异数出发，到达 $0$ 前的期望步数。",
+          "keyObservations": [
+            "字符串具体内容不再重要，只有不同位置的数量 $x$ 会影响后续状态，因此可把过程压缩为差异数上的随机游走。",
+            "差异数为 $x$ 时，随机翻转一个位置后，以 $x/n$ 的概率变成 $x-1$，以 $(n-x)/n$ 的概率变成 $x+1$；这直接给出期望值之间的递推关系。",
+            "边界满足 $f(0)=0$、$f(1)=2^n-1$，配合递推 $f(i)=\\frac{n f(i-1)-i f(i-2)-n}{n-i+1}$，即可从低差异数逐步算出所需期望。"
+          ],
+          "solutionBrief": "统计两串的差异数 $k$，将期望记为 $f(k)$。随机翻转一个位置后，差异数按概率 $k/n$ 减一、按概率 $(n-k)/n$ 加一；利用边界 $f(0)=0$、$f(1)=2^n-1$ 和题解给出的二阶递推逐项计算，并在模 $998244353$ 下求值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1778E",
+          "index": "E",
+          "slot": "E",
+          "title": "The Tree Has Fallen!",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1778/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/112149",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dfs and similar",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定一棵带点权的无根树。每次查询给出根 $r$ 和节点 $v$，将树以 $r$ 为根后，允许从 $v$ 的子树中选一个或多个节点，求所选点权的按位异或值最大能达到多少。",
+          "transformedStatement": "先任意固定一棵基准根树，并把每个节点子树的点权集合表示为线性基。查询改根后，目标集合要么是原子树，要么是整棵树减去通向新根的孩子所在子树；后者可借助 DFS 序的前缀、后缀线性基表示。",
+          "keyObservations": [
+            "对固定根预处理后，若查询中的 $v$ 不是 $r$ 的祖先，$v$ 的子树与预处理树中的子树相同，因此可直接使用该子树的线性基。",
+            "若 $v$ 是 $r$ 的祖先，重新以 $r$ 为根后，$v$ 的子树恰好是整棵树减去通向 $r$ 的那个孩子的原子树，问题转成查询这部分补集的线性基。",
+            "DFS 序使任一原子树对应连续区间，因此补集可由区间左侧的前缀线性基与右侧的后缀线性基合并得到。",
+            "通向 $r$ 的孩子可在 $v$ 的孩子中按 DFS 序定位，并用进入、退出时间判断祖先关系，从而避免逐个检查整棵子树。"
+          ],
+          "solutionBrief": "任选节点作为固定根，DFS 建立子树线性基，并按 DFS 序建立前缀、后缀线性基。每次查询按 $v=r$、$v$ 不是 $r$ 的祖先、$v$ 是 $r$ 的祖先三种情况处理；最后在对应线性基中求最大子集异或值。题解给出的复杂度为 $O(n\\log^2 d)$，其中 $d=\\max(a_i)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1778F",
+          "index": "F",
+          "slot": "F",
+          "title": "Maximizing Root",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1778/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/112149",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "math",
+            "number theory",
+            "trees"
+          ],
+          "statementBrief": "题目给出一棵以 $1$ 为根、每个节点有正整数值的树，允许至多 $k$ 次操作，要求最大化根节点的值。题面中的具体操作规则缺失；根据题解，操作涉及选取某节点的子树并将其中所有节点值乘以一个满足条件的因子。",
+          "transformedStatement": "把目标改写为：对根节点，寻找能在不超过 $k$ 次操作内实现的最大乘数 $D$，使根值变为 $a_1D$。为判断因子 $d$ 是否可实现，在树上计算各子树 gcd 成为 $d$ 的倍数所需的最少操作数，并由子节点向上合并状态。",
+          "keyObservations": [
+            "要让节点 $u$ 的整棵子树经过一次乘法后满足目标因子 $d$，乘数 $y$ 必须同时满足 $y\\mid x_u$ 和 $d\\mid x_u y$；因此只需考虑 $d$ 的因子。",
+            "乘法前，子树中的每个值都要是 $d/y$ 与 $y$ 的公倍数，所以子节点子树需要满足的因子可统一为 $\\operatorname{lcm}(d/y,y)$。",
+            "将每个节点、每个目标因子所需的最少操作数记为状态后，子节点对应状态可以合并计算；根节点只需在操作预算内选择可达的最大目标因子。",
+            "若当前子树的 gcd 已是 $d$ 的倍数，该状态无需操作；若 $x_u^2$ 都不是 $d$ 的倍数，则该状态不可达，这两种边界能缩小状态转移范围。"
+          ],
+          "solutionBrief": "以 $dp[u][d]$ 表示使 $u$ 的子树 gcd 成为 $d$ 的倍数所需的最少操作数。枚举符合条件的乘数 $y$，将子节点状态转为目标因子 $\\operatorname{lcm}(d/y,y)$ 并合并操作代价；最后在根节点选择预算 $k$ 内可达的最大因子 $D$，答案为 $a_1D$。题解给出的复杂度为 $O(nm^2)$，其中 $m$ 是 $a_1$ 的因子数。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
