@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1180,
-    "source_total_problems": 1733,
+    "total_problems": 1189,
+    "source_total_problems": 1742,
     "filtered_out_problems": 553,
-    "with_statement_brief": 1180,
-    "with_editorial_brief": 966,
-    "with_solution_brief": 967,
-    "missing_editorial_brief": 213,
+    "with_statement_brief": 1189,
+    "with_editorial_brief": 974,
+    "with_solution_brief": 975,
+    "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 82,
+    "ai_override_count": 91,
     "primary_topic_count": 13,
-    "contest_count": 193,
+    "contest_count": 194,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,23 +45,23 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 50,
-    "构造与贪心": 398,
+    "构造与贪心": 401,
     "图论与网络流": 71,
     "动态规划与状态设计": 113,
-    "数论与同余": 98,
-    "组合计数与概率": 92,
+    "数论与同余": 99,
+    "组合计数与概率": 95,
     "数据结构": 88,
-    "几何": 21,
-    "树结构": 92,
+    "几何": 22,
+    "树结构": 93,
     "交互": 62,
     "基础实现与模拟": 42,
     "博弈": 42,
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 72,
+    "ai_generated_with_editorial": 80,
     "ai_generated_partial_editorial": 3,
-    "missing_editorial": 213,
+    "missing_editorial": 214,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -36852,6 +36852,268 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "递归按区间最大值划分左右子区间，先求两侧答案；对跨越最大值的区间，用两侧前缀异或建立二进制字典树，枚举较小侧并查询另一侧的最大异或值，最后小并大合并字典树。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1782,
+      "name": "Codeforces Round 844 (Div. 1 + Div. 2, based on VK Cup 2022 - Elimination Round)",
+      "date": "2023-01-15",
+      "url": "https://codeforces.com/contest/1782",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 9,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1782A",
+          "index": "A",
+          "slot": "A",
+          "title": "Parallel Projection",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1782/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "几何",
+          "secondaryTopics": [],
+          "originalTags": [
+            "geometry",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定底面为 $w\\times d$、高度为 $h$ 的长方体房间，笔记本位于地面点 $(a,b)$，投影仪位于其上方天花板点 $(f,g)$。电缆只能沿地面、墙面或天花板铺设，且始终平行于长方体棱，求连接两点的最短长度。",
+          "transformedStatement": "把路径投影到地面：先求从 $(a,b)$ 到 $(f,g)$、沿坐标轴移动且至少经过矩形一条边的最短平面长度，再补上连接地面与天花板的固定竖直距离 $h$。四条边分别形成四个候选值。",
+          "keyObservations": [
+            "墙面上的弯折可以移到地面或天花板，且竖直段保持直线，因此高度只贡献固定长度 $h$，其余问题可压到平面处理。",
+            "平面路径必须沿坐标轴方向并至少接触矩形的一条边；固定接触某条边后，路径长度由到该边的两段距离和两点的坐标差组成。",
+            "接触下、左、上、右四条边时，候选长度分别为 $b+|a-f|+g$、$a+|b-g|+f$、$(d-b)+|a-f|+(d-g)$、$(w-a)+|b-g|+(w-f)$。",
+            "四种接触边覆盖所有最优路径，因此取四个候选值的最小值再加上 $h$ 即得到答案。"
+          ],
+          "solutionBrief": "将三维电缆路径压缩为平面上经过矩形边界的轴对齐路径。分别计算经过四条边的长度，取最小值并加上竖直高度 $h$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1782B",
+          "index": "B",
+          "slot": "B",
+          "title": "Going to the Cinema",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1782/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个人，每人声明：当且仅当至少有 $a_i$ 个其他人去电影院时自己才愿意去。需要选择一组人去电影院，使每个人的选择都符合声明，即无人因去或不去而不满意，并统计这样的选择方案数。",
+          "transformedStatement": "按最终去电影院的人数 $k$ 分类：$a_i<k$ 的人必须被选，$a_i>k$ 的人必须不被选，$a_i=k$ 的人无法满足。因此只需检查每个 $k$ 是否恰有 $k$ 个声明小于 $k$ 且没有声明等于 $k$。",
+          "keyObservations": [
+            "固定有 $k$ 个人去电影院时，$a_i<k$ 的人必然要去，$a_i>k$ 的人必然不能去；而 $a_i=k$ 的人无论去不去都会不满意，因此必须满足不存在 $a_i=k$。",
+            "人数为 $k$ 的可行方案存在，当且仅当恰好有 $k$ 个人的 $a_i<k$ 且没有人的 $a_i=k$；此时被选中的人完全由条件唯一确定，所以每个可行的 $k$ 只贡献一种方案。"
+          ],
+          "solutionBrief": "枚举去电影院的人数 $k$，统计 $a_i<k$ 的人数及 $a_i=k$ 的人数。若前者等于 $k$ 且后者为零，则方案唯一，即选择所有 $a_i<k$ 的人；累加所有可行的 $k$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1782C",
+          "index": "C",
+          "slot": "C",
+          "title": "Equal Frequencies",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1782/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的小写字母串 $s$，需要构造同长度字符串 $t$。$t$ 中所有实际出现的字符都必须出现相同次数，目标是通过尽量少地修改位置，使 $t$ 与 $s$ 不同的位置数最少，并输出任意最优字符串。",
+          "transformedStatement": "把问题转为最大化 $s$ 与 $t$ 的相同位置数，并按 $t$ 中不同字符的数量 $k$ 分情况；此时每个选中的字符都必须分配恰好 $n/k$ 个位置，选择和填充位置即可计算该方案的最优匹配数。",
+          "keyObservations": [
+            "将目标改写为最大化与原串相同的位置数；固定不同字符数 $k$ 后，每个被选字符在新串中必须恰好出现 $n/k$ 次。",
+            "若选择字符 $c$，它最多保留的匹配位置数是 $\\min(n/k,\\operatorname{freq}_c)$；由于截断上限相同，选择原串频率最高的 $k$ 个字符即可达到最优。",
+            "先保留所选字符的部分原有出现位置，再把频率不足产生的字符缺口与频率过多产生的空位任意配对，既能补足每种字符的目标次数，也不会影响已保留匹配数。",
+            "只需枚举满足 $1\\le k\\le26$ 且 $n\\bmod k=0$ 的字符种数，并取匹配位置最多的构造，因此覆盖所有可能的平衡串。"
+          ],
+          "solutionBrief": "枚举所有可行的字符种数 $k$，选频率最高的 $k$ 个字符，每种目标出现 $n/k$ 次。优先保留原串中的对应字符位置，再将不足的字符需求填入多余位置，比较各方案的匹配数并输出最优构造。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1782D",
+          "index": "D",
+          "slot": "D",
+          "title": "Many Perfect Squares",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1782/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个由不同正整数构成的集合，每次选择同一个整数 $x$（$0\\le x\\le10^{18}$）加到所有元素上；要求最大化结果中为完全平方数的元素数量。",
+          "transformedStatement": "将“同时变成平方数”的任意两元素配对，设它们对应平方根为 $p<q$，则平移量存在当且仅当差值 $a_j-a_i$ 能拆成 $(q-p)(q+p)$；因此问题转化为枚举这些拆分得到的候选 $x$。",
+          "keyObservations": [
+            "若 $a_i+x$ 和 $a_j+x$ 都是平方数，则差值满足 $a_j-a_i=(q-p)(q+p)$，因此只需枚举差值的正因子。",
+            "给定因子 $d=q-p$ 后，可由 $p=(\\frac{a_j-a_i}{d}-d)/2$、$q=(\\frac{a_j-a_i}{d}+d)/2$ 唯一还原平方根；两者为整数且对应的 $x$ 合法时，得到一个候选平移量。",
+            "任意能让至少两个元素成为平方数的最优方案必然包含某一对元素，因此枚举所有数对产生的候选 $x$ 并统计平方数个数即可；若没有候选方案，答案仍至少为 $1$。"
+          ],
+          "solutionBrief": "先将答案视为至少为 $1$。对每对 $a_i,a_j$ 枚举 $a_j-a_i$ 的因子，利用平方差公式还原 $p,q$，生成合法的 $x=p^2-a_i$；再统计每个候选 $x$ 使多少个 $a_k+x$ 为平方数，取最大值。复杂度为 $O(n^2\\sqrt{a_n}+n^3f(a_n))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1782E",
+          "index": "E",
+          "slot": "E",
+          "title": "Rectangle Shrinking",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1782/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定高度为 2 的网格和若干可相交矩形。每个矩形必须删除或替换为其内部的非空子矩形，替换后所有保留矩形不能共享格子；要求最大化覆盖面积，并输出每个矩形的删除标记或新坐标。",
+          "transformedStatement": "将问题看成两条行区间的并集分配：按左端点扫描矩形，维护每行已覆盖的最右位置；双行矩形无法直接接在右侧时，把它视为一次切割，向右截断此前相交的区间后再接管两行。",
+          "keyObservations": [
+            "按左端点从小到大处理时，单行矩形只需保留尚未覆盖的右侧部分；若完全被当前覆盖范围吞没则删除，从而不损失最终并集面积。",
+            "双行矩形若其右端已被某一行覆盖，可删去该行并按单行矩形处理；否则必须从左端点处截断所有已处理且相交的矩形，再让它覆盖两行。",
+            "双行矩形触发的向右截断中，每个已处理矩形最多被截断一次；按右端点维护候选矩形即可避免对所有前驱反复扫描，得到均摊的处理效率。",
+            "总能将所有初始被覆盖的格子重新分配给互不相交的子矩形，因此最大面积就是初始矩形并集面积，贪心过程只需保持这部分覆盖不丢失。"
+          ],
+          "solutionBrief": "按左端点排序扫描，维护两行当前最右覆盖位置。单行矩形从左侧裁剪或删除；双行矩形必要时降为单行，否则截断所有相交旧矩形并占据两行。用按右端点组织的优先队列处理旧矩形，每个矩形最多被右截断一次，最后输出修改后的坐标。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1782F",
+          "index": "F",
+          "slot": "F",
+          "title": "Bracket Insertion",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1782/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "probabilities",
+            "trees"
+          ],
+          "statementBrief": "从空括号序列开始重复 $n$ 次：在当前序列的任意一个间隙中均匀选位置，再以概率 $p=q/10^4$ 插入 $()$，否则插入 $)($。求最终序列为合法括号序列的概率，并按模 $998244353$ 输出。",
+          "transformedStatement": "维护所有前缀平衡组成的数组，初始为 $[0]$；每次均匀选择一个数组元素 $x$，以两种概率将其替换为 $[x,x+1,x]$ 或 $[x,x-1,x]$。目标等价于最终数组从未出现负数。",
+          "keyObservations": [
+            "每一步可选插入位置数依次为 $1,3,5,\\ldots,2n-1$，因此所有位置选择的总权重相同为 $(2n-1)!!$，只需统计成功过程按括号类型获得的概率权重。",
+            "把括号序列改看成前缀平衡数组；在平衡值 $x$ 处插入 $()$ 或 $)($，分别等价于将 $x$ 替换为 $[x,x+1,x]$ 或 $[x,x-1,x]$，合法性就变成数组始终没有负数。",
+            "第一次替换后，后续操作会独立分配到左、中、右三个子数组；固定各自操作次数后，三段操作在全局序列中的交错方式由二项式系数计数。",
+            "将同一平衡值两侧子树的卷积预处理为 $g(k,x)=\\sum_i\\binom{k}{i}f(i,x)f(k-i,x)$，即可把每个 $f(n,x)$ 的计算降为 $O(n)$，总复杂度为 $O(n^3)$。"
+          ],
+          "solutionBrief": "用 $f(n,x)$ 表示从单元素 $[x]$ 出发、乘以位置选择总数后的合法权重。按第一次替换拆成三个子问题，并用二项式系数处理操作交错；预处理卷积 $g$ 后以 $O(n^3)$ 计算，最后除以 $(2n-1)!!$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1782G",
+          "index": "G",
+          "slot": "G",
+          "title": "Diverse Coloring",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1782/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵按编号依次加入、每个顶点至多有两个孩子的有根二叉树。每次加入新顶点后，都要在白蓝染色中保证每个顶点至少有一个异色的父亲或孩子，并输出白蓝数量差绝对值的最小值；最后还要输出达到最小值的一种完整染色。",
+          "transformedStatement": "把每个子树根预先固定为白色，维护其带符号的不平衡值，并额外记录根是否已有异色邻居；通过对子树整体或局部翻色来组合孩子状态，最终恢复全树染色。",
+          "keyObservations": [
+            "固定子树根为白色并记录带符号的不平衡值；整体翻转某个子树只会改变该值的符号，同时可用来制造根与孩子的异色邻边。",
+            "状态只需记录常数范围内的不平衡值以及根是否已经拥有异色邻居，因为除根外的合法性可在子树内部提前保证。",
+            "合并两个孩子时，根据它们的不平衡值选择是否翻转子树，使根获得异色邻居并把结果控制在 $-1,0,1,2$ 等常数范围；两个叶子孩子会产生特殊的 $-1$ 情况。",
+            "除少数 $3$ 个或 $4$ 个顶点的特殊子树外，合法染色可达到由总顶点数奇偶性决定的 $0$ 或 $1$；翻转标记可延迟到从根向下恢复最终颜色。"
+          ],
+          "solutionBrief": "自底向上维护 $f(u,d,hasNeighbor)$，表示子树不平衡为 $d$ 且除根外均合法、根是否有异色邻居。合并孩子时枚举常数状态并记录翻转标记，最后自顶向下恢复染色；各前缀的答案由奇偶性和特殊小树决定。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1782H1",
+          "index": "H1",
+          "slot": "H",
+          "title": "Window Signals (easy version)",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1782/problem/H1",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "math"
+          ],
+          "statementBrief": "给定 $h\\times w$ 的窗口网格，其中至多两个窗口的灯损坏且不能点亮。每次可任意开关其他窗口，非空亮灯图案在平移后视为同一种信号，但旋转和翻转不等价；求不同信号数量并对 $998244353$ 取模。",
+          "transformedStatement": "把每种信号规范化为亮灯集合的最小包围矩形，按其高宽计数。对固定矩形，检查所有可能放置位置：坏灯转化为强制亮点和“二者至少亮一个”的约束，再统计满足约束的二进制图案。",
+          "keyObservations": [
+            "一个信号可按亮灯集合的最小包围矩形唯一归类；矩形恰好为 $h'\\times w'$ 当且仅当图案位于其中且四条边都出现亮灯，因此可用容斥处理边界条件。",
+            "固定包围矩形后，若存在某个放置位置不含坏灯，则所有图案都能通过该位置展示；否则每个坏灯位置会产生“该相对位置必须亮”的约束或“两个位置至少一个亮”的约束。",
+            "两盏坏灯产生的约束边连接的两个格子位移始终相同，删去已被强制点覆盖的边后，剩余图由若干条链组成，从而可分别计数。",
+            "长度为 $p$ 的链上要求每条相邻边至少有一个亮灯，其方案数满足斐波那契递推 $f(p)=f(p-1)+f(p-2)$；独立链相乘，未受约束的格子贡献 $2$ 的幂。"
+          ],
+          "solutionBrief": "枚举非空图案的包围矩形尺寸，用容斥保证四边均有亮灯。对每种尺寸汇总所有放置位置造成的坏灯约束：强制亮点单独处理，剩余二元约束分解为链并用斐波那契计数，最后扣除无法展示的图案并求和。总复杂度为 $O(h^2w^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1782H2",
+          "index": "H2",
+          "slot": "H",
+          "title": "Window Signals (hard version)",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1782/problem/H2",
+          "editorialUrl": "https://codeforces.com/blog/entry/111783",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "给定一个有 $h$ 层、每层 $w$ 个窗口的网格，每个未损坏窗口可选择开灯或关灯，坏窗不能开灯。非空开灯配置若能通过平移互相得到就视为同一种信号，要求统计至少有一个合法摆放方式的不同信号数。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     },
