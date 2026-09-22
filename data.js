@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1195,
+    "total_problems": 1201,
     "source_total_problems": 1742,
-    "filtered_out_problems": 547,
-    "with_statement_brief": 1195,
-    "with_editorial_brief": 980,
-    "with_solution_brief": 981,
+    "filtered_out_problems": 541,
+    "with_statement_brief": 1201,
+    "with_editorial_brief": 986,
+    "with_solution_brief": 987,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 97,
+    "ai_override_count": 103,
     "primary_topic_count": 13,
-    "contest_count": 195,
+    "contest_count": 196,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 51,
-    "构造与贪心": 403,
-    "图论与网络流": 71,
-    "动态规划与状态设计": 114,
+    "构造与贪心": 405,
+    "图论与网络流": 72,
+    "动态规划与状态设计": 115,
     "数论与同余": 99,
-    "组合计数与概率": 95,
+    "组合计数与概率": 96,
     "数据结构": 88,
     "几何": 22,
     "树结构": 95,
     "交互": 62,
-    "基础实现与模拟": 42,
+    "基础实现与模拟": 43,
     "博弈": 42,
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 86,
+    "ai_generated_with_editorial": 92,
     "ai_generated_partial_editorial": 3,
     "missing_editorial": 214,
     "manual_override": 891,
@@ -35767,6 +35767,196 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1788,
+      "name": "Codeforces Round 851 (Div. 2)",
+      "date": "2023-02-09",
+      "url": "https://codeforces.com/contest/1788",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1788A",
+          "index": "A",
+          "slot": "A",
+          "title": "One and Two",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1788/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/112584",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个只含 $1$ 和 $2$ 的长度为 $n$ 的数组，需要在位置 $k$ 与 $k+1$ 之间分成前后两段，使两段元素乘积相等；若有多个答案，输出最小的 $k$，无解则输出 $-1$。",
+          "transformedStatement": "不直接比较两段乘积，而是利用乘积只由元素 $2$ 的数量决定：寻找最短前缀，使其包含数组中全部 $2$ 的一半；若总数为奇数则不存在分界点。",
+          "keyObservations": [
+            "由于所有元素只有 $1$ 和 $2$，两段乘积相等等价于两段中 $2$ 的数量相同，$1$ 的数量不会影响乘积。",
+            "设整个数组中有 $c$ 个 $2$；可行的分界点必须满足前缀含有 $c/2$ 个 $2$，因此 $c$ 为奇数时直接无解。",
+            "从左到右扫描并统计前缀中的 $2$，第一次达到 $c/2$ 个的位置就是最小可行的 $k$，无需计算可能很大的乘积。"
+          ],
+          "solutionBrief": "先统计数组中 $2$ 的总数。若为奇数输出 $-1$；否则从左到右寻找第一个使前缀包含一半 $2$ 的位置，该位置即答案。整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1788B",
+          "index": "B",
+          "slot": "B",
+          "title": "Sum of Two Numbers",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1788/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/112584",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "给定正整数 $n$，构造两个非负整数 $x,y$，使 $x+y=n$，且它们的十进制数位和之差不超过 $1$。每组数据输出任意一组满足条件的 $x,y$。",
+          "transformedStatement": "把 $n$ 的每个十进制数字 $a_i$ 独立拆成 $b_i+c_i=a_i$，并把 $b_i,c_i$ 分别作为 $x,y$ 的对应位；通过交替交换奇数位的上下取整分配，控制两边数位和的差。",
+          "keyObservations": [
+            "让 $x$ 与 $y$ 的各位相加都不产生进位，则逐位满足 $b_i+c_i=a_i$，从而自动保证 $x+y=n$。",
+            "对于偶数位数字，直接平分给两数；对于奇数位数字，分成上下取整的两部分，唯一需要处理的是两数数位和的整体平衡。",
+            "每遇到奇数位就在两种分配顺序之间交替，使两边数位和的差始终不超过 $1$，因此满足最终条件。"
+          ],
+          "solutionBrief": "逐位读取 $n$ 的十进制数字。偶数位平分；奇数位将两个相邻整数部分交替分配给 $x,y$，以平衡两数的数位和。这样没有进位且 $x+y=n$，两者数位和差至多为 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1788C",
+          "index": "C",
+          "slot": "C",
+          "title": "Matching Numbers",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1788/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/112584",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定整数 $n$，必须把 $1$ 到 $2n$ 的每个数恰好放入一个无序配对中，使所有 $n$ 个配对的和互不相同，并且排序后相邻两和之差都为 $1$。需要判断是否可行；若可行，输出任意一种配对方案。",
+          "transformedStatement": "把问题重述为：寻找连续的 $n$ 个整数作为配对和，并让它们的总和等于 $1$ 到 $2n$ 的总和；先由奇偶性判定可行性，再用参数 $m=(n-1)/2$ 直接构造配对。",
+          "keyObservations": [
+            "所有配对和若为连续的 $k,k+1,\u0014,k+n-1$，则总和必须相等，从而得到 $4n+2=2k+n-1$；当 $n$ 为偶数时奇偶性矛盾，因此无解。",
+            "当 $n$ 为奇数且 $m=(n-1)/2$ 时，可将小数与大数配对、再将中间两段配对，使两组配对和分别覆盖交错的奇数与偶数，合并后恰好连续。",
+            "构造中的第一组为 $(i,3m+2+i)$，其中 $1\\le i\\le m$；第二组为 $(i, i+m+1)$，其中 $m+1\\le i\\le 2m+1$，正好使用 $1$ 到 $4m+2=2n$ 各一次。"
+          ],
+          "solutionBrief": "先利用所有数字总和与连续配对和总和相等，判断 $n$ 为偶数时无解。$n$ 为奇数时令 $m=(n-1)/2$，输出两组公式化配对；它们覆盖全部数字，且配对和交错形成连续整数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1788D",
+          "index": "D",
+          "slot": "D",
+          "title": "Moving Dots",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1788/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/112584",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "combinatorics",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "数轴上有若干初始坐标不同的点；每个点同时以相同速度朝最近的其他点移动，距离相同则向左，遇到点后两者停止。对所有至少含两个点的子集分别进行该过程，求所有子集最终停留坐标种数之和，结果对 $10^9+7$ 取模。",
+          "transformedStatement": "把每个子集的最终坐标数转化为其中相邻且相向运动的点对数量。固定原序中的点对 $(i,j)$，计算哪些点必须排除，使它们成为子集中相邻且分别向右、向左运动，再统计所有包含该点对的子集。",
+          "keyObservations": [
+            "每个点在运动过程中不会改变方向，因此一个最终停留坐标可由一对相邻且相向运动的点确定，结果等于这类相邻点对的数量。",
+            "固定点对 $i<j$ 后，中间不能选点；同时为保证 $i$ 向右、$j$ 向左，所有满足 $2x_i-x_j\\le x_k<2x_j-x_i$ 的其他点都不能选入。",
+            "若除固定点对外有 $p$ 个点不受上述限制，则它们可独立选择，恰好产生 $2^p$ 个子集，因此可按点对累加贡献。",
+            "坐标已排序，禁选区间的端点可用二分统计；枚举全部 $O(n^2)$ 个点对即可得到总复杂度 $O(n^2\\log n)$。"
+          ],
+          "solutionBrief": "枚举最终相遇所对应的点对 $(i,j)$，根据 $[2x_i-x_j,2x_j-x_i)$ 统计不能加入子集的点数，剩余点各自独立选或不选，贡献为 $2^p$。用二分统计区间内点数并累加所有点对贡献。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1788E",
+          "index": "E",
+          "slot": "E",
+          "title": "Sum Over Zero",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1788/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/112584",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dp"
+          ],
+          "statementBrief": "给定整数数组，选择若干个两两不重叠的连续区间；每个区间的元素和必须非负，区间长度为右端点减左端点加一。求所选区间总长度的最大值，也允许一个区间都不选。",
+          "transformedStatement": "把每个区间 $[x+1,y]$ 表示为前缀和端点对 $(p_x,p_y)$，合法性变为 $p_x\\le p_y$；问题进一步转成按右端点进行的带权区间选择 DP，并对前驱条件做前缀最大值查询。",
+          "keyObservations": [
+            "区间 $[x+1,y]$ 的元素和非负，当且仅当前缀和满足 $p_x\\le p_y$，因此区间合法性可转化为两个前缀和的大小关系。",
+            "按右端点递推时，若最后一个区间为 $[k+1,i]$，其贡献是 $i-k$，此前最优值为 $dp_k$，所以转移为 $dp_i=\\max(dp_{i-1},\\max_{p_k\\le p_i}(dp_k-k)+i)$。",
+            "将前缀和离散化后，在位置 $p_k$ 维护 $dp_k-k$ 的最大值；转移只需查询所有不超过 $p_i$ 的位置，从而把每个状态的枚举前驱降为区间最大值查询。"
+          ],
+          "solutionBrief": "用前缀和判断区间和是否非负，设 $dp_i$ 为只选取右端点不超过 $i$ 的不重叠合法区间时的最大总长度。离散化前缀和值后，用线段树维护各位置的最大 $dp_k-k$，每次查询前缀最大值并更新，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1788F",
+          "index": "F",
+          "slot": "F",
+          "title": "XOR, Tree, and Queries",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1788/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/112584",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "greedy",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，需要为每条边赋一个 $0$ 到 $2^{30}-1$ 的整数。每条条件指定两个顶点，要求它们之间唯一简单路径上的边权异或等于给定值；若条件可同时满足，输出一组赋值，使所有树边权的异或最小，否则报告无解。",
+          "transformedStatement": "给每个顶点设置根路径异或值 $p_i$，树边权便是两端点的 $p$ 值异或，而每条路径条件变成 $p_u \\oplus p_v=x$。于是先在条件图中求满足边约束的顶点势值，再调整每个连通分量共同的异或偏移量来最小化目标函数；目标只受树上奇度顶点的势值异或影响。",
+          "keyObservations": [
+            "令 $p_i$ 为根到顶点 $i$ 的边权异或，则任意两点路径异或等于 $p_u \\oplus p_v$，因此原问题可转为给顶点赋值。",
+            "每条条件 $(u,v,x)$ 等价于约束 $p_u \\oplus p_v=x$；在条件图的每个连通分量内传播赋值后，检查所有边是否满足该式即可判定一致性。",
+            "条件图的每个连通分量都可以整体异或同一个自由偏移量，这不改变分量内约束，因而可用这些偏移量优化最终目标。",
+            "树边权的总异或等于所有奇度顶点的 $p_i$ 之异或；某条件分量中奇度顶点数量为奇数时，其自由偏移量会影响目标，否则该分量的偏移量会抵消。"
+          ],
+          "solutionBrief": "用根到各点的路径异或 $p_i$ 表示赋值，将条件转为带异或权的图边。逐个条件图连通分量传播 $p_i$ 并检查约束一致性；再利用各分量整体偏移的自由度，按奇度顶点数量的奇偶性选择偏移，使树边权总异或最小。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
