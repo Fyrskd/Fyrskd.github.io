@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1175,
+    "total_problems": 1176,
     "source_total_problems": 1733,
-    "filtered_out_problems": 558,
-    "with_statement_brief": 1175,
-    "with_editorial_brief": 961,
-    "with_solution_brief": 962,
+    "filtered_out_problems": 557,
+    "with_statement_brief": 1176,
+    "with_editorial_brief": 962,
+    "with_solution_brief": 963,
     "missing_editorial_brief": 213,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 75,
+    "ai_override_count": 76,
     "primary_topic_count": 13,
     "contest_count": 193,
     "rating_min": 800,
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 50,
-    "构造与贪心": 397,
+    "构造与贪心": 398,
     "图论与网络流": 71,
     "动态规划与状态设计": 112,
     "数论与同余": 98,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 67,
+    "ai_generated_with_editorial": 68,
     "ai_generated_partial_editorial": 3,
     "missing_editorial": 213,
     "manual_override": 891,
@@ -35857,9 +35857,36 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-02-05",
       "url": "https://codeforces.com/contest/1785",
       "type": "Div. 1",
-      "problemCount": 5,
+      "problemCount": 6,
       "maxRating": 3400,
       "problems": [
+        {
+          "key": "1785A",
+          "index": "A",
+          "slot": "A",
+          "title": "Monsters (easy version)",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1785/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/112493",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个生命值为 $a_i$ 的怪物。类型 1 法术可对任意一个存活怪物造成 1 点伤害；类型 2 法术对所有存活怪物造成 1 点伤害，并在本次至少杀死一个怪物时自动重复，最多主动施放一次。求杀死全部怪物所需的类型 1 法术最少次数。",
+          "transformedStatement": "把类型 2 法术看作沿生命值层连续推进：若场上有生命值 $1$ 到 $H$ 的怪物，就能连续触发对应层数。因此通过类型 1 法术填补排序后的生命值间隔，使其尽量形成从 $1$ 开始的连续前缀。",
+          "keyObservations": [
+            "若当前存在生命值 $1,2,\\ldots,H$ 的怪物，类型 2 法术会连续触发至少 $H$ 次；每个连续生命值层都能保证下一次触发，因此问题转化为尽量构造这样的前缀。",
+            "设下一个处理的怪物生命值为 $x$，若 $x>H+1$，将其降到 $H+1$ 不会使类型 2 的最终效果变差，只需支付 $x-H-1$ 次类型 1 操作。",
+            "将生命值从小到大处理后，每个被调整到 $H+1$ 的怪物都会把连续前缀延长一层，而生命值不超过 $H$ 的重复怪物不会改变前缀；最终一次类型 2 法术即可覆盖全部怪物。"
+          ],
+          "solutionBrief": "将生命值排序，维护已形成的连续前缀 $1\\ldots H$。依次处理 $x$：若 $x>H+1$，花费 $x-H-1$ 次类型 1 将其降到 $H+1$；随后令 $H$ 增加一层。累计花费即答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1785B",
           "index": "B",
