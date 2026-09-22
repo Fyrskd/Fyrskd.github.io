@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1250,
+    "total_problems": 1257,
     "source_total_problems": 1742,
-    "filtered_out_problems": 492,
-    "with_statement_brief": 1250,
-    "with_editorial_brief": 1035,
-    "with_solution_brief": 1036,
+    "filtered_out_problems": 485,
+    "with_statement_brief": 1257,
+    "with_editorial_brief": 1042,
+    "with_solution_brief": 1043,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 159,
+    "ai_override_count": 166,
     "primary_topic_count": 13,
-    "contest_count": 202,
+    "contest_count": 203,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,22 +45,22 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 55,
-    "构造与贪心": 420,
+    "构造与贪心": 421,
     "图论与网络流": 75,
     "动态规划与状态设计": 122,
-    "数论与同余": 106,
-    "组合计数与概率": 99,
+    "数论与同余": 107,
+    "组合计数与概率": 102,
     "数据结构": 92,
     "几何": 24,
     "树结构": 97,
     "交互": 62,
-    "基础实现与模拟": 45,
+    "基础实现与模拟": 46,
     "博弈": 42,
-    "代数、矩阵与多项式": 11
+    "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 136,
-    "ai_generated_partial_editorial": 8,
+    "ai_generated_with_editorial": 142,
+    "ai_generated_partial_editorial": 9,
     "missing_editorial": 214,
     "manual_override": 891,
     "statement_derived": 1
@@ -35554,6 +35554,219 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1808,
+      "name": "Codeforces Round 861 (Div. 2)",
+      "date": "2023-03-29",
+      "url": "https://codeforces.com/contest/1808",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1808A",
+          "index": "A",
+          "slot": "A",
+          "title": "Lucky Numbers",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1808/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/114523",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "给定整数区间 $[l,r]$，每艘飞船的编号是其中一个整数。一个数的幸运值等于其十进制表示中最大数字与最小数字之差，需要在区间内选择并输出任意幸运值最大的编号。",
+          "transformedStatement": "目标是最大化一个数的数字集合的极差。由于极差上界是 $9$，区间足够长时只需构造一个末两位为 $90$ 的数；区间较短时直接检查所有候选数。",
+          "keyObservations": [
+            "任意数字的幸运值最多为 $9$，而以 $90$ 结尾的数同时含有数字 $9$ 和 $0$，因此幸运值必为 $9$，达到全局最优。",
+            "当 $r-l\\geq100$ 时，长度至少为 $101$ 的连续区间必包含一个模 $100$ 余数为 $90$ 的数，可直接构造答案而无需逐个检查。",
+            "当 $r-l<100$ 时，区间规模不足 $101$，逐个计算每个数的最大数字与最小数字即可找到最优值。"
+          ],
+          "solutionBrief": "若 $r-l\\geq100$，寻找区间内一个末两位为 $90$ 的数并输出；它的幸运值为最大值 $9$。否则枚举 $[l,r]$ 中所有数，计算各数的最大、最小数字之差，保留任意最优数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1808B",
+          "index": "B",
+          "slot": "B",
+          "title": "Playing in a Casino",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1808/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/114523",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 张牌，每张牌含 $m$ 个数；每对玩家恰好进行一次对局，获胜者得到两张牌对应位置数字绝对差之和的筹码。要求计算所有对局中奖者获得的筹码总和。",
+          "transformedStatement": "将每张牌看作长度为 $m$ 的向量，把所有牌对之间的曼哈顿距离求和；由于各维度相互独立，问题转化为分别求每一列所有数对绝对差之和。",
+          "keyObservations": [
+            "每场牌局的总收益是各列绝对差之和，因此可以把每一列独立计算，最后累加各列结果。",
+            "将一列升序排列后，当前位置 $i$ 的元素与所有更小元素的绝对差总和为 $a_i\\times i-$此前元素前缀和，从而能在线性扫描中累计贡献。",
+            "升序处理保证当前元素不小于此前元素，使绝对值统一改写为差值，并且每对元素只在较大者处统计一次。"
+          ],
+          "solutionBrief": "对每一列单独处理：将列元素排序，用前缀和计算每个元素与此前元素的差值总和 $a_i\\times i-prefixSum$，累加所有列的结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1808C",
+          "index": "C",
+          "slot": "C",
+          "title": "Unlucky Numbers",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1808/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/114523",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定整数区间 $[l,r]$，每个候选数的幸运值定义为其所有数字中的最大值减最小值。要求在区间内选择一个幸运值最小的数，存在多个时任选其一。",
+          "transformedStatement": "把目标改写为寻找一个落在 $[l,r]$ 内、且所有数字都尽量集中在某个区间 $[p,q]$ 中的数，并最小化 $q-p$；构造时只需分析端点公共前缀之后的首个分歧位置。",
+          "keyObservations": [
+            "删去区间端点的公共前缀后，只需处理首个不同位置的数字 $a<b$，因为公共前缀不会影响数字的最大值与最小值范围。",
+            "若 $b-a\\ge 2$，在该位置放入中间数字 $a+1$，即可避开端点数字并构造更小的数字差。",
+            "若 $b-a\\le 1$，最优候选只能从首位取 $a$ 或 $b$，随后分别贪心选可行的最大或最小后缀数字。",
+            "枚举候选数字的最小值与最大值，只保留能在区间内构造出的方案，并选择 $q-p$ 最小的方案。"
+          ],
+          "solutionBrief": "删去端点公共前缀，分析首个不同数字 $a<b$。差值至少为 $2$ 时插入中间数字；否则分别以 $a$、$b$ 开头并贪心构造后缀，枚举可行的数字范围并取最小差值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1808D",
+          "index": "D",
+          "slot": "D",
+          "title": "Petya, Petya, Petr, and Palindromes",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1808/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/114523",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "two pointers"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数序列和奇数 $k$。对每个长度为 $k$ 的连续子数组，回文度是至少替换多少个元素才能使它成为回文，要求所有这些子数组的回文度之和。",
+          "transformedStatement": "将每个子数组的替换问题改写为对称位置的失配计数：先统计所有窗口中对称位置对的总数，再统计其中元素相等的配对数并相减；相等配对按元素值和下标奇偶性分组处理。",
+          "keyObservations": [
+            "因为 $k$ 为奇数，每个长度为 $k$ 的子数组有 $(k-1)/2$ 对对称位置；其回文度恰好是其中不相等的对数，因此可用最大不匹配总数减去相等对数。",
+            "对称位置的下标距离必为偶数且小于 $k$，所以统计所有窗口中的相等对，可转化为统计满足这些距离条件的相同元素位置对。",
+            "固定一个数值后，只需考虑它的出现位置；按下标奇偶性分组后，合法位置对自动具有偶数距离，滑动窗口即可统计距离小于 $k$ 的配对数。",
+            "不同数值的出现位置集合互不相交，分别统计每个数值的配对并求和，就能得到所有对称相等位置的总数，避免逐个窗口比较。"
+          ],
+          "solutionBrief": "先把总答案设为所有窗口的对称位置总数，再减去相等对数量。按数值收集出现位置，并按下标奇偶分组；对每组用滑动窗口统计距离小于 $k$ 的位置对，累加后完成计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1808E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Minibuses on Venus (easy version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1808/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/114523",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "divide and conquer",
+            "dp"
+          ],
+          "statementBrief": "给定长度为 $n$、每位取值 $0$ 到 $k-1$ 的票号。若存在一位数字等于其余所有数字之和模 $k$，票号就是幸运的；要求统计幸运票号数量对质数 $m$ 取模后的结果。",
+          "transformedStatement": "令所有位数字之和为 $S$。幸运条件等价于存在某位 $a_i$ 使 $2a_i\\equiv S\\pmod{k}$；因此按 $S$ 分类，统计避开所有满足该同余式数字的序列，再从全部 $k^n$ 个票号中扣除。",
+          "keyObservations": [
+            "将“某位等于其余位之和”改写为该位 $a_i$ 满足 $2a_i\\equiv S\\pmod{k}$，其中 $S$ 是所有数字之和，判定只依赖总和余数。",
+            "固定总和余数 $S$ 后，所有满足 $2y\\equiv S\\pmod{k}$ 的数字都不能出现在不幸运票中，这把全局条件转成逐位禁用数字。",
+            "对每个 $S$ 维护当前处理位置和数字和余数，末状态 $f[n][S]$ 恰好统计总和为 $S$ 且避开所有禁用数字的票，从总数中相减即可得到幸运票数。"
+          ],
+          "solutionBrief": "枚举总和余数 $S$，设 $f[i][sum]$ 为处理前 $i$ 位且当前和为 $sum$ 的不幸运票数量；转移时跳过满足 $2y\\equiv S\\pmod{k}$ 的数字。累加各个 $f[n][S]$，用 $k^n$ 减去该总数并对 $m$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1808E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Minibuses on Venus (medium version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1808/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/114523",
+          "primaryTopic": "代数、矩阵与多项式",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "divide and conquer",
+            "dp",
+            "matrices"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数字序列，每位取值为 $0$ 到 $k-1$。若存在一位数字等于其余所有数字之和模 $k$ 的结果，则称序列幸运；要求计算幸运序列数量对质数 $m$ 取模后的值。",
+          "transformedStatement": "将幸运条件按整个序列的总和余数 $S$ 分类：某位数字 $x$ 是否满足条件等价于 $2x\\equiv S\\pmod{k}$。对固定的 $S$，题解进一步把逐位计数抽象为一个固定的 $k\\times k$ 线性转移矩阵。",
+          "keyObservations": [
+            "设所有数字之和模 $k$ 为 $S$，则数字 $x$ 满足“等于其余数字之和”当且仅当 $2x\\equiv S\\pmod{k}$，可将条件从剩余元素转化为总和与当前位置数字的关系。",
+            "固定总和余数 $S$ 后，每增加一位数字时的状态转移矩阵 $g$ 与位置无关，因此可以把逐位转移统一表示为矩阵乘法。",
+            "若 $f[i]$ 表示处理前 $i$ 位的状态计数，则有 $f[n]=f[0]\\cdot g^n$；用快速矩阵幂计算可将逐位处理降为 $O(k^3\\log n)$。"
+          ],
+          "solutionBrief": "题解将固定总和余数 $S$ 下的逐位状态转移写成 $k\\times k$ 矩阵 $g$。由于各位置使用同一矩阵，计算 $f[0]g^n$，通过快速矩阵幂得到最终计数；但给定正文未包含 E1 中状态与初始转移的完整定义。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1808E3",
+          "index": "E3",
+          "slot": "E",
+          "title": "Minibuses on Venus (hard version)",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1808/problem/E3",
+          "editorialUrl": "https://codeforces.com/blog/entry/114523",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余",
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "一个票号由 $n$ 个取值为 $0$ 到 $k-1$ 的数字组成。若存在某一位等于其余所有数字之和模 $k$，票号就是幸运的；请计算幸运票号数量对素数 $m$ 取模后的结果。",
+          "transformedStatement": "把票号按全部数字之和模 $k$ 的余数 $S$ 分类。对固定 $S$，幸运条件等价于存在数字 $x$ 满足 $2x\\equiv S\\pmod{k}$，随后统计包含候选数字与避开候选数字的序列数。",
+          "keyObservations": [
+            "固定所有数字总和模 $k$ 为 $S$ 后，满足条件的候选数字必须解 $2x\\equiv S\\pmod{k}$，因此奇数 $k$ 至多一个候选，偶数 $k$ 要么没有、要么恰有两个候选。",
+            "固定候选数字 $x$ 后将每位减去 $x$，条件转化为统计不含数字 $0$ 且总和为指定余数的序列，从而只需区分当前总和是否为零。",
+            "不含零数字的序列只需记录“总和为零”或“非零”两种状态，转移矩阵可快速幂求出长度为 $n$ 的计数。",
+            "偶数 $k$ 的两个候选相差 $k/2$；平移后再将各位乘二，可把两个候选同时映射为零，并用对应矩阵统计避开它们的序列。"
+          ],
+          "solutionBrief": "按总和余数分类，先由 $2x\\equiv S\\pmod{k}$ 确定候选数字，再用平移和二状态 DP 统计避开候选的序列。转移矩阵用快速幂计算，并按候选数及总和余数修正计数，最后对所有 $S$ 汇总取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
