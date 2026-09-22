@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1230,
+    "total_problems": 1238,
     "source_total_problems": 1742,
-    "filtered_out_problems": 512,
-    "with_statement_brief": 1230,
-    "with_editorial_brief": 1015,
-    "with_solution_brief": 1016,
+    "filtered_out_problems": 504,
+    "with_statement_brief": 1238,
+    "with_editorial_brief": 1023,
+    "with_solution_brief": 1024,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 138,
+    "ai_override_count": 146,
     "primary_topic_count": 13,
-    "contest_count": 200,
+    "contest_count": 201,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 55,
-    "构造与贪心": 413,
-    "图论与网络流": 73,
-    "动态规划与状态设计": 119,
-    "数论与同余": 101,
+    "构造与贪心": 416,
+    "图论与网络流": 75,
+    "动态规划与状态设计": 120,
+    "数论与同余": 102,
     "组合计数与概率": 99,
-    "数据结构": 91,
+    "数据结构": 92,
     "几何": 23,
     "树结构": 96,
     "交互": 62,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 120,
+    "ai_generated_with_editorial": 128,
     "ai_generated_partial_editorial": 4,
     "missing_editorial": 214,
     "manual_override": 891,
@@ -35590,6 +35590,251 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "fetch_failed"
+        }
+      ]
+    },
+    {
+      "id": 1804,
+      "name": "Nebius Welcome Round (Div. 1 + Div. 2)",
+      "date": "2023-03-12",
+      "url": "https://codeforces.com/contest/1804",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 8,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1804A",
+          "index": "A",
+          "slot": "A",
+          "title": "Lame King",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1804/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/113830",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "棋盘上有一个从 $(0,0)$ 出发的跛脚国王，目标是到达给定位置 $(a,b)$。每秒必须执行题面规定的五种动作之一，包括向上下左右移动或 skip，求到达目标所需的最少秒数。",
+          "transformedStatement": "把目标位置按对称性转为第一象限，只需比较 $x=|a|$ 与 $y=|b|$：坐标相等时交替推进两个方向；坐标不等时围绕较大的坐标安排有效移动，其余回合用 skip 填充。",
+          "keyObservations": [
+            "当 $|a|=|b|$ 时，交替沿行和列朝目标方向移动，每次都同时推进一个坐标，因此恰好需要 $2|a|$ 步。",
+            "当两个绝对值不等时，可设较大者为 $a\\ge b\\ge0$；在奇数步沿较大坐标方向移动，前 $2a-1$ 步中已有 $a$ 次有效移动，剩余步数足以调整另一坐标。",
+            "多出的行动次数可以用 skip 填充，因此答案只由两个坐标绝对值是否相等以及较大值决定。"
+          ],
+          "solutionBrief": "令 $x=|a|,y=|b|$。若 $x=y$，答案为 $x+y$；否则答案为 $2\\max(x,y)-1$。等值时交替移动两个坐标，非等值时优先在较大坐标方向移动，并用 skip 补足。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1804B",
+          "index": "B",
+          "slot": "B",
+          "title": "Vaccination",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1804/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/113830",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 名患者按非递减时间到达，每人只能在到达后至多等待 $w$ 个时刻。每个疫苗包含 $k$ 剂，开包时刻为 $x$，只能在 $x$ 到 $x+d$ 间使用；求为接种所有患者所需的最少疫苗包数。",
+          "transformedStatement": "把患者按到达顺序划分为若干连续段，每段由一个疫苗包服务。该包可在段首患者最晚允许的时刻开启，并覆盖至多 $k$ 名患者，同时要求段内后续患者能在开包后 $d$ 个时刻内完成接种。",
+          "keyObservations": [
+            "存在最优方案使每个疫苗包服务一段连续患者；若同一包服务较早和较晚患者而中间患者使用另一包，可交换后仍满足时间限制。",
+            "没有可用疫苗包时，让当前及后续等待患者尽可能统一到最晚可接种时刻，可避免提前开包造成有效期浪费。",
+            "按到达时间处理患者时，若已有未过期且有余量的疫苗包就立即使用；否则开启新包并将其服务范围限制为后续至多 $k$ 名且到达时间不晚于开包时刻加 $d$ 的患者。"
+          ],
+          "solutionBrief": "按非递减的到达时间扫描患者。当前有未过期且有余量的包就立即接种；否则令最早未处理患者等待到 $t_i+w$，开启新包，并接种后续最多 $k$ 名且到达时间不超过开包时刻加 $d$ 的患者，统计开包次数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1804C",
+          "index": "C",
+          "slot": "C",
+          "title": "Pull Your Luck",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1804/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/113830",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "轮盘有 $n$ 个按环形顺序编号的扇区，指针当前指向 $x$。她必须恰好拉动一次，力度可选 $1$ 到 $p$；力度为 $f$ 时，轮盘依次前进 $f,f-1,\\ldots,1$ 个扇区，最后要求停在扇区 0，判断是否存在可行力度。",
+          "transformedStatement": "把一次力度为 $f$ 的操作抽象成环上的总位移三角数 $T_f=\\frac{f(f+1)}{2}$，问题变为寻找 $1\\le f\\le p$ 使 $(x+T_f)\\bmod n=0$。由于 $T_{f+2n}\\equiv T_f\\pmod n$，搜索范围可截断为前 $\\min(2n,p)$ 项。",
+          "keyObservations": [
+            "使用初始力度 $f$ 时，总位移等于 $1+2+\\cdots+f=\\frac{f(f+1)}{2}$，因此胜利条件可直接转为 $(x+\\frac{f(f+1)}{2})\\bmod n=0$。",
+            "三角数模 $n$ 的序列在力度增加 $2n$ 后重复，因为 $T_{f+2n}-T_f$ 一定是 $n$ 的倍数，所以只需检查前 $\\min(2n,p)$ 个力度。",
+            "只要某个允许力度满足上述同余式，恰好一次操作即可让指针停在 0；否则所有允许力度都无法获胜。"
+          ],
+          "solutionBrief": "枚举力度 $f=1$ 到 $\\min(2n,p)$，计算总位移 $f(f+1)/2$，检查 $(x+f(f+1)/2)\\bmod n$ 是否为 0；找到即输出可行，否则不可行。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1804D",
+          "index": "D",
+          "slot": "D",
+          "title": "Accommodation",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1804/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/113830",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一栋有 $n$ 层、每层 $m$ 个亮灭窗的建筑。每层必须划分为 $m/4$ 个由相邻两窗表示的双卧室公寓和 $m/2$ 个单卧室公寓，布局可逐层不同；至少有一个亮窗的公寓算有人居住，求所有可能布局下居住公寓总数的最小值和最大值。",
+          "transformedStatement": "对每层只需决定双卧室覆盖哪些相邻窗。若 $B$ 是亮窗数、$T_2$ 是覆盖两个亮窗的双卧室数，则答案为 $B-T_2$；于是问题转化为分别求 $T_2$ 的最大值和最小值。",
+          "keyObservations": [
+            "设亮窗总数为 $B$、同时包含两个亮窗的双卧室数量为 $T_2$，则有人居住的公寓数为 $A=B-T_2$；因此最小化或最大化 $A$ 等价于最大化或最小化 $T_2$。",
+            "要最大化 $T_2$，可在每个连续亮窗段中尽量放置双卧室，数量上限为 $\\min(\\sum\\lfloor l_i/2\\rfloor,m/4)$；剩余位置可由单卧室补齐。",
+            "要最小化 $T_2$，只考虑不含连续两个亮窗且至少含一个暗窗的极大区段，最多可在其中安排 $\\sum\\lfloor l'_i/2\\rfloor$ 个不产生双亮窗的双卧室，因此被迫产生的数量为 $\\max(0,m/4-\\sum\\lfloor l'_i/2\\rfloor)$。",
+            "每层的公寓布局互不影响，先对每层线性扫描统计上述区段，再将各层的最小值和最大值分别累加即可。"
+          ],
+          "solutionBrief": "按楼层独立处理。利用 $A=B-T_2$，在连续亮段中尽量配双卧室得到最小答案；在不含连续亮窗的区段中尽量规避双亮窗，计算被迫出现的 $T_2$ 得到最大答案，最后累加各层结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1804E",
+          "index": "E",
+          "slot": "E",
+          "title": "Routing",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1804/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/113830",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "graphs"
+          ],
+          "statementBrief": "给定一个连通的无向服务器网络，需要为每个服务器恰好选择一个直接相连的服务器作为辅助服务器。按照题目规定的 WRP 路由过程，要求任意服务器都能向任意其他服务器建立路径；请构造这种选择，或判断不存在。",
+          "transformedStatement": "把辅助服务器选择视为每个节点出度恰为 $1$ 的函数图。问题转化为寻找一个长度至少为 $2$ 的环，使原图中的每个节点都在环上或与环上节点相邻。",
+          "keyObservations": [
+            "把每个服务器恰好选择一个辅助服务器看作出度均为 $1$ 的函数图；只要函数图含有一个所有节点都能到达的有向环，路由过程就能先进入该环并继续完成寻路。",
+            "可行性等价于存在长度至少为 $2$ 的环 $C$，使原图中的每个服务器都在 $C$ 上或与 $C$ 中某个服务器直接相连，即 $N_G(C)=V(G)$。",
+            "找到这样的环后，环上服务器按环方向设置辅助服务器，其余服务器直接选择一个与环相邻的服务器，因此所有节点都能汇入该环。",
+            "固定环的最小编号节点作为起点，用类似 Hamilton 路径的子集 DP 枚举能形成简单环的顶点集合，再检查该集合是否覆盖所有服务器的邻接关系。"
+          ],
+          "solutionBrief": "用子集 DP 枚举所有可形成长度至少为 $2$ 的简单环的顶点集合，检查每个服务器是否位于环上或邻接环。若存在则按环方向及邻接关系构造辅助服务器，否则无解；复杂度为 $O(2^n n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1804F",
+          "index": "F",
+          "slot": "F",
+          "title": "Approximate Diameter",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1804/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/113830",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "divide and conquer",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个连通无向单位边图，之后按顺序进行 $q$ 次更新，每次只新增一条边，允许重边和自环。对初始图及每次更新后的图分别输出正整数 $a_i$，满足真实直径的一半向上取整不超过 $a_i$，且 $a_i$ 不超过真实直径的两倍。",
+          "transformedStatement": "固定任意顶点 $v$，把每个版本改写为计算它到最远顶点的距离 $c_i$，而非直接求直径。由于加边使 $c_i$ 单调不增，若两个版本的值相差至多两倍，就可用后者的二倍统一覆盖其间版本；只有无法覆盖的区间才需要继续划分。",
+          "keyObservations": [
+            "对任意顶点 $v$，最远距离 $c_G(v)$ 满足 $d(G)/2\\le c_G(v)\\le d(G)$，因此可用一次 BFS 得到直径的二倍近似。",
+            "连续加边只会缩短最短路，所以固定顶点的 $c_{G_i}(v)$ 以及直径序列都单调不增，可据此复用跨版本结果。",
+            "若 $i<j$ 且 $c_{G_i}(v)\\le 2c_{G_j}(v)$，则统一取 $2c_{G_j}(v)$ 可覆盖中间所有版本的合法近似范围，从而跳过逐版本计算。",
+            "用分治递归寻找仍需精确计算的版本；区间两端满足上述不等式时直接填充，否则继续拆分，BFS 次数降至至多 $O(\\log n\\log q)$。"
+          ],
+          "solutionBrief": "固定一个顶点，用 BFS 求其到所有点的最大距离。利用加边后该值单调不增，在版本序列上用分治判断区间能否由同一个近似值覆盖；不能覆盖时递归拆分，最多进行 $O(\\log n\\log q)$ 次 BFS，总复杂度为 $O(\\log n\\log q(n+m+q))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1804G",
+          "index": "G",
+          "slot": "G",
+          "title": "Flow Control",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1804/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/113830",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "dsu",
+            "implementation"
+          ],
+          "statementBrief": "有一条带宽为 $b$ 的网络线路，用户 $i$ 在从 $s_i$ 到 $f_i$ 的每个毫秒尝试传输，初始速率为 $d_i$。每个毫秒按照题面给定的流量控制流程处理拥塞和速率变化，要求计算所有用户最终成功传输的字节总数；但给定记录未包含该流程的具体规则。",
+          "transformedStatement": "把连续时间过程按相邻两次拥塞划分为 epoch，并把当前用户按速率值分组。用户集合不变时，拥塞只需在这些分组的聚合信息上推进；状态重复后进入重复 epoch，用户开始或结束则产生普通 epoch。",
+          "keyObservations": [
+            "每次拥塞都会使当前活跃用户中最大速率与最小速率的差距减半，因此当用户集合暂时不变时，速率分组经过 $O(\\log C)$ 次拥塞即可收敛为至多两个不同值。",
+            "把相同速率的活跃用户维护为一个分组，并记录上次拥塞后的速率总和及经过时间，就能在 $O(1)$ 时间内计算下一次拥塞发生的时刻。",
+            "用户开始或结束传输会改变分组结构；拥塞时合并速率分组，并用带路径压缩的 DSU 维护合并关系，从而支持后续用户删除。",
+            "将相邻拥塞之间的区间分为普通 epoch 和重复 epoch；普通 epoch 的总数可由势能函数 $P=d+\\sum_{i=0}^{d-2}\\log(t_{i+1}-t_i)$ 摊还控制在 $O(n\\log C)$ 量级。"
+          ],
+          "solutionBrief": "按速率值维护活跃用户分组，记录 epoch 的聚合信息以直接求下一次拥塞；拥塞时更新并合并分组，DSU 处理用户结束。重复 epoch 单独快速模拟，普通 epoch 用势能函数摊还，总代价为 $O(n\\log C+n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1804H",
+          "index": "H",
+          "slot": "H",
+          "title": "Code Lock",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1804/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/113830",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dp"
+          ],
+          "statementBrief": "锁有 $k$ 个等分扇区，指针初始指向第一个扇区；Lara 可重新排列前 $k$ 个字母在各扇区的对应关系，然后通过旋转指针并按键，按密码顺序输入长度为 $n$ 的字符串。要求最小化输入所需秒数，并统计达到该最小值的字母分配方案数。",
+          "transformedStatement": "把密码转化为字母对之间的转移频次，将总旋转时间写成这些频次乘以字母在圆上的最短距离之和；再把圆切成两个半圆，交替决定两侧位置，用子集 DP 同时优化代价并计数。",
+          "keyObservations": [
+            "相邻密码字符之间的移动代价只取决于它们在圆上的最短环距离，因此先统计每个有向转移次数 $c(x,y)$，再把反向转移合并为无向权重 $c(x,y)+c(y,x)$。",
+            "将圆周切成左右两个连续半圆后，按左右两侧交替放入字母；这样每次加入新字母时，它与已放置字母的相对距离区间已确定，可以计算新增点权。",
+            "固定左半圆包含的字母集合 $S$ 后，状态 $M$ 表示已放置字母；要求两侧已放置数量相差不超过一，正好对应交替填充的合法前缀，避免枚举无意义排列。",
+            "初始指针在第一个扇区，因此最优方案必将密码首字符放在该扇区；固定 $s_0\\in S$ 且 $s_0\\in M$ 可去除圆周旋转对称性，同时 DP 在最小代价相同的转移上累加方案数。"
+          ],
+          "solutionBrief": "统计所有相邻密码字符转移次数并合并反向权重。枚举大小为 $\\lceil k/2\\rceil$ 的左半圆集合 $S$，用 $d(S,M)$ 表示两侧交替填入已选字母后的最小移动代价及方案数，按新增字母转移并累加同优方案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
