@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1208,
+    "total_problems": 1216,
     "source_total_problems": 1742,
-    "filtered_out_problems": 534,
-    "with_statement_brief": 1208,
-    "with_editorial_brief": 993,
-    "with_solution_brief": 994,
+    "filtered_out_problems": 526,
+    "with_statement_brief": 1216,
+    "with_editorial_brief": 1001,
+    "with_solution_brief": 1002,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 115,
+    "ai_override_count": 124,
     "primary_topic_count": 13,
     "contest_count": 197,
     "rating_min": 800,
@@ -45,13 +45,13 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 53,
-    "构造与贪心": 404,
+    "构造与贪心": 407,
     "图论与网络流": 72,
-    "动态规划与状态设计": 115,
+    "动态规划与状态设计": 117,
     "数论与同余": 101,
-    "组合计数与概率": 97,
-    "数据结构": 89,
-    "几何": 22,
+    "组合计数与概率": 98,
+    "数据结构": 90,
+    "几何": 23,
     "树结构": 95,
     "交互": 62,
     "基础实现与模拟": 45,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 99,
+    "ai_generated_with_editorial": 107,
     "ai_generated_partial_editorial": 3,
     "missing_editorial": 214,
     "manual_override": 891,
@@ -35599,9 +35599,96 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-02-27",
       "url": "https://codeforces.com/contest/1799",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 1,
-      "maxRating": 1900,
+      "problemCount": 9,
+      "maxRating": 3200,
       "problems": [
+        {
+          "key": "1799A",
+          "index": "A",
+          "slot": "A",
+          "title": "Recent Actions",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1799/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/113321",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "初始列表从上到下为帖子 $1$ 到 $n$。接下来每次对给定的新帖子执行最近操作，使其进入列表前端并按规则移除末尾帖子；重复操作不会产生新的旧帖移除。对每个初始帖子，求它首次被移除的时刻，若始终未被移除则输出 $-1$。",
+          "transformedStatement": "把列表变化抽象为：只统计操作序列前缀中不同新帖子编号的数量。每增加一个不同编号，就按 $n,n-1,\u0001ldots,1$ 的顺序移除一个初始帖子，并记录当前时刻。",
+          "keyObservations": [
+            "初始帖子只会按从后到前的顺序被移除，即第 $k$ 个被移除的帖子是 $n-k+1$，因此不需要模拟整个列表。",
+            "只有首次出现的新帖子才会占据一个新的位置并移除旧帖；重复出现不会增加移除次数，所以关键量是前缀中的不同帖子数。",
+            "扫描到时刻 $i$ 时，若前缀中已有 $k$ 个不同编号，则第 $k$ 个旧帖已经被移除，可据此在首次达到每个 $k$ 时记录答案。"
+          ],
+          "solutionBrief": "维护已出现的新帖子集合，顺序扫描操作并统计不同编号数。每发现一个新编号，就移除当前最靠后的未移除初始帖子，并记录其时刻；未被移除的帖子答案为 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1799B",
+          "index": "B",
+          "slot": "B",
+          "title": "Equalize by Divide",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1799/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/113321",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定正整数数组，每次选择不同下标 $i,j$，将第 $i$ 个数替换为 $\\lceil a_i/a_j\\rceil$，可进行任意次操作。要求构造不超过 $30n$ 次操作使所有数相等；若无法做到输出 $-1$。",
+          "transformedStatement": "把问题视为反复用当前最小元素去压缩当前最大元素：当数组不全相等且所有元素至少为 $2$ 时，最大值每次至少减半，最终可收敛到统一值；含 $1$ 的非全等数组则不可行。",
+          "keyObservations": [
+            "若所有元素初始相等，空操作已经满足目标，因此直接输出 $0$ 次操作。",
+            "若存在 $a_i=1$ 且数组不全相等，$1$ 无法通过操作变大，而其他元素无法在最后一步同时变成 $1$，所以无解。",
+            "当所有元素至少为 $2$ 时，选当前最大值作为被除数、最小值作为除数；最大值变为不超过自身一半的上取整，且数组元素仍至少为 $2$，从而每个位置最多被有效降低约 $30$ 次。",
+            "不断执行上述最大值除以最小值的操作，最终所有元素相等；每次线性寻找极值，操作总数不超过 $30n$。"
+          ],
+          "solutionBrief": "先处理全相等和含 $1$ 的无解情况。否则反复选最大值下标 $i$ 与最小值下标 $j$，执行 $a_i\\leftarrow\\lceil a_i/a_j\\rceil$；最大值至少减半，操作数不超过 $30n$，每次扫描找极值即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1799C",
+          "index": "C",
+          "slot": "C",
+          "title": "Double Lexicographically Minimum",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1799/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/113321",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定一个只含小写字母的字符串 $s$，可以任意重排得到字符串 $t$。定义 $t_{max}=\\max(t,\\operatorname{rev}(t))$，其中比较按字典序进行；要求在所有重排中求 $t_{max}$ 的字典序最小值。",
+          "transformedStatement": "不直接枚举重排后的 $t$，而是按字符从小到大处理字符计数，直接构造最终的 $t_{max}$：优先把最小字符成对放到两端，并在剩余结构无法继续对称时一次性确定末段。",
+          "keyObservations": [
+            "按字符从小到大处理时，若当前字符 $x$ 至少剩两个，就将两个 $x$ 分别放入结果的前缀和后缀；这样优先固定能决定字典序的最小边界字符。",
+            "当剩余字符只涉及当前字符 $x$ 和另一种字符 $y$ 的终止情形时，将 $\\lceil c/2\\rceil$ 个 $y$、一个 $x$、再接 $\\lfloor c/2\\rfloor$ 个 $y$ 放入前缀，可平衡正序与逆序的最大值。",
+            "若当前字符只有一个且剩余部分还包含至少两种其他字符，应把除 $x$ 外的所有剩余字符按序放入前缀，最后放置 $x$；此时继续对称安排无法改善字典序。"
+          ],
+          "solutionBrief": "统计各字符数量并按字典序扫描。成对的最小字符分别放到结果两端；遇到无法继续成对处理的终止结构时，按题解给出的两种情况排列剩余字符，直接得到最小的 $\\max(t,\\operatorname{rev}(t))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1799D1",
           "index": "D1",
@@ -35612,19 +35699,170 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/113321",
           "primaryTopic": "动态规划与状态设计",
           "secondaryTopics": [
-            "图论与网络流",
-            "博弈",
-            "构造与贪心"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "dp"
           ],
-          "statementBrief": "题面已抓取：Hot Start Up (easy version)；本地暂无可用题解正文。",
+          "statementBrief": "设备有两台 CPU，需要按顺序运行给定的程序序列，只有某程序在同一台 CPU 上紧接着上一次仍运行相同程序时才耗时 $hot_i$，否则耗时 $cold_i$。每个程序必须等前一个完成后才能启动，要求安排每次使用的 CPU，使全部程序完成的总时间最小。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1799D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Hot Start Up (hard version)",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1799/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/113321",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "有两台 CPU 和一串必须按顺序运行的程序。每次可选择一台 CPU 运行下一个程序：若该 CPU 上一次运行的程序相同则耗时为 $hot_i$，否则为 $cold_i$；求运行完整串程序的最短总时间。",
+          "transformedStatement": "把状态重述为：处理到当前程序 $x$ 后，固定记录一台 CPU 的最后程序为 $x$，只记录另一台 CPU 的最后程序 $i$ 及最小耗时。转移被抽象成对所有状态统一加值和对单个状态更新。",
+          "keyObservations": [
+            "处理完当前程序 $x$ 后，必有一台 CPU 的最后程序是 $x$，因此只需记录另一台 CPU 的最后程序，二维状态可压缩为一维 $dp_i$。",
+            "每次执行新程序时，状态转移只会给所有状态统一增加一个费用，或对某个固定位置进行单独更新，这使整体转移无需遍历全部 $k$ 个状态。",
+            "加入编号为 $0$ 的虚拟程序并令其冷热时间均为 $0$，可以统一表示初始时两台 CPU 都没有运行程序的状态。",
+            "用支持全体加值和单点取最小更新的数据结构维护一维状态，即可将总复杂度降为 $O(n+k)$；也可用范围更新结构实现 $O(n\\log k+k)$。"
+          ],
+          "solutionBrief": "将二维 CPU 末状态压成一维 $dp_i$，表示一台 CPU 最后运行当前程序、另一台最后运行 $i$。每次根据冷热费用做统一加值或单点更新，并用数据结构维护这些操作，复杂度为 $O(n+k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1799E",
+          "index": "E",
+          "slot": "E",
+          "title": "City Union",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1799/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/113321",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "dsu",
+            "geometry",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个含恰好两个四联通已填区域的网格，每次可把空格变为已填格。要求最终所有已填格连成一个城市，且任意两格可沿已填格以曼哈顿最短距离互达，求填格总数最少的构造。",
+          "transformedStatement": "把目标重述为寻找一个单连通的已填区域，使每行和每列的已填位置都是连续区间；先求这一条件的行列闭包，若两个区域仍分离，再用极值角点间的最短路径连接它们。",
+          "keyObservations": [
+            "最终合法图形等价于：所有已填格属于同一个连通块，且每行、每列中的已填格都形成连续区间；这样可将路径距离条件转化为局部的行列连续性检查。",
+            "对每行填满最左与最右已填格之间的所有单元格、对每列填满最上与最下之间的所有单元格，重复至多 $n+m$ 次；这些格子是满足行列连续性所必需的。",
+            "若行列闭包后仍有两个连通块，则它们在横向和纵向投影上都不相交，因此只需连接两个城市的极值角点，而不必尝试任意格子对。",
+            "将两个极值角点用任意曼哈顿最短路径连接，再进行行列闭包即可；最短路径和闭包都只填入任何合法答案必需覆盖的区域，因此填充总数最小。"
+          ],
+          "solutionBrief": "反复填满每行、每列两个已填端点之间的区间。若此时已连成一城则结束；否则按相对位置取两个城市的极值角点，用曼哈顿最短路径连接，再重复闭包操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1799F",
+          "index": "F",
+          "slot": "F",
+          "title": "Halve or Subtract",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1799/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/113321",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "dp",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定正整数数组和正整数 $b$，每种操作在同一元素上至多使用一次：操作一将元素替换为其向上取整的一半，操作二将其替换为 $max(a_i-b,0)$；分别至多使用 $k_1,k_2$ 次，求操作后数组元素和的最小值。",
+          "transformedStatement": "把每个元素看成四种状态：不操作、只除法、只减法、两种都做。排序后，最优状态可规范化为五个连续区段：双操作、只除法、只减法、只除法、不操作。",
+          "keyObservations": [
+            "同一元素同时执行两种操作时，先执行取整上除以 $2$ 再减去 $b$ 不劣于相反顺序，因此双操作的顺序可以固定。",
+            "若恰有 $p$ 个元素执行两种操作，则交换论证表明应选择最大的 $p$ 个元素，避免把双操作浪费在较小元素上。",
+            "剩余操作应施加在剩余元素中最大的若干个；局部交换后，单独的减法操作位于中间，而单独的除法操作分布在两端。",
+            "将数组降序排列后，最优方案具有“双操作、单独除法、单独减法、单独除法、不操作”五段结构，枚举前两段长度即可唯一确定其余段。"
+          ],
+          "solutionBrief": "将数组降序排序，枚举执行双操作的前缀长度及其后的单独除法段长度；由 $k_1,k_2$ 确定其余三段，用前缀和计算每种方案的代价并取最小值，复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1799G",
+          "index": "G",
+          "slot": "G",
+          "title": "Count Voting",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1799/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/113321",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个人，每人投一票；第 $i$ 个人希望收到恰好 $c_i$ 票，且每个人只能投给不同队伍的人。求满足所有收票数要求的投票方案数，结果对 $998244353$ 取模。",
+          "transformedStatement": "将每个“投给同队成员”的行为视为坏事件，对坏事件集合做容斥。固定各收票人被选中的坏票数后，剩余票可任意分配，再按队伍独立计算坏票的选择方式并用 DP 合并总数。",
+          "keyObservations": [
+            "忽略队伍限制时，给定每个人收到的票数后，投票方案数固定为 $n!/\u0019prod_i c_i!$；因此限制可用容斥处理。",
+            "把“第 $i$ 个人投给同队成员”视为坏事件，并令 $b_i$ 表示被强制选中的此类票数，可将同一组坏事件的计数按收票人分解。",
+            "对某队中选出各收票人的坏票后，队内选择方式为 $m!/(\u0019prod_i b_i!)(m-\u0019sum_i b_i)!$，只依赖该队的 $b_i$；这使每个队能独立预处理贡献。",
+            "各队贡献按坏票总数合并成 DP，得到 $f_k$ 后乘上剩余投票的排列数 $(n-k)!$，再按 $(-1)^k$ 求和完成容斥。"
+          ],
+          "solutionBrief": "用容斥统计包含指定数量同队投票的方案。对每个队做局部 DP，按选中的坏票数汇总贡献，再用队间 DP 合并；第 $k$ 层乘 $(n-k)!$，按奇偶加减。总复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1799H",
+          "index": "H",
+          "slot": "H",
+          "title": "Tree Cutting",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1799/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/113321",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构",
+            "组合计数与概率",
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dfs and similar",
+            "dp"
+          ],
+          "statementBrief": "给定一棵有 $n$ 个顶点的树和严格递减的数列 $s_1>s_2>\\cdots>s_k$。按顺序进行 $k$ 次操作，每次选择一条边及一个方向，对应切分出的某一侧连通部分并记录其顶点数；求记录恰好等于给定数列的操作方案数，答案对 $998244353$ 取模。",
+          "transformedStatement": "将树固定为有根树，把每条候选操作边表示为其子树与补集两种方向。问题转化为：把操作编号分配给不同边，并满足对应连通块大小以及边两侧子树内操作相对于该编号的先后约束。",
+          "keyObservations": [
+            "把每次操作抽象为选择一条边及方向；对根树边 $(v, parent)$，两种方向对应的候选规模分别是子树大小 $sz_v$ 与补集大小 $n-sz_v$，因此只需检查是否等于某个 $s_i$。",
+            "若边 $(v,parent)$ 被分配给操作 $i$ 且取子树方向，则该子树内的操作必须排在 $i$ 之后，即索引大于 $i$；取补集方向时，子树内操作必须排在 $i$ 之前，即索引不大于 $i$。",
+            "$dp_{v,mask}$ 只记录子树中已分配操作集合，未使用父边时可把各子树的操作集合按交集为空进行合并，从而避免枚举具体操作顺序。",
+            "固定某条边及其操作编号后，规模条件和子树内操作的索引范围同时保证该操作合法；因此遍历所有边的方向与编号即可覆盖且不重复计数。"
+          ],
+          "solutionBrief": "以任意顶点为根做子树 DP，状态 $dp_{v,mask}$ 表示子树内分配了哪些操作。合并儿子时枚举不相交子集；枚举父边对应的操作和方向，按 $sz_v=s_i$ 或 $sz_v=n-s_i$ 及索引先后限制转移。用子集和优化后复杂度为 $O(n2^k k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
