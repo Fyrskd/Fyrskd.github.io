@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1238,
+    "total_problems": 1244,
     "source_total_problems": 1742,
-    "filtered_out_problems": 504,
-    "with_statement_brief": 1238,
-    "with_editorial_brief": 1023,
-    "with_solution_brief": 1024,
+    "filtered_out_problems": 498,
+    "with_statement_brief": 1244,
+    "with_editorial_brief": 1029,
+    "with_solution_brief": 1030,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 146,
+    "ai_override_count": 153,
     "primary_topic_count": 13,
     "contest_count": 201,
     "rating_min": 800,
@@ -47,20 +47,20 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 55,
     "构造与贪心": 416,
     "图论与网络流": 75,
-    "动态规划与状态设计": 120,
-    "数论与同余": 102,
+    "动态规划与状态设计": 121,
+    "数论与同余": 105,
     "组合计数与概率": 99,
     "数据结构": 92,
-    "几何": 23,
-    "树结构": 96,
+    "几何": 24,
+    "树结构": 97,
     "交互": 62,
     "基础实现与模拟": 45,
     "博弈": 42,
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 128,
-    "ai_generated_partial_editorial": 4,
+    "ai_generated_with_editorial": 130,
+    "ai_generated_partial_editorial": 8,
     "missing_editorial": 214,
     "manual_override": 891,
     "statement_derived": 1
@@ -35563,9 +35563,156 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-03-18",
       "url": "https://codeforces.com/contest/1806",
       "type": "Div. 2",
-      "problemCount": 1,
+      "problemCount": 7,
       "maxRating": 2900,
       "problems": [
+        {
+          "key": "1806A",
+          "index": "A",
+          "slot": "A",
+          "title": "Walking Master",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1806/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/114048",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "geometry",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "点从 $(a,b)$ 出发，每步只能向右上移动到 $(x+1,y+1)$，或向左移动到 $(x-1,y)$，目标是到达 $(c,d)$。对每组坐标求最少步数；若无法到达则输出 $-1$。",
+          "transformedStatement": "把路径中的关键变化抽象为两个量：纵坐标 $y$ 只能增加，而差值 $x-y$ 只能不增加。先用右上步数补齐纵坐标，再用左移调整横坐标，从而将问题转化为可达性判断和两段步数相加。",
+          "keyObservations": [
+            "每次右上移动使 $y$ 增加 $1$，向左移动不改变 $y$，因此必须有 $d\\ge b$，且至少需要 $d-b$ 次右上移动。",
+            "量 $x-y$ 在右上移动时不变、向左移动时增加 $1$，因此它不会增加；可达性的必要且充分条件是 $d\\ge b$ 且 $a-b\\ge c-d$。",
+            "先连续进行 $d-b$ 次右上移动可到达 $(a+d-b,d)$，之后只需向左移动到 $(c,d)$，所以总步数为 $(d-b)+(a+d-b-c)$。"
+          ],
+          "solutionBrief": "先检查 $d\\ge b$ 和 $a-b\\ge c-d$；若不满足则不可达。否则先用 $d-b$ 次右上移动补齐纵坐标，再向左移动，答案为 $(d-b)+(a+d-b-c)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1806B",
+          "index": "B",
+          "slot": "B",
+          "title": "Mex Master",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1806/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/114048",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组，可以任意重排元素。重排后取所有相邻元素之和组成的新数组，分数是该数组的 MEX，要求求出可能达到的最小分数。",
+          "transformedStatement": "把目标转化为控制相邻数对的和：MEX 为 $0$ 等价于避免相邻零，MEX 为 $1$ 等价于允许出现和为 $0$ 但避免出现和为 $1$；据此按零的数量和其他元素类型分类构造。",
+          "keyObservations": [
+            "答案一定不超过 $2$，因为只需针对相邻和是否包含 $0,1$ 分情况构造排列。",
+            "相邻和为 $0$ 当且仅当相邻位置都是 $0$；因此当零的数量 $z\\le\\lceil n/2\\rceil$ 时可避免相邻零，直接得到 MEX 为 $0$。",
+            "若无法避免相邻零，且数组中没有 $1$ 或存在某个 $x\\ge2$，可安排使相邻和不出现 $1$，因此 MEX 为 $1$。",
+            "只有数组元素全为 $0,1$ 且 $z>\\lceil n/2\\rceil$ 时，交替放置 $0,1$ 后剩余零相邻，邻接和同时包含 $0,1$，最小 MEX 为 $2$。"
+          ],
+          "solutionBrief": "统计零的数量 $z$。若 $z\\le\\lceil n/2\\rceil$ 输出 $0$；否则若存在 $1$ 以外的元素或没有 $1$，输出 $1$；仅当元素全为 $0,1$ 且零占多数时输出 $2$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1806C",
+          "index": "C",
+          "slot": "C",
+          "title": "Sequence Master",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1806/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/114048",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $2n$ 的整数数组 $p$。数组 $q$ 被称为 good，当任取其中恰好 $n$ 个位置时，这些位置元素的乘积等于其余 $n$ 个元素的和；要求通过选择任意 good 数组 $q$，使 $p$ 与 $q$ 的对应元素绝对差之和最小。",
+          "transformedStatement": "题解将问题转化为枚举所有可能的 good 数组形态：它们要么是常数数组，要么在偶数 $n$ 时由一个 $n$ 和 $2n-1$ 个 $-1$ 组成；于是原问题变成比较有限个候选数组与 $p$ 的距离。返回 JSON 数组。",
+          "keyObservations": [
+            "若所有元素都相等，设公共值为 $x$，条件化为 $x^n=nx$；因此除 $n=1$ 时的任意常数数组外，普遍候选只有全 $0$，以及 $n=2$ 时的全 $2$。",
+            "若存在两个不同元素，比较分别选入这两个元素的两个子序列，得到 $(q_1-q_2)(q_3q_4\\cdots q_{n+1}+1)=0$，从而其余 $n-1$ 个元素的乘积必须为 $-1$。",
+            "任取其余元素中的 $n-1$ 个进行同样比较，可推出这些元素全部相等；再由其乘积为 $-1$ 得到 $n$ 必须为偶数，且除两个特殊元素外的所有值都为 $-1$。",
+            "代回原条件后，两个特殊元素满足和为 $n-1$、积为 $-n$，所以它们恰为 $-1$ 和 $n$；最终只需比较全 $0$、全 $2$（仅 $n=2$）以及一个 $n$ 和其余全 $-1$ 的数组到 $p$ 的距离。"
+          ],
+          "solutionBrief": "先分类所有 good 数组：常数数组只需考虑全 $0$，并处理 $n=1$ 的任意常数及 $n=2$ 的全 $2$；非全相等时仅在偶数 $n$ 下存在，形式为一个 $n$ 和其余全 $-1$。分别计算这些候选到 $p$ 的最小距离并取最小值。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1806D",
+          "index": "D",
+          "slot": "D",
+          "title": "DSU Master",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1806/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/114048",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "图论与网络流",
+            "数据结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "dsu",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n-1$ 的 $0/1$ 数组。对任意前缀操作，按一个排列决定各个相邻顶点操作的执行顺序，并依据对应的 $a_i$ 加入有向边；要求对每个 $k=1,\u001b[0mldots,n-1$，求所有 $k!$ 个排列的图中顶点 $1$ 入边数之和，结果对 $998244353$ 取模。",
+          "transformedStatement": "把排列过程视为逐步插入新操作：$f_i$ 统计前缀形成以 $1$ 为根的树的合法排列数，$ans_i$ 统计所有排列的价值总和；新操作只通过插入位置改变这两个状态。",
+          "keyObservations": [
+            "只有类型为 $a_i=0$ 的操作可能为顶点 $1$ 增加入边，因此其他操作只影响已有贡献的排列扩展，不产生新贡献。",
+            "令 $f_i$ 表示前 $i-1$ 个操作形成以顶点 $1$ 为根的树的排列数；插入第 $i$ 个操作时，$a_i=0$ 有 $i$ 个位置可插入，$a_i=1$ 末尾位置无效，所以 $f_{i+1}=f_i(i-a_i)$。",
+            "设 $ans_i$ 为前 $i-1$ 个操作的所有排列价值和；旧排列插入新操作有 $i$ 个位置且旧贡献不变，故 $ans_i=i\bitimes ans_{i-1}+[a_i=0]f_i$。"
+          ],
+          "solutionBrief": "维护两类状态：$f_i$ 统计前缀操作形成以 $1$ 为根的树的排列数，按 $f_{i+1}=f_i(i-a_i)$ 转移；答案按 $ans_i=i\bitimes ans_{i-1}+[a_i=0]f_i$ 更新，并对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1806E",
+          "index": "E",
+          "slot": "E",
+          "title": "Tree Master",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1806/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/114048",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根、每个节点带权的树。对两个同深度节点 $x,y$，每次同时把它们移到各自父节点，并将每层两节点权值的乘积相加，直到根；对每个查询输出该总和。",
+          "transformedStatement": "把一次查询视为节点对 $(x,y)$ 沿父指针同步移动的过程，答案是这条节点对路径上各状态的权值乘积之和；核心是复用相同节点对状态的计算结果。",
+          "keyObservations": [
+            "同一深度的两个节点向根同时上移，答案是在每一层累加当前两点权值的乘积，直到根节点，因此单个未缓存状态可直接沿父指针计算。",
+            "计算过程中会遇到若干节点对 $(x,y)$；缓存已算过的节点对后，后续查询可复用结果，避免重复向上爬树。",
+            "设某深度有 $s_i$ 个节点，该深度最多产生 $\\min(s_i^2,n)$ 个有效节点对；按 $\\sqrt n$ 划分后，各深度总处理量受 $O(n\\sqrt n)$ 控制。",
+            "节点数超过 $\\sqrt n$ 的深度不必保存所有节点对，因为这样的深度数量至多为 $\\sqrt n$，直接重新计算不会破坏总复杂度。"
+          ],
+          "solutionBrief": "查询时让 $x,y$ 同步沿父指针上移，累加每层权值乘积；对小深度节点对缓存答案，大深度直接计算，以 $O(n\\sqrt n)$ 时间和空间完成处理。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
         {
           "key": "1806F1",
           "index": "F1",
@@ -35574,9 +35721,9 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2900,
           "problemUrl": "https://codeforces.com/contest/1806/problem/F1",
           "editorialUrl": "https://codeforces.com/blog/entry/114048",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "数论与同余",
           "secondaryTopics": [
-            "数论与同余"
+            "构造与贪心"
           ],
           "originalTags": [
             "greedy",
@@ -35584,12 +35731,41 @@ window.CF_INSIGHTS_DATA = {
             "number theory",
             "sortings"
           ],
-          "statementBrief": "题面已抓取：GCD Master (easy version)；本地暂无可用题解正文。",
+          "statementBrief": "给定一个长度为 $n$ 的正整数数组。每次选择两个位置，将它们删除并把这两个数的 gcd 追加到数组末尾；恰好操作 $k$ 次后，求数组元素总和的最大值。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
-          "editorialQuality": "fetch_failed"
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1806F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "GCD Master (hard version)",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1806/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/114048",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的数组。每次选择当前数组中的两个元素，删除它们并把二者的最大公约数追加到数组末尾，数组长度因此减一；恰好操作 $k$ 次后，要求最终数组元素和的最大值。",
+          "transformedStatement": "将每次合并视为把若干原始元素归入同一组，最终数组中的每个元素就是对应组的最大公约数，因此问题变为把数组划分成 $n-k$ 组以最大化各组 $\u001b[0m\\gcd$ 之和；互异部分进一步缩为一个含 $k+1$ 个元素的大组。",
+          "keyObservations": [
+            "恰好进行 $k$ 次操作等价于把原数组划分成 $n-k$ 个组，每组最终贡献该组所有元素的 $\\\\gcd$，从而去掉了操作顺序的影响。",
+            "元素互不相同时，包含全局最小值的组必须非单元素；继续合并后可知只有一个组大小超过 $1$，且该组恰有 $k+1$ 个元素。",
+            "将互异元素排序后，唯一的大组一定包含前 $k$ 个元素和一个下标大于 $k$ 的元素；交换较远元素与下一个未选元素会严格提高结果，因此只需枚举这个额外元素。",
+            "重复值最优时与相同值合并，其对答案的损失可独立按该值计算；前缀 $\\\\gcd$ 只有 $O(\\\\log m)$ 种不同取值，使所有候选可在线性对数复杂度内处理。"
+          ],
+          "solutionBrief": "把操作转为分组求各组 $\u001b[0m\\gcd$。处理重复值的独立合并代价后，排序并枚举前缀长度；利用前缀 $\u001b[0m\\gcd$ 仅有 $O(\\log m)$ 种不同值，计算每个候选额外元素的最优贡献，整体复杂度为 $O(n\\log m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
