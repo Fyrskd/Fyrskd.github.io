@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1201,
+    "total_problems": 1202,
     "source_total_problems": 1742,
-    "filtered_out_problems": 541,
-    "with_statement_brief": 1201,
-    "with_editorial_brief": 986,
-    "with_solution_brief": 987,
+    "filtered_out_problems": 540,
+    "with_statement_brief": 1202,
+    "with_editorial_brief": 987,
+    "with_solution_brief": 988,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 103,
+    "ai_override_count": 109,
     "primary_topic_count": 13,
     "contest_count": 196,
     "rating_min": 800,
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 51,
-    "构造与贪心": 405,
+    "构造与贪心": 403,
     "图论与网络流": 72,
     "动态规划与状态设计": 115,
     "数论与同余": 99,
     "组合计数与概率": 96,
-    "数据结构": 88,
+    "数据结构": 89,
     "几何": 22,
     "树结构": 95,
     "交互": 62,
-    "基础实现与模拟": 43,
+    "基础实现与模拟": 45,
     "博弈": 42,
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 92,
+    "ai_generated_with_editorial": 93,
     "ai_generated_partial_editorial": 3,
     "missing_editorial": 214,
     "manual_override": 891,
@@ -35634,7 +35634,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-02-12",
       "url": "https://codeforces.com/contest/1793",
       "type": "Div. 2",
-      "problemCount": 5,
+      "problemCount": 6,
       "maxRating": 2600,
       "problems": [
         {
@@ -35645,15 +35645,13 @@ window.CF_INSIGHTS_DATA = {
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/1793/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/112723",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "博弈"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：Yet Another Promotion；本地暂无可用题解正文。",
+          "statementBrief": "商店每月只有两天卖土豆：第一天每公斤价格为 $a$，购买每满 $m$ 公斤额外赠送 1 公斤；第二天每公斤价格为 $b$ 且无赠送。可以在两天分别购买任意整数公斤，要求总共获得至少 $n$ 公斤，并最小化支付的硬币数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -35670,15 +35668,13 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/112723",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "图论与网络流",
-            "博弈",
             "几何"
           ],
           "originalTags": [
             "constructive algorithms",
             "math"
           ],
-          "statementBrief": "题面已抓取：Fedya and Array；本地暂无可用题解正文。",
+          "statementBrief": "给定局部最大值之和为 $x$、局部最小值之和为 $y$ 的记忆信息，需要构造一个整数环形数组。每对相邻元素（包括首尾）绝对差必须为 $1$，并使局部极值的和分别为 $x,y$；在所有可行数组中要求长度最小，任意输出一个即可。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -35694,17 +35690,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1793/problem/C",
           "editorialUrl": "https://codeforces.com/blog/entry/112723",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数据结构",
-            "组合计数与概率",
-            "博弈"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms",
             "data structures",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Dora and Search；本地暂无可用题解正文。",
+          "statementBrief": "给定一个由 $1$ 到 $n$ 组成且互不重复的排列，需要选择一个连续子段，使左右端点都不是该子段的最小值或最大值；找到任意一对下标就输出，否则输出 $-1$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -35719,12 +35711,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1800,
           "problemUrl": "https://codeforces.com/contest/1793/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/112723",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "组合计数与概率",
-            "博弈"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "dp",
@@ -35733,7 +35721,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Moscow Gorillas；本地暂无可用题解正文。",
+          "statementBrief": "给定两个长度为 $n$ 的排列。对每个连续区间 $[l,r]$，分别计算两数组该区间的 MEX（区间内未出现的最小正整数），统计两者 MEX 相等的区间数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -35749,10 +35737,7 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1793/problem/E",
           "editorialUrl": "https://codeforces.com/blog/entry/112723",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "数据结构"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "data structures",
@@ -35761,12 +35746,42 @@ window.CF_INSIGHTS_DATA = {
             "sortings",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Velepin and Marketing；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 名读者和 $n$ 个满意阈值 $a_i$。每年必须出版并分配恰好 $k$ 本书，且每本书都至少有一人阅读；若读者所在书籍被至少 $a_i$ 人阅读，他就满意，求每个 $k$ 下最多能满意多少人。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1793F",
+          "index": "F",
+          "slot": "F",
+          "title": "Rebrending",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1793/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/112723",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由不同身高组成的数组。对每个区间 $[l_i,r_i]$，只能从其中选出两个人，要求输出两人身高差的最小可能值。",
+          "transformedStatement": "将问题改为按右端点逐步加入元素：对每个左端点维护它与当前右侧元素的最小差值，区间查询就转化为这些状态在 $[l,r)$ 上的最小值；新元素只需通过数值相邻候选的分治式收缩完成更新。",
+          "keyObservations": [
+            "对每个左端点 $j$ 维护已处理右侧元素中的最小差值 $dp[j]$，因此右端点固定为当前下标时，区间答案直接是对应 $dp$ 的区间最小值。",
+            "处理新元素 $a[i]$ 时，只需寻找左侧按数值排列的首个大于或小于它的元素；更远且同侧的元素若已被该元素支配，就不可能产生更优差值。",
+            "每次从首个候选继续扩展时，尚未排除的数值区间长度至少减半，因此每个 $i$ 的有效更新次数为 $O(\\log n)$，避免枚举全部左侧位置。",
+            "用一棵按数值维护最近位置的结构寻找候选，再用另一棵按下标维护 $dp$ 的最小值；查询按右端点离线处理，当前扫描到 $r$ 时即可回答所有以 $r$ 结尾的区间。"
+          ],
+          "solutionBrief": "从左到右扫描右端点，维护每个左端点与已处理元素的最小差值。按数值用线段树找两侧候选并利用区间减半更新，按下标用另一棵线段树回答区间最小值；查询离线绑定右端点，复杂度为 $O(n\\log^2 n+q\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
