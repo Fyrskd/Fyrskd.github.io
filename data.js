@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1228,
+    "total_problems": 1230,
     "source_total_problems": 1742,
-    "filtered_out_problems": 514,
-    "with_statement_brief": 1228,
-    "with_editorial_brief": 1013,
-    "with_solution_brief": 1014,
+    "filtered_out_problems": 512,
+    "with_statement_brief": 1230,
+    "with_editorial_brief": 1015,
+    "with_solution_brief": 1016,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 136,
+    "ai_override_count": 138,
     "primary_topic_count": 13,
-    "contest_count": 199,
+    "contest_count": 200,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 55,
-    "构造与贪心": 411,
+    "构造与贪心": 413,
     "图论与网络流": 73,
     "动态规划与状态设计": 119,
     "数论与同余": 101,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 119,
-    "ai_generated_partial_editorial": 3,
+    "ai_generated_with_editorial": 120,
+    "ai_generated_partial_editorial": 4,
     "missing_editorial": 214,
     "manual_override": 891,
     "statement_derived": 1
@@ -35590,6 +35590,74 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "fetch_failed"
+        }
+      ]
+    },
+    {
+      "id": 1802,
+      "name": "Codeforces Round 857 (Div. 2)",
+      "date": "2023-03-09",
+      "url": "https://codeforces.com/contest/1802",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1000,
+      "problems": [
+        {
+          "key": "1802A",
+          "index": "A",
+          "slot": "A",
+          "title": "Likes",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1802/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/113857",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 个按秒发生的点赞或取消点赞事件：正数表示对应用户点赞，负数表示该用户取消此前的点赞，且每人最多执行各一次。事件顺序被打乱但保证可组成合法序列，需要对每个时刻分别求点赞数可能达到的最大值和最小值。",
+          "transformedStatement": "设正数事件数为 $p$、负数事件数为 $d$，忽略用户编号，只研究两类事件的排列。最大值对应先集中执行点赞再执行取消；最小值对应尽早将每次点赞与一个取消配对。",
+          "keyObservations": [
+            "最大值应先安排所有正数事件再安排负数事件，这样每次删除都尽可能晚，前缀点赞数先持续增加后下降。",
+            "最小值应让每次可配对的点赞后立刻取消，使前 $2d$ 个时刻在 $1,0$ 间交替；剩余点赞再依次增加，其中 $d$ 为负数事件数量。",
+            "答案只取决于正数和负数事件的数量，不取决于具体用户编号，因为题目保证存在合法排列，事件可按上述顺序重新安排。"
+          ],
+          "solutionBrief": "统计正数事件数 $p$ 与负数事件数 $d$。最大值按先点赞后取消生成；最小值按点赞、取消交替安排前 $2d$ 步，剩余步骤继续点赞，直接输出两组序列。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1802B",
+          "index": "B",
+          "slot": "B",
+          "title": "Settlement of Guinea Pigs",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1802/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/113857",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "未来 $n$ 天每天要么买一只性别未知的豚鼠，要么请医生鉴定当前所有豚鼠的性别。只能购买最多容纳两只、且不能混养不同性别豚鼠的笼子，求无论实际性别如何都能始终安全安置所有豚鼠所需的最少笼子数。",
+          "transformedStatement": "将豚鼠分为上次检查后仍未知的一批和已经鉴定的一批：未知豚鼠暂时不能安全合笼，已知豚鼠则按最坏的男女数量划分计算笼子需求；答案是所有前缀时刻需求的最大值。",
+          "keyObservations": [
+            "医生检查前新增的猪性别未知，为保证任意性别分配都不冲突，必须各自占用一个双层笼子。",
+            "每次检查会把当前所有未知猪转为已知，并可与此前已知猪按性别重新安排，因此只需累计已知猪数量和本轮未知猪数量。",
+            "对数量为 $k>0$ 的已知猪，最坏性别分配需要 $\floor{k/2}+1$ 个笼子；与本轮未知猪所需的笼子相加即可得到当前需求。",
+            "答案是整个计划过程中当前需求的最大值，因为笼子一旦购买便可持续使用，且检查后只会改变已知与未知的划分。"
+          ],
+          "solutionBrief": "按时间顺序维护已知猪数量和上次检查后的未知猪数量。未知猪各占一个笼子；已知猪按最坏性别分配需要 $\floor{known/2}+1$ 个笼子，逐日计算两者之和并取最大值。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
         }
       ]
     },
