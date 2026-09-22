@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1202,
+    "total_problems": 1208,
     "source_total_problems": 1742,
-    "filtered_out_problems": 540,
-    "with_statement_brief": 1202,
-    "with_editorial_brief": 987,
-    "with_solution_brief": 988,
+    "filtered_out_problems": 534,
+    "with_statement_brief": 1208,
+    "with_editorial_brief": 993,
+    "with_solution_brief": 994,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 109,
+    "ai_override_count": 115,
     "primary_topic_count": 13,
-    "contest_count": 196,
+    "contest_count": 197,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 51,
-    "构造与贪心": 403,
+    "字符串": 53,
+    "构造与贪心": 404,
     "图论与网络流": 72,
     "动态规划与状态设计": 115,
-    "数论与同余": 99,
-    "组合计数与概率": 96,
+    "数论与同余": 101,
+    "组合计数与概率": 97,
     "数据结构": 89,
     "几何": 22,
     "树结构": 95,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 93,
+    "ai_generated_with_editorial": 99,
     "ai_generated_partial_editorial": 3,
     "missing_editorial": 214,
     "manual_override": 891,
@@ -35625,6 +35625,204 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1789,
+      "name": "Codeforces Round 853 (Div. 2)",
+      "date": "2023-02-25",
+      "url": "https://codeforces.com/contest/1789",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1789A",
+          "index": "A",
+          "slot": "A",
+          "title": "Serval and Mocha's Array",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1789/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/113246",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个正整数数组，可以任意重排元素，也可以保持原顺序。若数组所有长度至少为 $2$ 的前缀都满足“元素最大公约数不超过前缀长度”，则称其美丽；需要判断能否通过重排得到美丽数组。",
+          "transformedStatement": "把重排问题转化为选择数组开头的两个元素：只要这两个元素的最大公约数不超过 $2$，所有后续前缀都会自动满足条件。因此只需寻找一对满足该限制的数组元素。",
+          "keyObservations": [
+            "只要前两个元素的最大公约数不超过 $2$，后续前缀的最大公约数就不会增大，且对长度至少为 $2$ 的前缀始终满足不超过前缀长度，因此只需检查长度为 $2$ 的前缀。",
+            "数组美丽当且仅当前两个元素的最大公约数不超过 $2$：美丽数组必然满足该条件，而该条件又能保证所有更长前缀都合格。",
+            "重排只需选择一对元素放到开头，所以问题等价于判断是否存在不同下标 $i,j$ 使得 $\\\\gcd(a_i,a_j)\\leq 2$；找到这样的 pair 即可构造可行排列。"
+          ],
+          "solutionBrief": "枚举所有不同元素对，计算其最大公约数。若存在一对的最大公约数不超过 $2$，将它们移到数组开头即可，否则无法重排成美丽数组。复杂度为 $O(n^2\\log 10^6)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1789B",
+          "index": "B",
+          "slot": "B",
+          "title": "Serval and Inversion Magic",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1789/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/113246",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个只含 0 和 1 的字符串，必须恰好选择一个连续子串并将其反转一次。判断操作后能否使整个字符串变成回文串。",
+          "transformedStatement": "将字符串按镜像位置配对，问题转化为选择一个连续区间，使每对镜像字符的相等性在反转后全部满足；核心只需定位原串中的不匹配对。",
+          "keyObservations": [
+            "只需检查镜像位置是否相等；不相等的位置必须被反转区间恰好覆盖一端，才能消除该不匹配。",
+            "相等的镜像位置要求反转区间同时覆盖两端或同时不覆盖，因此所有不匹配位置必须连续。",
+            "若不匹配位置连续为 $[l,r]$，反转该区间即可修正全部不匹配且不制造新的不匹配；若中间夹有匹配位置，则任何区间都会破坏其中一对镜像字符。",
+            "原串已经是回文时，反转整个字符串仍保持回文，因此满足必须操作一次的要求。"
+          ],
+          "solutionBrief": "扫描前后对称位置，找出所有字符不同的位置。若这些位置为空或构成连续区间，则输出 Yes；否则输出 No。空区间时反转整个串即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1789C",
+          "index": "C",
+          "slot": "C",
+          "title": "Serval and Toxel's Arrays",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1789/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/113246",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定初始数组，随后进行 $m$ 次操作，每次把当前数组指定位置的元素替换为新值，并保证每个得到的数组内部元素互不相同。对所有数组对 $(A_i,A_j)$，定义两数组拼接后不同元素的数量，求所有数组对定义值之和。",
+          "transformedStatement": "将总答案改为逐值计数：对每个数记录它在 $A_0$ 到 $A_m$ 中出现的数组区间总长度，再计算有多少数组对至少包含该数，最后把各数贡献相加。",
+          "keyObservations": [
+            "把答案按数值分解：某个值对一对数组的贡献仅取决于它至少出现在其中一个数组中，因此可独立统计每个值。",
+            "一个值从被放入数组到被替换之间连续出现，形成一个时间区间；由于每个数组内元素互异，同一值的多个出现区间不会重叠。",
+            "若值 $x$ 共出现在 $c_x$ 个数组中，则包含它的数组对数量为 $C(m+1,2)-C(m+1-c_x,2)$，无需枚举数组对。",
+            "处理第 $i$ 次修改时，旧值当前区间贡献长度为 $i-start_x$；新值从数组 $A_i$ 开始出现，最后统一补上仍未结束的区间。"
+          ],
+          "solutionBrief": "维护每个值当前出现区间的起点和累计出现数组数。修改位置时结算旧值区间并开启新值区间，最后结算所有未结束区间；对每个值用 $C(m+1,2)-C(m+1-c_x,2)$ 累加答案，整体复杂度为 $O(n+m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1789D",
+          "index": "D",
+          "slot": "D",
+          "title": "Serval and Shift-Shift-Shift",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1789/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/113246",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的二进制整数 $a,b$。每次选择 $1\\le k\\le n$，将 $a$ 更新为自身与左移 $k$ 位结果的异或，或与右移 $k$ 位结果的异或；溢出位丢弃、空位补零。要求在不超过 $n$ 次操作内把 $a$ 变成 $b$，输出操作序列或判定无解。",
+          "transformedStatement": "把整数视为带位置的集合比特，核心是控制最低位 $1$ 和最高位 $1$ 的位置：先调整边界使最低位对齐，再利用特定移位异或逐位清除多余或错误的 $1$，最终得到目标比特集合。",
+          "keyObservations": [
+            "可行性的充要条件是 $a$ 与 $b$ 同时为零或同时非零：零数无法通过操作变成非零数，非零数也无法通过一次操作变成零数。",
+            "先用左移或右移调整最低位与最高位的位置，可以把两个数的最低位 $1$ 对齐，同时保证后续操作不会破坏已处理的低位。",
+            "在最低位对齐前，逐个处理目标最低位以下的 $1$，通过按最高位位置右移并异或来消除它们，从而把 $a$ 的最低位抬到目标位置。",
+            "最低位对齐后，从低到高检查与 $b$ 不同的位；对每个差异位执行相应左移并异或即可消除它，且总操作数不超过 $n$。"
+          ],
+          "solutionBrief": "若 $a,b$ 是否为零的状态不同则无解；两者均为零时输出空序列。两者均非零时，先调整最高位与最低位的位置，再右移消除目标最低位以下的 $1$，对齐最低位后逐位左移消除与 $b$ 的差异，操作数不超过 $n$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1789E",
+          "index": "E",
+          "slot": "E",
+          "title": "Serval and Music Game",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1789/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/113246",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定严格递增的正整数序列 $s_1<\\cdots<s_n$。对每个 $x\\in[1,s_n]$，统计有多少个 $s_i$ 能写成 $p_i\\lfloor s_n/x\\rfloor+q_i\\lceil s_n/x\\rceil$，其中 $p_i,q_i$ 为非负整数；求所有 $x\\cdot f(x)$ 之和并取模。",
+          "transformedStatement": "把问题按 $x$ 是否整除 $s_n$ 重述：不整除时，基数为相邻整数 $k,k+1$ 的非负组合可行性转化为商与余数的不等式；整除时则直接转化为统计 $s_i$ 是否为 $x$ 的倍数。",
+          "keyObservations": [
+            "当 $x$ 不是 $s_n$ 的因子时，令 $k=\\lfloor s_n/x\\rfloor$，可表示性等价于 $s_i\\bmod k\\leq\\lfloor s_i/k\\rfloor$；否则令 $s_i=ak+r$，必须有 $r\\leq a$，从而不可表示的数落在若干连续区间中。",
+            "不同的 $x$ 只会产生至多 $2\\sqrt{s_n}$ 个不同的 $k=\\lfloor s_n/x\\rfloor$，且每个 $k$ 需要统计的区间数量可按 $k$ 的大小分组，总枚举量为 $O(s_n)$。",
+            "区间中的 $s_i$ 数量可用前缀计数快速求出，因此非因子情况无需逐个检查每个 $s_i$，只需累加各区间对 $f(x)$ 的贡献。",
+            "当 $x$ 是 $s_n$ 的因子时，两种系数相同，条件退化为 $x\\mid s_i$；先统计 $\\gcd(s_i,s_n)$ 的出现次数，再在 $s_n$ 的因子中累加可被 $x$ 整除的项即可。"
+          ],
+          "solutionBrief": "按 $x$ 是否整除 $s_n$ 分情况。非因子情况用 $k=\\lfloor s_n/x\\rfloor$ 将不可表示的 $s_i$ 转为若干区间并用前缀和统计；因子情况统计 $\\gcd(s_i,s_n)$，按因子累加倍数贡献。总复杂度为 $O(n\\log s_n+s_n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1789F",
+          "index": "F",
+          "slot": "F",
+          "title": "Serval and Brain Power",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1789/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/113246",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "greedy",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定一个仅含小写字母的字符串 $S$，可从中删除任意字符得到子序列。若子序列能写成某个非空字符串连续重复至少两次，则称其强大；要求输出最长强大子序列的长度，若不存在则输出 $0$。",
+          "transformedStatement": "把强大子序列表示为 $T'^k$，转而按重复次数 $k$ 处理：小 $k$ 通过把原串切成对应份数并求多段公共子序列，大 $k$ 利用 $T'$ 很短枚举候选并检验可重复次数。",
+          "keyObservations": [
+            "设目标子序列为 $k$ 个相同串 $T'$ 的拼接，则 $k|T'|\\leq 80$；$k=4$ 已包含在 $k=2$ 中，因此只需分别处理 $k=2$、$k=3$ 和 $k\\geq5$。",
+            "固定 $k=2$ 时，目标等价于在某个切分 $S=S_1+S_2$ 中寻找最长公共子序列；枚举切分并计算 LCS，就得到两份相同副本的最大总长度。",
+            "固定 $k=3$ 时，目标等价于在某个三段切分中寻找三个部分的最长公共子序列；三维 DP 同时保证三份副本字符顺序一致。",
+            "当 $k\\geq5$ 时有 $|T'|\\leq |S|/5$；将 $S$ 分成五段后，$T'$ 至少完整出现在其中一段的子序列中，因此可枚举该段的所有子序列作为候选，再贪心匹配整串求最多重复次数。"
+          ],
+          "solutionBrief": "按重复次数分情况：$k=2$、$3$ 时枚举切分并求二段或三段 LCS；$k\\geq5$ 时枚举五段中短段的全部子序列，再贪心匹配其最大重复次数，取各类最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
