@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1216,
+    "total_problems": 1221,
     "source_total_problems": 1742,
-    "filtered_out_problems": 526,
-    "with_statement_brief": 1216,
-    "with_editorial_brief": 1001,
-    "with_solution_brief": 1002,
+    "filtered_out_problems": 521,
+    "with_statement_brief": 1221,
+    "with_editorial_brief": 1006,
+    "with_solution_brief": 1007,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 124,
+    "ai_override_count": 129,
     "primary_topic_count": 13,
-    "contest_count": 197,
+    "contest_count": 198,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 53,
-    "构造与贪心": 407,
+    "字符串": 54,
+    "构造与贪心": 409,
     "图论与网络流": 72,
     "动态规划与状态设计": 117,
     "数论与同余": 101,
-    "组合计数与概率": 98,
+    "组合计数与概率": 99,
     "数据结构": 90,
     "几何": 23,
-    "树结构": 95,
+    "树结构": 96,
     "交互": 62,
     "基础实现与模拟": 45,
     "博弈": 42,
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 107,
+    "ai_generated_with_editorial": 112,
     "ai_generated_partial_editorial": 3,
     "missing_editorial": 214,
     "manual_override": 891,
@@ -35590,6 +35590,163 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "fetch_failed"
+        }
+      ]
+    },
+    {
+      "id": 1794,
+      "name": "Codeforces Round 856 (Div. 2)",
+      "date": "2023-03-04",
+      "url": "https://codeforces.com/contest/1794",
+      "type": "Div. 2",
+      "problemCount": 5,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1794A",
+          "index": "A",
+          "slot": "A",
+          "title": "Prefix and Suffix Array",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1794/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/113500",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
+          "originalTags": [
+            "strings"
+          ],
+          "statementBrief": "给定某个长度为 $n$ 的小写字母串的全部非空真前缀和真后缀，顺序任意但不标明类别。需要仅根据这些串判断原串是否为回文串。",
+          "transformedStatement": "无需从所有片段恢复原串：只取长度为 $n-1$ 的前缀和后缀作为候选串，将问题转化为判断它们是否互为反转。",
+          "keyObservations": [
+            "给出的串中恰有两个长度为 $n-1$ 的串，分别是原串的前缀和后缀，因此无需重建其他部分即可确定候选两端片段。",
+            "原串是回文串，当且仅当这两个长度为 $n-1$ 的串互为反转；检查这一关系就能直接判定答案。"
+          ],
+          "solutionBrief": "找出所有给定串中长度为 $n-1$ 的两个串，反转其中一个并与另一个比较；相等则输出 YES，否则输出 NO。题解给出的复杂度为每组 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1794B",
+          "index": "B",
+          "slot": "B",
+          "title": "Not Dividing",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1794/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/113500",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定由正整数组成的数组，每次可以选择任意一个元素并将它加 $1$，最多操作 $2n$ 次。要求构造一个新数组，使每个位置的后一个数都不能被前一个数整除，并输出任意满足条件的结果。",
+          "transformedStatement": "将目标拆成按顺序处理的相邻约束：先消除所有可能造成特殊问题的 $1$，再依次保证当前元素不被已确定的前一个元素整除；由于只修改当前元素，先前满足的约束不会被破坏。",
+          "keyObservations": [
+            "先把所有等于 $1$ 的数加到 $2$，之后每个元素都至少为 $2$，从而保证一个数与它的后继连续值不可能同时被前者整除。",
+            "从左到右处理时，若当前数能被前一个数整除，只需将当前数加 $1$；由于前一个数至少为 $2$，加一后必不再整除。",
+            "每个元素至多因消除 $1$ 增加一次，且每个相邻位置至多再增加一次，因此总操作数不超过 $2n$。"
+          ],
+          "solutionBrief": "先将数组中所有 $1$ 加一。然后从左到右检查每个相邻对，若当前元素能被前一个元素整除，就将当前元素加一。每步只增加当前元素，不会改变已处理的相邻关系；总操作数不超过 $2n$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1794C",
+          "index": "C",
+          "slot": "C",
+          "title": "Scoring Subsequences",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1794/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/113500",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个非递减整数序列。对每个前缀，允许删除若干元素形成子序列，长度为 $d$ 的子序列分数是元素乘积除以 $d!$；先求该前缀所有子序列中的最高分，再求达到最高分的子序列的最大长度，并输出该长度。",
+          "transformedStatement": "对长度为 $k$ 的前缀，将第 $i$ 个元素（从右向左计数）除以 $i$，使任意后缀在变换序列中的乘积等于对应原子序列的分数。于是问题转为寻找变换序列中元素都不小于 $1$ 的最长后缀，并对每个前缀分别求其长度。",
+          "keyObservations": [
+            "固定子序列长度时，乘积最大应选原序列中最大的那些元素；由于序列非递减，这些元素恰好构成后缀，因此只需比较各个后缀。",
+            "将长度为 $k$ 的前缀从右向左依次除以 $1,2,\\ldots,k$，对应后缀的分数就变成变换后元素的乘积。",
+            "变换后的相邻元素仍非递减，因为原数值递增且从左到右的除数递减；所以所有大于等于 $1$ 的元素构成后缀，选它们能最大化乘积，并在等于 $1$ 时取得最长最优后缀。",
+            "对每个前缀，满足变换值均至少为 $1$ 的后缀长度可二分查找；各位置的变换值按位置即时计算，避免为每个前缀重建数组。"
+          ],
+          "solutionBrief": "固定选取长度后，最优子序列是原序列的后缀。将前缀中从右往左第 $i$ 个元素除以 $i$，其后缀乘积等于原分数；变换序列非递减，因此答案是变换值至少为 $1$ 的最长后缀。对每个前缀二分其长度，按需计算变换值，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1794D",
+          "index": "D",
+          "slot": "D",
+          "title": "Counting Factorizations",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1794/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/113500",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "divide and conquer",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定 $2n$ 个整数，要求统计有多少个正整数 $m$，使其质因数分解中所有质数底数与对应指数恰好组成这组数（忽略顺序）。每个底数必须是互不相同的质数，剩下的 $n$ 个数作为指数，统计满足条件的 $m$ 数量并对 $998244353$ 取模。",
+          "transformedStatement": "把构造质因数分解转化为从输入多重集中选出 $n$ 个互异质数作底数，再将剩余多重集排列到指数位置。对底数选择按各质数的出现次数计权，指数排列数由剩余元素的重数阶乘决定，因此可通过逐质数累积选择方案数计算总和。",
+          "keyObservations": [
+            "质因数分解中恰有 $n$ 个底数和 $n$ 个指数，因此必须从给定的 $2n$ 个数里选出 $n$ 个互不相同的质数作为底数，其余数作为指数。",
+            "非质数只能作指数；每种质数至多选一个作底数，所以若某质数出现 $c_i$ 次，剩余指数中它出现次数只能是 $c_i$ 或 $c_i-1$。",
+            "固定底数选择后，指数的不同排列数是多重集合排列数；非质数的重复因子对所有选择都相同，可先提出公共因子 $n!/(\\prod b_j!)$。",
+            "逐种质数处理时只需记录还要选多少个底数；当前质数选择或不选择分别贡献对应剩余重数的阶乘倒数，从而得到二维 DP。"
+          ],
+          "solutionBrief": "统计每个数的出现次数并判断其是否为质数。提取所有非质数的重数阶乘作为公共因子；对不同质数做二维 DP，累加选作底数或留作指数时的阶乘倒数权重，最后乘上公共因子并对 $998244353$ 取模。若不同质数不足 $n$ 个，答案为 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1794E",
+          "index": "E",
+          "slot": "E",
+          "title": "Labeling the Tree with Distances",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1794/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/113500",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy",
+            "hashing",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定一棵有 $n$ 个顶点的无权树，以及 $n-1$ 个整数。对候选顶点 $x$，要把这些整数各自分配给不同顶点，且每个顶点的标签等于它到 $x$ 的距离；唯一未分配整数的顶点可任意选择标签。求所有能完成这种标记的顶点。",
+          "transformedStatement": "把给定整数和候选顶点的所有距离分别表示为频数向量；候选顶点合格，当且仅当其距离频数向量等于给定频数向量再增加一个距离值。用多项式哈希编码这些向量，并通过换根计算每个顶点的编码。",
+          "keyObservations": [
+            "对固定顶点，距离标签形成一个距离值多重集；它必须恰好等于给定整数多重集再增加一个值，因此只需比较两者的频数向量是否相差某个单位向量。",
+            "用以距离为指数的多项式哈希编码频数向量后，频数向量加一个值可表示为给定哈希值加 $b^i$，从而把逐项比较转为哈希值相等判断。",
+            "换根时，子树外部分的哈希可由父节点的全树哈希减去该子树贡献并移回一层得到，因此两次遍历即可计算所有顶点的距离频数哈希。",
+            "候选哈希值和各顶点哈希值分别排序后即可线性扫描匹配；哈希可能碰撞，题解建议使用多个模数或足够大的单模数降低风险。"
+          ],
+          "solutionBrief": "统计给定整数的频数并用多项式哈希编码。通过两次换根遍历计算每个顶点的距离频数哈希；若它等于给定哈希加上某个距离对应的 $b^i$，该顶点就是答案。对两组排序后的哈希值进行匹配，使用多模数或大模数降低碰撞风险。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
