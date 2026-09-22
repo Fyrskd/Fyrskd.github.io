@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-22",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1244,
+    "total_problems": 1250,
     "source_total_problems": 1742,
-    "filtered_out_problems": 498,
-    "with_statement_brief": 1244,
-    "with_editorial_brief": 1029,
-    "with_solution_brief": 1030,
+    "filtered_out_problems": 492,
+    "with_statement_brief": 1250,
+    "with_editorial_brief": 1035,
+    "with_solution_brief": 1036,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 153,
+    "ai_override_count": 159,
     "primary_topic_count": 13,
-    "contest_count": 201,
+    "contest_count": 202,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,10 +45,10 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 55,
-    "构造与贪心": 416,
+    "构造与贪心": 420,
     "图论与网络流": 75,
-    "动态规划与状态设计": 121,
-    "数论与同余": 105,
+    "动态规划与状态设计": 122,
+    "数论与同余": 106,
     "组合计数与概率": 99,
     "数据结构": 92,
     "几何": 24,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 11
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 130,
+    "ai_generated_with_editorial": 136,
     "ai_generated_partial_editorial": 8,
     "missing_editorial": 214,
     "manual_override": 891,
@@ -35554,6 +35554,187 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1798,
+      "name": "Codeforces Round 860 (Div. 2)",
+      "date": "2023-03-26",
+      "url": "https://codeforces.com/contest/1798",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1798A",
+          "index": "A",
+          "slot": "A",
+          "title": "Showstopper",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1798/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/114208",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的数组，每次可任选下标 $i$，交换 $a_i$ 与 $b_i$，且每个位置可独立操作任意次。问能否通过这些交换，使第 $n$ 个元素分别成为数组 $a$、数组 $b$ 的最大值。",
+          "transformedStatement": "把每个位置看成一对数的方向选择：决定较大或较小的数进入数组 $a$，另一个进入数组 $b$。核心是让全局最大值占据一个末位，并利用逐位置取较大值放入 $b$ 的方式自动满足 $b$ 侧限制，再验证 $a$ 侧。",
+          "keyObservations": [
+            "每个位置只能在原顺序与交换后的顺序中二选一，因此可以独立决定该位置哪个数进入数组 $a$，另一个进入数组 $b$。",
+            "设所有数的最大值为 $M$；若 $a_n$ 与 $b_n$ 都小于 $M$，则 $M$ 无论放入哪个数组，都会使对应数组最大值超过末位，条件必不可能同时成立。",
+            "只要 $a_n=M$ 或 $b_n=M$，就可通过交换末位把 $M$ 放入 $b_n$，从而自动满足 $b_n$ 是数组 $b$ 的最大值；其余位置应把较大值放入 $b$，再检查数组 $a$ 的最大值条件。",
+            "也可以固定末位数对，逐个位置检查当前排列是否分别不超过两个末位；若原排列不行则交换，交换后仍不行即可判定无解。"
+          ],
+          "solutionBrief": "先找全部数的最大值，若两个末位都不是它则输出 No。否则调整末位使 $b_n$ 放置最大值，并对每个位置把较大数放入 $b$、较小数放入 $a$，最后检查 $a_n$ 是否为数组 $a$ 的最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1798B",
+          "index": "B",
+          "slot": "B",
+          "title": "Three Sevens",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1798/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/114208",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "共有 $m$ 天，每天给出参加抽奖的人员名单，每天恰有一名获胜者；第 $i$ 天获胜者不能再参加第 $i+1$ 到第 $m$ 天的抽奖。请构造一份每天的获胜者名单，若无法满足规则则输出 $-1$。",
+          "transformedStatement": "把每个人替换为其最后一次参赛日期。合法获胜者必须在自己的最后参赛日获胜，于是问题转化为：每天是否至少存在一名最后参赛日等于当天的人，并从中任选一人。",
+          "keyObservations": [
+            "若某人最后一次参赛日是第 $d$ 天，他只有可能在第 $d$ 天获胜；否则获胜后仍会出现在后续日期，违反规则。",
+            "因此第 $d$ 天的获胜者必须从所有最后参赛日为 $d$ 的人中选择；这些人不会成为其他日期的候选者，任选其一都不会冲突。",
+            "只要存在某一天没有任何人的最后参赛日等于该天，就无法为这一天安排合法获胜者，答案为 $-1$。"
+          ],
+          "solutionBrief": "先扫描所有参赛记录，计算每个人最后出现的日期，并为每个日期记录一个对应的人。逐日选该人作为获胜者；若某日没有候选人则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1798C",
+          "index": "C",
+          "slot": "C",
+          "title": "Candy Store",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1798/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/114208",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 类糖果，第 $i$ 类有 $a_i$ 个、单价为 $b_i$。每类必须选择一个能整除 $a_i$ 的装箱数量 $d_i$，使该类每包价格为 $c_i=b_i d_i$；随后按类型顺序摆放这些包，一张标签只能覆盖一段连续且价格相同的包。选择所有 $d_i$，使覆盖全部位置所需的标签数最少。",
+          "transformedStatement": "把问题转为将类型序列划分成尽量少的连续区间，并判断每个区间能否让所有包的价格相同。对区间维护 $\\gcd(a_i b_i)$ 和 $\\operatorname{lcm}(b_i)$，区间可行当且仅当前者能被后者整除。",
+          "keyObservations": [
+            "一个连续区间能用一张价格标签，当且仅当该区间内的 $\\gcd(a_i b_i)$ 能被 $\\operatorname{lcm}(b_i)$ 整除；这把对所有装箱方案的判断转成了两个聚合量的整除关系。",
+            "若一个区间可以只用一张标签，则删除其中任意糖果类型后仍然可以，因此每个可行前缀都能安全扩展到最大的可行前缀。",
+            "按顺序取能用一张标签覆盖的最长前缀并重复处理剩余部分，可得到最少标签数，因为任何方案的第一段都不能超过这个最长可行前缀。"
+          ],
+          "solutionBrief": "对当前连续段维护 $g=\\gcd(a_i b_i)$ 与 $l=\\operatorname{lcm}(b_i)$。不断加入类型；当 $g$ 不再能被 $l$ 整除时，结束上一段并从当前类型重新开始，统计段数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1798D",
+          "index": "D",
+          "slot": "D",
+          "title": "Shocking Arrangement",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1798/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/114208",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定总和为零的整数数组，可以任意重排其元素。要求所有连续子段和的绝对值最大值严格小于原数组最大元素与最小元素之差，并判断是否能做到；若能则输出一种合法排列。",
+          "transformedStatement": "把连续子段和改写为两个前缀和之差，因此目标等价于压缩排列后前缀和的最大值与最小值范围。构造时令当前前缀和不大于零就选正数，否则选负数，并将零放在开头。",
+          "keyObservations": [
+            "全为零时，所有连续子段和的最大绝对值为 $0$，而最大值与最小值之差也是 $0$，无法满足严格小于条件。",
+            "将零统一放在开头后，只需处理非零数；若当前前缀和不大于 $0$ 就接一个正数，否则接一个负数，剩余总和为零保证所需符号仍存在。",
+            "上述选择使每个新前缀和在当前为非正时不超过原数组最大值，在当前为正时严格大于原数组最小值，因此整体前缀最大值不超过最大元素、前缀最小值严格大于最小元素。",
+            "任意连续子段和的最大绝对值等于前缀和最大值与最小值之差（把空前缀的 $0$ 也计入），由前缀范围的严格缩小即可得到题目不等式。"
+          ],
+          "solutionBrief": "全零数组直接输出 No。否则先放置所有零，再按当前前缀和的符号交替选取正数或负数；该构造保证前缀最大值不超过原最大值、前缀最小值严格高于原最小值，从而满足连续子段条件。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1798E",
+          "index": "E",
+          "slot": "E",
+          "title": "Multitest Generator",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1798/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/114208",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "dp"
+          ],
+          "statementBrief": "给定正整数数组。对每个后缀 $[a_i,\u001b[a_{i+1},\u001bldots,a_n]$，允许把任意元素替换成任意非负整数；multitest 要求去掉首元素后的数组能按连续、非空子数组划分成恰好首元素指定数量的 test，每个 test 的首元素等于其长度减一。求使每个后缀成为 multitest 所需的最少修改次数。",
+          "transformedStatement": "把每个可能的 test 看成一次跳转：若从位置 $j$ 开始，则下一段从 $go_j=j+a_j+1$ 开始。问题转化为判断跳转链是否恰好到达末尾，并在后缀上维护链包含的测试数量以及一次改值后可达到的最大数量。",
+          "keyObservations": [
+            "若测试段从位置 $j$ 开始，其下一段起点固定为 $go_j=j+a_j+1$；因此连续测试可表示为沿 $go$ 跳转，是否恰好到达 $n+1$ 可用后缀状态判断。",
+            "定义位置 $j$ 为 good 表示从 $j$ 开始能完整划分成若干测试，并记录测试段数量；这样无需枚举划分，只需沿唯一的 $go$ 链合并后缀信息。",
+            "后缀 $[a_i,\u001b[a_{i+1},\u001bldots,a_n]$ 不修改时成为 multitest，当且仅当 $i+1$ 是 good 且其测试段数量等于 $a_i$，把全局划分条件转成一个数量匹配。",
+            "一次修改若改变测试段总数，只需修改 $a_i$；若改变某个测试段的首元素，被修改的位置必须位于从 $i+1$ 出发的 $go$ 链上，并据此维护一次修改后最多能形成的测试段数量。"
+          ],
+          "solutionBrief": "答案最多为 $2$：将后缀首元素改为 $1$、第二元素改为长度减 $2$ 即可。后缀 DP 维护 good 位置、测试段数量及一次修改后的最大数量，据此分别判断答案为 $0$、$1$ 或 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1798F",
+          "index": "F",
+          "slot": "F",
+          "title": "Gifts from Grandfather Ahmed",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1798/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/114208",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 个已知礼物箱，还需购买 1 个箱子；共 $k$ 个班级，第 $i$ 个班级有 $s_i$ 名学生，并且必须收到恰好 $s_i$ 个箱子。每个班级所收箱子的礼物总数都要被其学生数整除，求新箱子的礼物数及一种分配方案，否则输出 $-1$。",
+          "transformedStatement": "把问题转为：从 $n+1$ 个整数箱子中，按班级人数分组，使每组恰有 $s_i$ 个数且组和模 $s_i$ 为零。将人数排序后，前 $k-1$ 组在至少 $2s_i-1$ 个候选数中选取，最后一组用一个可购买的数补齐同余条件。",
+          "keyObservations": [
+            "将班级人数排序后，处理前 $k-1$ 个班级时，剩余箱子数至少为 $2s_i-1$，因此总能从中选出 $s_i$ 个箱子使礼物总数被 $s_i$ 整除。",
+            "任意 $2m-1$ 个整数中都能选出 $m$ 个，使它们的和被 $m$ 整除；这是分配当前班级箱子的存在性依据。",
+            "对固定班级，状态 $dp[i][j][r]$ 表示前 $i$ 个箱子中选 $j$ 个且总和模班级人数为 $r$，从而把选箱子问题转为可恢复的有限状态 DP。",
+            "前 $k-1$ 个班级分配完成后，最后一个班级只需补入自购箱子，并令其礼物数补足到能被该班级人数整除。"
+          ],
+          "solutionBrief": "先将班级人数排序，依次为前 $k-1$ 个班级从当前箱子中选出 $s_i$ 个，使礼物和模 $s_i$ 为零；利用 $2s_i-1$ 个数的选取定理保证存在性，并用三维 DP 找出具体选择。最后为剩余班级购买一个使总和可整除的箱子并输出分配。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
