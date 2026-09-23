@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1500,
+    "total_problems": 1506,
     "source_total_problems": 1742,
-    "filtered_out_problems": 242,
-    "with_statement_brief": 1500,
-    "with_editorial_brief": 1275,
-    "with_solution_brief": 1276,
+    "filtered_out_problems": 236,
+    "with_statement_brief": 1506,
+    "with_editorial_brief": 1281,
+    "with_solution_brief": 1282,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 435,
+    "ai_override_count": 441,
     "primary_topic_count": 13,
-    "contest_count": 240,
+    "contest_count": 241,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,22 +45,22 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 490,
+    "构造与贪心": 495,
     "图论与网络流": 91,
     "动态规划与状态设计": 149,
     "数论与同余": 138,
     "组合计数与概率": 114,
     "数据结构": 121,
     "几何": 32,
-    "树结构": 105,
+    "树结构": 106,
     "交互": 69,
     "基础实现与模拟": 61,
     "博弈": 54,
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 367,
-    "ai_generated_partial_editorial": 17,
+    "ai_generated_with_editorial": 372,
+    "ai_generated_partial_editorial": 18,
     "missing_editorial": 224,
     "manual_override": 891,
     "statement_derived": 1
@@ -36455,6 +36455,187 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1882,
+      "name": "Codeforces Round 899 (Div. 2)",
+      "date": "2023-09-25",
+      "url": "https://codeforces.com/contest/1882",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 3100,
+      "problems": [
+        {
+          "key": "1882A",
+          "index": "A",
+          "slot": "A",
+          "title": "Increasing Sequence",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1882/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/120792",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定整数序列 $a$，构造一个严格递增的正整数序列 $b$，且每个位置的 $b_i$ 不能等于对应的 $a_i$。在所有满足条件的序列中，求末项 $b_n$ 的最小值。",
+          "transformedStatement": "把问题看成从左到右选择每个位置的最小可行值：首项从 $1$ 开始，后续位置优先延续前项加 $1$；若该候选与当前位置的禁值 $a_i$ 冲突，就跳过它取下一个整数。",
+          "keyObservations": [
+            "为使序列严格递增且每个位置避开对应的 $a_i$，当前位置默认取前一项加 $1$；若该值恰好被禁止，则只能再加 $1$。",
+            "首项的最小候选是 $1$，但当 $a_1=1$ 时必须改取 $2$，因此首项直接按是否冲突决定。",
+            "后续每一步只需检查唯一的最小候选 $b_{i-1}+1$ 是否等于 $a_i$；冲突时取 $b_{i-1}+2$，局部最小选择不会影响后续可行性。"
+          ],
+          "solutionBrief": "逐项构造最小的严格递增序列。首项取 $1$，若与 $a_1$ 冲突则取 $2$；之后默认取 $b_{i-1}+1$，若等于 $a_i$ 则取 $b_{i-1}+2$，最终输出 $b_n$。每组复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1882B",
+          "index": "B",
+          "slot": "B",
+          "title": "Sets and Union",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1882/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/120792",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定 $n$ 个整数集合，可以任意选择其中一些集合（也可以一个不选）并求它们的并集。要求在所有不等于全部 $n$ 个集合总并集的可达集合中，找出元素个数最多的一个。",
+          "transformedStatement": "把“不等于总并集”改写为“至少缺少总并集中的某个元素 $i$”。固定这个缺失元素后，只保留不含 $i$ 的原集合并求并集，再对所有 $i$ 取最大值。",
+          "keyObservations": [
+            "设所有集合的并集为 $T$，任意合法答案都是 $T$ 的子集，因此与 $T$$ 不同等价于至少有一个 $i\\in T$ 未被选出的集合并集覆盖。",
+            "固定缺失元素 $i$ 后，只选取所有不含 $i$ 的原集合，其并集包含任意满足 $i\\notin S$ 的可达集合，因此它就是该条件下的最大答案。",
+            "枚举 $T$ 中每个可能缺失的元素并取上述并集大小的最大值，就覆盖了所有不等于 $T$ 的可达集合。"
+          ],
+          "solutionBrief": "先求全集并集 $T$。枚举每个 $i\\in T$，将所有不含 $i$ 的集合求并；该并集是在缺失 $i$ 的条件下能达到的最大集合，取其大小最大值作为答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1882C",
+          "index": "C",
+          "slot": "C",
+          "title": "Card Game",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1882/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/120792",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "给定按顺序叠放的 $n$ 张牌，每回合从当前牌堆中选择并移除一张牌；牌在当前牌堆中的位置为奇数时，其牌值计入分数，位置为偶数时不计分。求通过安排选牌顺序能够得到的最大最终分数。",
+          "transformedStatement": "把最先从初始牌堆中选出的牌固定为第 $i$ 张。其下方最终能贡献的部分等价于所有正数牌之和，而第 $i$ 张仅在初始位置为奇数时贡献，因此问题转化为枚举 $i$ 并最大化该牌贡献与后缀正数和之和。",
+          "keyObservations": [
+            "固定初始牌堆中最先被选的牌为第 $i$ 张后，其上方牌必须先处理，因此第 $i$ 张的得分只在 $i$ 为奇数时产生。",
+            "第 $i$ 张下方的正数牌可以全部获得、负数牌无需获得；通过先处理奇数位置的正数牌，再选第 $i$ 张并从底向上处理，可实现这一上界。",
+            "令 $prf_j$ 表示后缀 $a_j,\n_{j+1},\n_n$ 中所有正数之和，则有 $prf_j=prf_{j+1}+\\max(0,a_j)$，可在线性时间预处理。",
+            "固定首张牌为 $i$ 时的最优得分为 $(i\\bmod 2=1?a_i:0)+prf_{i+1}$，枚举 $i$ 取最大值即可。"
+          ],
+          "solutionBrief": "枚举初始牌堆中最先选取的牌 $i$，预处理每个后缀的正数和。答案为所有 $(i\\bmod 2=1?a_i:0)+prf_{i+1}$ 的最大值，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1882D",
+          "index": "D",
+          "slot": "D",
+          "title": "Tree XOR",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1882/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/120792",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵带整数 $a_i$ 的树并指定根。每次可选顶点 $v$ 和非负整数 $c$，将 $v$ 的整棵子树中所有数异或 $c$，代价为子树大小乘 $c$；求分别以每个顶点为根时，把所有数变相等的最小总代价。",
+          "transformedStatement": "固定根后，把目标等价转化为消除每条父子边的端点异或值。每个非根顶点独立贡献其子树大小乘该边的异或值，再通过相邻换根只修正一条边的贡献来计算全部答案。",
+          "keyObservations": [
+            "固定根后，只需让每条父子边两端的异或值变为 $0$；选择非根顶点 $v$ 的子树恰好会改变这条父子边，因此必须取 $c=a_v\\oplus a_{par_v}$。",
+            "同一顶点重复施法可以合并为一次，且异或值不超过对应施法参数之和，所以最优代价为所有非根顶点的 $s_v\\times(a_v\\oplus a_{par_v})$ 之和。",
+            "根从相邻顶点 $q$ 移到 $r$ 时，除 $q,r$ 外的父子关系和子树大小不变；只需把边 $(q,r)$ 的贡献从 $Y\\times(a_q\\oplus a_r)$ 换成 $X\\times(a_q\\oplus a_r)$。",
+            "预先求出以 $1$ 为根时各子树大小和答案，沿树换根时用两侧规模 $X,Y$ 在常数时间更新，因此能在线性时间得到所有根的答案。"
+          ],
+          "solutionBrief": "固定根后对每个非根顶点施放一次参数 $a_v\\oplus a_{par_v}$，答案是各次施法代价之和。先求根为 $1$ 的答案，再沿树换根；相邻换根只改变对应边的贡献，利用两侧规模 $O(1)$ 更新，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1882E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Two Permutations (Easy Version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1882/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/120792",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "number theory"
+          ],
+          "statementBrief": "给定两个排列 $p,q$，每次按题目规定的三步操作改变它们，目标是把它们分别变成单位排列 $p_i=i、q_j=j$。在不超过 $10000$ 次操作内输出任意可行操作序列；若无法同时达到目标则输出 $-1$。",
+          "transformedStatement": "把问题拆成两个独立的单排列排序任务，并只关注各自所需操作次数的奇偶性：先用三次操作交换任意两元素完成排序，再通过奇数长度排列的循环操作调整奇偶性；两边长度均为偶数时用逆序对奇偶性判定可行性。",
+          "keyObservations": [
+            "在单个排列中，若写成 $[A]x[B]$，一次操作会变为 $[B]x[A]$；对两个元素各操作一次再操作第三次，可以交换任意两元素，因此整个排列至多用 $3N$ 次操作排序。",
+            "两排列的操作序列需要具有相同的操作次数奇偶性；排序构造产生的次数奇偶性一致时即可直接合并。",
+            "当排列长度为奇数时，在下标 $1$ 处重复操作该长度次会回到原排列，且能改变操作次数奇偶性，因此可以补齐两边的奇偶性。",
+            "当排列长度为偶数时，每次操作都会改变逆序对数的奇偶性，所以从当前排列到单位排列所需操作次数奇偶性被唯一确定；若两个排列要求的奇偶性不同，则无解。"
+          ],
+          "solutionBrief": "分别把两个排列排序：利用三次操作交换任意两元素，最多各用 $3N$ 次。若操作次数奇偶性不同且有一个长度为奇数，就重复下标 $1$ 的操作该长度次来翻转奇偶性；若两长度都为偶数，则奇偶性由逆序对决定，不同则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1882E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Two Permutations (Hard Version)",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1882/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/120792",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定两个排列 $p$ 和 $q$，每次选择一个位置 $i$ 和一个位置 $j$，按题面规定同时变换两个排列；要求经过若干次操作后分别变成 $1,2,,n$ 与 $1,2,,m$，并输出最少操作次数及每次选择的位置，若无法做到则输出 $-1$。",
+          "transformedStatement": "在每个排列前固定加入不会移动的标记 $X$，把排列首尾相接看成环。题解将一次原操作等价为分别交换两个环中标记 $X$ 与所选元素，因此问题转为让两个带 $X$ 的排列同时到达某个循环移位目标，并要求交换次数最少且两边次数奇偶一致。",
+          "keyObservations": [
+            "给每个排列首部加入固定标记 $X$ 后，一次操作等价于分别交换 $X$ 与所选位置的元素，从而把复杂的区间变换转成交换问题。",
+            "把排列视为环后，目标不只包括 $[X,1,2,,n]$，还包括 $X$ 位于任意位置的所有循环移位；这些状态对应原排列最终同时变为单位排列。",
+            "固定目标状态后，先按初始排列与目标排列的对应关系做置换环分解；不含 $X$ 且长度至少为 $2$ 的环贡献环长加一，含 $X$ 的环贡献环长减一。",
+            "由于每次操作会同时在两个排列上进行一次交换，两边操作次数的奇偶性必须一致，因此分别求两种奇偶性的最小代价，再选择总次数最小且可同步补齐的方案。"
+          ],
+          "solutionBrief": "在两个排列前加入标记 $X$，将每次操作转化为 $X$ 与一个元素的交换。枚举 $X$ 在目标环中的位置，对每个目标用置换环分解计算最少奇数次和偶数次交换，再匹配两排列的相同奇偶性并补齐操作，取总数最小的方案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
