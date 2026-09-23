@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1423,
+    "total_problems": 1425,
     "source_total_problems": 1742,
-    "filtered_out_problems": 319,
-    "with_statement_brief": 1423,
-    "with_editorial_brief": 1198,
-    "with_solution_brief": 1199,
+    "filtered_out_problems": 317,
+    "with_statement_brief": 1425,
+    "with_editorial_brief": 1200,
+    "with_solution_brief": 1201,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 357,
+    "ai_override_count": 359,
     "primary_topic_count": 13,
-    "contest_count": 227,
+    "contest_count": 228,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 466,
+    "构造与贪心": 467,
     "图论与网络流": 86,
     "动态规划与状态设计": 135,
     "数论与同余": 128,
@@ -54,12 +54,12 @@ window.CF_INSIGHTS_DATA = {
     "几何": 32,
     "树结构": 104,
     "交互": 69,
-    "基础实现与模拟": 58,
+    "基础实现与模拟": 59,
     "博弈": 50,
     "代数、矩阵与多项式": 13
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 292,
+    "ai_generated_with_editorial": 294,
     "ai_generated_partial_editorial": 15,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37352,6 +37352,72 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1836,
+      "name": "Codeforces Round 880 (Div. 2)",
+      "date": "2023-06-18",
+      "url": "https://codeforces.com/contest/1836",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1100,
+      "problems": [
+        {
+          "key": "1836A",
+          "index": "A",
+          "slot": "A",
+          "title": "Destroyer",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1836/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/117394",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定若干机器人的报告值，每个值表示该机器人所在队列中排在它前面的机器人数量。需要把所有机器人分成任意多条队列并排列，使每条队列从队首开始依次增加 0、1、2……，判断是否存在满足所有报告的排列。",
+          "transformedStatement": "把每条合法队列视为从 $0$ 开始、公差为 $1$ 的连续序列；原问题等价于将输入 multiset 划分成若干条这样的序列，并检查各数值出现次数是否足以支撑后继数值。",
+          "keyObservations": [
+            "每条队列中出现的数字必须连续为 $0,1,2,\\ldots$，因此任意正数 $x$ 出现时，同一条队列中必有 $x-1$。",
+            "设 $cnt_x$ 为报告值 $x$ 的机器人数量，则可行性的必要条件是对所有 $x\\ge 0$ 满足 $cnt_x\\ge cnt_{x+1}$，因为每个报告为 $x+1$ 的机器人都需要对应一个报告为 $x$ 的前置机器人。",
+            "上述数量条件同时充分：将每个值 $x+1$ 的机器人接到不同的值 $x$ 队列后面，剩余的值 $x$ 机器人可作为新队列起点，因此只需检查相邻计数的单调性。"
+          ],
+          "solutionBrief": "统计每个报告值的出现次数，依次检查是否始终满足 $cnt_x\\ge cnt_{x+1}$。若所有相邻计数均满足则输出 YES，否则输出 NO；实现可遍历到最大报告值，复杂度为 $O(N+L)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1836B",
+          "index": "B",
+          "slot": "B",
+          "title": "Astrophysicists",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1836/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/117394",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 名员工，需要把总价值为 $k$ 枚金币的奖金拆成银币分配完毕；每人的银币奖金会按题目规定取整为最近的金币数，公司实际支付取整后的金额。要求选择分配方案，使因取整节省的银币总数最大。",
+          "transformedStatement": "把每个人的奖金只看作除以 $g$ 后的余数：余数至多 $h=\\lfloor(g-1)/2\\rfloor$ 时产生节省，超过 $h$ 时会产生负贡献。于是将 $h$ 分给尽可能多的人，剩余金额集中到一个人处理。",
+          "keyObservations": [
+            "单个人的奖金余数不超过 $h=\\lfloor (g-1)/2\\rfloor$ 时会向下取整，因此最多可从该人奖金中节省 $h$ 枚银币。",
+            "总银币不足以让每个人达到 $h$ 时，把全部银币集中给一个人即可全部节省；答案就是总额 $k\\cdot g$。",
+            "总额充足时，给 $n-1$ 个人各分配 $h$ 枚银币，剩余金额交给最后一人；改变这种分配至多增加一人的节省，却会损失另一人的 $h$ 级别收益，因此不会更优。",
+            "最后一人的剩余金额只需看模 $g$ 的余数 $r$：若 $r\\le h$，贡献为 $r$；否则因向上取整贡献为 $r-g$，所以答案可在 $O(1)$ 内计算。"
+          ],
+          "solutionBrief": "令 $h=\\lfloor(g-1)/2\\rfloor$。若总额 $S=k\\cdot g$ 不足以达到一个人的理想节省，答案为 $S$；否则给 $n-1$ 人各分 $h$，余款给最后一人，再按其余数是否超过 $h$计算贡献，整体为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
