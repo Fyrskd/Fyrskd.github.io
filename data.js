@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1400,
+    "total_problems": 1405,
     "source_total_problems": 1742,
-    "filtered_out_problems": 342,
-    "with_statement_brief": 1400,
-    "with_editorial_brief": 1175,
-    "with_solution_brief": 1176,
+    "filtered_out_problems": 337,
+    "with_statement_brief": 1405,
+    "with_editorial_brief": 1180,
+    "with_solution_brief": 1181,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 334,
+    "ai_override_count": 339,
     "primary_topic_count": 13,
-    "contest_count": 223,
+    "contest_count": 224,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,9 +45,9 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 456,
+    "构造与贪心": 459,
     "图论与网络流": 84,
-    "动态规划与状态设计": 133,
+    "动态规划与状态设计": 134,
     "数论与同余": 127,
     "组合计数与概率": 109,
     "数据结构": 108,
@@ -55,11 +55,11 @@ window.CF_INSIGHTS_DATA = {
     "树结构": 104,
     "交互": 68,
     "基础实现与模拟": 57,
-    "博弈": 48,
+    "博弈": 49,
     "代数、矩阵与多项式": 13
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 270,
+    "ai_generated_with_editorial": 275,
     "ai_generated_partial_editorial": 14,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37352,6 +37352,160 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1839,
+      "name": "Codeforces Round 876 (Div. 2)",
+      "date": "2023-06-03",
+      "url": "https://codeforces.com/contest/1839",
+      "type": "Div. 2",
+      "problemCount": 5,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1839A",
+          "index": "A",
+          "slot": "A",
+          "title": "The Good Array",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1839/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/116963",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定整数 $n,k$，需要构造一个长度为 $n$、元素只能为 $0$ 或 $1$ 的数组；数组必须对每个位置 $i$ 满足题面规定的两个合法性条件，目标是求其中最少的 $1$ 的数量。当前记录未显示这两个条件的具体公式。",
+          "transformedStatement": "题解将问题转化为确定合法数组中 $1$ 的最小数量：前 $n-1$ 位至少需要 $\\left\\lceil\\frac{n-1}{k}\\right\\rceil$ 个 $1$，末位必须为 $1$，再用间隔为 $k$ 的位置 $1+kx$ 实现这个下界。",
+          "keyObservations": [
+            "任意合法数组的前 $n-1$ 个位置至少要有 $\\left\\lceil\\frac{n-1}{k}\\right\\rceil$ 个 $1$，这是由合法性条件对这些位置的整体要求得到的下界。",
+            "由于 $\\left\\lceil\\frac{1}{k}\\right\\rceil=1$，末位 $a_n$ 必须为 $1$，因此总数至少为 $\\left\\lceil\\frac{n-1}{k}\\right\\rceil+1$。",
+            "将前 $n-1$ 个位置的 $1$ 放在 $1+kx$（$0\\le x\\le\\left\\lfloor\\frac{n-2}{k}\\right\\rfloor$），再令 $a_n=1$，即可达到上述下界，因此下界就是最优答案。"
+          ],
+          "solutionBrief": "答案为 $\\left\\lceil\\frac{n-1}{k}\\right\\rceil+1$。证明下界后，在位置 $1+kx$ 以及位置 $n$ 放置 $1$，该构造满足合法性条件并恰好使用这么多个 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1839B",
+          "index": "B",
+          "slot": "B",
+          "title": "Lamps",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1839/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/116963",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 盏灯，第 $i$ 盏带参数 $a_i,b_i$。每次只能选择尚未点亮且未损坏的灯点亮并获得 $b_i$ 分；点亮后会根据当前已点亮数量触发损坏，损坏灯不再可选但已获得的分数保留。可进行任意次操作，求最多总分。",
+          "transformedStatement": "把灯按 $a_i=k$ 分组：第 $k$ 组最多贡献 $k$ 盏灯的分数，因此问题等价于对每组取 $b_i$ 最大的前 $\u0000min(c_k,k)$ 个，并证明按阈值从小到大处理可以同时实现这些选择。",
+          "keyObservations": [
+            "对固定的 $a_i=k$ 分组，最多只能成功点亮 $k$ 盏，因此该组的最优贡献是其中最大的 $\u0000min(c_k,k)$ 个 $b_i$ 之和。",
+            "每组的得分上界可以独立相加，因为达到对应阈值后只会限制同组中还能被点亮的数量，不会改变其他组的贡献上限。",
+            "始终优先点亮当前最小 $a_i$ 的灯，并在同组内优先选择最大 $b_i$，可以实现所有分组上界；当已点亮至少 $k$ 盏时，所有 $a_i<k$ 的灯都已损坏。"
+          ],
+          "solutionBrief": "按 $a_i$ 分组，组内按 $b_i$ 降序排列并累加前 $\u0000min(c_k,k)$ 个。其正确性来自按 $a_i$ 从小到大、组内按 $b_i$ 从大到小点灯可同时达到每组上界；实现需排序后线性扫描。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1839C",
+          "index": "C",
+          "slot": "C",
+          "title": "Insert Zero and Invert Prefix",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1839/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/116963",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定一个只含 $0/1$ 的目标序列 $a$，从空序列 $b$ 开始操作共 $n$ 次。每次选择位置 $p$，在 $b$ 的第 $p$ 个位置插入一个 $0$，并翻转它前面的所有元素；判断能否得到 $a$，若能则输出操作序列。",
+          "transformedStatement": "把目标数组按每个结尾为 $0$ 的连续段切成简单块，每块形如 $1^k0$。先构造后面的块再构造前面的块不会破坏已完成部分，因此整体问题转化为按块长度反向生成操作参数。",
+          "keyObservations": [
+            "最终插入的元素永远是 $0$，因此若 $a_n=1$，无论之前如何操作都不可能得到目标数组。",
+            "任意形如若干个 $1$ 后接一个 $0$ 的简单块都可构造：连续在首元素前插入 $0$，最后在末尾插入 $0$，前面已插入的 $0$ 会被统一翻转成 $1$。",
+            "当 $a_n=0$ 时，可按每个 $0$ 将数组唯一切成若干简单块；若分别能构造两个块，则先执行后一个块的操作、再执行前一个块的操作，就能得到它们的拼接。",
+            "因此各块长度为 $s_1,\u001c s_m$ 时，操作序列按块从后往前输出：对长度为 $s_i$ 的块输出 $s_i-1$ 个 $0$，再输出一次 $s_i-1$。"
+          ],
+          "solutionBrief": "若 $a_n=1$ 输出 NO；否则按每个 $0$ 把数组切成“若干个 $1$ 加末尾 $0$”的块。设块长为 $s_i$，从后往前对每块输出 $s_i-1$ 个 $0$ 和一个 $s_i-1$，即可构造目标数组。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1839D",
+          "index": "D",
+          "slot": "D",
+          "title": "Ball Sorting",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1839/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/116963",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "sortings"
+          ],
+          "statementBrief": "给定一排列的 $n$ 个不同颜色球，并额外提供 $k$ 个颜色为 0 的球。题目允许按未完整给出的两类操作重排，第二类操作需要花费硬币；全部操作结束后颜色为 0 的球消失，要求剩余球按颜色 $1,2,\\ldots,n$ 排列，并分别求每个 $k=1,\\ldots,n$ 时的最小花费。",
+          "transformedStatement": "把从未执行第二类操作的球组成集合 $S$：它们的相对顺序固定且颜色必须递增；其余球形成被 $S$ 划分的若干可移动段，每段需要一个 0 号球。于是问题等价于在段数不超过 $k$ 时最大化 $|S|$。",
+          "keyObservations": [
+            "未执行第二类操作的球相对顺序不会改变，因此保留下来的球颜色必须构成严格递增子序列；这把重排选择转化为选择一个合法子序列。",
+            "固定球会把其余球划分成若干连续的可移动段，每段至少需要一个 0 号球，因此合法选择必须满足段数 $f(S)\\le k$。",
+            "每个未被保留的球至少执行一次第二类操作，而题解说明总能恰好操作一次完成重排，所以操作次数等于 $n-|S|$，目标转为最大化合法集合 $S$ 的大小。",
+            "令 $dp_{i,j}$ 表示选到第 $i$ 个球、且它属于 $S$ 时，使用恰好 $j$ 个可移动段能保留的最大球数；从 $i$ 转移到颜色更大的后继 $t$，若相邻则段数不变，否则段数加一。"
+          ],
+          "solutionBrief": "固定 $k$，选择颜色严格递增的未移动球集合 $S$，要求其划分出的可移动段数不超过 $k$，并最大化 $|S|$。用 $dp_{i,j}$ 枚举下一个保留球转移，答案为 $n- ext{最大}|S|$；对所有 $k$ 重复计算，总复杂度为 $O(n^3)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1839E",
+          "index": "E",
+          "slot": "E",
+          "title": "Decreasing Game",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1839/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/116963",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "interactive"
+          ],
+          "statementBrief": "给定正整数数组，选择自己扮演先手或后手参与交互博弈。每轮双方按规则选择下标，并将所选两项同时减少相同数值；当一方无法进行合法选择时结束，要求选择角色并通过输出下标赢得游戏。",
+          "transformedStatement": "把博弈结果转化为数组能否划分成两个元素和相等的集合：存在这种划分时后手用跨集合配对保持不变量；不存在时先手任意合法行动都能获胜，反证核心是把对局选择形成的树二分。",
+          "keyObservations": [
+            "第二方能获胜当且仅当数组可划分为两个元素和相等的集合；等价于存在子集和为总和一半。",
+            "若预先得到等和划分，第二方始终选择与第一方不同集合中的下标；两边剩余总和保持相等，因此一边有可行动元素时另一边也必有。",
+            "若不存在等和划分，第一方每轮任意选择合法操作即可获胜；否则假设第二方获胜并把每轮选择的两个下标连边，所有元素最终归零。",
+            "这些边构成树，树的二分划分使两侧初始元素和相等，而每条边两端同步减少相同数值仍保持两侧总和相等，与不存在等和划分矛盾。"
+          ],
+          "solutionBrief": "先用子集和判断数组能否划分成两个等和集合，并记录划分。若可行，选择第二方并始终回应另一集合中的下标；否则选择第一方，每轮任取合法下标即可获胜。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
