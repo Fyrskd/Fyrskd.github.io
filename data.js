@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1314,
+    "total_problems": 1315,
     "source_total_problems": 1742,
-    "filtered_out_problems": 428,
-    "with_statement_brief": 1314,
+    "filtered_out_problems": 427,
+    "with_statement_brief": 1315,
     "with_editorial_brief": 1096,
     "with_solution_brief": 1097,
-    "missing_editorial_brief": 217,
+    "missing_editorial_brief": 218,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 236,
+    "ai_override_count": 245,
     "primary_topic_count": 13,
     "contest_count": 210,
     "rating_min": 800,
@@ -45,23 +45,23 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 58,
-    "构造与贪心": 436,
-    "图论与网络流": 78,
-    "动态规划与状态设计": 128,
+    "构造与贪心": 432,
+    "图论与网络流": 79,
+    "动态规划与状态设计": 127,
     "数论与同余": 114,
     "组合计数与概率": 105,
     "数据结构": 97,
-    "几何": 26,
+    "几何": 27,
     "树结构": 98,
     "交互": 66,
-    "基础实现与模拟": 53,
-    "博弈": 43,
+    "基础实现与模拟": 54,
+    "博弈": 46,
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
     "ai_generated_with_editorial": 196,
     "ai_generated_partial_editorial": 9,
-    "missing_editorial": 217,
+    "missing_editorial": 218,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -31920,7 +31920,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-07-28",
       "url": "https://codeforces.com/contest/1991",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 8,
+      "problemCount": 9,
       "maxRating": 3500,
       "problems": [
         {
@@ -31931,15 +31931,13 @@ window.CF_INSIGHTS_DATA = {
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/1991/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/132018",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "几何"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "greedy",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Maximize the Last Element；本地暂无可用题解正文。",
+          "statementBrief": "给定一个长度为奇数的整数数组。每次只能删除当前数组中的两个相邻元素并拼接剩余部分，重复操作直到只剩一个元素，要求最大化最后留下的元素值。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -31955,15 +31953,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1991/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/132018",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "bitmasks",
             "constructive algorithms",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：AND Reconstruction；本地暂无可用题解正文。",
+          "statementBrief": "给定长度为 $n-1$ 的数组 $b$，需要构造长度为 $n$ 的数组 $a$，使每个相邻元素满足 $a_i\\mathbin{\\&}a_{i+1}=b_i$。若不存在满足所有关系的数组则输出 $-1$，否则输出任意一组合法数组。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -31980,14 +31976,15 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/132018",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "博弈"
+            "基础实现与模拟",
+            "几何"
           ],
           "originalTags": [
             "constructive algorithms",
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：Absolute Zero；本地暂无可用题解正文。",
+          "statementBrief": "给定一个整数数组。每次选择一个整数 $x$，把所有元素同时改为 $|a_i-x|$；要求在不超过 $40$ 次操作内让整个数组变为全零，输出任意操作序列或在无法做到时输出 $-1$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -32002,11 +31999,10 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1900,
           "problemUrl": "https://codeforces.com/contest/1991/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/132018",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "图论与网络流",
           "secondaryTopics": [
-            "图论与网络流",
             "数论与同余",
-            "动态规划与状态设计"
+            "构造与贪心"
           ],
           "originalTags": [
             "bitmasks",
@@ -32016,12 +32012,40 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Prime XOR Coloring；本地暂无可用题解正文。",
+          "statementBrief": "给定编号为 $1$ 到 $n$ 的顶点：当且仅当两个编号的按位异或是素数时，在它们之间连边。需要为所有顶点分配颜色，使每条边两端不同，并输出所需的最少颜色数及一种合法方案。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1991E",
+          "index": "E",
+          "slot": "E",
+          "title": "Coloring Game",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1991/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/132018",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "图论与网络流",
+            "交互"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "games",
+            "graphs",
+            "greedy",
+            "interactive"
+          ],
+          "statementBrief": "给定一个连通无向图，所有顶点起初未染色，每个顶点只能染成 1、2、3 之一。游戏进行 $n$ 轮；题面说明若某条边两端最终出现相同颜色则 Alice 获胜，否则 Bob 获胜，程序需先选择扮演其中一方并通过交互取胜，但给定文本缺少每轮双方具体操作规则。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "partial"
         },
         {
           "key": "1991F",
@@ -32030,12 +32054,9 @@ window.CF_INSIGHTS_DATA = {
           "title": "Triangle Formation",
           "rating": 2200,
           "problemUrl": "https://codeforces.com/contest/1991/problem/F",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数据结构",
-            "交互"
-          ],
+          "editorialUrl": "https://codeforces.com/blog/entry/132018",
+          "primaryTopic": "几何",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "greedy",
@@ -32043,7 +32064,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "sortings"
           ],
-          "statementBrief": "题面已抓取：Triangle Formation；本地暂无可用题解正文。",
+          "statementBrief": "给定一排长度为 $a_i$ 的木棍。每次查询给出区间 $[l,r]$，要求从该区间选出 $6$ 根不同木棍，分成两组三根，判断能否分别组成两个非退化三角形。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -32057,18 +32078,17 @@ window.CF_INSIGHTS_DATA = {
           "title": "Grid Reset",
           "rating": 2700,
           "problemUrl": "https://codeforces.com/contest/1991/problem/G",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/132018",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "数据结构",
-            "几何"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "constructive algorithms",
             "greedy",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Grid Reset；本地暂无可用题解正文。",
+          "statementBrief": "给定一个初始全白的 $n\\times m$ 网格和长度为 $q$ 的操作序列。每次按序放置一个水平的 $1\\times k$ 或垂直的 $k\\times1$ 矩形，使其格子变黑；若操作后出现全黑的行或列，则相关行列会同时重置为白色。请为所有操作构造左上角坐标，或判断无解。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -32082,12 +32102,10 @@ window.CF_INSIGHTS_DATA = {
           "title": "Prime Split Game",
           "rating": 3300,
           "problemUrl": "https://codeforces.com/contest/1991/problem/H",
-          "editorialUrl": "",
-          "primaryTopic": "动态规划与状态设计",
+          "editorialUrl": "https://codeforces.com/blog/entry/132018",
+          "primaryTopic": "博弈",
           "secondaryTopics": [
-            "博弈",
-            "数论与同余",
-            "代数、矩阵与多项式"
+            "数论与同余"
           ],
           "originalTags": [
             "bitmasks",
@@ -32097,7 +32115,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Prime Split Game；本地暂无可用题解正文。",
+          "statementBrief": "Alice 和 Bob 轮流操作 $n$ 堆石子，Alice 先手；无法操作者输。可见示例显示，一次操作涉及选择若干石堆并把某堆拆成两堆质数大小的石堆，但题面缺失完整的三步规则，目标是判断最优 play 下谁获胜。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -32111,11 +32129,10 @@ window.CF_INSIGHTS_DATA = {
           "title": "Grid Game",
           "rating": 3500,
           "problemUrl": "https://codeforces.com/contest/1991/problem/I",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
+          "editorialUrl": "https://codeforces.com/blog/entry/132018",
+          "primaryTopic": "博弈",
           "secondaryTopics": [
-            "博弈",
-            "图论与网络流",
+            "构造与贪心",
             "交互"
           ],
           "originalTags": [
@@ -32125,7 +32142,7 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "interactive"
           ],
-          "statementBrief": "题面已抓取：Grid Game；本地暂无可用题解正文。",
+          "statementBrief": "先为 $n\\times m$ 网格中的每个格子填入 $1$ 到 $n\\cdot m$ 的不同整数。随后交互方先选任意格子，双方轮流选择未选格子；首步之后每次选择的格子都必须与已选格子共边，直到所有格子被选完，要求己方选中数字之和严格小于交互方的和。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
