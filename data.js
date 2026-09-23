@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1490,
+    "total_problems": 1492,
     "source_total_problems": 1742,
-    "filtered_out_problems": 252,
-    "with_statement_brief": 1490,
-    "with_editorial_brief": 1265,
-    "with_solution_brief": 1266,
+    "filtered_out_problems": 250,
+    "with_statement_brief": 1492,
+    "with_editorial_brief": 1267,
+    "with_solution_brief": 1268,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 425,
+    "ai_override_count": 427,
     "primary_topic_count": 13,
-    "contest_count": 238,
+    "contest_count": 239,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,8 +45,8 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 486,
-    "图论与网络流": 90,
+    "构造与贪心": 487,
+    "图论与网络流": 91,
     "动态规划与状态设计": 148,
     "数论与同余": 138,
     "组合计数与概率": 114,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 357,
+    "ai_generated_with_editorial": 359,
     "ai_generated_partial_editorial": 17,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -36650,6 +36650,71 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1869,
+      "name": "Codeforces Round 896 (Div. 2)",
+      "date": "2023-09-10",
+      "url": "https://codeforces.com/contest/1869",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1100,
+      "problems": [
+        {
+          "key": "1869A",
+          "index": "A",
+          "slot": "A",
+          "title": "Make It Zero",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1869/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/116642",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定一个长度至少为 2 的整数数组。每次选择区间 $[l,r]$，将区间内所有元素都替换为该区间所有元素的异或值，最多操作 8 次，要求构造一组操作使整个数组变为 $0$。",
+          "transformedStatement": "核心转化是寻找偶数长度区间：对同一区间连续操作两次后，第一次得到的区间异或值会在第二次中被偶数次异或，从而整段归零；据此按 $n$ 的奇偶性覆盖整个数组。",
+          "keyObservations": [
+            "对长度为偶数的区间操作一次后，区间内每个元素都会变成整个区间的异或值；再次操作时该值被偶数次异或，因此区间会全部变为 $0$。",
+            "当 $n$ 为偶数时，直接对完整区间 $[1,n]$ 操作两次即可，因为区间长度为偶数，整个数组同时归零。",
+            "当 $n$ 为奇数时，先对偶长度区间 $[1,n-1]$ 操作两次，只剩最后一个元素可能非零；再对 $[n-1,n]$ 操作两次，使这两个元素同时归零。"
+          ],
+          "solutionBrief": "利用偶数长度区间操作两次必全为零的性质：$n$ 为偶数时对 $[1,n]$ 操作两次；$n$ 为奇数时先对 $[1,n-1]$ 操作两次，再对 $[n-1,n]$ 操作两次，最多使用 4 次操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1869B",
+          "index": "B",
+          "slot": "B",
+          "title": "2D Traveling",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1869/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/116642",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "geometry",
+            "math",
+            "shortest paths",
+            "sortings"
+          ],
+          "statementBrief": "平面上有 $n$ 座城市，前 $k$ 座是主要城市；可以乘坐任意次数的航班并按任意顺序访问城市，最终到达城市 $b$。两座主要城市间航班免费，否则费用为两点的曼哈顿距离，求从城市 $a$ 到城市 $b$ 的最小总费用。",
+          "transformedStatement": "将任意多段路线压缩为“直接到终点”或“先到一座主要城市、免费经过另一座主要城市、再到终点”两类候选；主要城市两侧的代价可以分别取最小值，因此无需枚举主要城市对。",
+          "keyObservations": [
+            "若路线连续经过三个或更多主要城市，首尾两座主要城市之间可直接免费飞行，因此中间城市不会降低费用，最优路线至多经过两座主要城市。",
+            "两座主要城市之间夹着普通城市时，直接在这两座主要城市间免费飞行更优，因此主要城市必然连续出现。",
+            "经过两座主要城市时，路线费用可拆成从起点到第一座主要城市的费用与从第二座主要城市到终点的费用；两座主要城市的选择彼此独立，避免枚举所有城市对。",
+            "不存在主要城市时，直接从起点飞到终点已经是最优路线，费用为两点的曼哈顿距离。"
+          ],
+          "solutionBrief": "答案取三者最小值：起点到终点的曼哈顿距离、起点到任意主要城市的最小曼哈顿距离加终点到任意主要城市的最小距离，以及两者直接连通的等价情况。遍历主要城市维护两端最小值，单个测试复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
