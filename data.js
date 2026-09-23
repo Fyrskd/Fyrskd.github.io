@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1354,
+    "total_problems": 1356,
     "source_total_problems": 1742,
-    "filtered_out_problems": 388,
-    "with_statement_brief": 1354,
-    "with_editorial_brief": 1134,
-    "with_solution_brief": 1135,
+    "filtered_out_problems": 386,
+    "with_statement_brief": 1356,
+    "with_editorial_brief": 1136,
+    "with_solution_brief": 1137,
     "missing_editorial_brief": 219,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 287,
+    "ai_override_count": 289,
     "primary_topic_count": 13,
-    "contest_count": 213,
+    "contest_count": 214,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 58,
-    "构造与贪心": 443,
+    "构造与贪心": 445,
     "图论与网络流": 81,
     "动态规划与状态设计": 131,
     "数论与同余": 121,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 230,
+    "ai_generated_with_editorial": 232,
     "ai_generated_partial_editorial": 13,
     "missing_editorial": 219,
     "manual_override": 891,
@@ -37615,6 +37615,70 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1816,
+      "name": "Codeforces Round 865 (Div. 2)",
+      "date": "2023-04-09",
+      "url": "https://codeforces.com/contest/1816",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1000,
+      "problems": [
+        {
+          "key": "1816A",
+          "index": "A",
+          "slot": "A",
+          "title": "Ian Visits Mary",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1816/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/114899",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "geometry",
+            "number theory"
+          ],
+          "statementBrief": "Ian 从整点 $(0,0)$ 出发，每次可沿一条线段跳到另一个整点，但线段内部不能经过其他整点；他最多跳两次到达 Mary 所在的 $(a,b)$。请输出不超过两次的合法跳跃终点序列。",
+          "transformedStatement": "将目标位移拆成两段，使每段至少有一个坐标差的绝对值为 $1$；这样的线段内部不可能包含整点，因此问题转化为寻找一个同时满足两段条件的中间整点。",
+          "keyObservations": [
+            "若一条跳跃的横坐标差为 $1$，线段内部点的横坐标都严格介于两个端点横坐标之间，不可能是整点，因此该跳跃合法。",
+            "同理，纵坐标差为 $1$ 时跳跃也一定合法；于是可将任意目标点拆成先改变纵坐标、再改变横坐标的两次跳跃。",
+            "取中间点 $(a-1,1)$，两段分别满足横坐标差为 $1$ 或纵坐标差为 $1$，所以无需计算最大公约数或优化跳数即可构造答案。"
+          ],
+          "solutionBrief": "对每组 $(a,b)$ 输出两次跳跃：先到 $(a-1,1)$，再到 $(a,b)$。第一段纵坐标差为 $1$，第二段横坐标差为 $1$，因此两段内部都没有其他整点，构造合法。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1816B",
+          "index": "B",
+          "slot": "B",
+          "title": "Grid Reconstruction",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1816/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/114899",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定一个 $2\\times n$ 网格，$n$ 为偶数，要把 $1$ 到 $2n$ 各使用一次。路径从左上角出发，只能向右或向下，直到右下角；路径代价是沿途数字按正负交替相加，要求构造网格使所有路径中的最小代价最大。",
+          "transformedStatement": "将每条路径按从上行切换到下行的列 $k$ 表示，问题转化为安排两行数字，使这些切换列对应的路径代价尽量接近，同时最大化两条极端路径代价之和。棋盘格正负贡献划分后，再通过相邻位置差为 $1$ 实现最优平衡。",
+          "keyObservations": [
+            "路径中符号由棋盘格奇偶性决定，因此应把所有正贡献格放入较大的 $n$ 个数，把负贡献格放入较小的 $n$ 个数，以同时抬高所有路径。",
+            "任一路径可由切换列 $k$ 唯一确定；相邻两条路径的代价差为 $(-1)^k(a_{1,k}-a_{2,k-1})$，让相邻对应位置差恒为 $1$，即可把所有路径代价控制在相差 $1$ 的范围内。",
+            "取两条极端路径的代价之和可得到上界 $\frac{n^2}{2}+2n-1$；构造中各路径代价交替取该上界和上界加 $1$，因此最小代价达到上界。"
+          ],
+          "solutionBrief": "按棋盘格将 $n+1$ 到 $2n$ 放在正贡献格，将 $1$ 到 $n$ 放在负贡献格，并令每对相邻切换位置满足 $a_{1,k}-a_{2,k-1}=1$。具体设置左上角为 $2n-1$、右下角为 $2n$，其余位置按列奇偶填充；所有路径的最小代价为 $\frac{n^2}{2}+2n-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
