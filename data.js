@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1270,
+    "total_problems": 1276,
     "source_total_problems": 1742,
-    "filtered_out_problems": 472,
-    "with_statement_brief": 1270,
-    "with_editorial_brief": 1055,
-    "with_solution_brief": 1056,
+    "filtered_out_problems": 466,
+    "with_statement_brief": 1276,
+    "with_editorial_brief": 1061,
+    "with_solution_brief": 1062,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 179,
+    "ai_override_count": 185,
     "primary_topic_count": 13,
-    "contest_count": 205,
+    "contest_count": 206,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 55,
-    "构造与贪心": 425,
+    "字符串": 56,
+    "构造与贪心": 427,
     "图论与网络流": 76,
     "动态规划与状态设计": 123,
-    "数论与同余": 110,
+    "数论与同余": 112,
     "组合计数与概率": 103,
     "数据结构": 94,
-    "几何": 24,
+    "几何": 25,
     "树结构": 97,
     "交互": 63,
     "基础实现与模拟": 46,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 155,
+    "ai_generated_with_editorial": 161,
     "ai_generated_partial_editorial": 9,
     "missing_editorial": 214,
     "manual_override": 891,
@@ -32933,6 +32933,198 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1979,
+      "name": "Codeforces Round 951 (Div. 2)",
+      "date": "2024-06-06",
+      "url": "https://codeforces.com/contest/1979",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1979A",
+          "index": "A",
+          "slot": "A",
+          "title": "Guess the Maximum",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1979/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/130213",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个整数数组，Alice 先选择整数 $k$，随后 Bob 选择一个长度至少为 $2$ 的连续子数组；若所选子数组的最大值严格大于 $k$，则 Alice 获胜。求 Alice 无论 Bob 如何选都能获胜的最大 $k$。",
+          "transformedStatement": "把目标转化为寻找所有合法连续区间最大值中的最小值。题解证明只需考察每一对相邻元素的最大值，取这些值的最小值 $m$，答案就是 $m-1$。",
+          "keyObservations": [
+            "对任意长度至少为 $2$ 的连续区间，其最大值所在位置必与区间内的某个相邻位置组成一对，因此该区间最大值不小于这对相邻元素的最大值。",
+            "全体区间中的最小区间最大值，等于所有相邻二元组最大值的最小值；因此只需检查 $\\max(a_i,a_{i+1})$。",
+            "若记相邻二元组最大值的最小值为 $m$，则所有可选区间的最大值都至少为 $m$，Alice 能保证严格大于 $k$ 的最大取值为 $m-1$。"
+          ],
+          "solutionBrief": "扫描所有相邻元素对，维护 $m=\\min_i\\max(a_i,a_{i+1})$，输出 $m-1$。这是因为任意合法区间的最大值都不小于某个相邻对的最大值，最坏情况恰由这些相邻对决定。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1979B",
+          "index": "B",
+          "slot": "B",
+          "title": "XOR Sequences",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1979/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/130213",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "greedy"
+          ],
+          "statementBrief": "给定不同的非负整数 $x,y$，定义无限序列 $a_i=x\\oplus(i-1)$、$b_i=y\\oplus(i-1)$。允许分别从两个序列任意位置开始截取连续片段，求两段逐项完全相同的最长长度。",
+          "transformedStatement": "把两段的起点写成 $x\\oplus v$ 与 $y\\oplus u$，并考察 $u,v$ 同时递增时等式能保持多少步。连续匹配长度只由 $x,y$ 从最低位起的连续相同位决定。",
+          "keyObservations": [
+            "若某一对位置满足 $x\\oplus v=y\\oplus u$，则递增后是否仍相等只取决于 $u,v$ 的最低位：最低位相同为 $0$ 时同步变化，相同为 $1$ 时进位后继续检查更高位，最低位不同则立刻失配。",
+            "可连续匹配的长度等于 $u,v$ 低位连续相同的位数，而这又等于 $x,y$ 低位连续相同的位数，因此问题转化为寻找 $x\\oplus y$ 的最低置位。",
+            "若 $x,y$ 的最低 $k$ 位完全相同、但第 $k$ 位不同，则恰好能匹配长度 $2^k$；扫描最低位即可直接得到答案。"
+          ],
+          "solutionBrief": "令 $k$ 为 $x,y$ 从最低位开始连续相同的位数，也就是 $x\\oplus y$ 的最低置位位置。答案为 $2^k$，逐位从低到高扫描，遇到首个不同位立即输出 $2^k$，单组复杂度为 $O(\\log C)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1979C",
+          "index": "C",
+          "slot": "C",
+          "title": "Earning on Bets",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1979/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/130213",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "combinatorics",
+            "constructive algorithms",
+            "number theory"
+          ],
+          "statementBrief": "给定 $n$ 个互斥结果及倍率 $k_i$，每个结果都必须下注正整数，且恰有一个结果发生。要求分配下注额，使任意结果发生时，该结果的下注额乘以 $k_i$ 都严格大于所有下注额之和；无解则输出 $-1$。",
+          "transformedStatement": "把总下注额记为 $S$，每项下注需满足 $x_i k_i>S$，从而先判断倒数和 $\\sum_i1/k_i$ 是否小于 $1$；再用倍率的最小公倍数作为统一返还额，直接构造整数下注。",
+          "keyObservations": [
+            "设总投注额为 $S$，第 $i$ 个结果至少要下注超过 $S/k_i$，因此可行性等价于 $\\sum_i 1/k_i<1$，把逐结果不等式统一成一个条件。",
+            "取所有 $k_i$ 的最小公倍数 $z$，令第 $i$ 项下注为 $z/k_i$，则任一结果获胜时返还额都恰为 $z$，整数性和收益比较同时得到保证。",
+            "构造后的总下注额为 $\\sum_i z/k_i$；它小于 $z$ 时满足严格盈利条件，否则由可行性判定不可构造。"
+          ],
+          "solutionBrief": "计算所有倍率的最小公倍数 $z$，令 $x_i=z/k_i$。若 $\\sum x_i<z$，输出这些下注额；否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1979D",
+          "index": "D",
+          "slot": "D",
+          "title": "Fixing a Binary String",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1979/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/130213",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "constructive algorithms",
+            "dp",
+            "greedy",
+            "hashing",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的二进制串和约数 $k$，选择 $1\\le p\\le n$，先翻转前 $p$ 个字符，再把这段移到字符串末尾，且必须恰好操作一次。要求操作后前 $k$ 个字符相同，并且相距 $k$ 的字符始终不同；输出任意可行的 $p$，无解输出 $-1$。",
+          "transformedStatement": "把字符串按连续相同字符分成若干块，目标是将其变成长度为 $k$ 的同字符块交替排列。操作的关键影响集中在末尾连续块，通过其长度与某个内部连续块拼接或切分来确定切点。",
+          "keyObservations": [
+            "$k$-proper$ 等价于前 $k$ 个字符全部相同，且任意相距 $k$ 的字符不同，因此字符串必须由交替出现的同字符长度为 $k$ 的块组成。",
+            "设末尾连续相同字符的长度为 $x$；一次操作后该末段长度不会减少，所以 $x>k$ 时不可能得到 $k$-proper 字符串。",
+            "当 $x=k$ 时，只需在某个长度超过 $k$ 的连续块中切出一个长度为 $k$ 的块；当 $x<k$ 时，目标连续块长度只能补成 $k-x$ 或 $2k-x$，因此只需按连续块检查这两种长度。",
+            "候选位置确定后直接执行操作并检查全部 $k$-proper 条件即可；连续块扫描和验证都为线性过程。"
+          ],
+          "solutionBrief": "统计末尾同字符段长度 $x$。若 $x>k$ 输出 $-1$；否则按连续块寻找能与末段拼成长度 $k$ 或 $2k$ 的切点，执行一次操作后线性验证，找到即输出切点。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1979E",
+          "index": "E",
+          "slot": "E",
+          "title": "Manhattan Triangle",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1979/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/130213",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "data structures",
+            "geometry",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定若干互不相同的平面点和偶数 $d$，要从中选出三个不同点，使任意两点的曼哈顿距离 $|x_1-x_2|+|y_1-y_2|$ 都等于 $d$。输出这三个点的下标；若不存在则输出 $0\\ 0\\ 0$。",
+          "transformedStatement": "把点按两类对角线 $x+y$ 和 $x-y$ 分组。对每个候选点，先在同一对角线上定位相距 $d$ 的固定点，再到偏移 $\u00177d$ 的对角线上的指定 $x$ 区间寻找第三点。",
+          "keyObservations": [
+            "任意合法三角形中必有一对点满足 $|x_1-x_2|=|y_1-y_2|$，因此只需枚举位于同一条 $x+y$ 或 $x-y$ 对角线上的点对。",
+            "固定点 $p=(x,y)$ 后，同一条 $x+y$ 对角线上距离为 $d$ 的候选点必为 $(x+d/2,y-d/2)$；这把二维距离条件缩成了按对角线分组后的精确坐标查找。",
+            "若第二点在 $x+y$ 对角线上，第三点只能位于和为 $x+y+d$ 或 $x+y-d$ 的对角线，并且其 $x$ 坐标分别落在 $[x+d/2,x+d]$ 或 $[x-d/2,x]$ 内；区间条件正好保证另外两段距离也是 $d$。",
+            "同时检查 $x+y$ 与 $x-y$ 两种对角线方向即可覆盖几何引理给出的所有可能，按对角线维护有序点集后可用边界查找在线性次方时间内完成。"
+          ],
+          "solutionBrief": "分别按 $x+y$、$x-y$ 分组。对每个点查找同组中坐标差为 $(d/2,-d/2)$ 的点，再在相邻对角线的指定 $x$ 区间内查找第三点；找到即输出，否则输出 $0\\ 0\\ 0$。总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1979F",
+          "index": "F",
+          "slot": "F",
+          "title": "Kostyanych's Theorem",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1979/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/130213",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "交互"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "graphs",
+            "interactive"
+          ],
+          "statementBrief": "给定一个由 $n$ 个顶点组成的完全无向图，恰好删除了 $n-2$ 条边。程序每次可通过询问参数 $d$ 获取交互返回信息，最多询问 $n$ 次，最后输出一个经过每个顶点恰好一次的 Hamilton 路径。",
+          "transformedStatement": "把问题递归化为：对一个含 $n$ 个顶点且至多缺失 $n-2$ 条边的图维护路径两端。根据高阶顶点的度数，将其单点接到递归路径端点，或删除一个全邻点和一个低度点后进行两点拼接。",
+          "keyObservations": [
+            "当前含有 $n$ 个顶点且至多缺失 $n-2$ 条边时，至少存在一个顶点的度数大于 $n-3$，因此必有度数为 $n-2$ 或 $n-1$ 的顶点可供递归处理。",
+            "若顶点 $v$ 的度数为 $n-2$，它只缺少一个邻点；递归得到剩余图的路径后，$v$ 必能接在路径首端或尾端。",
+            "若存在度数为 $n-1$ 的顶点 $u$，同时选取度数不超过 $n-3$ 的顶点 $w$，删除二者后仍满足同类缺边上界，可递归求路径并拼成 $w-u-$剩余路径。",
+            "询问 $d=n-2$ 可区分度数为 $n-2$ 与 $n-1$ 的情形；后一情形再用 $d=0$ 找到低度数顶点，整个递归过程的询问总数不超过 $n$。"
+          ],
+          "solutionBrief": "维护当前 Hamilton 路径的首尾。用 $d=n-2$ 判断并取出高阶顶点：度数为 $n-2$ 时递归删去一个顶点并接到路径端点；度数为 $n-1$ 时再找低度数顶点，删去两点后递归，并按 $w-u-$剩余路径拼接。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
