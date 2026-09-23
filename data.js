@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1342,
+    "total_problems": 1348,
     "source_total_problems": 1742,
-    "filtered_out_problems": 400,
-    "with_statement_brief": 1342,
-    "with_editorial_brief": 1122,
-    "with_solution_brief": 1123,
+    "filtered_out_problems": 394,
+    "with_statement_brief": 1348,
+    "with_editorial_brief": 1128,
+    "with_solution_brief": 1129,
     "missing_editorial_brief": 219,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 275,
+    "ai_override_count": 281,
     "primary_topic_count": 13,
-    "contest_count": 211,
+    "contest_count": 212,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 58,
-    "构造与贪心": 440,
+    "构造与贪心": 442,
     "图论与网络流": 80,
     "动态规划与状态设计": 131,
     "数论与同余": 119,
     "组合计数与概率": 105,
-    "数据结构": 100,
+    "数据结构": 101,
     "几何": 29,
-    "树结构": 99,
-    "交互": 66,
+    "树结构": 101,
+    "交互": 67,
     "基础实现与模拟": 56,
     "博弈": 47,
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 218,
+    "ai_generated_with_editorial": 224,
     "ai_generated_partial_editorial": 13,
     "missing_editorial": 219,
     "manual_override": 891,
@@ -37615,6 +37615,201 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1797,
+      "name": "Codeforces Round 864 (Div. 2)",
+      "date": "2023-04-08",
+      "url": "https://codeforces.com/contest/1797",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1797A",
+          "index": "A",
+          "slot": "A",
+          "title": "Li Hua and Maze",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1797/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/114890",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "flows",
+            "graphs",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个全部为空的 $n\\times m$ 网格和两个端点，允许在除端点外的任意格子放置障碍。要求放置尽可能少的障碍，使两个端点之间不存在经过相邻空格的路径。",
+          "transformedStatement": "将问题转化为计算两个端点的局部连通度：角落、边界非角落和内部端点分别需要切断 $2$、$3$、$4$ 个独立方向；围住任一端点后取两者较小值。",
+          "keyObservations": [
+            "端点周围可放置的相邻格数量只由位置决定：角落为 $2$，边界非角落为 $3$，内部为 $4$。",
+            "把障碍全部放在某个端点的相邻格上，就能直接孤立该端点，因此答案至多是两个端点对应数量的较小值。",
+            "从一个角落、边界或内部端点到另一个端点，分别总能找到 $2$、$3$ 或 $4$ 条除端点外互不共享格子的路径；每条路径都必须被至少一个障碍截断，故该数量也是下界。",
+            "因此最小障碍数等于两个端点位置类别值的最小值，只需按坐标是否位于边界判断即可。"
+          ],
+          "solutionBrief": "定义位置函数 $f$：角落为 $2$，边界非角落为 $3$，内部为 $4$。分别计算两个端点的 $f$ 值并取最小值；这是围住其中一个端点的构造，也是由互不相交路径得到的下界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1797B",
+          "index": "B",
+          "slot": "B",
+          "title": "Li Hua and Pattern",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1797/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/114890",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 的 0/1 方格，每次操作可任选一个格子并翻转颜色，且必须恰好操作 $k$ 次。判断能否使最终方格与其旋转 $180^\\circ$ 后完全相同；同一格子可以被重复操作。",
+          "transformedStatement": "把方格按 $180^\\circ$ 旋转划分为对应格子对，并要求每对最终颜色相同；不一致的非中心对需要一次最小修正，剩余操作则受棋盘是否存在中心格子的奇偶性限制。",
+          "keyObservations": [
+            "将每个格子与旋转后的对应格子配成一对；颜色不同的对至少需要翻转一次，统计这些不一致对即可得到最少操作数 $k_{min}$。",
+            "若 $k<k_{min}$，即使每个不一致位置都以最优方式修正也不够，因此一定无法完成目标。",
+            "当 $n$ 为偶数时不存在中心格子，额外操作只能成对作用于同一格子或一对格子，故必须满足 $(k-k_{min})\\bmod 2=0$。",
+            "当 $n$ 为奇数时存在中心格子，剩余操作可反复翻转中心格子，因此只要 $k\\ge k_{min}$ 就能恰好完成操作次数。"
+          ],
+          "solutionBrief": "遍历旋转对应的格子对，统计颜色不同的对数作为最少操作数。若 $k<k_{min}$ 则输出 NO；否则偶数阶要求剩余操作为偶数，奇数阶总能利用中心格子补足操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1797C",
+          "index": "C",
+          "slot": "C",
+          "title": "Li Hua and Chess",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1797/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/114890",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "interactive"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 棋盘，国王初始位置未知；每次可选择一个格子，询问国王到该格子的最少步数，且最多询问三次、各次询问互不改变位置。根据返回的距离确定并输出国王的初始坐标。",
+          "transformedStatement": "把从 $(1,1)$ 的国王距离看作 $\u0000$max(r-1,c-1)$：第一次距离确定其所在的正方形边界，再用该边界上的两个角点距离区分竖直边、水平边和共同端点。",
+          "keyObservations": [
+            "第一次询问 $(1,1)$ 得到 $k$ 后，国王必须位于以 $(1,1)$ 为角点、边长为 $k+1$ 的正方形边界上，即两条相交线段的并集，候选位置大幅减少。",
+            "询问 $(1,k+1)$ 得到 $p$ 时，若 $p<k$，候选只能是 $(p+1,k+1)$；这是因为该线段上到询问点的距离恰好等于行坐标减一。",
+            "对称地，询问 $(k+1,1)$ 得到 $q$ 时，若 $q<k$，国王位置唯一确定为 $(k+1,q+1)$。",
+            "若 $p=q=k$，两个询问点都只能与正方形右下角保持距离 $k$，因此国王位于 $(k+1,k+1)$。"
+          ],
+          "solutionBrief": "先询问 $(1,1)$ 得到 $k$，将位置限制在两条正方形边界线段上；再询问 $(1,k+1)$ 和 $(k+1,1)$，根据返回值分别定位到竖直或水平线段，若两值都为 $k$ 则答案是 $(k+1,k+1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1797D",
+          "index": "D",
+          "slot": "D",
+          "title": "Li Hua and Tree",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1797/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/114890",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根、每个节点带有重要性的树。操作 1 查询节点 $x$ 当前子树的重要性；操作 2 将 $x$ 的重儿子旋转到 $x$ 的位置并更新树结构，要求输出所有查询的子树重要性。",
+          "transformedStatement": "把每次旋转视为局部父子交换：节点 $x$ 与其按子树大小最大且编号最小的儿子交换父子关系。由于只有局部三个相关子树会变化，可维护子树大小、重要性和每个节点的儿子有序集合。",
+          "keyObservations": [
+            "一次旋转只改变原父节点、被旋转节点及其重儿子三者的子树结构，因此只需局部更新这几个点的子树大小和重要性。",
+            "重儿子由子树大小最大决定，平局取编号最小；为每个节点维护所有儿子的“子树大小、编号”有序集合，即可快速找到当前重儿子。",
+            "旋转后只有局部父子关系发生交换，其他节点的子树信息保持不变，因此每次操作可以在局部完成更新，而无需重新遍历整棵树。"
+          ],
+          "solutionBrief": "先 DFS 计算父子关系、子树大小和重要性，并为每个节点维护按子树大小及编号排序的儿子集合。查询直接返回子树重要性；旋转时将节点与其重儿子交换父子关系，只更新受影响节点及相关集合，复杂度为 $O((n+m)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1797E",
+          "index": "E",
+          "slot": "E",
+          "title": "Li Hua and Array",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1797/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/114890",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dsu",
+            "math",
+            "number theory",
+            "two pointers"
+          ],
+          "statementBrief": "给定数组和欧拉函数 $\u0000varphi$。类型 $1$ 操作会把区间内每个数替换为 $\u0000varphi(x)$ 一次；类型 $2$ 操作要求计算把该区间所有数变成同一个数所需的最少替换次数。",
+          "transformedStatement": "将数值映射为以 $1$ 为根、父节点为 $\u0000varphi(x)$ 的树；每次替换沿父边上移，区间统一的最优目标是所有节点的最近公共祖先，答案为深度和减去该祖先深度。",
+          "keyObservations": [
+            "把每个数看成树上节点、其父节点为 $\u0000varphi(x)$，一次修改就是向根 $1$ 走一步，因此区间统一后的目标必须是所有节点的公共祖先。",
+            "所有节点的最优公共祖先是它们的 LCA；区间答案等于各节点深度之和减去区间 LCA 的深度，从而将修改次数转化为树上聚合。",
+            "每个元素最多成功执行 $\u0000Phi(a_i)$ 次，其中 $\u0000Phi(x)$ 是到达 $1$ 所需的步数，因此全局成功修改次数为 $O(n\":",
+            "primary_topic"
+          ],
+          "solutionBrief": "预处理 $\u0000varphi$ 和函数树的倍增祖先，在线段树中维护区间深度和、LCA 及相关信息。用并查集跳过已经变成 $1$ 的位置；区间修改只处理仍可下降的元素并做点更新，查询通过线段树合并。总复杂度为 $O(w\\log\\log w+n\\log n\\log w\\log\\log w+m\\log n\\log\\log w)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1797F",
+          "index": "F",
+          "slot": "F",
+          "title": "Li Hua and Path",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1797/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/114890",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "divide and conquer",
+            "dsu",
+            "trees"
+          ],
+          "statementBrief": "给定一棵编号为 $1$ 到 $n$ 的树。对 $u<v$，若“$u$ 是路径上的最小编号顶点”和“$v$ 是路径上的最大编号顶点”恰好有一个成立，则称该点对可爱。每次把新编号 $n+j$ 的顶点作为叶子连接到已有顶点 $k_j$，输出初始及每次添加后的可爱点对数量。",
+          "transformedStatement": "把原树分别按路径最小编号和最大编号建立两棵重构树：min-RT 与 max-RT，使对应路径条件转化为祖先关系。答案变成两类祖先关系数量的容斥，并在线维护新增最大编号叶子带来的贡献。",
+          "keyObservations": [
+            "对一对顶点 $u<v$，条件 I 等价于 $u$ 是路径上的最小编号顶点，条件 II 等价于 $v$ 是路径上的最大编号顶点；因此答案可用容斥写成 $K=A+B-2C$。",
+            "在 min-RT 中，$\\operatorname{LCA}(u,v)$ 是原树路径上的最小编号；在 max-RT 中，$\\operatorname{LCA}(u,v)$ 是路径上的最大编号，从而 I、II 分别转化为两个重构树中的祖先关系。",
+            "满足 I 且 II 的点对同时满足“$u$ 是 min-RT 中 $v$ 的祖先”和“$v$ 是 max-RT 中 $u$ 的祖先”；将两棵树的 DFS 序结合 Fenwick 树即可统计交集 $C$。",
+            "新增顶点的编号最大，因此所有以它为端点的路径自动满足 II；只需在 min-RT 中统计其中不满足 I 的路径，并据此增量更新答案。"
+          ],
+          "solutionBrief": "建立 min-RT 和 max-RT，使路径最小编号与最大编号分别对应 LCA。用两棵重构树的深度统计 $A、B$，用 DFS 序和 Fenwick 树统计同时满足两条件的 $C$，通过 $K=A+B-2C$ 得到答案；新增最大编号叶子时只需增量处理相关路径。总复杂度为 $O((n+m)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
