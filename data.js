@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1449,
+    "total_problems": 1455,
     "source_total_problems": 1742,
-    "filtered_out_problems": 293,
-    "with_statement_brief": 1449,
-    "with_editorial_brief": 1224,
-    "with_solution_brief": 1225,
+    "filtered_out_problems": 287,
+    "with_statement_brief": 1455,
+    "with_editorial_brief": 1230,
+    "with_solution_brief": 1231,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 383,
+    "ai_override_count": 389,
     "primary_topic_count": 13,
-    "contest_count": 231,
+    "contest_count": 232,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 474,
+    "构造与贪心": 475,
     "图论与网络流": 88,
     "动态规划与状态设计": 140,
-    "数论与同余": 130,
+    "数论与同余": 133,
     "组合计数与概率": 113,
     "数据结构": 112,
     "几何": 32,
     "树结构": 105,
     "交互": 69,
     "基础实现与模拟": 59,
-    "博弈": 52,
-    "代数、矩阵与多项式": 13
+    "博弈": 53,
+    "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 318,
+    "ai_generated_with_editorial": 324,
     "ai_generated_partial_editorial": 15,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37352,6 +37352,195 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1848,
+      "name": "Codeforces Round 885 (Div. 2)",
+      "date": "2023-07-16",
+      "url": "https://codeforces.com/contest/1848",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1848A",
+          "index": "A",
+          "slot": "A",
+          "title": "Vika and Her Friends",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1848/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/118333",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "games",
+            "math"
+          ],
+          "statementBrief": "商场是 $n\\times m$ 网格，Vika 每分钟先移动到相邻房间，随后每位朋友都能看到她的选择并移动到相邻房间；若移动结束后有人与她同室，Vika 被抓住。判断 Vika 能否永远逃脱。",
+          "transformedStatement": "把网格按坐标和的奇偶性进行棋盘染色，将相遇可能性转化为颜色关系：每次移动都会换色，因此初始同色与否决定是否存在可永远逃脱的策略。",
+          "keyObservations": [
+            "将棋盘按 $(a+b)\\bmod 2$ 染成两色；每次移动都会改变颜色，因此 Vika 与朋友的颜色关系保持不变。",
+            "若存在同色朋友，可用“到 Vika 的曼哈顿距离、相对区域”构成字典序势能；朋友每回合都能让其严格下降，最终距离变为零并抓住 Vika。"
+          ],
+          "solutionBrief": "按棋盘黑白染色检查 Vika 与每位朋友的颜色。若所有朋友都与她异色，双方每步换色且永远不会相遇；只要有一位同色朋友，该朋友可通过追逐策略在有限时间内抓住她。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1848B",
+          "index": "B",
+          "slot": "B",
+          "title": "Vika and the Bridge",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1848/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/118333",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "implementation",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "桥由 $n$ 块木板组成，每块已涂成 $k$ 种颜色之一。她可以把至多一块木板重新涂色，然后选择一种颜色，只踩这种颜色的木板从桥头走到桥尾；相邻所踩木板之间以及两端的未踩木板数量构成每一步长度，要求最小化其中最大的一步。",
+          "transformedStatement": "对每种候选颜色，把其木板位置排序，并把桥头、桥尾加入位置序列；问题转化为选择一次颜色并切分它的一个间隔，使所有间隔中的最大值尽可能小。最优操作只需切分该颜色的最长间隔。",
+          "keyObservations": [
+            "对固定颜色，所有可走步长就是该颜色相邻木板之间以及桥两端形成的间隔；只需记录其中最大的两个间隔即可概括该颜色的最优结果。",
+            "把某块木板重新漆成颜色 $c$ 时，应将它放在颜色 $c$ 的最长间隔中间；否则最长间隔仍然存在，答案不会改善。",
+            "设最长间隔为 $L$、次长间隔为 $S$，切分最长间隔后其最小可能最大步长为 $\\lceil L/2\\rceil$，因此颜色 $c$ 的答案是 $\\max(\\lceil L/2\\rceil,S)$。",
+            "分别计算每种颜色的候选答案后取最小值，因为最终可以选择任意一种颜色作为跨桥时踩踏的颜色。"
+          ],
+          "solutionBrief": "单次扫描数组，记录每种颜色上一次出现的位置，并更新其相邻出现位置之间的最大、次大间隔。对每种颜色计算 $\\max(\\lceil L/2\\rceil,S)$，再取所有颜色中的最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1848C",
+          "index": "C",
+          "slot": "C",
+          "title": "Vika and Price Tags",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1848/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/118333",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定两个非负整数数组 $a,b$，每次用 $c_i=|a_i-b_i|$ 生成新数组，再同时令原 $b$ 变为 $a$、$c$ 变为 $b$，重复该操作。判断经过若干次操作后，数组 $a$ 是否能所有元素都变为零。",
+          "transformedStatement": "将每个下标独立看成数对 $(a_i,b_i)$ 的差分迭代，核心不是模拟完整序列，而是计算该位置首次出现零所需步数对 $3$ 的余数，并要求所有位置的余数相同。",
+          "keyObservations": [
+            "对单个位置考察数对 $(a_i,b_i)$：只要不同时为零，迭代中的两个数之和会严格下降，因此有限步后必有一个数变为零。",
+            "某个位置第一次出现零后，零会以周期 $3$ 在两个数组之间交替出现；所以所有位置第一次出现零的操作次数对 $3$ 同余，当且仅当整个数组对最终能让数组 $a$ 全为零。",
+            "第一次出现零之前的非零数等于 $gcd(a_i,b_i)$；除以该最大公因数后，末尾相邻数为 $1$ 和 $0$，从末尾反推时奇偶模式按 $(0,1,1)$ 周期重复。",
+            "因此每个非零数对的操作次数模 $3$ 只由 $(a_i/g,b_i/g)$ 的奇偶性决定，其中 $g=gcd(a_i,b_i)$；逐位置计算这个余数并检查是否全部相同即可。"
+          ],
+          "solutionBrief": "对每个位置先处理 $(0,0)$，其余位置令 $g=gcd(a_i,b_i)$，考察 $a_i/g,b_i/g$ 的奇偶性，从而得到首次出现零的操作次数模 $3$。若所有位置的余数一致则输出 YES，否则输出 NO；每个位置通过最大公因数和取模计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1848D",
+          "index": "D",
+          "slot": "D",
+          "title": "Vika and Bonuses",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1848/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/118333",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "几何",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "math",
+            "ternary search"
+          ],
+          "statementBrief": "Vika 当前有 $s$ 个奖金，还会购物 $k$ 次。每次付款前，她可以将当前全部奖金兑换为同等金额折扣，或不兑换并按当前奖金数个位增加奖金；要求安排每次选择，使总折扣最大。",
+          "transformedStatement": "把策略重述为“先积累、后兑换”：积累阶段只改变奖金数，兑换阶段每次获得固定的当前奖金。积累时个位在 $2,4,8,6$ 间循环，四步增加 $20$，从而将问题化为最大化二次式 $(b+20x)(a-x)$。",
+          "keyObservations": [
+            "最优策略一定是先连续积累奖金、之后连续兑换折扣；若在积累后又兑换再积累，交换这两段操作不会变差，因此策略只需由一个分界点决定。",
+            "奖金数的个位若变为 $0$，继续积累每次增加量都为 $0$；否则积累时个位按 $2\\to4\\to8\\to6\\to2$ 循环，四次积累恰好使奖金总数增加 $20$。",
+            "固定进入循环的个位后，先模拟少量积累操作到达该个位；若此时有 $b$ 个奖金、剩余 $a$ 次购买，并完整循环 $x$ 次，则奖金变为 $b+20x$，随后兑换次数为 $a-x$，总折扣为 $(b+20x)(a-x)$。",
+            "上述总折扣关于 $x$ 是开口向下的二次函数，因此只需在顶点附近寻找最优循环次数，并与完全不积累奖金的方案比较。"
+          ],
+          "solutionBrief": "先考虑始终兑换折扣的方案。对每个可能的循环个位，模拟到达该个位所需的积累操作，再令完整循环次数为 $x$，计算 $(b+20x)(a-x)$，在二次函数顶点附近取最优值，并与直接兑换方案取最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1848E",
+          "index": "E",
+          "slot": "E",
+          "title": "Vika and Stone Skipping",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1848/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/118333",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "石头的力度为正整数 $f$ 时，落点间距依次为 $f,f-1,\\ldots,1$，所有落点坐标是这些间距的前缀和。要求最大化使用不同力度、且最终落在坐标 $X$ 的石头数量，并依次回答 $X=x\\cdot x_1\\cdot\\ldots\\cdot x_i$ 的答案。",
+          "transformedStatement": "将一次投掷重述为把 $X$ 表示成若干个连续正整数之和；不同的合法表示与 $X$ 的奇因子一一对应，因此问题转化为动态维护当前坐标的奇因子数量。",
+          "keyObservations": [
+            "长度为偶数的连续正整数和可写成 $p(2k+1)$，其中奇因子对应前半段长度，正性条件保证分解有效。",
+            "长度为奇数时，连续正整数和可写成 $(2k+1)p$，正性条件与偶数长度情形互补，因此每个奇因子唯一对应一种投掷方案。",
+            "坐标 $x$ 的答案等于 $x$ 的奇因子数量；若 $x=\\prod p_i^{e_i}$，只需计算奇素数幂次并令答案为 $\\prod(e_i+1)$。",
+            "坐标只会不断乘上给定因子，因此维护当前质因子幂次并按预处理分解结果更新，即可快速处理每次变化。"
+          ],
+          "solutionBrief": "把每种合法投掷方案与坐标的一个奇因子建立一一对应，答案就是当前坐标的奇因子数量。预处理 $1$ 到 $10^6$ 的质因数分解；每次乘入 $x_i$ 后更新各奇素数的幂次，并输出所有 $(e+1)$ 的乘积。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1848F",
+          "index": "F",
+          "slot": "F",
+          "title": "Vika and Wiki",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1848/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/118333",
+          "primaryTopic": "代数、矩阵与多项式",
+          "secondaryTopics": [
+            "构造与贪心",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "combinatorics",
+            "divide and conquer",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $2^k$ 的非负整数环形数组。每次操作同时令 $a_i$ 变为 $a_i\\oplus a_{(i+1)\\bmod n}$，重复操作直到数组全为零，要求首次达到全零所需的最少操作次数；若永远无法达到则输出 $-1$。",
+          "transformedStatement": "把经过若干次操作后的数组表示为初始数组与循环移位数组的逐项异或：经过 $2^t$ 次后，元素 $i$ 只与偏移 $2^t$ 的初始元素有关。由此按数组长度二分，判断前后两半是否相同，并递归缩小到前半段。",
+          "keyObservations": [
+            "经过 $2^t$ 次操作后，第 $i$ 个元素等于初始的 $a_i\\oplus a_{(i+2^t)\\bmod n}$，因为递推展开后中间项会两两异或抵消。",
+            "经过 $n=2^k$ 次操作后，偏移量回到自身，所以所有元素必为零；答案一定存在且不超过 $n$。",
+            "若初始数组满足前后两半逐项相等，则执行 $n/2$ 次后已全为零，原问题等价于只在前半段上求答案。",
+            "若前后两半不相等，答案不可能小于 $n/2$；先将每个位置替换为两半对应元素的异或，再在前半段递归求剩余步数，最后加上 $n/2$。"
+          ],
+          "solutionBrief": "递归处理当前长度为 $2^k$ 的数组。检查两半是否逐项相等；若相等，只递归前半段，否则先令 $a_i\\leftarrow a_i\\oplus a_{i+n/2}$，再递归前半段并加上 $n/2$。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
