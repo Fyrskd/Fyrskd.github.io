@@ -494,9 +494,43 @@
       elements.detailPanel.innerHTML = '<div class="detail-empty">选择一道题查看题意、转换和关键观察。</div>';
       return;
     }
+    const transformationHtml = problem.transformedStatement
+      ? `
+        <details class="detail-section detail-disclosure">
+          <summary>转换</summary>
+          <div class="detail-section-body">
+            <p>${escapeHtml(problem.transformedStatement)}</p>
+          </div>
+        </details>
+      `
+      : "";
     const observationHtml = problem.keyObservations.length
-      ? `<ul class="observations">${problem.keyObservations.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
-      : '<p class="muted">本地题解正文不足，未补写关键观察。</p>';
+      ? `
+        <section class="detail-section">
+          <h3>关键观察</h3>
+          <div class="observations">${problem.keyObservations
+            .map(
+              (item, index) => `
+                <details class="observation-hint">
+                  <summary>提示 ${index + 1}</summary>
+                  <p>${escapeHtml(item)}</p>
+                </details>
+              `,
+            )
+            .join("")}</div>
+        </section>
+      `
+      : "";
+    const solutionHtml = problem.solutionBrief
+      ? `
+        <details class="detail-section detail-disclosure">
+          <summary>简要题解</summary>
+          <div class="detail-section-body">
+            <p>${escapeHtml(problem.solutionBrief)}</p>
+          </div>
+        </details>
+      `
+      : "";
     const tags = [problem.primaryTopic, ...(problem.secondaryTopics || [])];
     const solvedHandles = solvedHandlesFor(problem.key);
     elements.detailPanel.innerHTML = `
@@ -522,18 +556,9 @@
           <h3>题意</h3>
           <p>${escapeHtml(problem.statementBrief)}</p>
         </section>
-        <section class="detail-section">
-          <h3>转换</h3>
-          <p>${escapeHtml(problem.transformedStatement)}</p>
-        </section>
-        <section class="detail-section">
-          <h3>关键观察</h3>
-          ${observationHtml}
-        </section>
-        <section class="detail-section">
-          <h3>简要题解</h3>
-          <p>${escapeHtml(problem.solutionBrief)}</p>
-        </section>
+        ${transformationHtml}
+        ${observationHtml}
+        ${solutionHtml}
         <section class="detail-section">
           <h3>原始标签</h3>
           <p>${escapeHtml((problem.originalTags || []).join(", ") || "无")}</p>

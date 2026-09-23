@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1472,
+    "total_problems": 1478,
     "source_total_problems": 1742,
-    "filtered_out_problems": 270,
-    "with_statement_brief": 1472,
-    "with_editorial_brief": 1247,
-    "with_solution_brief": 1248,
+    "filtered_out_problems": 264,
+    "with_statement_brief": 1478,
+    "with_editorial_brief": 1253,
+    "with_solution_brief": 1254,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 406,
+    "ai_override_count": 412,
     "primary_topic_count": 13,
-    "contest_count": 236,
+    "contest_count": 237,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -46,20 +46,20 @@ window.CF_INSIGHTS_DATA = {
   "topicCounts": {
     "字符串": 62,
     "构造与贪心": 482,
-    "图论与网络流": 89,
-    "动态规划与状态设计": 144,
-    "数论与同余": 135,
+    "图论与网络流": 90,
+    "动态规划与状态设计": 146,
+    "数论与同余": 136,
     "组合计数与概率": 113,
     "数据结构": 114,
     "几何": 32,
-    "树结构": 105,
+    "树结构": 106,
     "交互": 69,
-    "基础实现与模拟": 60,
+    "基础实现与模拟": 61,
     "博弈": 53,
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 340,
+    "ai_generated_with_editorial": 346,
     "ai_generated_partial_editorial": 16,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37352,6 +37352,193 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1856,
+      "name": "Codeforces Round 890 (Div. 2) supported by Constructor Institute",
+      "date": "2023-08-05",
+      "url": "https://codeforces.com/contest/1856",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1856A",
+          "index": "A",
+          "slot": "A",
+          "title": "Tales of a Sort",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1856/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/119058",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定一个正整数数组，每次操作把所有元素各减少 $1$，但不允许减到负数，即替换为 $\\max(0,a_i-1)$；重复操作直到数组满足非递减关系。求最终需要执行的操作次数。",
+          "transformedStatement": "执行 $k$ 次操作后的数组可直接表示为 $b_i=\\max(0,a_i-k)$。问题转化为寻找最小的 $k$，使所有相邻位置都满足 $\\max(0,a_i-k)\\le\\max(0,a_{i+1}-k)$。",
+          "keyObservations": [
+            "进行 $k$ 次操作后，每个元素都统一变为 $\\max(0,a_i-k)$，因此无需逐次模拟数组。",
+            "若相邻元素原本满足 $a_i\\le a_{i+1}$，操作后始终满足不等关系；只有下降位置 $a_i>a_{i+1}$ 需要 $k\\ge a_i$。",
+            "所有下降位置必须同时被消除，所以答案是所有满足 $a_i>a_{i+1}$ 的 $a_i$ 的最大值；没有下降时答案为 $0$。"
+          ],
+          "solutionBrief": "扫描所有相邻位置，记录左值大于右值时的最大左值。该最大值就是需要执行的操作次数；若数组已有序则输出 $0$。复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1856B",
+          "index": "B",
+          "slot": "B",
+          "title": "Good Arrays",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1856/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/119058",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的正整数数组 $a$，要判断能否构造正整数数组 $b$：保持元素总和不变，并让每个位置都满足 $b_i\\ne a_i$。每个测试用例输出是否存在这样的 good 数组。",
+          "transformedStatement": "问题等价于判断能否在保持总和的前提下，把每个位置都改动至少 $1$：等于 $1$ 的位置只能增加，其他位置必须提供足够的减少量，同时所有结果仍要保持正数。",
+          "keyObservations": [
+            "把每个等于 $1$ 的元素视为必须增加至少 $1$ 的位置，其余元素需要承担对应的减少量，因此总和至少要达到 $n+cnt_1$。",
+            "当 $cnt_1\\le n/2$ 时，可将所有 $1$ 增加 $1$，再从同样数量的非 $1$ 元素各减 $1$，剩余元素按统一转移处理。",
+            "当 $cnt_1>n/2$ 时，增加所有 $1$，并让每个非 $1$ 元素至少减少 $1$，即可保证所有位置都改变；总和条件保证这些减少可行。",
+            "除了长度为 $1$ 的数组外，满足总和至少为 $n+cnt_1$ 就一定能构造出符合条件的数组，因此判定只需统计 $1$ 的数量和数组总和。"
+          ],
+          "solutionBrief": "统计数组总和 $S$ 以及等于 $1$ 的元素个数 $cnt_1$。当 $n=1$ 或 $S<n+cnt_1$ 时输出 NO，否则输出 YES；逐个测试用例线性计算即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1856C",
+          "index": "C",
+          "slot": "C",
+          "title": "To Become Max",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1856/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/119058",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "给定数组，每次可选择一个满足 $a_i\\le a_{i+1}$ 的位置 $i<n$，将 $a_i$ 增加 $1$，最多操作 $k$ 次。求操作后数组中最大元素可能达到的最大值。",
+          "transformedStatement": "把问题改写为判定某个阈值 $x$ 是否可达：枚举最终达到 $x$ 的位置，并用右侧位置逐级提供操作条件，计算将该位置提升到 $x$ 的最小操作数；再利用阈值可行性的单调性二分答案。",
+          "keyObservations": [
+            "若要把位置 $i$ 提高到 $y>a_i$，后缀位置 $i+1$ 必须先能达到至少 $y-1$，因此代价满足 $f(i,y)=y-a_i+f(i+1,y-1)$。",
+            "位置 $n$ 没有右邻居，无法继续通过操作提升；所以当 $y>a_n$ 时，$f(n,y)=+\u0010fty$，目标位置必须依赖右侧连续传递。",
+            "判定目标值 $x$ 时，只需枚举最终成为最大值的下标 $i$，检查是否存在 $f(i,x)\\le k$；该可行性随 $x$ 单调变化，因此可二分答案。"
+          ],
+          "solutionBrief": "二分最终最大值 $x$。对每个位置计算将其提升到 $x$ 所需的最少操作数：若当前值不足，就支付提升差值，并递归要求右邻位置达到至少低 $1$ 的值；任一位置代价不超过 $k$ 即判定可行。单次判定为 $O(n^2)$，总复杂度为 $O(n^2\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1856D",
+          "index": "D",
+          "slot": "D",
+          "title": "More Wrong",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1856/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/119058",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "交互",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "divide and conquer",
+            "interactive"
+          ],
+          "statementBrief": "评测机隐藏一个长度为 $n$ 的排列。每次可查询下标区间 $[l,r]$ 的逆序对数量，费用为 $(r-l)^2$；在总费用不超过 $5n^2$ 的限制下，找出排列中最大元素所在的下标。",
+          "transformedStatement": "把目标转化为递归求任意区间的最大值位置。合并左右区间时，取右半最大值位置 $j$，通过比较加入 $p_j$ 前后的前缀逆序对数量，判断 $p_j$ 是否超过左半全部元素。",
+          "keyObservations": [
+            "将区间最大值位置递归分成左右两半；设右半最大值位置为 $j$，只需比较 $q(l,j-1)$ 与 $q(l,j)$ 即可判断它是否大于左半所有元素。",
+            "加入位置 $j$ 后逆序对数量不可能减少，因此 $q(l,j-1)>q(l,j)$ 不会发生；相等表示没有左半元素与 $p_j$ 形成逆序对，严格增加则说明左半最大值更大。",
+            "每层递归的两次查询费用至多为 $2(r-l)^2$，结合左右子区间递归费用，可归纳得到总费用 $g_n\\le4n^2$，低于题目的 $5n^2$ 上限。",
+            "递归只需处理每个区间的左右子区间并在合并时进行两次查询，总查询相关工作量为 $O(n)$。"
+          ],
+          "solutionBrief": "定义 $q(l,r)$ 为区间逆序对数、$f(l,r)$ 为区间最大值位置。递归求左右最大值，令右侧最大值位置为 $j$，比较 $q(l,j-1)$ 和 $q(l,j)$：相等则选 $j$，否则选左侧最大值。归纳证明总费用不超过 $4n^2$，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1856E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "PermuTree (easy version)",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1856/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/119058",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根的树，要把 $1$ 到 $n$ 的不同整数分配给各顶点。对每个顶点对 $(u,v)$，若其最近公共祖先为 $x$ 且满足 $a_u<a_x<a_v$，则计数一次；求所有排列中的最大计数。",
+          "transformedStatement": "把每个顶点 $x$ 的贡献独立看成不同子树之间的交叉计数：对第 $i$ 个子树只决定其中有多少个值低于 $a_x$，再用按子树合并的背包 DP 最大化该顶点贡献，最后证明这些局部选择可通过递归分配值集合同时实现。",
+          "keyObservations": [
+            "固定顶点 $x$ 作为 LCA 后，每个子树只需记录其中有多少个点满足 $a_v<a_x$，具体排列顺序不再影响该顶点贡献。",
+            "若第 $i$ 个子树大小为 $s_i$、其中有 $b_i$ 个较小值，则它与前面子树产生的贡献为 $b_i(S_{i-1}-(B-b_i))+(s_i-b_i)(B-b_i)$，因此可按子树逐个合并总计数。",
+            "状态 $dp[i][B]$ 只保留前 $i$ 个子树且较小值总数为 $B$ 时的最大贡献，枚举当前子树的 $b_i$ 即可覆盖所有合法分配。",
+            "各顶点分别求出的最优上界可以同时实现：递归分配互不相交的值集合，先给子树分配较小值、再给当前点、最后分配较大值，从而保持每个子树所需的 $b_i$。"
+          ],
+          "solutionBrief": "对每个顶点枚举其子树中小于自身值的数量，用 $dp[i][B]$ 合并子树并求最大贡献；所有顶点答案相加。递归按最小值、顶点值、较大值分配集合，可同时实现这些局部最优，整体复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1856E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "PermuTree (hard version)",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1856/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/119058",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dfs and similar",
+            "dp",
+            "fft",
+            "greedy",
+            "implementation",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根的树，为每个顶点赋予 $1$ 到 $n$ 的一个排列。统计满足 $a_u<a_{\\operatorname{lca}(u,v)}<a_v$ 的顶点对数量，并通过选择排列使该数量最大。",
+          "transformedStatement": "对每个可能的最低公共祖先 $x$ 独立计数：把 $x$ 的各个子树整体划分到“低于 $a_x$”或“高于 $a_x$”两侧，贡献是两侧大小之积；于是问题转为各子树大小的子集和逼近总和一半。",
+          "keyObservations": [
+            "固定一个顶点 $x$ 作为最低公共祖先后，各子树中低于 $a_x$ 的顶点数量只影响跨子树配对，所有顶点的贡献可以按 $x$ 独立求和。",
+            "对每个子树，最优方案总能把其中低于 $a_x$ 的顶点数取为 $0$ 或整个子树大小；线性表达式的端点一定不劣于内部取值。",
+            "设被分到两侧的子树大小和为 $S_1,S-S_1$，贡献化为 $S_1(S-S_1)$，因此只需寻找尽量接近 $S/2$ 的可达子集和。",
+            "若最大子树大小 $M_x\\ge S/2$，可达的最优平衡位置只能取 $M_x$ 或 $S-M_x$，无需进行子集和 DP；其余轻点的 DP 总规模通过轻祖先数量和凸性分析限制为 $O(n\\sqrt n)$。"
+          ],
+          "solutionBrief": "按顶点分别计算其子树间的最大贡献。每个子树只需整体归入一侧或另一侧，转为子树大小的子集和，使两侧尽量平衡；重顶点直接处理，轻顶点用分组背包的 bitset 优化，总复杂度为 $O(n\\sqrt n/w)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },

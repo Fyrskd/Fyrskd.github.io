@@ -566,6 +566,27 @@ select {
   font-size: 14px;
 }
 
+.detail-disclosure {
+  padding-top: 0;
+}
+
+.detail-disclosure summary {
+  padding: 13px 0;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  list-style-position: inside;
+}
+
+.detail-disclosure summary:hover {
+  color: var(--blue);
+}
+
+.detail-section-body {
+  padding: 0 0 13px;
+}
+
 .detail-section p {
   margin: 0;
   overflow-wrap: anywhere;
@@ -583,15 +604,43 @@ select {
   display: grid;
   gap: 8px;
   margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
-.observations li {
-  padding: 9px 10px;
+.observation-hint {
   border-left: 3px solid var(--green);
   background: #f4faf7;
   border-radius: 6px;
+}
+
+.observation-hint summary {
+  padding: 9px 10px;
+  color: #12543a;
+  font-weight: 750;
+  cursor: pointer;
+  list-style-position: inside;
+}
+
+.observation-hint summary:hover {
+  color: var(--green);
+}
+
+.observation-hint p {
+  padding: 0 10px 10px;
+  color: var(--text);
+}
+
+.observation-hint[open] summary {
+  padding-bottom: 5px;
+}
+
+.observation-hint .katex-display {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.observation-hint summary::marker,
+.detail-disclosure summary::marker {
+  color: var(--green);
 }
 
 .topic-view {
