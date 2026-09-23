@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1290,
+    "total_problems": 1296,
     "source_total_problems": 1742,
-    "filtered_out_problems": 452,
-    "with_statement_brief": 1290,
-    "with_editorial_brief": 1075,
-    "with_solution_brief": 1076,
+    "filtered_out_problems": 446,
+    "with_statement_brief": 1296,
+    "with_editorial_brief": 1081,
+    "with_solution_brief": 1082,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 200,
+    "ai_override_count": 206,
     "primary_topic_count": 13,
-    "contest_count": 207,
+    "contest_count": 208,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 57,
-    "构造与贪心": 432,
+    "构造与贪心": 434,
     "图论与网络流": 77,
-    "动态规划与状态设计": 125,
-    "数论与同余": 112,
+    "动态规划与状态设计": 126,
+    "数论与同余": 114,
     "组合计数与概率": 104,
-    "数据结构": 95,
+    "数据结构": 96,
     "几何": 26,
     "树结构": 97,
     "交互": 63,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 175,
+    "ai_generated_with_editorial": 181,
     "ai_generated_partial_editorial": 9,
     "missing_editorial": 214,
     "manual_override": 891,
@@ -32898,6 +32898,205 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1982,
+      "name": "Codeforces Round 955 (Div. 2, with prizes from NEAR!)",
+      "date": "2024-06-25",
+      "url": "https://codeforces.com/contest/1982",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1982A",
+          "index": "A",
+          "slot": "A",
+          "title": "Soccer",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1982/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/130839",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "几何"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定比赛中断前后的两个比分 $(x_1,y_1)$ 和 $(x_2,y_2)$。离场期间每次只能由一队进一球，使对应分数加一，也可以一次球都不进；判断是否存在一种进球顺序，使整个期间两队从未出现比分相等。",
+          "transformedStatement": "把比分看成整数网格中的点，每次进球就是向右或向上走一步，目标是在两个给定点之间寻找一条不经过对角线 $x=y$ 的单调路径；可行性只取决于两个端点是否位于对角线同侧。",
+          "keyObservations": [
+            "分数变化等价于从 $(x_1,y_1)$ 走到 $(x_2,y_2)$，每步只能让一个坐标增加 $1$；因此两队领先关系只能在经过对角线 $x=y$ 时改变。",
+            "若初始时第一队领先而最终第二队领先，或初始时第二队领先而最终第一队领先，则连续的单步变化必然经过平局，答案为 NO。",
+            "若两个时刻由同一队领先，可以先连续增加领先队的进球，再增加另一队的进球，整个过程始终停留在对角线同一侧，因此答案为 YES。",
+            "题目允许比赛期间分数不变，所以当两端领先关系相同或仅需保持原分数时，总能构造不出现平局的过程。"
+          ],
+          "solutionBrief": "比较初始和最终哪一队领先：若领先方发生改变，必然经过 $x=y$，输出 NO；否则输出 YES。只需对每组数据比较 $x_1-y_1$ 与 $x_2-y_2$ 的符号，复杂度为每组 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1982B",
+          "index": "B",
+          "slot": "B",
+          "title": "Collatz Conjecture",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1982/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/130839",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $x,y$ 和操作次数 $k$。每次先将 $x$ 加一，再在仍可整除时反复除以 $y$；重复恰好 $k$ 次，求最终的 $x$。",
+          "transformedStatement": "把过程按阶段处理：$x>1$ 时批量跳过连续加一，直接到达下一个 $y$ 的倍数并完成除法；进入 $x=1$ 后，问题转化为长度为 $y-1$ 的周期状态转移。",
+          "keyObservations": [
+            "当 $x=1$ 后，状态固定按 $1,2,\bdots,y-1,1$ 循环，因此剩余 $k$ 步可直接用 $1+k\\bmod(y-1)$ 得到答案。",
+            "连续若干步只执行加一时，可一次跳到下一个能被 $y$ 整除的位置，步数为 $\\min(k,\\lceil x/y\\rceil\\cdot y-x)$，减少逐步模拟。",
+            "完成这段加一后若 $x$ 可被 $y$ 整除，就连续除以 $y$；每次跳跃后 $x$ 至少降为 $\\lceil(x+1)/y\\rceil$，所以跳跃次数为 $O(\\log x)$。"
+          ],
+          "solutionBrief": "循环模拟：若 $x=1$，直接按周期计算；否则批量执行加一至下一个 $y$ 的倍数，再连续除以 $y$。每次跳跃显著减小 $x$，总复杂度为 $O(\\log x)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1982C",
+          "index": "C",
+          "slot": "C",
+          "title": "Boring Day",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1982/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/130839",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定一叠按顺序排列的卡片，每轮必须从剩余牌顶取走至少一张卡并结束本轮；若所取卡片数字之和在 $[l,r]$ 内则获胜，否则失败。卡片全部取完后，求最多能获胜多少轮。",
+          "transformedStatement": "将问题重述为：在数组中按顺序选择若干个两两不相交的连续区间，每个区间和属于 $[l,r]$；未选卡片可被失败轮次消耗，目标是最大化选中区间数量，并优先寻找最早结束的可行区间。",
+          "keyObservations": [
+            "由于所有卡片数值为正，固定右端点时区间和随左端点右移而减小，因此可用双指针寻找和至少为 $l$ 的最短候选区间。",
+            "若当前区间和已在 $[l,r]$ 内，继续加入卡片只会增加区间长度和总和，不会增加可获胜轮数，所以应立即结束这一轮并计数。",
+            "选择右端点最早的可行获胜区间不会损害后续选择：它为剩余卡片留下最多前缀，因而可贪心地重复处理后缀。",
+            "双指针的左右端点都只向右移动，每张卡片至多被加入和移出一次，因此整体处理可以在线性时间完成。"
+          ],
+          "solutionBrief": "把获胜轮次视为按顺序选取的、不相交连续区间。用双指针维护当前区间和，优先确定右端点最早且和在 $[l,r]$ 内的区间，计数后从其后继续处理；左右端点各移动一次，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1982D",
+          "index": "D",
+          "slot": "D",
+          "title": "Beauty of the mountains",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1982/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/130839",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个带高度的 $n\\times m$ 网格，每次可任选一个 $k\\times k$ 子矩阵，将其中所有高度同时加上任意整数，山峰类型保持不变。判断经过若干次操作后，雪山与非雪山的高度总和能否相等。",
+          "transformedStatement": "把目标表示为两类山峰高度和之差 $D$。每个 $k\\times k$ 子矩阵对应一个类型数量差 $d_i$，对它加常数 $c_i$ 等价于让总差值增加 $c_i d_i$，于是判断整数方程 $\\sum_i c_i d_i=-D$ 是否有解。",
+          "keyObservations": [
+            "对每个 $k\\times k$ 子矩阵，只需统计其中雪山与非雪山数量差 $d_i$；给该子矩阵加上常数 $c_i$ 后，总差值恰好增加 $c_i d_i$，因此高度本身无需继续模拟。",
+            "所有操作能达到的差值构成由各个 $d_i$ 生成的整数倍集合，其最小正生成元是 $g=\\gcd(d_1,d_2,\\ldots,d_q)$，所以初始差值可被抵消当且仅当 $D$ 能被 $g$ 整除。",
+            "用二维前缀和计算每个子矩阵中的类型数量差，可在线性数量的子矩阵上得到全部 $d_i$；这样问题从修改高度转化为一次最大公约数判定。",
+            "若所有 $d_i$ 都为零，任何操作都不会改变总差值，必须单独判断初始差值 $D$ 是否已经为零。"
+          ],
+          "solutionBrief": "先计算雪山与非雪山高度和之差 $D$，再用二维前缀和求每个 $k\\times k$ 区域的类型数量差并取其绝对值的最大公约数 $g$。若 $D=0$ 或 $D\\bmod g=0$ 则可行；全为零时仅 $D=0$ 可行。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1982E",
+          "index": "E",
+          "slot": "E",
+          "title": "Number of k-good subarrays",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1982/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/130839",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "combinatorics",
+            "divide and conquer",
+            "dp",
+            "math",
+            "meet-in-the-middle"
+          ],
+          "statementBrief": "给定数组 $[0,1,\\ldots,n-1]$，若一个子数组中的每个数在二进制表示中都不超过 $k$ 个 $1$，则称其为 $k$-good。要求统计所有 $k$-good 子数组的数量，并对 $10^9+7$ 取模。",
+          "transformedStatement": "将前缀区间按最高的 $2^m$ 拆成两段：后段元素统一减去 $2^m$ 后，二进制 $1$ 的数量上限从 $k$ 降为 $k-1$。递归状态记录区间两端连续合法长度和内部答案，以便计算跨分界线的子数组。",
+          "keyObservations": [
+            "按最高位幂次 $2^m$ 将区间拆为 $[0,2^m)$ 和 $[2^m,n)$，后半段平移回从 $0$ 开始的区间后，允许的位数上限变为 $k-1$，因此可递归复用同一问题。",
+            "对每个递归区间只需保留左端连续合法长度、右端连续合法长度和内部合法子数组数；合并时新增部分只来自跨越分界线的子数组，故能在 $O(1)$ 内合并。",
+            "所有长度为 $2^m$ 的状态满足由 $f(2^{m-1},k)$ 与 $f(2^{m-1},k-1)$ 合并得到的递推关系，预处理这些状态即可避免递归展开成完整二叉树。",
+            "递归过程中每次将规模降至最高幂次的一半，并能 $O(1)$ 取得幂次状态，因此单个测试用例的总复杂度降为 $O(\\log n)$。"
+          ],
+          "solutionBrief": "定义 $f(n,k)$ 返回前缀合法长度、后缀合法长度及合法子数组数。按最高幂次拆分区间，后半段转化为 $f(n-2^m,k-1)$；预处理全部 $f(2^m,k)$，递归合并即可在 $O(\\log n)$ 内求解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1982F",
+          "index": "F",
+          "slot": "F",
+          "title": "Sorting Problem Again",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1982/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/130839",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "sortings"
+          ],
+          "statementBrief": "给定数组，并按顺序执行若干次单点赋值 $a_{pos}=x$。在初始状态及每次修改后，选择一个子数组并将其排序，要求整个数组非递减；求满足条件的最短区间，若数组本已有序则输出 $(-1,-1)$。",
+          "transformedStatement": "把问题转化为维护数组中的下降边。最左和最右下降边限定必须覆盖的核心区间，再将核心区间中的最小值插入有序前缀、最大值插入有序后缀，以确定能够修复全局顺序的左右边界。",
+          "keyObservations": [
+            "用集合 $s=\\{i\\mid a_i<a_{i-1}\\}$ 记录所有下降边；$s$ 为空当且仅当数组已经有序，此时答案为 $(-1,-1)$。",
+            "令 $pos_{min}$ 和 $pos_{max}$ 为 $s$ 中最小、最大位置，则待排序区间必须覆盖这两个下降点；区间外的前缀与后缀已经分别有序。",
+            "区间左端点由区间 $(pos_{min}-1,pos_{max})$ 的最小值决定：将该值插入有序前缀即可用二分找到最早的 $l$；右端点对区间最大值和有序后缀做对称处理。",
+            "单点赋值只会影响相邻的下降关系，因此集合和线段树中的局部信息可更新；维护区间最值后，每次回答只需常数次查询与二分。"
+          ],
+          "solutionBrief": "维护下降位置集合和支持区间最值的线段树。每次赋值只更新相邻位置；取最左、最右下降点，再用区间最小值/最大值分别在有序前缀/后缀二分确定答案，单次复杂度为 $O(\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
