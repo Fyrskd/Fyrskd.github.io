@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1392,
+    "total_problems": 1398,
     "source_total_problems": 1742,
-    "filtered_out_problems": 350,
-    "with_statement_brief": 1392,
-    "with_editorial_brief": 1167,
-    "with_solution_brief": 1168,
+    "filtered_out_problems": 344,
+    "with_statement_brief": 1398,
+    "with_editorial_brief": 1173,
+    "with_solution_brief": 1174,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 326,
+    "ai_override_count": 332,
     "primary_topic_count": 13,
-    "contest_count": 221,
+    "contest_count": 222,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -47,20 +47,20 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 62,
     "构造与贪心": 454,
     "图论与网络流": 84,
-    "动态规划与状态设计": 132,
-    "数论与同余": 126,
-    "组合计数与概率": 108,
-    "数据结构": 106,
+    "动态规划与状态设计": 133,
+    "数论与同余": 127,
+    "组合计数与概率": 109,
+    "数据结构": 108,
     "几何": 31,
-    "树结构": 103,
+    "树结构": 104,
     "交互": 68,
     "基础实现与模拟": 57,
     "博弈": 48,
     "代数、矩阵与多项式": 13
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 263,
-    "ai_generated_partial_editorial": 13,
+    "ai_generated_with_editorial": 268,
+    "ai_generated_partial_editorial": 14,
     "missing_editorial": 224,
     "manual_override": 891,
     "statement_derived": 1
@@ -37352,6 +37352,196 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1830,
+      "name": "Codeforces Round 875 (Div. 1)",
+      "date": "2023-05-28",
+      "url": "https://codeforces.com/contest/1830",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1830A",
+          "index": "A",
+          "slot": "A",
+          "title": "Copil Copac Draws Trees",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1830/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/116527",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一棵有 $n$ 个顶点的树，边按输入顺序编号。Copil 从顶点 $1$ 开始分轮扫描并激活可到达的顶点；同一轮中边必须按编号递增顺序继续使用，若下一条边编号变小就要开始新一轮，求画完整棵树所需的扫描轮数。",
+          "transformedStatement": "把过程改写为根树上的路径代价：顶点通过根到它的唯一路径被激活，每当路径上的边编号相对前一条边下降，就使所需轮数增加一轮；求所有根路径代价的最大值。",
+          "keyObservations": [
+            "沿根为 $1$ 的树记录每个顶点被激活时使用的边编号；若当前边编号不小于父顶点的激活边编号，就能在同一轮继续传播，否则必须开启下一轮。",
+            "对边 $(u,v)$，其编号与 $u$ 的激活边编号比较即可决定状态转移：$dp[v]=dp[u]+[id(u)>index(u,v)]$，因此无需模拟每轮扫描。",
+            "树中每个顶点只有唯一的根路径，按根树遍历计算出的 $dp$ 不会受到其他路径或重复访问影响；所有顶点所需轮数的最大值就是答案。",
+            "每条边只在遍历树时处理一次，状态转移和答案统计均为线性复杂度。"
+          ],
+          "solutionBrief": "将输入边按出现顺序编号，以 $1$ 为根进行 DFS。维护顶点被激活所需扫描轮数 $dp$ 及其父边编号 $id$；若下一条边编号小于 $id[u]$，则轮数加一，否则沿用当前轮。答案为所有 $dp$ 的最大值，单组复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1830B",
+          "index": "B",
+          "slot": "B",
+          "title": "The BOSS Can Count Pairs",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1830/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/116527",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的数组 $a,b$，选择一对下标 $1\\le i<j\\le n$。要求统计满足 $a_i\\cdot a_j=b_i+b_j$ 的下标对数量。",
+          "transformedStatement": "把每个位置视为二元组 $(a_i,b_i)$：寻找两组二元组，使乘积条件成立。由于较小的 $a$ 必须不超过 $\\sqrt{2n}$，用频次表记录小 $a$ 对应的 $b$，再按两端的 $a$ 是否相等进行计数。",
+          "keyObservations": [
+            "因为 $b_i,b_j\\le n$，合法 pair 必须满足 $a_i a_j=b_i+b_j\\le 2n$，所以较小的 $a$ 不超过 $\\sqrt{2n}$，只需围绕较小端枚举。",
+            "当 $a_i=a_j$ 时，给定元素 $(a_i,b_i)$ 的匹配目标是 $(a_i,a_i^2-b_i)$；统计有序匹配后，需扣除 $2b_i=a_i^2$ 的自匹配并除以 $2$。",
+            "当 $a_i\\ne a_j$ 时可统一令当前元素的 $a_i$ 更大，较小值 $j$ 只需枚举到 $\\min(a_i-1,\\lfloor 2n/a_i\\rfloor)$，并查找频次表中的 $b_j=a_i j-b_i$。",
+            "频次查询中的第二个参数可能越界或为负，必须先过滤；每个当前元素最多枚举 $O(\\sqrt n)$ 个较小值，因此总复杂度为 $O(n\\sqrt n)$。"
+          ],
+          "solutionBrief": "利用合法 pair 的乘积不超过 $2n$，将较小的 $a$ 限制在 $\\sqrt{2n}$ 内。按 $a$ 是否相等分别计数：相等时用频次表处理有序匹配并去自匹配，不等时枚举较小端并查找所需的 $b$，复杂度为 $O(n\\sqrt n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1830C",
+          "index": "C",
+          "slot": "C",
+          "title": "Hyperregular Bracket Strings",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1830/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/116527",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "字符串",
+            "数论与同余",
+            "数据结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "greedy",
+            "hashing",
+            "math",
+            "number theory",
+            "sortings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的括号串和 $k$ 个区间，要求整个串是正规括号序列，并且每个区间截出的子串也必须是正规括号序列。计算满足所有条件的括号串数量，结果对 $998244353$ 取模。",
+          "transformedStatement": "将每个位置按覆盖它的区间子集分类；同一子集中的位置必须共同构成一个正规括号序列，因而问题转化为统计各类位置长度，并将对应 Catalan 数相乘。覆盖子集通过区间差分与异或哈希获得。",
+          "keyObservations": [
+            "把位置按“被哪些区间覆盖”分组后，同一覆盖集合中的所有字符必须组成一个独立的正规括号序列，因此各组方案数可以相乘。",
+            "嵌套区间会把位置分成内层区间与外层两侧两组，部分重叠区间则分成左侧、中间、右侧三组；这说明覆盖集合相同的位置天然形成连续分段中的同一组。",
+            "长度为 $2m$ 的正规括号序列数量是 Catalan 数 $C_m=\\frac{1}{m+1}\\binom{2m}{m}$，所以每个覆盖组只需按其长度贡献一个 Catalan 数。",
+            "给每个区间分配随机 64 位值，在差分端点异或并扫描前缀，即可用覆盖区间值的异或结果标识覆盖集合，再按标识统计组长度。"
+          ],
+          "solutionBrief": "额外加入覆盖整个字符串的区间以强制整体为正规括号序列。用异或哈希差分扫描每个位置的覆盖集合，统计相同集合对应的总长度；答案是各组长度对应 Catalan 数的乘积，模 $998244353$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1830D",
+          "index": "D",
+          "slot": "D",
+          "title": "Mex Tree",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1830/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/116527",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，每个节点染成 $0$ 或 $1$。每条包含端点相同节点的无向路径取其节点颜色序列的 MEX，求所有满足 $u\\le v$ 的路径值之和在任意染色下的最大值。",
+          "transformedStatement": "把每条路径的最大可能贡献视为 $2$，先计算总上界 $n(n+1)$，再最小化染色造成的损失；损失可按同色连通块在树形合并中的大小与颜色进行 DP。",
+          "keyObservations": [
+            "所有路径的 MEX 至多为 $2$，因此把答案改写为最大总值 $n(n+1)$ 减去损失；二分图染色的损失至多为 $2n$。",
+            "若同色连通块大小为 $k$，其损失至少为 $k(k+1)/2$，所以最优方案中的最大连通块只有 $O(\\sqrt n)$ 大小，可截断状态范围。",
+            "以节点为根合并子树时，状态记录当前节点所属同色连通块的大小 $j$ 及其颜色；异色合并不会产生跨块损失，同色合并分别增加 $k\\cdot l$ 或 $2k\\cdot l$。",
+            "子树按较大儿子优先合并并复用中间数组，使朴素的 $O(n\\sqrt n)$ 状态转移降为线性额外空间。"
+          ],
+          "solutionBrief": "将目标转为最小化相对最大值的损失。利用连通块大小的 $O(\\sqrt n)$ 上界，树形 DP 记录子树根所在同色连通块的大小和颜色；合并子树时按是否同色加入对应损失，最终用 $n(n+1)$ 减去最小损失。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1830E",
+          "index": "E",
+          "slot": "E",
+          "title": "Bully Sort",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1830/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/116527",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "math"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的排列，反复执行题目定义的 bully swap，直到排列有序，并令所需次数为 $f(p)$。随后逐次交换指定位置的两个元素，修改会保留到后续操作中；每次交换后都要输出当前排列的 $f(p)$。所给 statement_text 未包含 bully swap 的具体定义。",
+          "transformedStatement": "题解将 bully sort 的交换次数等价表示为当前位置与目标位置形成的位移势能减去逆序对数：维护 $S=\\sum_i\\max(p_i-i,0)$ 与逆序对数 $I$，每次输出 $2S-I$。交换更新则转化为端点贡献变化和端点对中间区间的逆序关系计数。",
+          "keyObservations": [
+            "每个元素一旦向左移动就不会再向右移动，向右移动的元素也不会再向左移动，因此两类移动元素互不重叠。",
+            "令 $S=\\sum_i\\max(p_i-i,0)$，题解给出 $f(p)=2S-I$，其中 $I$ 是当前排列的逆序对数；这把复杂的交换过程转化为位移势能与逆序对的差。",
+            "交换位置 $x,y$ 后，$S$ 只需重新计算两个端点的贡献，而逆序对变化只来自端点与区间 $(x,y)$ 内元素的关系，因此可用区间计数维护。",
+            "用 Fenwick 树套有序集合可同时支持位置上的值更新和区间内小于或大于指定值的计数，从而动态维护逆序对。"
+          ],
+          "solutionBrief": "维护 $S=\\sum_i\\max(p_i-i,0)$ 和逆序对数 $I$，每次交换只更新两个位置及其与中间区间的贡献，答案为 $2S-I$；可用 Fenwick 树套有序集合实现。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1830F",
+          "index": "F",
+          "slot": "F",
+          "title": "The Third Grace",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1830/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/116527",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "题目给出数轴上的 $n$ 个区间和 $m$ 个带系数 $p_i$ 的点，需选择一个点子集激活；每个区间依据被激活点产生题面定义的成本，目标是最大化所有区间成本之和。当前记录缺失“区间成本”的具体定义，因此无法完整还原每次激活对区间的影响规则。",
+          "transformedStatement": "题解将激活点按坐标排序，并把相邻激活点之间的贡献归因给左侧点：若下一激活点为 $j$，点 $i$ 的系数乘以满足 $l\\le i\\le r<j$ 的区间数。于是问题转化为带动态横坐标的线性函数最大值 DP。",
+          "keyObservations": [
+            "按激活点的坐标从左到右处理时，点 $i$ 对下一激活点 $j$ 的贡献是 $p_i$ 乘以满足 $l\\le i\\le r<j$ 的区间数，因此转移可写为 $dp_j=\\max_{i<j}(dp_i+p_iS_{i,j})$。",
+            "固定左端点 $i$ 后，$S_{i,j}$ 随 $j$ 单调不减；从 $i$ 推进到 $i+1$ 只需对若干后缀做增减更新，使区间统计可以摊还维护。",
+            "把每个候选转移视为关于 $S_{i,j}$ 的直线，使用带后缀加法的 Li Chao 树维护候选最大值，从而避免枚举全部 $(i,j)$ 对。",
+            "Li Chao 树中保存端点处的横坐标值，并在后缀加法时同步平移直线截距；这样既能处理新候选插入，也能支持单点最大值查询。"
+          ],
+          "solutionBrief": "令 $dp_j$ 表示以点 $j$ 作为当前激活点时的最优值，转移为 $dp_j=\\max_{i<j}(dp_i+p_iS_{i,j})$。将候选转移表示为直线，用支持后缀横坐标增量的 Li Chao 树维护，复杂度为 $O(n\\log^2 n)$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
