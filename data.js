@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1376,
+    "total_problems": 1378,
     "source_total_problems": 1742,
-    "filtered_out_problems": 366,
-    "with_statement_brief": 1376,
-    "with_editorial_brief": 1151,
-    "with_solution_brief": 1152,
+    "filtered_out_problems": 364,
+    "with_statement_brief": 1378,
+    "with_editorial_brief": 1153,
+    "with_solution_brief": 1154,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 309,
+    "ai_override_count": 311,
     "primary_topic_count": 13,
-    "contest_count": 218,
+    "contest_count": 219,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 61,
-    "构造与贪心": 450,
+    "构造与贪心": 452,
     "图论与网络流": 83,
     "动态规划与状态设计": 132,
     "数论与同余": 123,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 13
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 247,
+    "ai_generated_with_editorial": 249,
     "ai_generated_partial_editorial": 13,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37615,6 +37615,69 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1818,
+      "name": "Codeforces Round 869 (Div. 2)",
+      "date": "2023-04-29",
+      "url": "https://codeforces.com/contest/1818",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 900,
+      "problems": [
+        {
+          "key": "1818A",
+          "index": "A",
+          "slot": "A",
+          "title": "Politics",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1818/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/115586",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 名成员依次讨论 $k$ 个议题，每名成员预先确定自己对每个议题赞成或反对。总统可在讨论开始前驱逐任意其他成员，讨论过程中观点不一致的成员会被淘汰；要求总统始终留下，并最大化最终留下的成员数。",
+          "transformedStatement": "把每名成员表示为一个长度为 $k$ 的 `+/-` 观点串。最终共同留下的成员必须与总统在每个位置完全一致，因此只需统计与总统观点串相同的成员。",
+          "keyObservations": [
+            "最终能留下的两名成员对每个议题都必须持相同观点，否则在首次观点不同的讨论中至少一人会被迫离开，因此所有幸存者的观点串必须完全一致。",
+            "总统本人必须留下，所以可保留的成员只能是观点串与总统完全相同的人；提前驱逐其他成员不会妨碍这些人共同留下。",
+            "因此原问题等价于统计与第一个成员的长度为 $k$ 的观点串完全相同的成员数量。"
+          ],
+          "solutionBrief": "将总统的观点串作为目标，逐个比较其他成员在全部 $k$ 个议题上的观点；完全相同者可以全部保留，其余成员提前驱逐，答案就是匹配人数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1818B",
+          "index": "B",
+          "slot": "B",
+          "title": "Indivisible",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1818/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/115586",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定正整数 $n$，需要排列 $1$ 到 $n$，使任意长度至少为 $2$ 的连续子数组，其元素和都不能被该子数组长度整除；若不存在则输出 $-1$。",
+          "transformedStatement": "先判断整个排列这一特殊区间是否强制产生矛盾；对可行的偶数 $n$，把排列按相邻二元组分组并交换每组元素，再按区间端点奇偶性验证余数。",
+          "keyObservations": [
+            "当 $n>1$ 为奇数时，整个排列的和为 $n(n+1)/2$，必能被长度 $n$ 整除，因此不存在合法排列。",
+            "当 $l,r$ 奇偶性不同，交换相邻元素后的区间和为 $(r-l+1)(l+r)/2$，其对区间长度取模不为 $0$。",
+            "当 $l,r$ 奇偶性相同，区间和相比可被区间长度整除的值恰好偏差 $1$ 或 $-1$，所以仍不可能整除。",
+            "因此对偶数 $n$，将恒等排列的每一对相邻元素交换即可满足所有区间条件。"
+          ],
+          "solutionBrief": "$n=1$ 时任意排列都合法；$n>1$ 为奇数时输出 $-1$。偶数 $n$ 时输出 $2,1,4,3,\\ldots,n,n-1$，按区间端点奇偶性分类可证明每个区间和都不能被区间长度整除。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
