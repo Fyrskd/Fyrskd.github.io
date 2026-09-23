@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1405,
+    "total_problems": 1411,
     "source_total_problems": 1742,
-    "filtered_out_problems": 337,
-    "with_statement_brief": 1405,
-    "with_editorial_brief": 1180,
-    "with_solution_brief": 1181,
+    "filtered_out_problems": 331,
+    "with_statement_brief": 1411,
+    "with_editorial_brief": 1186,
+    "with_solution_brief": 1187,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 339,
+    "ai_override_count": 345,
     "primary_topic_count": 13,
-    "contest_count": 224,
+    "contest_count": 225,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 459,
+    "构造与贪心": 462,
     "图论与网络流": 84,
     "动态规划与状态设计": 134,
     "数论与同余": 127,
-    "组合计数与概率": 109,
-    "数据结构": 108,
+    "组合计数与概率": 110,
+    "数据结构": 109,
     "几何": 31,
     "树结构": 104,
-    "交互": 68,
+    "交互": 69,
     "基础实现与模拟": 57,
     "博弈": 49,
     "代数、矩阵与多项式": 13
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 275,
+    "ai_generated_with_editorial": 281,
     "ai_generated_partial_editorial": 14,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37352,6 +37352,188 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1838,
+      "name": "Codeforces Round 877 (Div. 2)",
+      "date": "2023-06-04",
+      "url": "https://codeforces.com/contest/1838",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1838A",
+          "index": "A",
+          "slot": "A",
+          "title": "Blackboard List",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1838/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/116995",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "黑板上先写两个整数，随后重复 $n-2$ 次：任选黑板上的两个数，写下它们的绝对差，得到 $n$ 个数后再打乱顺序。给出最终列表，要求恢复任意一个可能的初始整数；若有多个答案，输出其中任意一个。",
+          "transformedStatement": "无需逆向模拟整个生成过程：负数不可能由绝对差产生，必是初始数；若全为非负数，绝对差不会超过参与运算的较大数，因此最终最大值仍来自初始数。答案由这两个不变量直接确定。",
+          "keyObservations": [
+            "绝对值差的结果永远非负，因此最终列表中的任意负数不可能由后续操作产生，只能是初始的两个数之一，直接输出它即可。",
+            "若列表中没有负数，每次操作都取非负数之差的绝对值；对 $0\\le a\\le b$ 有 $|a-b|=b-a\\le b$，所以最大值不会增加，最终最大值必然保留自初始数字，输出最大值即可。",
+            "题目保证列表确实可由合法过程生成，因此只需按是否存在负数分类，无需还原另一初始数或验证候选。"
+          ],
+          "solutionBrief": "遍历列表：若存在负数，输出任意一个负数；否则输出最大值。前者只能来自初始数，后者因绝对差不超过较大非负数而必属于初始数，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1838B",
+          "index": "B",
+          "slot": "B",
+          "title": "Minimize Permutation Subarrays",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1838/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/116995",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列，必须恰好选择两个位置交换其中的元素一次；交换后，要求使数组中“本身也是排列”的连续子数组数量最少，输出任意一组位置。",
+          "transformedStatement": "把问题转化为调整数值 $1$、$2$、$n$ 的相对位置：只要让 $n$ 的位置夹在 $1$ 和 $2$ 的位置之间，所有长度大于 $1$ 的排列子数组都会被迫扩展为整个数组，从而达到最小数量。",
+          "keyObservations": [
+            "任何长度大于 $1$ 的排列子数组都必须同时包含 $1$ 和 $2$ 的位置，因此也会包含两者之间的全部位置。",
+            "若 $n$ 的位置处于 $1$ 和 $2$ 之间，该区间包含元素 $n$，所以作为排列子数组只能扩展为整个数组；此时除单点子数组外只剩整数组满足条件。",
+            "交换位置的目标是让 $n$ 位于 $1$、$2$ 两个位置之间：若在两者外侧，就与较近方向对应的端点交换即可。"
+          ],
+          "solutionBrief": "记录 $1$、$2$、$n$ 的位置。若 $n$ 已在 $1$ 和 $2$ 之间，交换 $1$ 与 $2$；否则若 $n$ 在两者左侧，与两者中较小的位置交换，若在右侧，与较大的位置交换，使交换后 $n$ 位于两者之间。扫描数组即可完成，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1838C",
+          "index": "C",
+          "slot": "C",
+          "title": "No Prime Differences",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1838/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/116995",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定 $n\\times m$ 网格，必须把 $1$ 到 $nm$ 每个整数恰好放置一次，使共享边的两个格子中的数之差的绝对值都不是质数。输出任意满足条件的网格。",
+          "transformedStatement": "先构造按行递增的网格，再把整行重新排列：让原行彼此不相邻，从而把竖直相邻差从可能为 $m$ 改成严格大于 $m$ 的 $m$ 的倍数；水平结构保持不变。",
+          "keyObservations": [
+            "按行连续填数时，水平相邻差恒为 $1$，竖直相邻差恒为 $m$；因此只需通过调整行顺序消除差为 $m$ 的竖直相邻行。",
+            "将原来的前 $\\lfloor n/2\\rfloor$ 行放到新网格的第 $2,4,6,\\ldots$ 行，将后 $\\lceil n/2\\rceil$ 行放到第 $1,3,5,\\ldots$ 行，可保证相邻新行不是原来的相邻行。",
+            "重排行不会改变行内元素，因此所有水平差仍为 $1$；竖直差是 $m$ 的倍数且严格大于 $m$，在 $m\\ge4$ 时必为合数，从而不可能是质数。"
+          ],
+          "solutionBrief": "先按行填入 $1$ 到 $nm$，再按“后半行交错放奇数位置、前半行交错放偶数位置”的顺序重排整行。水平差为 $1$，竖直差为大于 $m$ 的 $m$ 的倍数，均不是质数；复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1838D",
+          "index": "D",
+          "slot": "D",
+          "title": "Bracket Walk",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1838/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/116995",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "字符串",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定一个由括号组成的字符串，从第一个字符出发，每次只能向相邻位置左右移动，不能停留但可以反复经过任意位置；沿途依次记录站到的字符，并要求记录串是正规括号序列且最终到达最后一个字符。每次翻转一个指定位置的括号，操作累积，需判断翻转后是否存在这样的行走。",
+          "transformedStatement": "将字符串与交替串 `()()...` 比较，集合 $A$ 记录偶数位出现 `(` 或奇数位出现 `)` 的异常位置。题目等价于判断 $n$ 是否为偶数，并检查 $A$ 是否为空，或其最小位置为偶数且最大位置为奇数。",
+          "keyObservations": [
+            "行走序列的长度与终点位置决定其括号数量奇偶，因此当 $n$ 为奇数时，最终不可能形成正规括号序列。",
+            "把所有偶数位的 `(` 与奇数位的 `)` 收入集合 $A$，它们正好表示字符串相对交替串 `()()...` 的异常位置，从而只需关注最左和最右异常位置。",
+            "若 $\u0000A$ 的最小位置为奇数，开头区域会被迫在到达某个右括号时平衡为 $0$，随后连续两个右括号使平衡变负；若最大位置为偶数，则从末尾反向可得同样的不可能性。",
+            "当 $A$ 非空且最小位置为偶数、最大位置为奇数时，可在第一个连续 `((` 与最后一个连续 `))` 之间往返调节平衡，构造出始终非负并最终归零的行走；$A$ 为空时直接向右移动即可。"
+          ],
+          "solutionBrief": "维护集合 $A$ 中的异常位置。每次翻转只会增删一个位置；当 $n$ 为奇数时答案恒为不可行，否则当 $A$ 为空，或其最小值为偶数且最大值为奇数时可行，使用有序集合即可在 $O(\\log n)$ 内更新和判断。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1838E",
+          "index": "E",
+          "slot": "E",
+          "title": "Count Supersequences",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1838/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/116995",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a$，元素取值在 $[1,k]$；需要统计长度为 $m$、元素同样取值在 $[1,k]$ 的数组 $b$ 的数量，其中 $a$ 必须能通过删除 $b$ 的若干元素（也可以不删）得到。答案对 $10^9+7$ 取模。",
+          "transformedStatement": "将“包含固定数组 $a$ 作为子序列”抽象为匹配其最长前缀的状态，并发现结果与 $a$ 的具体值无关；因此把 $a$ 视为全为 $1$，转化为统计长度为 $m$ 且至少含 $n$ 个 $1$ 的数组。",
+          "keyObservations": [
+            "用 $dp_{i,j}$ 表示长度为 $i$ 的数组中，能作为子序列出现的 $a$ 的最长前缀长度；末位若推进匹配则来自 $dp_{i-1,j-1}$，否则为避免继续匹配只能选除下一个目标值外的 $k-1$ 种值。",
+            "转移只依赖 $n,m,k$ 而不依赖 $a$ 的具体元素，因此可将 $a$ 等价替换为全为 $1$ 的数组，问题变成长度为 $m$ 的数组中至少出现 $n$ 个 $1$。",
+            "先从全部 $k^m$ 个数组中扣除出现少于 $n$ 个 $1$ 的数组；恰有 $i$ 个 $1$ 的数组数为 $C(m,i)(k-1)^{m-i}$，从而得到补集计数公式。",
+            "只需递推计算前 $n$ 项组合数 $C(m,i)=C(m,i-1)(m-i+1)/i$，并用快速幂计算幂次，避免依赖可能达到 $10^9$ 的 $m$ 进行二维 DP。"
+          ],
+          "solutionBrief": "先用最长匹配前缀建立 DP，观察转移与 $a$ 的具体值无关，改成统计至少有 $n$ 个 $1$ 的数组。答案为 $k^m-\u0000sum_{i=0}^{n-1}C(m,i)(k-1)^{m-i}$，组合数递推、幂快速计算，复杂度为 $O(n\\log M)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1838F",
+          "index": "F",
+          "slot": "F",
+          "title": "Stuck Conveyor",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1838/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/116995",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "interactive"
+          ],
+          "statementBrief": "有一个 $n\\times n$ 的传送带网格，其中恰有一条传送带无论如何配置都固定朝一个方向。每次测试时给所有传送带指定方向、把箱子放在指定格子并启动，箱子会沿传送带移动；你只能看到它最终停下的位置或确认进入无限循环。最多测试 25 次，要求找出故障传送带及其固定方向。",
+          "transformedStatement": "把网格中的传送带排列成两条覆盖全部格子的相反蛇形路径，并按第一条路径给传送带编号。故障传送到编号更小或更大的传送带时会分别在对应路径上制造可检测的环，再用起点阈值测试二分故障编号。",
+          "keyObservations": [
+            "构造两条覆盖全部格子的蛇形路径，并让第二条访问顺序与第一条完全相反；这样异常发生在空格或传送到其他传送带时，都能通过两次结果判断所属情况。",
+            "若故障传送带把箱子送向编号更小的传送带，沿正向蛇形路径会形成环；从不同起点测试可判断起点编号是否不超过故障编号，从而二分定位。编号更大的情况对反向蛇形路径同理。",
+            "每个空方格只与一个传送带相邻；若箱子停在空方格且某条蛇的预期终点不应是该处，就能唯一确定把箱子送出网格的故障传送带。",
+            "定位传送带后，从它出发并让同一行或同一列的其他传送带都背离它；四种故障方向会导致四个不同终点，因此可恢复故障方向。"
+          ],
+          "solutionBrief": "先询问两种相反顺序覆盖全网格的蛇形配置，判断故障是送向空格还是送向其他传送带，并确定应使用哪条蛇。对相应蛇按环与否二分故障位置，最后从故障点出发隔离其行或列，根据终点反推出固定方向。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
