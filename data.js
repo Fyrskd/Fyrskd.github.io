@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1356,
+    "total_problems": 1362,
     "source_total_problems": 1742,
-    "filtered_out_problems": 386,
-    "with_statement_brief": 1356,
-    "with_editorial_brief": 1136,
-    "with_solution_brief": 1137,
+    "filtered_out_problems": 380,
+    "with_statement_brief": 1362,
+    "with_editorial_brief": 1142,
+    "with_solution_brief": 1143,
     "missing_editorial_brief": 219,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 289,
+    "ai_override_count": 295,
     "primary_topic_count": 13,
-    "contest_count": 214,
+    "contest_count": 215,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,13 +45,13 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 58,
-    "构造与贪心": 445,
-    "图论与网络流": 81,
-    "动态规划与状态设计": 131,
+    "构造与贪心": 447,
+    "图论与网络流": 82,
+    "动态规划与状态设计": 132,
     "数论与同余": 121,
     "组合计数与概率": 106,
-    "数据结构": 101,
-    "几何": 29,
+    "数据结构": 102,
+    "几何": 30,
     "树结构": 101,
     "交互": 68,
     "基础实现与模拟": 56,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 232,
+    "ai_generated_with_editorial": 238,
     "ai_generated_partial_editorial": 13,
     "missing_editorial": 219,
     "manual_override": 891,
@@ -37615,6 +37615,199 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1819,
+      "name": "Codeforces Round 866 (Div. 1)",
+      "date": "2023-04-15",
+      "url": "https://codeforces.com/contest/1819",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1819A",
+          "index": "A",
+          "slot": "A",
+          "title": "Constructive Problem",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1819/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/115133",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "给定一个非负整数数组，必须恰好操作一次：选择一个非空连续子段和非负整数 $k$，把子段内所有元素都改成 $k$。判断是否能让数组的 MEX（最小未出现非负整数）恰好增加 $1$。",
+          "transformedStatement": "设当前 MEX 为 $m$，问题等价于用一次区间赋值引入缺失的 $m$，同时删除所有 $m+1$，并保证 $0$ 到 $m-1$ 仍至少各出现一次。",
+          "keyObservations": [
+            "要让 MEX 从 $m$ 变为 $m+1$，必须把原本缺失的 $m$ 引入数组，因此赋值常数只能取 $k=m$。",
+            "若数组中存在 $m+1$，操作区间必须覆盖其第一次和最后一次出现的位置；取更长区间只会额外删除可能需要的 $0$ 到 $m-1$，因此只需检查这个最短区间。",
+            "若不存在 $m+1$ 但存在大于 $m+1$ 的元素，把其中一个改为 $m$ 不会影响 $0$ 到 $m-1$ 的存在性，且目标 MEX 会恰好变为 $m+1$。",
+            "若不存在大于 $m+1$ 的元素，数组元素只能来自 $0$ 到 $m-1$；此时只有存在重复元素才能改掉一个副本并保留所有必需值，否则 $m=n$ 且无法增加 MEX。"
+          ],
+          "solutionBrief": "先求当前 MEX $m$。若存在 $m+1$，把从其首次到末次出现的区间改成 $m$，并检查是否仍保留全部 $0$ 到 $m-1$；否则优先把一个大于 $m+1$ 的元素改为 $m$，再处理重复元素情况。整体复杂度为题解给出的 $O(n\\\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1819B",
+          "index": "B",
+          "slot": "B",
+          "title": "The Butcher",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1819/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/115133",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "geometry",
+            "greedy",
+            "implementation",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定由一个原始矩形连续切割得到的 $n$ 个小矩形，它们被打乱且没有旋转。每次只能沿水平或竖直方向切下一块，重复 $n-1$ 次后得到这些矩形；要求找出所有可能的原始高宽 $(h,w)$。",
+          "transformedStatement": "把问题转为候选原矩形的可还原性判定：小矩形面积和确定总面积；若首刀为水平（竖直），原宽（高）就是所有小矩形宽（高）的最大值，随后按当前剩余高或宽贪心逆向扣除矩形。",
+          "keyObservations": [
+            "所有小矩形面积之和等于原矩形面积 $S$，因此一旦确定原矩形的一条边，另一条边就由 $S$ 唯一确定。",
+            "若第一刀是水平切割，则必有一个小矩形保留原始宽度；该宽度等于所有小矩形中的最大宽度，从而得到候选原矩形 $h=S/w$。",
+            "固定候选 $(h,w)$ 后，任意当前矩形只要有一条边等于当前剩余矩形的对应边，就能作为最后一次切下的部分，并从另一条边中扣除其长度。",
+            "每次扣除都对应一次合法的水平或竖直切割，因此反复处理所有矩形即可判定候选；分别以最大宽度和最大高度作为首条边生成候选，覆盖两种第一刀方向。"
+          ],
+          "solutionBrief": "先求所有小矩形面积和 $S$。分别把最大宽度或最大高度视为原矩形对应边，计算另一边并验证：若矩形有一边等于当前剩余边，就扣除另一边。验证成功的候选即为答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1819C",
+          "index": "C",
+          "slot": "C",
+          "title": "The Fox and the Complete Tree Traversal",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1819/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/115133",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "树结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "implementation",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，狐狸每次可从当前顶点跳到距离不超过 $2$ 的顶点。需要判断能否把全部 $n$ 个不同顶点排列成一个闭合顺序，使相邻位置以及首尾位置都能通过一次跳跃到达；若能则输出任意一种顺序。",
+          "transformedStatement": "把原树上的一次跳跃看成距离至多 $2$ 的辅助图中的边，问题转化为判断该辅助图是否存在包含全部顶点的哈密顿环，并在可行时构造它。题解进一步将可行树归约为“直径路径加直挂叶状顶点”的结构。",
+          "keyObservations": [
+            "若树包含题解所示的局部阻塞子图，则无论环路如何经过其上方顶点，都无法让所有顶点恰好参与一次并闭合，因此可直接判定无解。",
+            "不存在该阻塞结构时，整棵树等价于一条直径路径加上若干直接挂在路径顶点上的附加顶点；因此只需检查直径之外的每个顶点是否直接连接到直径。",
+            "沿直径编号后按奇偶分组交替访问：先沿一个方向处理一类直径顶点及其附加点，再反向处理另一类，从而保证相邻访问点距离不超过 $2$，并最终闭合成环。"
+          ],
+          "solutionBrief": "求树的直径并检查所有非直径顶点是否直接挂在直径上；若不是则无解。若是，按直径编号奇偶交替组织路径顶点及附加顶点，再反向处理另一种奇偶性，构造闭合遍历，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1819D",
+          "index": "D",
+          "slot": "D",
+          "title": "Misha and Apples",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1819/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/115133",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "字符串"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 家商店按编号依次访问，每到一家就购买该店每种苹果各一个；若离店后背包中出现同种苹果的两个，背包内所有苹果立即消失。部分商店的售卖种类未知，需要选择这些种类，使最终背包中的苹果数最大。",
+          "transformedStatement": "把过程按“最后一次清空背包”划分：前缀要求存在一种补全方式能在第 $i$ 家店后清空，后缀则从空背包开始计算是否必然再次清空以及不清空时最多能留下多少苹果，最后合并两部分。",
+          "keyObservations": [
+            "最终背包只由最后一次清空之后拿到的苹果构成，因此可以枚举最后清空发生在第 $i$ 家店之后。",
+            "定义 $\u0000canZero_i$ 表示前缀 $[1,i]$ 能否通过补全未知商店使背包恰好清空；它把前缀的复杂选择压缩成一个可递推的可达性状态。",
+            "若第 $i$ 家店清空背包，必须找到此前最近的冲突来源，并确认从某个可清空位置之后到第 $i-1$ 家店之间没有提前清空；这保证了构造出的前缀确实可行。",
+            "固定最后清空位置后，后缀若必然再次清空则贡献为 $0$；否则未知商店可以补成覆盖全部 $m$ 种苹果，已知商店则贡献其总苹果数。"
+          ],
+          "solutionBrief": "从左到右计算前缀能否清空的状态 $\u0000canZero_i$，并从右到左计算每个后缀在初始空背包下的最大无清空收益 $\u0000maxRemain_i$。枚举所有 $\u0000canZero_i=1$ 的位置取最大后缀收益；递推中定位最近冲突商店，并检查中间区间没有清空。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1819E",
+          "index": "E",
+          "slot": "E",
+          "title": "Roads in E City",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1819/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/115133",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "交互",
+            "树结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "interactive",
+            "math",
+            "probabilities",
+            "trees"
+          ],
+          "statementBrief": "给定一个有 $n$ 个路口和 $m$ 条双向道路的图，其中未知子集道路已修复，并保证仅使用修复道路时任意两点可达。你可以进行有限次两点可达性查询，要求找出所有已修复的道路。",
+          "transformedStatement": "将问题转为识别未知连通子图的边集：先通过随机连通性测试提取一棵由好边组成的生成树，再利用树路径上的割逐条判定其余边是否属于该子图。",
+          "keyObservations": [
+            "删除一条候选好边后，若好边图仍连通，则任意两点查询都会回答连通；否则图被分成两块，从该边两个端点中随机选终点，和固定起点落在不同块的概率为 $1/2$。",
+            "对同一条边重复随机查询 $45$ 次，只有在每次随机终点都与起点同块时才会误判，错误概率降为 $2^{-45}$，因此可用随机查询近似判断删边后的连通性。",
+            "依次删除不会破坏连通性的好边，最终保留的边构成好边图的一棵生成树；这一步把未知边集合压缩为最多 $n-1$ 条骨架边。",
+            "检查生成树外的边时，先断开其端点路径上的任意一条树边，再临时加入待测边；若此时图能通过好边保持连通，则该边本身就是好边，同样可用随机端点查询判断。"
+          ],
+          "solutionBrief": "把道路视为未知好坏的无向图。逐边尝试删除，用 $45$ 次随机可达性查询判断删除后是否仍连通，从而得到好边生成树；再逐一测试树外边，整体约需 $m\\cdot49$ 次查询，单次误判概率约为 $2^{-45}$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1819F",
+          "index": "F",
+          "slot": "F",
+          "title": "Willy-nilly, Crack, Into Release!",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1819/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/115133",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "维护一个会动态增删长度为 $n$ 的四字母字符串集合。每次操作可把某个非空的同字符后缀整体改成与其相邻的字母（相邻对为 $ab,bc,cd,da$），要求从任意初始串出发形成闭合操作序列且每个集合中的串至少出现一次，输出序列长度的最小值和最大值。",
+          "transformedStatement": "把四字母字符串视为按前缀递归划分的图中顶点，合法操作对应图上的边；目标转化为覆盖所有动态标记顶点的闭合路径，并在字典树前缀节点上维护不同后缀连接类型的最短、最长覆盖路径。",
+          "keyObservations": [
+            "所有字符串的最长公共前缀在操作中保持不变，因此可以按公共前缀长度分层处理，问题只剩下后缀的闭合路径。",
+            "长度为 $2$ 的闭合序列只可能由一次操作及其立即逆操作组成，并且只需在重要字符串不超过两个时检查。",
+            "更长的序列中，首个非固定字符不能立即回到原值，必须沿 $a\\to b\\to c\\to d\\to a$ 循环；按该字符分成四段后，每个前缀只需维护 $6$ 类连接路径的最短和最长值。",
+            "增删一个字符串只影响它沿途的 $O(n)$ 个前缀状态；没有重要字符串的字典树子树只依赖剩余长度，可预处理默认状态，从而达到总复杂度 $O(nq)$。"
+          ],
+          "solutionBrief": "将字符串按前缀建立字典树，在每个节点维护连接不同后缀形态、覆盖所有重要字符串的路径最小值和最大值。增删字符串时仅重算其路径上的 $O(n)$ 个节点；空子树状态按剩余长度预处理，另行处理长度为 $2$ 的特殊闭环。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
