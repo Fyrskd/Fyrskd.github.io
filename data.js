@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1296,
+    "total_problems": 1306,
     "source_total_problems": 1742,
-    "filtered_out_problems": 446,
-    "with_statement_brief": 1296,
-    "with_editorial_brief": 1081,
-    "with_solution_brief": 1082,
-    "missing_editorial_brief": 214,
+    "filtered_out_problems": 436,
+    "with_statement_brief": 1306,
+    "with_editorial_brief": 1090,
+    "with_solution_brief": 1091,
+    "missing_editorial_brief": 215,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 206,
+    "ai_override_count": 216,
     "primary_topic_count": 13,
-    "contest_count": 208,
+    "contest_count": 209,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,23 +45,23 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 57,
-    "构造与贪心": 434,
-    "图论与网络流": 77,
-    "动态规划与状态设计": 126,
+    "构造与贪心": 437,
+    "图论与网络流": 78,
+    "动态规划与状态设计": 129,
     "数论与同余": 114,
     "组合计数与概率": 104,
     "数据结构": 96,
     "几何": 26,
-    "树结构": 97,
-    "交互": 63,
-    "基础实现与模拟": 48,
+    "树结构": 98,
+    "交互": 64,
+    "基础实现与模拟": 49,
     "博弈": 42,
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 181,
+    "ai_generated_with_editorial": 190,
     "ai_generated_partial_editorial": 9,
-    "missing_editorial": 214,
+    "missing_editorial": 215,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -32898,6 +32898,286 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1987,
+      "name": "EPIC Institute of Technology Round Summer 2024 (Div. 1 + Div. 2)",
+      "date": "2024-06-30",
+      "url": "https://codeforces.com/contest/1987",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 10,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1987A",
+          "index": "A",
+          "slot": "A",
+          "title": "Upload More RAM",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1987/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/131053",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "每秒可上传 $0$ 或 $1$ GB，但任意连续 $k$ 秒内最多上传 $1$ GB。要求上传总共 $n$ GB，求完成上传所需的最少秒数。",
+          "transformedStatement": "把每次上传视为一个时间点 $t_i$。网络限制等价于相邻上传时间必须满足 $t_{i+1}-t_i\\ge k$，于是问题转化为让第 $n$ 个上传时间尽可能早；等间隔取点即可达到下界。",
+          "keyObservations": [
+            "任意两次上传之间至少间隔 $k$ 秒，否则包含这两次上传的某个连续 $k$ 秒窗口会上传至少 $2$ GB，因此上传时刻满足 $t_{i+1}\\ge t_i+k$。",
+            "第一次上传最早在第 $1$ 秒，结合前一条间隔限制，第 $i$ 次上传不早于第 $1+(i-1)k$ 秒，从而最后一次上传至少在第 $1+(n-1)k$ 秒。",
+            "按第 $1, k+1, 2k+1,\\ldots,(n-1)k+1$ 秒上传恰好 $n$ 次，达到上述下界，因此该下界就是最优答案。"
+          ],
+          "solutionBrief": "将上传时刻按先后记为 $t_1,\\ldots,t_n$。连续两次上传至少相隔 $k$ 秒，且 $t_1\\ge1$，所以 $t_n\\ge1+(n-1)k$；按这些时刻上传可达到下界，答案为 $1+(n-1)k$，每组数据 $O(1)$ 计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1987B",
+          "index": "B",
+          "slot": "B",
+          "title": "K-Sort",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1987/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/131053",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定整数数组。每次可选择若干位置并将这些位置的值各增加 $1$，费用为选中位置数加 $1$；可重复操作，求使数组非递减所需的最小总费用。",
+          "transformedStatement": "把所有操作合并为每个位置的总增量 $b_i$：目标变为选择非负 $b_i$ 使 $a_i+b_i$ 非递减，并最小化 $\\sum b_i+\\max b_i$。最优增量由前缀最大值直接确定。",
+          "keyObservations": [
+            "设最终第 $i$ 个元素增加 $b_i$，每次操作的费用等于选中元素数量加 $1$；完成这些增量的最小费用是 $\\sum b_i+\\max b_i$，因为至少需要 $\\max b_i$ 次操作且总共选中 $\\sum b_i$ 次元素。",
+            "令 $p_i=\\max(a_1,\\ldots,a_i)$，非递减条件强制 $b_i\\ge p_i-a_i$；这个下界同时逐项达到，因此不需要额外增加任何元素。",
+            "按第 $m$ 次操作选中所有满足 $b_i\\ge m$ 的位置，即可实现任意给定的增量向量，说明费用下界确实可达。"
+          ],
+          "solutionBrief": "计算前缀最大值 $p_i$，令 $b_i=p_i-a_i$；答案为 $\\sum b_i+\\max b_i$。扫描数组维护前缀最大值、增量总和与最大增量，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1987C",
+          "index": "C",
+          "slot": "C",
+          "title": "Basil's Garden",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1987/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/131053",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "有一排高度为正整数的花。每秒按从左到右的顺序处理：若一朵花比右侧花高（最右花无右邻居），它的高度下降 $1$；求所有花第一次同时变为 $0$ 所需的秒数。",
+          "transformedStatement": "把过程改写为计算每朵花首次归零的时刻 $t_i$。最右花的时刻已知，向左时只需判断当前花是独立每秒下降，还是会因追上右花而比右花晚一秒归零。",
+          "keyObservations": [
+            "令第 $i$ 朵花首次变为 $0$ 的时刻为 $t_i$，最右花每秒都会下降，因此 $t_n=h_n$。",
+            "若初始有 $h_{i-1}>h_i$，左花始终高于右花并每秒下降，故 $t_{i-1}=h_{i-1}$；否则它最终会与右花同时下降，并比右花晚一秒归零。",
+            "两种情况统一为 $t_{i-1}=\\max(h_{i-1},t_i+1)$，从右向左计算即可；由于相邻归零时刻至少相差一秒，最终答案是 $t_1$。"
+          ],
+          "solutionBrief": "从右向左维护每朵花的归零时刻。初始化 $t_n=h_n$，然后按 $t_{i-1}=\\max(h_{i-1},t_i+1)$ 递推，输出 $t_1$，每个测试用例在线性时间内完成。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1987D",
+          "index": "D",
+          "slot": "D",
+          "title": "World is Mine",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1987/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/131053",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "博弈",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "games"
+          ],
+          "statementBrief": "有 $n$ 个带味道值的蛋糕，Alice 先手并与 Bob 轮流吃满足规则的蛋糕；Alice 选择味道值 $t$ 后可等价看作吃掉所有剩余的 $a_i\\le t$ 的蛋糕，而 Bob 每次吃掉一个可选蛋糕。游戏无法继续时结束，求双方最优时 Alice 吃掉的蛋糕数。",
+          "transformedStatement": "把相同味道值合并成按味道递增排列的计数 $c_1,\\ldots,c_m$：Alice 每回合清空最小的非空组，Bob 可减少任意非空组。Bob 的有效策略是按递增下标选择若干组并全部清零，需满足每个前缀的计数和不超过对应下标减去已选组数。",
+          "keyObservations": [
+            "Alice 选择味道值为 $t$ 的蛋糕后，等价于一次清空所有剩余的 $a_i\\le t$ 的蛋糕；为保留更多后续选择，她每回合应选择当前可行的最小味道值。",
+            "将相同味道值合并为计数 $c_i$ 后，Alice 每回合清空最小的非空计数，Bob 每回合从任意非空计数中减去 $1$。",
+            "Bob 若触碰某个计数 $c_i$，只减少其中一块不会改变 Alice 的可行动作且浪费回合，因此最优策略是保持该计数不变或直接清零。",
+            "若 Bob 按递增下标清零 $i_1<\\cdots<i_k$，可行条件等价于对每个前缀满足 $\\sum_{j=1}^{p}c_{i_j}\\le i_p-p$；用 $dp[i][k]$ 记录前 $i$ 个计数中选 $k$ 个时的最小总和，即可求 Bob 最多清零多少组。"
+          ],
+          "solutionBrief": "统计排序后的不同味道及其出现次数。用 $dp[i][k]$ 求前 $i$ 组中选 $k$ 组供 Bob 清零时的最小计数和，转移为跳过或加入当前组并检查 $s\\le i-k$；答案为不同味道数减去可选的最大组数，复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1987E",
+          "index": "E",
+          "slot": "E",
+          "title": "Wonderful Tree!",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1987/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/131053",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "树结构",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根的树，每个节点有整数值。一次操作可任选节点并将其值加 1；要求最终每个非叶节点的值不超过所有直接子节点值之和，求达到该条件所需的最少操作次数。",
+          "transformedStatement": "把每个非叶节点表示为余量 $b_v=\\sum_{u\\text{为子节点}}a_u-a_v$，目标是让所有 $b_v\\ge0$。一次对节点增值等价于把 $1$ 单位余量从该节点沿父边向上转移，因此可视为在树上以深度差为代价，将正余量运输给负余量。",
+          "keyObservations": [
+            "定义非叶节点的余量为 $b_v=\\sum a_u-a_v$，一次增加操作会让该点余量减 $1$、父节点余量加 $1$，因此问题转为消除所有负余量。",
+            "沿父子链连续转移可合并为一次：从后代 $w$ 向祖先 $v$ 转移 $1$ 单位，代价是深度差 $d_w-d_v$，把操作数转成带距离的余量运输。",
+            "两条转移路径相交时交换终点不会增加总代价，因此处理某个祖先时无需顾虑其更高层祖先的分配。",
+            "若子树中存在比当前后代更浅且余量为正的节点，应优先从它转移；所以按编号从大到小处理节点，并反复选子树内最近的正余量节点即可保持最优。"
+          ],
+          "solutionBrief": "计算各非叶节点余量 $b_v$。按编号从大到小处理，若 $b_v<0$，就从子树中深度最近且 $b_u>0$ 的节点向 $v$ 转移，每单位代价为深度差；累计代价即答案，题解给出的实现复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1987F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Interesting Problem (Easy Version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1987/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/131053",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "题目给出一个长度为 $n$ 的整数数组，允许反复执行题面所述的两步操作，并要求最大化操作次数。但当前记录缺少这两步操作的具体定义，无法确定每次究竟如何修改数组。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1987F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Interesting Problem (Hard Version)",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1987/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/131053",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组。每次选择当前数组中相邻的两个元素，要求左边元素的值等于它当前的位置，然后删除这两个元素；重复操作，求最多能进行多少次。",
+          "transformedStatement": "把删除过程逆序看成向数组中插入成对元素，并用括号序列表示删除配对关系：区间内部先完成后，外层端点才能配对删除；再用前缀 DP 选择能够连续执行的区间。",
+          "keyObservations": [
+            "若原数组第 $i$ 个元素最终被删除，它必须满足 $a_i\\equiv i\\pmod 2$；因为每次删除其左侧元素只减少 $2$ 个，所以在删除它前左侧必须恰好完成 $(i-a_i)/2$ 次操作。",
+            "逆序看删除过程等价于不断插入成对括号；因此一段区间的删除配对可以像合法括号序列一样递归划分为外层配对和内部区间。",
+            "令 $dp[l][r]$ 表示删除区间 $[l,r]$ 前左侧至少需要完成的操作数。枚举与 $l$ 配对的同奇偶位置 $m$，内部区间的可行性和右侧需求共同给出最小前置操作数。",
+            "完整数组不一定一次删除完，前缀区间可以拼接；若 $dp[l][r]\\le dp2[l-1]$，就能在已处理前缀后删除该区间，并新增 $(r-l+1)/2$ 次操作。"
+          ],
+          "solutionBrief": "用区间 DP 计算每段被删除所需的最少左侧操作数，再用前缀 DP 拼接可行区间，最大化完成的操作次数。区间转移枚举与左端点配对的同奇偶位置，整体复杂度为 $O(n^3)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1987G1",
+          "index": "G1",
+          "slot": "G",
+          "title": "Spinning Round (Easy Version)",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1987/problem/G1",
+          "editorialUrl": "https://codeforces.com/blog/entry/131053",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "divide and conquer",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一个排列 $p$ 和全为 `?` 的字符串 $s$，有 $n$ 个顶点，按题目规则依次为每个顶点从两个候选端点中选择并加入一条边；本地记录未完整显示候选端点的具体定义。要求在所有合法选择中，使最终无向图连通，并最大化其直径；若无法形成连通图则输出 $-1$。",
+          "transformedStatement": "把每条边按端点的排列值定向为较小 $p$ 指向较大 $p$，于是每个顶点恰有一条出边。直径被重述为两条分别位于某个分界线两侧、最终汇合的有向路径，问题转为计算区间最长路径并寻找可行的跨界合并。",
+          "keyObservations": [
+            "由于每个顶点恰有一条出边，任意直径路径只能在某个汇合点分成两条同向路径，不能出现“出边分叉后再继续”的形态。",
+            "两条汇合路径可以被某个位置 $m$ 分隔到数组两侧，因此全局直径可转化为左右区间路径长度的合并问题。",
+            "从左向右维护按 $p_i$ 单调的最大栈，可得到每个前缀能形成的最长路径；弹出较小值时，路径长度只需向栈中相邻状态传播。",
+            "合并时不能直接取两侧最大路径，因为另一侧的更大前缀最大值可能阻断连接；只需检查前缀最大值或后缀最大值跨过分界线的相邻区间。"
+          ],
+          "solutionBrief": "将边按 $p$ 值从小到大定向，每个点只有一条出边，直径分成两条汇合路径。用单调最大栈求各前缀的最长路径，再枚举前缀/后缀最大值跨越分界的位置进行合并，取最大直径；无法连通时输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1987G2",
+          "index": "G2",
+          "slot": "G",
+          "title": "Spinning Round (Hard Version)",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1987/problem/G2",
+          "editorialUrl": "https://codeforces.com/blog/entry/131053",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "divide and conquer",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一个排列 $p$ 和由 $L/R/?$ 组成的字符串。按排列优先级依次为每个位置连接一条边：只能连向左侧最近的较小元素、右侧最近的较小元素，或在问号时任选允许方向；要求在所有能形成连通图的选择中最大化图的直径，无法连通则输出 $-1$。",
+          "transformedStatement": "把每个位置的可选连接抽象为区间两端 $l_i,r_i$，并按 $p_i$ 递增顺序合并。对区间 $[tl,tr]$，状态表示从两端出发、互不相交的路径深度 $(a,b)$，通过端点连接转移并拼出最大直径。",
+          "keyObservations": [
+            "对每个位置 $i$，只需考虑其左侧和右侧最近的较小优先级位置 $l_i,r_i$；字符 $L/R/?$ 分别限制可选的连接方向，因此每个位置的操作被压缩为至多两条候选边。",
+            "若某个 $p_i<n$ 的位置没有任何允许方向，即 $s_i=L$ 时 $l_i<1$、$s_i=R$ 时 $r_i>n$，或 $s_i=?$ 时两者都不存在，则无法形成连通图，答案为 $-1$。",
+            "区间 $[tl,tr]$ 内的状态只需记录从左右端点出发且互不相交的两条路径深度 $(a,b)$，这样合并位置 $i$ 时，直径候选值可由两侧路径深度直接拼接得到。",
+            "每个区间只保留 $a$ 最大、$b$ 最大和 $a+b$ 最大的三组状态即可；后续转移和直径更新只依赖这三类极值，因此不会损失最优答案。"
+          ],
+          "solutionBrief": "按 $p_i$ 从小到大处理位置，计算左右最近的较小元素 $l_i,r_i$。用区间端点路径深度对做 DP；每个状态保留 $a$、$b$、$a+b$ 的最大值，并按允许方向转移及更新直径。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1987H",
+          "index": "H",
+          "slot": "H",
+          "title": "Fumo Temple",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1987/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/131053",
+          "primaryTopic": "交互",
+          "secondaryTopics": [],
+          "originalTags": [
+            "interactive"
+          ],
+          "statementBrief": "评测器隐藏一个 $n\\times m$ 的矩阵和一个目标格子；每次提交一个合法格子坐标，评测器返回一个整数，最多查询 $n+225$ 次后必须输出目标格子的行列坐标。矩阵与目标在交互开始前固定且评测器不自适应。",
+          "transformedStatement": "将未知矩阵交互抽象为距离型预言机：查询格子与目标的行列距离分别为 $d_i,d_j$ 时，返回值落在 $d_i+d_j$ 到 $d_i+d_j+(d_i+1)(d_j+1)$ 之间。问题转为用少量查询递归缩小目标行列候选范围。",
+          "keyObservations": [
+            "当只剩一行时，在当前位置 $l$ 查询得到 $x$，可将隐藏列缩小到 $[\\max(l+1,\\frac{x-1}{2}+l),\\min(r,x+l)]$；该区间长度至少减半。",
+            "查询第 $2$ 行的三个近似对称位置；若某次返回值大于约 $\\frac{3m}{4}$，可证明目标行满足 $i_0\\ge4$，从而安全删除前三行。",
+            "若三个返回值都不大，则目标可限制在列数至多约 $\\frac{3m}{4}$ 的区域，并保持 $n\\le m$，递归后继续处理。",
+            "将列数递归降到 $A=25$ 后，对每个可能行使用一行二分式缩小；总查询数为 $n+63+25\\lceil\\log_2 25\\rceil\\le n+225$。"
+          ],
+          "solutionBrief": "把交互器抽象为返回满足距离区间约束的数值。单行时按返回值收缩列区间；多行时用第2行三个对称查询，要么删除前三行，要么显著缩小列范围，递归至 $m\\le25$ 后逐行处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
