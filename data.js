@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1362,
+    "total_problems": 1364,
     "source_total_problems": 1742,
-    "filtered_out_problems": 380,
-    "with_statement_brief": 1362,
-    "with_editorial_brief": 1142,
-    "with_solution_brief": 1143,
+    "filtered_out_problems": 378,
+    "with_statement_brief": 1364,
+    "with_editorial_brief": 1144,
+    "with_solution_brief": 1145,
     "missing_editorial_brief": 219,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 295,
+    "ai_override_count": 297,
     "primary_topic_count": 13,
-    "contest_count": 215,
+    "contest_count": 216,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 58,
+    "字符串": 60,
     "构造与贪心": 447,
     "图论与网络流": 82,
     "动态规划与状态设计": 132,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 238,
+    "ai_generated_with_editorial": 240,
     "ai_generated_partial_editorial": 13,
     "missing_editorial": 219,
     "manual_override": 891,
@@ -37615,6 +37615,70 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1820,
+      "name": "Codeforces Round 866 (Div. 2)",
+      "date": "2023-04-15",
+      "url": "https://codeforces.com/contest/1820",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1100,
+      "problems": [
+        {
+          "key": "1820A",
+          "index": "A",
+          "slot": "A",
+          "title": "Yura's New Name",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1820/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/115133",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定只含 `_` 和 `^` 的字符串，每次可在任意位置插入一个字符。要求所有字符都属于连续子串 `^_^` 或 `^^` 的某次出现，求最少插入次数。",
+          "transformedStatement": "将合法性拆成三个独立条件：字符串不能含连续的 `__`，首尾必须是 `^`，且长度至少为 2；分别修补违反条件的位置即可得到答案。",
+          "keyObservations": [
+            "出现连续的 `__` 时，必须在两者之间插入 `^`，因为目标笑脸 `^_^` 和 `^^` 都不包含 `__`。",
+            "合法字符串必须以 `^` 开头和结尾，因此首字符或末字符为 `_` 时各需补一个 `^`。",
+            "长度为 1 且字符串为 `^` 时仍不合法，需再插入一个字符使长度至少为 2；这些局部修正之和就是最小操作数。"
+          ],
+          "solutionBrief": "遍历字符串统计相邻的 `__` 数量，再分别判断首尾是否为 `_` 并累加。若字符串恰为单个 `^`，答案为 1；总复杂度为 $O(|s|)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1820B",
+          "index": "B",
+          "slot": "B",
+          "title": "JoJo's Incredible Adventures",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1820/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/115133",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个二进制字符串，构造一个 $n\\times n$ 表：第 $k$ 行是原串向右循环移动 $k$ 位。要求在表中选取行、列均连续的全 `1` 矩形，并求其最大面积；若不存在 `1`，答案为 $0$。",
+          "transformedStatement": "将所有循环移位统一看作首尾相连的字符串，核心只需找到循环意义下最长连续 `1` 段 $k$。任意面积为 $a\\times b$ 的矩形都满足 $a+b\\le k+1$，于是问题转化为在该和约束下最大化 $ab$。",
+          "keyObservations": [
+            "把字符串首尾相连后统计最长连续 `1` 段长度 $k$，因为循环移位会让首尾的 `1` 在某一行中接续；全为 `1` 和全为 `0` 需分别特判为 $n^2$ 与 $0$。",
+            "若矩形大小为 $a\\times b$，观察其第一行可得到至少 $a+b-1$ 个连续的 `1`，因此必有 $a+b\\le k+1$，把二维限制转化为最长循环连续段上的和约束。",
+            "在固定 $a+b\\le k+1$ 时，乘积 $ab$ 在两边尽量接近时最大，因此最优面积为 $\\lfloor\\frac{k+1}{2}\\rfloor\\cdot\\lceil\\frac{k+1}{2}\\rceil$。"
+          ],
+          "solutionBrief": "特判全 `1` 和全 `0`。其余情况在线性扫描中统计首尾相接后的最长连续 `1` 段 $k$，输出 $\\lfloor\\frac{k+1}{2}\\rfloor\\cdot\\lceil\\frac{k+1}{2}\\rceil$，总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
