@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1463,
+    "total_problems": 1470,
     "source_total_problems": 1742,
-    "filtered_out_problems": 279,
-    "with_statement_brief": 1463,
-    "with_editorial_brief": 1238,
-    "with_solution_brief": 1239,
+    "filtered_out_problems": 272,
+    "with_statement_brief": 1470,
+    "with_editorial_brief": 1245,
+    "with_solution_brief": 1246,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 397,
+    "ai_override_count": 404,
     "primary_topic_count": 13,
-    "contest_count": 234,
+    "contest_count": 235,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,9 +45,9 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 478,
-    "图论与网络流": 88,
-    "动态规划与状态设计": 141,
+    "构造与贪心": 481,
+    "图论与网络流": 89,
+    "动态规划与状态设计": 144,
     "数论与同余": 134,
     "组合计数与概率": 113,
     "数据结构": 114,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 332,
-    "ai_generated_partial_editorial": 15,
+    "ai_generated_with_editorial": 338,
+    "ai_generated_partial_editorial": 16,
     "missing_editorial": 224,
     "manual_override": 891,
     "statement_derived": 1
@@ -37352,6 +37352,224 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1854,
+      "name": "Codeforces Round 889 (Div. 1)",
+      "date": "2023-07-29",
+      "url": "https://codeforces.com/contest/1854",
+      "type": "Div. 1",
+      "problemCount": 7,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1854A1",
+          "index": "A1",
+          "slot": "A",
+          "title": "Dual (Easy Version)",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1854/problem/A1",
+          "editorialUrl": "https://codeforces.com/blog/entry/118540",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定一个整数数组，每次可任选两个位置 $i,j$，把 $a_j$ 加到 $a_i$，且允许重复使用位置。要求在不超过 50 次操作后使数组非递减，并输出任意一组操作，不要求最少。",
+          "transformedStatement": "将目标拆成逐个保证相邻关系 $a_i\\le a_{i+1}$：全负数组通过构造非递减的后缀和解决；含正数时先制造一个足够大的正数，再从左到右把后续元素逐步抬高。",
+          "keyObservations": [
+            "当所有元素都为负数时，从右向左执行 $a_i\\mathrel{+}=a_{i+1}$，最终得到后缀和；后缀和按位置递增，因此只需 $n-1$ 次操作。",
+            "只要存在正数，就可对该位置执行 5 次自加，使其变为大于 $20$ 的正数，从而超过所有初始元素及后续关键位置的值。",
+            "先将位置 $2$ 用这个大正数连续增加两次，再依次令 $a_i\\mathrel{+}=a_{i-1}$；每个当前位置都会变得足够大，因此可逐项保证 $a_{i-1}\\le a_i$。",
+            "正数方案最多使用 $5+2(n-1)\\le43$ 次操作，满足 50 次限制，且只需线性扫描数组。"
+          ],
+          "solutionBrief": "若全为负数，逆序累加相邻后缀即可得到非递减数组。否则先把一个正数通过 5 次自加扩大，再用它两次提升 $a_2$，之后依次用前一项提升后续元素；总操作数不超过 43 次。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1854A2",
+          "index": "A2",
+          "slot": "A",
+          "title": "Dual (Hard Version)",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1854/problem/A2",
+          "editorialUrl": "https://codeforces.com/blog/entry/118540",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定一个含正数、负数和零的数组，每次可选择两个位置，把第二个位置的当前值加到第一个位置上，最多操作 $31$ 次。要求输出一组操作，使最终数组满足非递减。",
+          "transformedStatement": "先把数组统一转化为全正或全负：放大一个绝对值足够大的同号元素，并用它消除所有异号元素；统一符号后，再用前缀和或后缀和直接构造非递减数组。",
+          "keyObservations": [
+            "若所有元素为正，可依次令 $a_i\\leftarrow a_i+a_{i-1}$；若所有元素为负，则从右向左令 $a_i\\leftarrow a_i+a_{i+1}$，分别在 $n-1$ 步内得到非递减数组。",
+            "针对某一目标符号，先用已有该符号且绝对值最大的元素反复自加，最多 $5$ 步即可得到绝对值至少为 $32$ 的大元素，再用它覆盖所有相反符号元素。",
+            "设构造大元素和消除相反符号分别需要 $x_1,x_2$ 或 $y_1,y_2$ 步，则一侧的构造步数为 $x_1+x_2$，另一侧为 $y_1+y_2$，且 $x_1+y_1\\leq 5$、$x_2+y_2\\leq n$。",
+            "两种目标符号的总前置步数之和不超过 $25$，因此较少的一侧至多需要 $12$ 步；再加上 $n-1\\leq19$ 步的同号处理，总数不超过 $31$。"
+          ],
+          "solutionBrief": "分别模拟把数组变为全正和全负的方案：用同号最大绝对值元素自加放大，再将其加到所有异号元素上。选择前置操作较少的方案，最后用前缀和或后缀和在 $n-1$ 步内完成非递减化。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1854B",
+          "index": "B",
+          "slot": "B",
+          "title": "Earn or Unlock",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1854/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/118540",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dp"
+          ],
+          "statementBrief": "牌堆按顺序排列，开始时只有最上面的牌解锁。每回合选择一张已解锁的牌，若其价值为 $v$，可以获得 $v$ 分，或解锁牌堆中接下来的 $v$ 张牌；牌被使用后继续进行，直到没有牌或剩余牌都锁定，求最多能获得的分数。",
+          "transformedStatement": "将“获得分数或解锁牌”看成消耗一张牌、并在选择解锁时增加资源的过程。若最终使用前缀的前 $x$ 张牌，则得分固定为 $\\sum_{i=1}^{x}a_i-x+1$，只需用位集判断每个前缀是否可达。",
+          "keyObservations": [
+            "使用过的牌可以按牌堆顺序处理，交换操作顺序不会改变最终得分，因此只需考虑前缀牌。",
+            "若最终使用前 $x$ 张牌，可把后面补上的 $n$ 张零值牌视为占位；总得分唯一确定为 $a_1+\\dots+a_x-x+1$，问题转为判断哪些 $x$ 可达。",
+            "把选择“解锁”的牌的价值视为可增加的资源，初始资源为 $1$；处理第 $i$ 张牌时，选择解锁就将可达资源加上 $a_i$，从而可用位集维护所有可达值。",
+            "当可达资源恰好为 $i$ 时可以使用前 $i$ 张牌并结算对应得分，但无法继续解锁后续牌，因此转移到下一张牌前必须清除该状态。"
+          ],
+          "solutionBrief": "补充 $n$ 张价值为 $0$ 的牌后，用位集维护处理前缀时所有可达资源值：选择当前牌解锁对应于整体左移 $a_i$，不解锁则保留原状态。每次用前缀和计算可结算状态 $x$ 的得分，并清除恰好到达边界的状态；复杂度为 $O(n^2/w)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1854C",
+          "index": "C",
+          "slot": "C",
+          "title": "Expected Destruction",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1854/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/118540",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "给定 $n$ 个不同整数位置组成的集合，按题目规定的随机移动与相撞消灭规则，每秒推进相关方块，直到集合为空。要求计算清空集合所需秒数的期望，并输出其在模 $10^9+7$ 下的值。给定文本的“每秒具体步骤”在题面摘录中缺失，移动规则依据题解还原。",
+          "transformedStatement": "将元素按行表示为方块，并在第 $m+1$ 列加入静止虚块；集合清空等价于每个方块都追上下一行的方块。利用相邻块之间的局部追赶时间和线性期望，把全局期望拆成各相邻初始位置对的二维状态期望之和。",
+          "keyObservations": [
+            "加入位置 $m+1$ 的静止虚块后，所有真实块最终都可统一描述为到达下一行的块；这把“集合为空”转化为所有块抵达终点。",
+            "只研究相邻两块时，其他块不会影响前者追上后者的局部过程；除非后者已经在 $m+1$，否则两块下一步各有 $1/2$ 概率前进。",
+            "令 $dp_{i,j}$ 表示前块在 $i$、后块在 $j$ 时前块追上的期望步数，则状态转移为 $dp_{i,j}=((dp_{i+1,j}+1)+dp_{i,j+1})/2$，将随机过程转成二维递推。",
+            "总耗时的期望等于每一对相邻初始块追赶时间期望之和，这是线性期望的直接应用，无需处理各对事件之间的相关性。"
+          ],
+          "solutionBrief": "在末尾加入位置 $m+1$ 的虚拟静止块，计算每对相邻块的追赶期望。用 $dp_{i,j}$ 递推，边界为 $dp_{i,m+1}=m+1-i$、$dp_{i,i}=0$，答案为 $\u0000sum_{k=1}^{n}dp_{S_k,S_{k+1}}$，并在模 $10^9+7$ 下运算；复杂度为 $O(m^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1854D",
+          "index": "D",
+          "slot": "D",
+          "title": "Michael and Hotel",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1854/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/118540",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "interactive",
+            "trees"
+          ],
+          "statementBrief": "有 $n$ 个房间，每个房间的传送器固定把人送到某个房间，但这些映射未知。Brian 在房间 1，允许查询从指定房间出发走指定次数后是否落入给定房间集合，最多查询 $2000$ 次；要求输出所有从中出发最终能与 Brian 相遇的房间。",
+          "transformedStatement": "将房间建模为每个节点恰有一条出边的函数图：房间 1 所在分量由一个有向环及其入树组成。目标转化为先恢复该环，再判断每个节点走 $n$ 步后是否落入该环。",
+          "keyObservations": [
+            "从房间 1 走恰好 $n$ 次后一定位于其所在连通分量的环上，因此可对房间编号集合二分，最多用 $9$ 次查询定位一个环点。",
+            "若已知整个环，只需对每个房间 $i$ 查询其第 $n$ 个后继是否在环中；答案为是当且仅当 $i$ 属于房间 1 的连通分量。",
+            "已知环上连续的 $k$ 个点后，将它们组成集合 $C$，对每个房间查询第 $k$ 个后继是否在 $C$ 中，可一次得到另一段环点，使已知数量翻倍或直接覆盖整个环。",
+            "先找到 $63$ 个环点，再按翻倍阶段检查所有房间，查询次数上界为 $9\\cdot63+(500-63)+(500-126)+(500-252)+(500-252)=1874$，不超过限制。"
+          ],
+          "solutionBrief": "把房间关系视为每个点只有一条出边的函数图。先用二分找到环点，再逐轮扩展已知环段；环确定后，查询每个房间走 $n$ 步是否落在环上，从而筛出与房间 1 属于同一连通分量的所有房间。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1854E",
+          "index": "E",
+          "slot": "E",
+          "title": "Game Bundles",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1854/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/118540",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "组合计数与概率",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "构造最多 $60$ 个、每个值在 $1$ 到 $60$ 的游戏，使值的任意子集总和为 $60$ 的子集数量恰好为给定的 $m$。需要输出构造出的元素个数及所有数值，且每个元素最多使用一次。",
+          "transformedStatement": "把元素分为总和小于 $60$ 的小数值和形如 $60-s_i$ 的大数值；问题等价于先产生小数值子集和计数 $f(s)$，再选择若干 $s_i$ 让 $\\sum f(s_i)=m$。",
+          "keyObservations": [
+            "先选总和小于 $60$ 的小数值，使只含小数值的子集不可能成包；再令大数值为 $60-s_i$，每个合法套餐必恰好包含一个大数值。",
+            "固定小数值后，令 $f(s)$ 表示其子集和为 $s$ 的方案数，则加入数值 $60-s_i$ 会贡献恰好 $f(s_i)$ 个套餐，目标转为选至多 $16$ 个 $s_i$ 使贡献总和为 $m$。",
+            "把 $0$ 到 $29$ 随机分成两个各含 $15$ 个数的集合，将 $s_i$ 分成两组分别枚举，再匹配两组贡献和，可把组合搜索规模降到约 $5\\times10^5$。",
+            "约取 $\\log_2(m)$ 个数值 $1$，再随机加入五个 $[1,6]$ 内的数并保持总和小于 $60$，能让 $f(s)$ 规模接近 $m$ 且具有随机扰动，重复尝试即可提高找到构造的概率。"
+          ],
+          "solutionBrief": "随机生成至多 $44$ 个小数值，计算各子集和计数 $f(s)$；将 $0..29$ 随机分组，用两组枚举匹配找到至多 $16$ 个 $s_i$ 使其贡献和为 $m$，输出对应的 $60-s_i$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1854F",
+          "index": "F",
+          "slot": "F",
+          "title": "Mark and Spaceship",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1854/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/118540",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp"
+          ],
+          "statementBrief": "飞船从四维原点出发，每次选择一个坐标轴正向或负向移动一单位，但第 $i$ 次指令会被实际执行 $i$ 次。对所有满足坐标范围的整数点，求到达该点所需指令次数的最小值之和。",
+          "transformedStatement": "把“恰好用 $k$ 次指令到达”转化为总移动量不超过三角数 $1+2+\\cdots+k$ 且坐标和同奇偶的判定问题；四维中仅需额外维护不满足充分性的异常集合 $A_k$。",
+          "keyObservations": [
+            "在二维中，恰好用 $k$ 步可达当且仅当曼哈顿距离不超过 $1+2+\\cdots+k$，且坐标和与该总和同奇偶；这给出四维判定的主体条件。",
+            "四维只会有少量违反上述距离与奇偶条件的异常点，定义 $A_k$ 收集这些点后，普通点的最小步数可由条件直接判断。",
+            "将异常点按绝对值归一化为 $0\\le a\\le b\\le c\\le d$ 后，除 $k\\le6$ 外，$A_k$ 中的点把最大坐标减去 $k$ 后必属于 $A_{k-1}$，因此可由前一层反向生成候选。",
+            "坐标交换和独立变号不改变答案；持续归一化可将每层异常点控制在较小规模，便于枚举到覆盖坐标上限所需的 $k\\le62$。"
+          ],
+          "solutionBrief": "先按曼哈顿距离上界和奇偶条件判断恰好 $k$ 步的普通可达点，再递推维护少量异常集合 $A_k$。对所有 $k$ 生成异常点并利用坐标对称性归一化，最后按这些可达性条件统计矩形区域内各点的最小步数；题解未展开具体计数实现。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
