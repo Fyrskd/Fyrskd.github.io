@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1313,
+    "total_problems": 1314,
     "source_total_problems": 1742,
-    "filtered_out_problems": 429,
-    "with_statement_brief": 1313,
+    "filtered_out_problems": 428,
+    "with_statement_brief": 1314,
     "with_editorial_brief": 1096,
     "with_solution_brief": 1097,
-    "missing_editorial_brief": 216,
+    "missing_editorial_brief": 217,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 229,
+    "ai_override_count": 236,
     "primary_topic_count": 13,
     "contest_count": 210,
     "rating_min": 800,
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 57,
+    "字符串": 58,
     "构造与贪心": 436,
     "图论与网络流": 78,
-    "动态规划与状态设计": 130,
+    "动态规划与状态设计": 128,
     "数论与同余": 114,
     "组合计数与概率": 105,
     "数据结构": 97,
     "几何": 26,
     "树结构": 98,
     "交互": 66,
-    "基础实现与模拟": 51,
+    "基础实现与模拟": 53,
     "博弈": 43,
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
     "ai_generated_with_editorial": 196,
     "ai_generated_partial_editorial": 9,
-    "missing_editorial": 216,
+    "missing_editorial": 217,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -32140,8 +32140,8 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-07-23",
       "url": "https://codeforces.com/contest/1995",
       "type": "Div. 2",
-      "problemCount": 6,
-      "maxRating": 2700,
+      "problemCount": 7,
+      "maxRating": 2900,
       "problems": [
         {
           "key": "1995A",
@@ -32152,17 +32152,14 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1995/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/131847",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "博弈",
-            "数据结构"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "greedy",
             "implementation",
             "math"
           ],
-          "statementBrief": "题面已抓取：Diagonals；本地暂无可用题解正文。",
+          "statementBrief": "给定一个边长为 $n$ 的棋盘和 $k$ 个棋子，每个格子最多放一个棋子，必须将所有棋子放入棋盘。对角线按格子的行号与列号之和 $i+j$ 定义，要求安排棋子，使至少含一个棋子的对角线数量最少。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -32178,9 +32175,7 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1995/problem/B1",
           "editorialUrl": "https://codeforces.com/blog/entry/131847",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "图论与网络流"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "brute force",
@@ -32188,7 +32183,7 @@ window.CF_INSIGHTS_DATA = {
             "sortings",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Bouquet (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "商店有 $n$ 朵花，第 $i$ 朵有 $a_i$ 片花瓣且价格也是 $a_i$ 枚硬币。女孩可以挑选这些花组成花束，要求任意两朵花的花瓣数之差不超过 $1$，且总花费不超过 $m$；求花束能包含的最大花瓣总数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -32205,8 +32200,7 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/131847",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "数据结构",
-            "图论与网络流"
+            "数论与同余"
           ],
           "originalTags": [
             "binary search",
@@ -32216,7 +32210,7 @@ window.CF_INSIGHTS_DATA = {
             "sortings",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Bouquet (Hard Version)；本地暂无可用题解正文。",
+          "statementBrief": "商店有 $n$ 种花，每种花的花瓣数不同且库存有限，购买一朵花需支付等于其花瓣数的硬币。所选花朵中任意两朵的花瓣数差不能超过 $1$，总花费不超过 $m$，求最多能获得的花瓣总数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -32231,12 +32225,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1800,
           "problemUrl": "https://codeforces.com/contest/1995/problem/C",
           "editorialUrl": "https://codeforces.com/blog/entry/131847",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数论与同余",
-            "博弈",
-            "几何"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "constructive algorithms",
@@ -32245,7 +32235,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Squaring；本地暂无可用题解正文。",
+          "statementBrief": "给定一个正整数数组，每次可选择任意位置并将该元素替换为它的平方，操作可重复且顺序自由。要求用最少操作使数组变为非递减；若无法做到则输出 $-1$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -32260,19 +32250,15 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2300,
           "problemUrl": "https://codeforces.com/contest/1995/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/131847",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "构造与贪心",
-            "字符串",
-            "博弈"
-          ],
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
           "originalTags": [
             "bitmasks",
             "brute force",
             "dp",
             "strings"
           ],
-          "statementBrief": "题面已抓取：Cases；本地暂无可用题解正文。",
+          "statementBrief": "给定一段没有空格、只含前 $c$ 个大写字母的文本，需要将它划分为长度不超过 $k$ 的单词，并为单词结尾所需的字母类型设置格。求能够完成这种划分时所需的最少格数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -32286,13 +32272,9 @@ window.CF_INSIGHTS_DATA = {
           "title": "Let Me Teach You a Lesson (Easy Version)",
           "rating": 2700,
           "problemUrl": "https://codeforces.com/contest/1995/problem/E1",
-          "editorialUrl": "",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "图论与网络流",
-            "数据结构",
-            "构造与贪心"
-          ],
+          "editorialUrl": "https://codeforces.com/blog/entry/131847",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
           "originalTags": [
             "2-sat",
             "data structures",
@@ -32300,12 +32282,35 @@ window.CF_INSIGHTS_DATA = {
             "matrices",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Let Me Teach You a Lesson (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "有 $2n$ 名骑士围坐在 $n$ 张桌旁，每张桌的两人固定为位置 $(2i-1,2i)$。每次可任选一个相对位置对，同时交换位置 $i$ 与 $i+n$ 的骑士，可操作任意次；要求使各桌两人智力总和的最大值与最小值之差尽可能小。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1995E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Let Me Teach You a Lesson (Hard Version)",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1995/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/131847",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "matrices",
+            "two pointers"
+          ],
+          "statementBrief": "有 $2n$ 个骑士，按固定顺序两两坐在 $n$ 张桌旁，第 $i$ 张桌的总智力为 $a_{2i-1}+a_{2i}$。每次可以任选一个位置 $i$，交换位置 $i$ 与对面位置 $i+n$ 的骑士；求经过任意次操作后，所有桌总智力的最大值与最小值之差的最小值。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
