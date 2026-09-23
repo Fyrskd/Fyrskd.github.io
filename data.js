@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1461,
+    "total_problems": 1463,
     "source_total_problems": 1742,
-    "filtered_out_problems": 281,
-    "with_statement_brief": 1461,
-    "with_editorial_brief": 1236,
-    "with_solution_brief": 1237,
+    "filtered_out_problems": 279,
+    "with_statement_brief": 1463,
+    "with_editorial_brief": 1238,
+    "with_solution_brief": 1239,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 395,
+    "ai_override_count": 397,
     "primary_topic_count": 13,
-    "contest_count": 233,
+    "contest_count": 234,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,10 +45,10 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 477,
+    "构造与贪心": 478,
     "图论与网络流": 88,
     "动态规划与状态设计": 141,
-    "数论与同余": 133,
+    "数论与同余": 134,
     "组合计数与概率": 113,
     "数据结构": 114,
     "几何": 32,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 330,
+    "ai_generated_with_editorial": 332,
     "ai_generated_partial_editorial": 15,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37352,6 +37352,76 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1853,
+      "name": "Codeforces Round 887 (Div. 2)",
+      "date": "2023-07-23",
+      "url": "https://codeforces.com/contest/1853",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1200,
+      "problems": [
+        {
+          "key": "1853A",
+          "index": "A",
+          "slot": "A",
+          "title": "Desorting",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1853/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/116940",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个数组，每次可选一个边界 $i$，将前缀 $a_1..a_i$ 每项加 $1$，并将后缀 $a_{i+1}..a_n$ 每项减 $1$。求至少操作多少次，才能使数组不再满足非递减顺序。",
+          "transformedStatement": "把目标转化为制造一个相邻逆序对。每次选择边界 $i$ 只会让该边界的差值 $a_{i+1}-a_i$ 减少 $2$，因此分别计算各相邻差值变负所需次数，并取其中最小值。",
+          "keyObservations": [
+            "要让数组变得无序，只需制造某个相邻位置满足 $a_i>a_{i+1}$，无需改变其他位置的相对关系。",
+            "对边界 $i$ 操作一次会给前缀 $1..i$ 全部加 $1$、给后缀 $i+1..n$ 全部减 $1$，因此相邻差距 $a_{i+1}-a_i$ 每次减少 $2$。",
+            "对相邻差距为 $d=a_{i+1}-a_i$ 的位置，至少需要 $\frac{d}{2}$ 向上取整次才能使差距变为负数，即答案为 $\\lfloor d/2\\rfloor+1$；选择最小差距即可最优。",
+            "若原数组已有某个相邻逆序对，则无需操作，答案直接为 $0$。"
+          ],
+          "solutionBrief": "先检查是否已有相邻逆序，若有则答案为 $0$。否则扫描所有相邻差值 $a_{i+1}-a_i$，取最小值 $d$，输出 $\\lfloor d/2\\rfloor+1$；单次扫描即可完成。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1853B",
+          "index": "B",
+          "slot": "B",
+          "title": "Fibonaccharsis",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1853/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/116940",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 和 $k$，统计长度为 $k$ 的非负非递减整数序列数量。序列从第三项起必须满足 $f_i=f_{i-1}+f_{i-2}$，前两项任意，并要求最后一项 $f_k=n$。",
+          "transformedStatement": "把末项固定为 $n$，枚举倒数第二项作为初始状态；随后利用相邻项之差逐项向前恢复，问题转化为统计能完整回溯到前两项且始终非负、非递减的候选状态。",
+          "keyObservations": [
+            "固定末项 $f_k=n$ 后，只需枚举倒数第二项；相邻两项确定时，前一项唯一为 $f_{i-2}=f_i-f_{i-1}$，因此整条序列被唯一确定。",
+            "序列项随位置通常快速增长，达到 $n\\le 2\\cdot10^5$ 前可经历的项数很少，因此即使 $k\\le10^9$，回溯检查也只需进行有限的短步数。",
+            "回溯过程中一旦出现负数或相邻项违反非递减关系，该候选序列必不合法，可以立即停止；完整回溯成功则对应一个且仅一个合法序列。",
+            "将倒数第二项枚举为 $1$ 到 $n$ 覆盖所有可能候选，并对每个候选独立回溯计数，得到答案。"
+          ],
+          "solutionBrief": "枚举 $f_{k-1}$，令 $f_k=n$，按 $f_{i-2}=f_i-f_{i-1}$ 反向恢复序列；若出现负数或不满足非递减关系则淘汰，否则答案加一。由于数列增长很快，实际回溯步数很少。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
