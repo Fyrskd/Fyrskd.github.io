@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1370,
+    "total_problems": 1376,
     "source_total_problems": 1742,
-    "filtered_out_problems": 372,
-    "with_statement_brief": 1370,
-    "with_editorial_brief": 1150,
-    "with_solution_brief": 1151,
-    "missing_editorial_brief": 219,
+    "filtered_out_problems": 366,
+    "with_statement_brief": 1376,
+    "with_editorial_brief": 1151,
+    "with_solution_brief": 1152,
+    "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 303,
+    "ai_override_count": 309,
     "primary_topic_count": 13,
-    "contest_count": 217,
+    "contest_count": 218,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 60,
-    "构造与贪心": 448,
-    "图论与网络流": 82,
+    "字符串": 61,
+    "构造与贪心": 450,
+    "图论与网络流": 83,
     "动态规划与状态设计": 132,
     "数论与同余": 123,
     "组合计数与概率": 107,
-    "数据结构": 102,
+    "数据结构": 103,
     "几何": 30,
     "树结构": 102,
     "交互": 68,
     "基础实现与模拟": 56,
     "博弈": 48,
-    "代数、矩阵与多项式": 12
+    "代数、矩阵与多项式": 13
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 246,
+    "ai_generated_with_editorial": 247,
     "ai_generated_partial_editorial": 13,
-    "missing_editorial": 219,
+    "missing_editorial": 224,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -37610,6 +37610,162 @@ window.CF_INSIGHTS_DATA = {
             "trees"
           ],
           "statementBrief": "题面已抓取：LuoTianyi and Cartridge；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1817,
+      "name": "Codeforces Round 869 (Div. 1)",
+      "date": "2023-04-29",
+      "url": "https://codeforces.com/contest/1817",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1817A",
+          "index": "A",
+          "slot": "A",
+          "title": "Almost Increasing Subsequence",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1817/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/115586",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定数组和多次区间查询。对每个区间 $[l,r]$，可以删除任意元素但必须保持剩余元素的相对顺序，要求最长剩余子序列不包含三个连续元素 $x,y,z$ 满足 $x\\ge y\\ge z$，输出其长度。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1817B",
+          "index": "B",
+          "slot": "B",
+          "title": "Fish Graph",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1817/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/115586",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs"
+          ],
+          "statementBrief": "给定一个可能不连通的简单无向图，可以任意选取原图中的部分边组成子图。要求判断子图中是否存在一个简单环，并选定环上的顶点 $u$，使环外恰有两条额外边都连接到 $u$，且不连接环上的其他顶点；若存在则输出这些边。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1817C",
+          "index": "C",
+          "slot": "C",
+          "title": "Similar Polynomials",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1817/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/115586",
+          "primaryTopic": "代数、矩阵与多项式",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math"
+          ],
+          "statementBrief": "给定两个次数均为 $d$ 的整数多项式 $A(x)$、$B(x)$，并提供它们在 $0,1,\\ldots,d$ 处、模 $10^9+7$ 的取值。已知存在平移量 $s$，使对所有整数 $x$ 都有 $B(x)\\equiv A(x+s)\\pmod{10^9+7}$，要求输出任意满足条件且 $0\\le s<10^9+7$ 的 $s$。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1817D",
+          "index": "D",
+          "slot": "D",
+          "title": "Toy Machine",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1817/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/115586",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "games",
+            "implementation"
+          ],
+          "statementBrief": "机器有两排各 $n$ 个格子，玩具同时向按键指定的方向滑动，直到被玩具、墙或底排的阻挡格挡住；初始玩具位于顶排非角落格，编号从左到右。给定目标编号 $k$，输出不超过 $1{,}000{,}000$ 次 `L/R/U/D` 按键，使第 $k$ 个玩具最终位于顶排最左格。",
+          "transformedStatement": "把目标玩具单独标记，其余玩具只保留相对排列。通过固定的操作块 `DRUR`、`LDLU` 等逐步暴露或整理玩具，将左半区直接送到左上角，并把右半区变换成一个可递归处理的左半区实例。",
+          "keyObservations": [
+            "只需跟踪编号为 $k$ 的特殊玩具，其余玩具可视为不可区分的障碍，从而把整体状态压缩为特殊玩具的位置与队列形态。",
+            "当特殊玩具位于左半区时，先按边界对齐，再重复 `DRUR`，每轮依次暴露一个更靠左的玩具；在目标暴露后执行 `DL` 即可到达左上角。",
+            "中间玩具可由两步 `DL` 直接送到左上角，因此成为左右两侧构造的分界点。",
+            "右半区先用镜像构造把特殊玩具送到右上角，再用 `DRUR` 整理其他玩具并执行 `LDRU`，可将问题还原为左半区且特殊玩具的新位置固定为左半区边界附近。"
+          ],
+          "solutionBrief": "将 $k$ 分为左半区、中间位置和右半区处理。左半区使用 `R`、若干次 `DRUR` 与 `DL`；右半区先用镜像操作移到右上角，再整理玩具并还原为左半区。总操作数为 $O(n)$，满足上限。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1817E",
+          "index": "E",
+          "slot": "E",
+          "title": "Half-sum",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1817/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/115586",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "divide and conquer",
+            "greedy"
+          ],
+          "statementBrief": "给定一个非负整数多重集合。每步任选两个数 $x,y$，删除它们并加入平均值 $\\frac{x+y}{2}$，直到只剩两个数；要求最大化这两个数的绝对差，并将结果按有理数在 $10^9+7$ 下取模输出。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1817F",
+          "index": "F",
+          "slot": "F",
+          "title": "Entangled Substrings",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1817/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/115586",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "string suffix structures",
+            "strings"
+          ],
+          "statementBrief": "给定一个由小写字母组成的字符串，枚举两个非空子串 $a,b$。若存在一个可为空的链接串 $c$，使得 $a$ 和 $b$ 在原串中的出现都只能作为整体 $acb$ 的子串，则称这对字符串纠缠；要求统计所有纠缠子串对的数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
