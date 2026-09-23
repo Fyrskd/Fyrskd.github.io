@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1364,
+    "total_problems": 1370,
     "source_total_problems": 1742,
-    "filtered_out_problems": 378,
-    "with_statement_brief": 1364,
-    "with_editorial_brief": 1144,
-    "with_solution_brief": 1145,
+    "filtered_out_problems": 372,
+    "with_statement_brief": 1370,
+    "with_editorial_brief": 1150,
+    "with_solution_brief": 1151,
     "missing_editorial_brief": 219,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 297,
+    "ai_override_count": 303,
     "primary_topic_count": 13,
-    "contest_count": 216,
+    "contest_count": 217,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 60,
-    "构造与贪心": 447,
+    "构造与贪心": 448,
     "图论与网络流": 82,
     "动态规划与状态设计": 132,
-    "数论与同余": 121,
-    "组合计数与概率": 106,
+    "数论与同余": 123,
+    "组合计数与概率": 107,
     "数据结构": 102,
     "几何": 30,
-    "树结构": 101,
+    "树结构": 102,
     "交互": 68,
     "基础实现与模拟": 56,
-    "博弈": 47,
+    "博弈": 48,
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 240,
+    "ai_generated_with_editorial": 246,
     "ai_generated_partial_editorial": 13,
     "missing_editorial": 219,
     "manual_override": 891,
@@ -37615,6 +37615,199 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1823,
+      "name": "Codeforces Round 868 (Div. 2)",
+      "date": "2023-04-27",
+      "url": "https://codeforces.com/contest/1823",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1823A",
+          "index": "A",
+          "slot": "A",
+          "title": "A-characteristic",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1823/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/115465",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组，元素只能是 $1$ 或 $-1$。数组的特征值是满足 $i<j$ 且 $a_i a_j=1$ 的下标对数量，需要构造特征值恰为 $k$ 的数组；若不存在则输出 NO。",
+          "transformedStatement": "把数组重述为选择其中 $x$ 个位置放置 $1$，其余位置放置 $-1$；目标转化为在 $0\\le x\\le n$ 中寻找使 $\\frac{x(x-1)}{2}+\\frac{(n-x)(n-x-1)}{2}=k$ 的整数。",
+          "keyObservations": [
+            "两个位置的乘积为 $1$ 当且仅当它们同号，因此答案只由数组中 $1$ 的个数决定，具体排列顺序无关。",
+            "若数组中有 $x$ 个 $1$、$n-x$ 个 $-1$，则特征值为同号对数量 $f(x)=\\frac{x(x-1)}{2}+\\frac{(n-x)(n-x-1)}{2}$，将配对计数转成单变量判断。",
+            "枚举 $x$ 从 $0$ 到 $n$ 并检查 $f(x)=k$；找到后直接输出 $x$ 个 $1$ 和 $n-x$ 个 $-1$，否则无解。"
+          ],
+          "solutionBrief": "枚举数组中 $1$ 的数量 $x$，用 $f(x)=\\frac{x(x-1)}{2}+\\frac{(n-x)(n-x-1)}{2}$ 计算同号对数。若等于 $k$，输出对应数量的 $1$ 和 $-1$；遍历完仍不存在则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1823B",
+          "index": "B",
+          "slot": "B",
+          "title": "Sort with Step",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1823/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/115465",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列，允许先至多交换一次任意两个元素，之后反复交换下标相差 $k$ 的两个位置，目标是将排列升序排成 $[1,2,\\ldots,n]$。求是否需要一次预交换；若需要输出 $1$，无需输出 $0$，无法完成输出 $-1$。",
+          "transformedStatement": "把位置按下标对 $k$ 的余数分组：后续步长为 $k$ 的交换只能在组内任意重排。问题转化为检查每个元素是否属于其目标位置对应的余数类，以及至多一次跨组交换能否修正全部错位。",
+          "keyObservations": [
+            "固定下标对 $k$ 的余数后，步长为 $k$ 的交换只能在同一余数类内重排元素，因此元素不能跨余数类移动。",
+            "排序后的第 $i$ 个位置应放置数值 $i$，所以可排序的充要条件是所有位置满足 $(p_i-1)\\bmod k=(i-1)\\bmod k$。",
+            "一次预交换只能改变两个元素所属的余数类；若不满足条件的位置恰好有两个，交换这两个位置即可修正，其他位置则无需改变。",
+            "不满足余数条件的位置超过两个时，一次交换无法同时修正全部错误，因此答案为 $-1$。"
+          ],
+          "solutionBrief": "逐个检查 $(p_i-1)\\bmod k$ 是否等于 $(i-1)\\bmod k$，统计不匹配的位置。错误数为 $0$ 或 $2$ 时分别输出 $0$ 或 $1$，否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1823C",
+          "index": "C",
+          "slot": "C",
+          "title": "Strongly Composite",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1823/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/115465",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定 $n$ 个大于 $1$ 的整数，可把它们的全部质因子重新分组，构造数组 $b$，要求所有 $b_j$ 都是强合成数且乘积等于原数组乘积。求数组 $b$ 能达到的最大长度 $k$，若无法构造则报告无解。",
+          "transformedStatement": "将所有 $a_i$ 展开为质因子多重集合：目标变成把质因子分成尽可能多组，使每组乘积为强合成数。相同质因子的两个副本可直接成组，剩余质因子则按三个一组处理。",
+          "keyObservations": [
+            "设 $x=\\prod_{i=1}^{m}p_i^{d_i}$，其质因子数为 $m$、总因子数为 $D=\\prod_i(d_i+1)$；强合成条件等价于 $2m+1\\le D$。",
+            "由 $D\\ge 2^m$ 可知：单一质因子时至少需要指数 $2$，两个不同质因子时至少有一个指数达到 $2$，而包含至少三个不同质因子的数必然满足条件。",
+            "所有质因子中，同一种质因子的两个副本可以独立组成一个强合成数；先最大化这类配对后，剩余质因子每三个组成一个额外的强合成数。",
+            "配成三元组后若仍剩下一个或两个质因子，把它们并入已有强合成数不会减少已有数量，因此只需统计配对数与剩余数的三元组数。"
+          ],
+          "solutionBrief": "分解所有 $a_i$ 的质因子并统计每种质因子的出现次数。答案先加上各质因子出现次数的配对数，再将所有奇数余数每三个组成一组；剩余不足三个的质因子并入已有数字。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1823D",
+          "index": "D",
+          "slot": "D",
+          "title": "Unique Palindromes",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1823/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/115465",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的小写字符串，$p(s,m)$ 表示其长度为 $m$ 的前缀中不同回文子串的数量。需要构造一个字符串，使指定的多个前缀长度 $x_i$ 分别具有给定的回文数量 $c_i$，无法满足时报告无解。",
+          "transformedStatement": "把每个前缀的目标数量看成随长度增长的累计值：每追加一个字符，数量只能增加 $0$ 或 $1$。因此将各区间的增量 $c_{i+1}-c_i$ 分配给重复字符，其余位置用不会产生新回文的循环串填充。",
+          "keyObservations": [
+            "向字符串末尾追加一个字符时，唯一回文子串数量至多增加 $1$；否则两个新增回文中较短者会同时作为较长者的前缀和后缀，必已更早出现。",
+            "连续加入同一个未使用字符会让回文数量每次增加 $1$，随后接入循环串 `abcabc...` 可保持数量不再增加。",
+            "每个条件区间需要增加 $c_{i+1}-c_i$ 个回文，而可用位置只有 $x_{i+1}-x_i$ 个，因此必须满足 $c_{i+1}-c_i\\le x_{i+1}-x_i$。",
+            "为避免相邻区间的循环部分产生新回文，下一段 `abc` 循环应从上一段结束字符的下一个字符开始。"
+          ],
+          "solutionBrief": "先构造长度为 $x_1$ 且回文数为 $c_1$ 的前缀：先放 $c_1-3$ 个 `a`，再接 `abc` 循环。之后每段先加入 $c_i-c_{i-1}$ 个未使用字符以增加对应数量，再用错位的 `abc` 循环补满；若某段所需增量超过长度差则无解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1823E",
+          "index": "E",
+          "slot": "E",
+          "title": "Removing Graph",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1823/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/115465",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "图论与网络流",
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "games",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "给定一个无自环重边限制的无向图，其中每个顶点度数都为 2。Alice 和 Bob 轮流选择一个由 $l$ 到 $r$ 个顶点组成的连通子图，删除这些顶点及其 incident 边，无法操作者失败；要求判断双方最优 play 时先手 Alice 是否获胜。",
+          "transformedStatement": "把图看成若干互不影响的环，并用 Sprague-Grundy 理论处理。删除环上的连续顶点会产生链，链的删除操作可能分裂为两条独立链，因此先求链的 SG 值，再得到每种环长的贡献并异或。",
+          "keyObservations": [
+            "每个顶点度数为 2，因此图的每个连通分量都是一个环，各环上的游戏彼此独立，整体胜负由各环 SG 值的异或决定。",
+            "环上删除连续的 $k\\in[l,r]$ 个顶点后会变成链，因此环长为 $x$ 时的 SG 值等于区间内链状态值的 mex。",
+            "链被删除一段后只会分裂成两条独立链，后继状态的 SG 值是两条链 SG 值的异或，可据此定义链的状态递推。",
+            "由 $l<r$ 可证链长 $x<l+r$ 时的 SG 值为 $\\lfloor x/l\\rfloor$，而环长 $x\\ge l+r$ 时 SG 值为 $0$，从而只需统计环长并异或对应结果。"
+          ],
+          "solutionBrief": "将图拆成若干环并分别计算 SG 值。环长为 $x<l+r$ 时贡献 $\\lfloor x/l\\rfloor$，否则贡献 $0$；所有贡献异或非零则 Alice 获胜，否则 Bob 获胜。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1823F",
+          "index": "F",
+          "slot": "F",
+          "title": "Random Walk",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1823/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/115465",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "dp",
+            "graphs",
+            "math",
+            "probabilities",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，棋子从 $s$ 出发，每次在当前顶点的邻居中等概率选择一个并移动，直到到达 $t$；初始只有 $c(s)=1$，其余计数器为 $0$。求随机移动过程中每个顶点计数器最终值的期望，并对 $998244353$ 取模。",
+          "transformedStatement": "把树按 $s$ 到 $t$ 的唯一路径拆成若干挂在路径顶点上的根树，令 $e_v$ 表示顶点计数器的期望。路径外满足按度数比例传递，路径上的方程可从终点反向展开。",
+          "keyObservations": [
+            "固定起点到终点的唯一简单路径，将树拆成以路径顶点为根的互不相交子树；路径外的随机游走期望可由根节点值递推得到。",
+            "对路径外子树中的非根顶点 $v$，若其父节点为 $p$，则有 $e_v=\\frac{\\deg(v)}{\\deg(p)}e_p$；因此沿子树递推后，任意这类顶点的期望只与自身度数和所属路径根有关。",
+            "路径顶点满足 $e_{r_i}=\\deg(r_i)\\left(1+\\frac{e_{r_{i+1}}}{\\deg(r_{i+1})}\\right)$，从终点向起点展开后得到 $e_v=(k-i)\\deg(v)$；终点单独固定为 $1$。",
+            "上述构造满足每个顶点的期望平衡方程，并利用终点停止、起点初始计数为 $1$ 的边界条件唯一确定答案。"
+          ],
+          "solutionBrief": "先找出 $s$ 到 $t$ 的唯一路径并编号为 $r_0,\\\\dots,r_k$。终点答案为 $1$；对其他路径顶点及其挂接子树中的顶点，答案统一为 $(k-i)\\deg(v)$，最后按模 $998244353$ 输出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
