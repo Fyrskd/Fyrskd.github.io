@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1327,
+    "total_problems": 1336,
     "source_total_problems": 1742,
-    "filtered_out_problems": 415,
-    "with_statement_brief": 1327,
-    "with_editorial_brief": 1107,
-    "with_solution_brief": 1108,
+    "filtered_out_problems": 406,
+    "with_statement_brief": 1336,
+    "with_editorial_brief": 1116,
+    "with_solution_brief": 1117,
     "missing_editorial_brief": 219,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 258,
+    "ai_override_count": 268,
     "primary_topic_count": 13,
     "contest_count": 211,
     "rating_min": 800,
@@ -33,8 +33,8 @@ window.CF_INSIGHTS_DATA = {
     "动态规划与状态设计",
     "数论与同余",
     "组合计数与概率",
-    "树结构",
     "数据结构",
+    "树结构",
     "图论与网络流",
     "交互",
     "字符串",
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 58,
-    "构造与贪心": 439,
+    "构造与贪心": 440,
     "图论与网络流": 79,
-    "动态规划与状态设计": 129,
-    "数论与同余": 117,
+    "动态规划与状态设计": 131,
+    "数论与同余": 118,
     "组合计数与概率": 105,
-    "数据结构": 97,
-    "几何": 27,
+    "数据结构": 100,
+    "几何": 28,
     "树结构": 98,
     "交互": 66,
     "基础实现与模拟": 54,
-    "博弈": 46,
+    "博弈": 47,
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 203,
+    "ai_generated_with_editorial": 212,
     "ai_generated_partial_editorial": 13,
     "missing_editorial": 219,
     "manual_override": 891,
@@ -31841,9 +31841,127 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-08-11",
       "url": "https://codeforces.com/contest/2002",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 1,
-      "maxRating": 2300,
+      "problemCount": 10,
+      "maxRating": 3500,
       "problems": [
+        {
+          "key": "2002A",
+          "index": "A",
+          "slot": "A",
+          "title": "Distanced Coloring",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2002/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/132569",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 网格，需要给每个格子染色；任意两个同色的不同格子必须满足切比雪夫距离 $\\max(|x_1-x_2|,|y_1-y_2|)\\ge k$。求满足条件所需的最少颜色数。",
+          "transformedStatement": "把问题转化为：先找一个必然要求全部异色的最大局部矩形，再设计可平移复制的颜色块覆盖全网格。局部矩形的有效尺寸为 $\\min(n,k)\\times\\min(m,k)$，其颜色数同时给出下界和可实现的上界。",
+          "keyObservations": [
+            "任意一个 $k\\times k$ 子网格中的两格坐标差都小于 $k$，因此其中所有颜色必须互不相同，得到至少 $\\min(n,k)\\cdot\\min(m,k)$ 种颜色。",
+            "取左上角 $\\min(n,k)\\times\\min(m,k)$ 子网格并为每格分配不同颜色，再周期性复制该颜色块，可保证同色格在行列方向的最大距离至少为 $k$。",
+            "下界构造可以达到，因此最小颜色数直接等于 $\\min(n,k)\\cdot\\min(m,k)$，每个测试用例无需实际模拟染色。"
+          ],
+          "solutionBrief": "先用任意 $k\\times k$ 子网格证明颜色数下界为 $\\min(n,k)\\cdot\\min(m,k)$；再将左上角对应大小的矩形作为颜色块周期复制，达到该下界。因此答案为 $\\min(n,k)\\cdot\\min(m,k)$，单组计算为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2002B",
+          "index": "B",
+          "slot": "B",
+          "title": "Removals Game",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2002/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/132569",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "games"
+          ],
+          "statementBrief": "Alice 和 Bob 各有一个长度为 $n$ 的排列。每轮 Alice 先从自己数组的首端或尾端删除一个元素，随后 Bob 对自己的数组做同样操作；共进行 $n-1$ 轮，若两数组最后留下的元素相同则 Bob 获胜，否则 Alice 获胜，求双方最优时的赢家。",
+          "transformedStatement": "把每次从两端删除看成不断缩短排列并保留连续子数组。要让 Bob 无论 Alice 如何操作都能留下相同元素，Alice 排列的任意连续片段必须在 Bob 排列中也是连续区间；该条件最终只允许两排列同向相等或完全反向。",
+          "keyObservations": [
+            "若 $A[l:r]$ 在 $B$ 中的位置不是连续区间，Alice 可先删到只剩这段对应元素，使两数组无法保留同一个最终元素，从而必胜。",
+            "Bob 想获胜时，$A$ 的每个连续子数组都必须在 $B$ 中对应一个连续区间，这一必要条件限制了两排列的整体顺序。",
+            "由上述区间性质归纳可得，Bob 能获胜当且仅当 $A=B$ 或 $A$ 等于 $B$ 的逆序，因此只需检查这两种情况。"
+          ],
+          "solutionBrief": "检查两个排列是否完全相同，或将 Alice 的排列翻转后是否与 Bob 的排列相同；满足任一条件输出 Bob，否则输出 Alice。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2002C",
+          "index": "C",
+          "slot": "C",
+          "title": "Black Circles",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2002/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/132569",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "geometry",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "平面上有若干圆，初始半径均为 $0$，之后以每秒 $1$ 的速度增长。你从起点出发，移动速度不超过 $1$，可向任意方向移动但不能碰到任何圆周（包括到达目标的瞬间），判断是否能到达目标。",
+          "transformedStatement": "把问题转化为比较每个圆心到目标的距离和起点到目标的直线距离：前者必须严格更大。满足全部条件时，沿起点到目标的直线移动即可。",
+          "keyObservations": [
+            "若某圆心到目标的距离不超过起点到目标的距离，该圆会不晚于人到达目标，目标点届时已在圆周上，因此必然失败。",
+            "若所有圆心到目标的距离都更大，沿起点到目标的直线以速度 $1$ 前进；假设途中首次碰圆，则三角不等式会推出该圆心到目标的距离不超过起点到目标的距离，矛盾。",
+            "判定只需比较每个圆心到目标与起点到目标的距离平方，避免开方并在线性扫描中完成。"
+          ],
+          "solutionBrief": "计算起点到目标的距离平方。若存在圆心到目标的距离平方不超过它，输出 NO；否则直线前进可行，输出 YES。每组只需扫描所有圆心，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2002D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "DFS Checker (Easy Version)",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2002/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/132569",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "hashing",
+            "trees"
+          ],
+          "statementBrief": "给定以 $1$ 为根、节点编号满足父节点为 $\\lfloor i/2\\rfloor$ 的完美二叉树，以及一个节点排列。每次查询交换排列中两个位置的元素，交换会持续影响后续查询；每次交换后判断整个排列是否可能是该树的一种 DFS 访问顺序。",
+          "transformedStatement": "把“是否为 DFS 序”转化为局部相邻条件：首元素必须是根，且每个后继节点的父节点必须是前一节点的祖先。于是一次交换只影响交换位置及其左右相邻位置的少数检查项。",
+          "keyObservations": [
+            "合法 DFS 序必须以根节点 $1$ 开始，且对每个相邻位置 $i,i+1$，节点 $p_i$ 必须位于 $p_{i+1}$ 的父节点子树中；这些条件合起来可保证每棵子树只被连续进入一次。",
+            "交换位置 $x,y$ 只会改变相邻关系 $(x-1,x),(x,x+1),(y-1,y),(y,y+1)$，因此只需重新检查这些位置，其他合法性判断保持不变。",
+            "将每个子树表示为 DFS 时间戳区间后，可用区间包含关系判断祖先关系，使相邻条件能够被快速维护。"
+          ],
+          "solutionBrief": "维护根节点条件及每个相邻位置的合法性计数。交换后只重算交换位置及其相邻位置对应的检查，并用子树时间戳区间判断祖先关系。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "2002D2",
           "index": "D2",
@@ -31851,13 +31969,9 @@ window.CF_INSIGHTS_DATA = {
           "title": "DFS Checker (Hard Version)",
           "rating": 2300,
           "problemUrl": "https://codeforces.com/contest/2002/problem/D2",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/132569",
           "primaryTopic": "树结构",
-          "secondaryTopics": [
-            "图论与网络流",
-            "数据结构",
-            "字符串"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "data structures",
@@ -31866,12 +31980,157 @@ window.CF_INSIGHTS_DATA = {
             "hashing",
             "trees"
           ],
-          "statementBrief": "题面已抓取：DFS Checker (Hard Version)；本地暂无可用题解正文。",
+          "statementBrief": "给定以 1 为根的树和一个顶点排列。每次查询交换排列中两个位置，交换会持续影响后续查询；每次交换后判断当前排列是否可能由该树进行某种子节点访问顺序的 DFS 得到。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "2002E",
+          "index": "E",
+          "slot": "E",
+          "title": "Cosmic Rays",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/2002/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/132569",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "数组由若干连续且相邻颜色不同的压缩区块组成。每秒同时删除首元素及所有与前一元素不同的元素，再按原顺序拼接剩余元素；对每个前缀区块，求数组最终变空所需的秒数。",
+          "transformedStatement": "把数组演化抽象为一系列带颜色和有效消失时间的边界块。依次加入新区块，用栈维护仍可能成为右端边界的块：短寿命块会被遮蔽，同色边界则按中间块的最大寿命合并。",
+          "keyObservations": [
+            "按前缀增量加入新区块，只需处理它与当前右侧边界的相互作用，因此无需重新模拟整个数组。",
+            "每个边界块记录颜色和有效消失时间；若旧块的时间不大于新区块，它会被新区块遮蔽并从栈中移除。",
+            "两个同色块合并时，若中间被移除块的最大有效时间为 $y$，两端时间为 $x,z$，合并后的时间为 $x+z-y$，避免重复计算重叠影响。",
+            "当前前缀的强度等于所有边界块有效时间的最大值；栈处理后更新这个最大值即可得到答案。"
+          ],
+          "solutionBrief": "从左到右维护一个栈，保存可能成为右侧边界的块及其颜色、有效消失时间。加入新区块时弹出被其遮蔽的短寿命块，并按中间最大时间修正同色块的合并寿命；所有前缀答案取处理过的最大寿命，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2002F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Court Blue (Easy Version)",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/2002/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/132569",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "两位选手进行若干轮比赛，每轮恰有一人获胜；在每轮结束后，双方累计胜场数的最大公约数都必须不超过 $1$，且最终两人的胜场数分别不超过 $n=m$。他们可以在任意轮后停止，最终得分为 $lW_L+fW_F$，要求安排胜负顺序并选择停止时机，使得分最大。",
+          "transformedStatement": "把每次增加一方胜场看成网格中向右或向上移动，合法路径只能经过满足 $\\gcd(x,y)=1$ 的格点。先利用素数间隔证明最优终点位于最大素数附近的小矩形，再在该区域上求单调路径可达性和最大加权终点。",
+          "keyObservations": [
+            "最终得分对两位选手的分数交换是对称的，因此可设 $l\\ge f$，只需考虑坐标满足 $a\\ge b$ 的一半网格，再在取到的两个分数上计算两种分配方式的较大值。",
+            "把比赛过程看成从 $(0,0)$ 出发、每次将一个坐标加一的单调网格路径；某个格点可达，当且仅当存在一条只经过 $\\gcd(x,y)=1$ 格点的路径到达它。",
+            "设不超过 $n$ 的最大素数及次大素数分别为 $p,q$；当 $2p>n$、$2q>n$ 时，边界附近相应格点都自动互质并可连通，因此最优终点可限制在由最近几个素数确定的小矩形内。",
+            "在这个小区域内，格点是否可达只取决于上方和左方两个前驱，且当前格点若 $\\gcd(i,j)>1$ 就不可用；因此用记忆化 DFS 或二维 DP 扫描即可求出所有可达终点的最大得分。"
+          ],
+          "solutionBrief": "将比赛建模为互质格点上的单调路径。利用相邻大素数之间间隔较小，把可能的最优终点压缩到一个小区域，再以“当前格点可用且上方或左方可达”为转移条件做二维 DP，并对两种得分分配取最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2002F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Court Blue (Hard Version)",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/2002/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/132569",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有两名选手进行多轮比赛，每轮恰有一人获胜；比赛可在任意时刻停止。若每轮结束后的胜场数 $(W_L,W_F)$ 都满足 $\\gcd(W_L,W_F)=1$，且最终分别不超过 $n,m$，则比赛成功，目标是最大化最终得分 $lW_L+fW_F$。",
+          "transformedStatement": "把每个胜场比分 $(x,y)$ 看作网格点，每轮获胜对应从当前点向右或向上走一步；要求从 $(0,0)$ 到某个终点存在一条经过所有互质格点的单调路径，并最大化终点的线性权值。题解进一步用质数边界将候选区域压缩为一个小矩形。",
+          "keyObservations": [
+            "把比赛过程表示为从 $(0,0)$ 每次向右或向上移动到最终得分格子的路径，路径上的每个格子都必须满足两坐标互质；这样“每轮检查”的条件转化为路径可达性。",
+            "取较大坐标上不超过其上限的最大质数 $p$，可利用质数边界构造一批显然可达的格子，从而把搜索范围压缩到靠近右上角的有限区域。",
+            "选择最大的 $q\\le n$，使其与区间 $[p+1,m]$ 中每个数互质，则边界上的格子不会因共享质因子而失效，保证从该区域开始检查不会漏掉最优解。",
+            "在压缩后的矩形中，某格子不可达当且仅当自身与相邻的可达前驱均不满足条件，或自身与坐标不互质；因此可用局部递推判定可达性并最大化线性得分。"
+          ],
+          "solutionBrief": "将比赛建模为互质格点上的单调路径。用最大质数边界和最大的安全起点 $q$ 缩小搜索区域，再按左方、下方前驱递推可达性，仅检查互质格点并取最大 $lW_L+fW_F$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2002G",
+          "index": "G",
+          "slot": "G",
+          "title": "Lattice Optimizing",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/2002/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/132569",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "hashing",
+            "meet-in-the-middle"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 网格，每条只能向下或向右走的有向边带有非负整数值。你从左上角出发到右下角，经过边时将其值加入集合，要求选择一条路径，使最终集合的 MEX 最大。",
+          "transformedStatement": "在一条约位于 $2n/3$ 反对角线的相遇线处分割路径，分别表示前后两段经过的边值集合。对目标 $P$，问题转化为寻找同一相遇点的两段集合，使前段集合补上后段缺失的 $\\{0,1,\\ldots,P-1\\}$。",
+          "keyObservations": [
+            "目标 MEX 至少为 $P$ 等价于路径经过的边值集合包含 $0,1,\\ldots,P-1$，因此可按可行前缀逐步扩大答案。",
+            "在某条反对角线相遇后，前后两段路径的边值集合只需取并集；枚举后半段集合后，前半段只需提供目标集合中尚未出现的补集。",
+            "前半段所有集合的任意子集都预存，并按相遇点区分；这样“前半段覆盖补集”可转化为一次哈希集合查询。",
+            "相遇线选在约 $2n/3$ 处，使两侧路径数的平方和达到平衡，整体枚举规模为 $O(2^{4n/3})$。"
+          ],
+          "solutionBrief": "把路径按反对角线分成两段，用位掩码表示边值集合。枚举前段路径并加入其所有子集，随后枚举后段路径；对当前 MEX 检查目标前缀减去后段集合是否存在于对应相遇点的哈希表中，按约 $2n/3$ 的位置划分以达到 $O(2^{4n/3})$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2002H",
+          "index": "H",
+          "slot": "H",
+          "title": "Counting 101",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/2002/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/132569",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定长度为 $n$、元素取值为 $1$ 到 $m$ 的整数序列。每次可任选三个连续元素，将它们合并为一个值 $max(a_i+1,a_{i+1},a_{i+2}+1)$；要求整个过程中不产生大于 $m$ 的元素，并统计每个可能的最大操作次数 $k$ 对应的序列数量。",
+          "transformedStatement": "先研究固定序列在上界 $v$ 下最多能合并多少次，将区间 DP 按最大值分成低于 $v$ 的块和等于 $v$ 的分隔点。再利用 DP 行值只由最小值、达到最小值的左右端点及奇偶性决定的结构，压缩状态并对所有序列计数。",
+          "keyObservations": [
+            "对区间设置上界 $v$，令 $f_{l,r,v}$ 表示不产生大于 $v$ 的元素时最少剩余元素数；当区间最大值小于 $v$ 时，只需反复以中间元素为中心合并，结果由区间长度奇偶性直接决定。",
+            "当区间最大值等于 $v$ 时，值为 $v$ 的元素把区间分成若干块；只需记录每个值为 $v$ 的元素作为中心的操作次数，并用块的可达长度区间转移，从而避免枚举具体操作顺序。",
+            "块转移中的代价只由前后中心次数之和、可达长度范围及奇偶性决定，因此可用 $cost(j,l,r)$ 统一表示剩余元素数，而无需保留完整操作过程。",
+            "每层状态数组减去最小值后呈现先下降、平台、再按奇偶交替上升的固定形状，可压缩为 $(l,r,mn)$；进一步利用后续合并只会查询该形状上的区间最小值，将可行的 $(l,r)$ 状态降至 $O(n)$，整体得到 $O(n^5m)$ 做法。"
+          ],
+          "solutionBrief": "先按元素上界 $v$ 做区间 DP，按值为 $v$ 的元素分块并用可达长度与奇偶性转移。观察到每层代价数组具有固定的先降后升形状，将其压缩为 $(l,r,mn)$，再进行计数 DP，复杂度为 $O(n^5m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
