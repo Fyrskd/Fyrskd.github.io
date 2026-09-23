@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1411,
+    "total_problems": 1417,
     "source_total_problems": 1742,
-    "filtered_out_problems": 331,
-    "with_statement_brief": 1411,
-    "with_editorial_brief": 1186,
-    "with_solution_brief": 1187,
+    "filtered_out_problems": 325,
+    "with_statement_brief": 1417,
+    "with_editorial_brief": 1192,
+    "with_solution_brief": 1193,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 345,
+    "ai_override_count": 351,
     "primary_topic_count": 13,
-    "contest_count": 225,
+    "contest_count": 226,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,22 +45,22 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 462,
+    "构造与贪心": 465,
     "图论与网络流": 84,
     "动态规划与状态设计": 134,
-    "数论与同余": 127,
+    "数论与同余": 128,
     "组合计数与概率": 110,
-    "数据结构": 109,
+    "数据结构": 110,
     "几何": 31,
     "树结构": 104,
     "交互": 69,
     "基础实现与模拟": 57,
-    "博弈": 49,
+    "博弈": 50,
     "代数、矩阵与多项式": 13
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 281,
-    "ai_generated_partial_editorial": 14,
+    "ai_generated_with_editorial": 286,
+    "ai_generated_partial_editorial": 15,
     "missing_editorial": 224,
     "manual_override": 891,
     "statement_derived": 1
@@ -37352,6 +37352,195 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1834,
+      "name": "Codeforces Round 879 (Div. 2)",
+      "date": "2023-06-18",
+      "url": "https://codeforces.com/contest/1834",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1834A",
+          "index": "A",
+          "slot": "A",
+          "title": "Unit Array",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1834/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/117384",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个只含 $1$ 和 $-1$ 的数组。每次可以任选一个元素并将其变号，要求用最少操作使数组总和非负且所有元素的乘积等于 $1$。",
+          "transformedStatement": "把问题转化为控制负数个数：总和非负等价于负数个数不超过 $\floor{n/2}$，乘积为 $1$ 等价于负数个数为偶数；因此先满足数量上限，再修正奇偶性。",
+          "keyObservations": [
+            "数组元素只有 $1$ 和 $-1$，设负数个数为 $k$，则总和为 $n-2k$；为了让总和非负，只需把部分 $-1$ 改成 $1$，直到负数个数不超过 $\floor{n/2}$。",
+            "在总和已经非负后，乘积只由负数个数的奇偶性决定：负数个数为偶数时乘积为 $1$，为奇数时乘积为 $-1$。",
+            "若乘积仍为 $-1$，再把一个 $-1$ 改成 $1$ 即可使乘积变为 $1$，且该操作只会增加数组总和，因此不会破坏总和非负。"
+          ],
+          "solutionBrief": "先统计 $-1$ 的数量，将其减少到不超过 $\floor{n/2}$，保证总和非负；再检查剩余负数个数的奇偶性，若为奇数则额外翻转一个 $-1$。操作次数即为两部分翻转次数之和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1834B",
+          "index": "B",
+          "slot": "B",
+          "title": "Maximum Strength",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1834/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/117384",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定区间 $[L,R]$，可任选其中两个材料合成武器。将两个整数补齐前导零后，武器强度是各对应十进制数位绝对差之和，要求求出所有选法中的最大值。",
+          "transformedStatement": "把 $L$ 和 $R$ 补成相同长度，按公共前缀与首次不同位分解。首个不同位确定可获得的固定差值，之后每个位置都可通过构造一方为 $9$、另一方为 $0$，独立贡献最大值 $9$。",
+          "keyObservations": [
+            "将 $L$ 补前导零到与 $R$ 等长后，两数在首次不同的位置之前必须拥有相同前缀，这部分对数字差值没有贡献。",
+            "设首次不同的位置为 $k$，由于 $L<R$，该位满足 $l_k<r_k$；在此之后的数位不再受区间边界共同约束，可以让一个数取全 $9$、另一个取全 $0$，每位贡献最大值 $9$。",
+            "因此最优答案只由首次不同位的差值和后缀长度决定，等于 $(r_k-l_k)+9(n-k)$，对应构造为 $L$ 的前缀接全 $9$ 与 $R$ 的前缀接全 $0$。"
+          ],
+          "solutionBrief": "将 $L$ 补零并与 $R$ 对齐，找到两者首个不同的数位 $k$。答案为该位差值加上剩余 $n-k$ 位各贡献 $9$，即 $(r_k-l_k)+9(n-k)$；直接按字符串处理即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1834C",
+          "index": "C",
+          "slot": "C",
+          "title": "Game with Reversing",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1834/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/117384",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "字符串",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "games",
+            "greedy",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定两个等长字符串，Alice 先手，每次可把任一字符串的任意一个字符改成任意小写字母；随后 Bob 每次选择一个字符串将其整体反转。字符串一旦相等游戏立即结束，Alice 最小化、Bob 最大化双方总步数，求最优对局时长。",
+          "transformedStatement": "把 Bob 的操作按总翻转次数奇偶性分类：偶数次结束时比较 $S$ 与 $T$ 的原顺序，奇数次结束时比较 $S$ 与 $T$ 的反序。Alice 只需分别修复这两种对应关系，并计算满足 Bob 步数奇偶限制的总步数。",
+          "keyObservations": [
+            "连续翻转同一个字符串两次会恢复原状，因此最终对应关系只取决于 Bob 翻转总次数的奇偶性，而与具体翻转哪个字符串无关。",
+            "Bob 翻转次数为偶数时，目标是让原下标对应位置全部相等，所需修改数为 $cnt$；为奇数时，目标变为让 $S$ 与 $T$ 的反串对应，所需修改数为 $cnt_{rev}$。",
+            "若 Alice 计划在 Bob 翻转次数为偶数时结束，完成 $cnt$ 次修改还必须满足 Bob 的步数为偶数，因此总步数为 $2cnt-cnt\\%2$。",
+            "若计划在奇数次翻转后结束，总步数为 $2cnt_{rev}-(1-cnt_{rev}\\%2)$；但 $cnt_{rev}=0$ 时 Alice 仍需先行动，需单独得到总步数 $2$。"
+          ],
+          "solutionBrief": "计算 $cnt=\\lvert\\{i:S_i\\ne T_i\\}\\rvert$ 和 $cnt_{rev}=\\lvert\\{i:S_i\\ne T_{n+1-i}\\}\\rvert$。分别计算偶数次与奇数次 Bob 翻转下的最短总步数，取两者最小值，并特殊处理 $cnt_{rev}=0$ 时的结果 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1834D",
+          "index": "D",
+          "slot": "D",
+          "title": "Survey in Class",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1834/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/117384",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 名学生和 $m$ 个主题，第 $i$ 名学生只学会区间 $[l_i,r_i]$ 内的主题。老师每个主题最多询问一次；学生学过该主题就举手，没学过就放下，求询问结束后全班最高与最低举手高度之差的最大值。",
+          "transformedStatement": "固定最后高度最高的学生对应区间 $a$ 和最低的学生对应区间 $b$，只询问 $a$ 中的主题；两人的差值等价于 $2(|a|-|a\\cap b|)$，于是问题变为寻找交集尽可能小的区间对。",
+          "keyObservations": [
+            "固定最终举手最高和最低的学生后，询问最高学生学过的全部主题最优；其他主题不会增加两人的高度差。",
+            "对区间 $a,b$，高度差等于 $2\\times(|a|-|a\\cap b|)$，因此目标转化为最大化 $|a|-|a\\cap b|$。",
+            "固定区间 $a$ 时，最小交集只需检查最短区间、右端点最小的区间和左端点最大的区间，分别覆盖包含关系及两种边界相交情况。",
+            "对每个区间枚举这三类候选配对即可覆盖最优解，总共检查至多 $3n$ 对区间。"
+          ],
+          "solutionBrief": "枚举最终最高学生对应的区间 $a$，只询问其中主题；再用最短区间、最小右端点区间和最大左端点区间作为候选 $b$，取最大 $2(|a|-|a\\cap b|)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1834E",
+          "index": "E",
+          "slot": "E",
+          "title": "MEX of LCM",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1834/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/117384",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定数组，任意连续子段的值定义为其中所有元素的最小公倍数。若正整数 $x$ 不是任何子段的最小公倍数，则称其为 good；要求找出最小的 good 整数，也就是所有子段 LCM 的 MEX。",
+          "transformedStatement": "把问题改写为收集所有子段的 LCM：从左到右枚举右端点，维护所有以该端点结束的不同 LCM 状态，并将这些状态合并到全局集合中，最后寻找最小未出现的正整数。",
+          "keyObservations": [
+            "对固定右端点，向左扩展得到的不同 LCM 值会逐个整除并至少翻倍，因此不超过 $n^2+1$ 的值只有 $O(\\log n)$ 个。",
+            "右端点加入 $a_r$ 时，所有以此前位置结尾的 LCM 统一变为 $\\operatorname{lcm}(x,a_r)$，再加入单元素段的值 $a_r$，去重后即可得到新的状态集合。",
+            "所有子段数量不超过 $n^2$，所以最小缺失的 LCM 不超过 $n^2+1$；大于该范围的状态不会影响答案，可以直接丢弃。",
+            "遍历所有右端点并将每个状态加入全局集合后，对该集合求 MEX 即得到最小 good 整数。"
+          ],
+          "solutionBrief": "按右端点扫描，维护所有以当前位置结尾且不超过 $n^2+1$ 的不同 LCM。每次将旧值与新元素取 LCM，加入单元素状态并去重；所有状态汇入集合后求 MEX，整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1834F",
+          "index": "F",
+          "slot": "F",
+          "title": "Typewriter",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1834/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/117384",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个单元格，初始放着一个 $1$ 到 $n$ 的排列；推车从单元格 1 开始，通过题面规定的移动、取放和重置操作，把数字 $i$ 放回单元格 $i$。查询会对当前序列进行两类带长度 $k$ 的移位或另一种翻转操作，并要求在每次查询前后求完成整理所需的最少重置次数；给定片段未包含五种具体操作和三类查询的完整定义。",
+          "transformedStatement": "把每个单元格中的数字视为指向其目标单元格的置换边，问题转化为统计所有满足 $a[i]<i$ 的边。对每个循环起点分别统计这些边的数量，并把单元格在不同起点下产生贡献的范围表示为区间加；翻转时使用对应的反向结构。",
+          "keyObservations": [
+            "若当前位置映射到目标位置的置换记为 $a$，每次重置至多能处理一个满足 $a[i]<i$ 的数字，因此答案至少是这类位置的数量。",
+            "把位置 $i$ 的数字送往位置 $a[i]$ 可形成若干置换环；沿环依次搬运即可恰好使用每条 $a[i]<i$ 的边，从而答案等于满足 $a[i]<i$ 的位置数。",
+            "对固定单元格，改变数组起点后条件 $a[i]<i$ 成立的起点集合是一个连续段或首尾相接的两段，因此可把每个单元格的贡献转化为对起点区间的加一。",
+            "数组翻转不必重新推导结构，只需同时维护原排列与翻转后的对应结构；移位查询通过维护这些区间贡献即可在线更新答案。"
+          ],
+          "solutionBrief": "将排列看成位置到目标位置的置换图，答案等于满足 $a[i]<i$ 的位置数。预处理每个位置在各个循环移位起点下的贡献区间，用区间加维护答案；翻转查询则维护翻转排列的同类结构，整体复杂度为 $O(n+q)$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
