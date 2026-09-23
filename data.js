@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1434,
+    "total_problems": 1440,
     "source_total_problems": 1742,
-    "filtered_out_problems": 308,
-    "with_statement_brief": 1434,
-    "with_editorial_brief": 1209,
-    "with_solution_brief": 1210,
+    "filtered_out_problems": 302,
+    "with_statement_brief": 1440,
+    "with_editorial_brief": 1215,
+    "with_solution_brief": 1216,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 368,
+    "ai_override_count": 374,
     "primary_topic_count": 13,
-    "contest_count": 229,
+    "contest_count": 230,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 468,
+    "构造与贪心": 470,
     "图论与网络流": 87,
-    "动态规划与状态设计": 139,
+    "动态规划与状态设计": 140,
     "数论与同余": 128,
-    "组合计数与概率": 111,
-    "数据结构": 110,
+    "组合计数与概率": 112,
+    "数据结构": 112,
     "几何": 32,
     "树结构": 105,
     "交互": 69,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 13
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 303,
+    "ai_generated_with_editorial": 309,
     "ai_generated_partial_editorial": 15,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37352,6 +37352,201 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1847,
+      "name": "Codeforces Round 882 (Div. 2)",
+      "date": "2023-07-06",
+      "url": "https://codeforces.com/contest/1847",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1847A",
+          "index": "A",
+          "slot": "A",
+          "title": "The Man who became a God ",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1847/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/117928",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定数组，需要保持元素顺序，将其划分为恰好 $k$ 个非空连续子数组。每个子数组的代价是其中相邻元素绝对差之和，要求选择 $k-1$ 个切分位置，使所有子数组代价总和最小。",
+          "transformedStatement": "先把未切分数组的总代价视为全部相邻绝对差之和；在某个相邻位置切开，就会删除该位置的差值。因此问题转化为从 $n-1$ 个差值中选出 $k-1$ 个最大值删除，求剩余差值之和。",
+          "keyObservations": [
+            "整段数组的代价是所有相邻差值之和；在位置 $i$ 切开时，恰好会删去边界差值 $|a_i-a_{i+1}|$，因此切分影响彼此独立。",
+            "必须切出 $k$ 段，也就是选择恰好 $k-1$ 个切口；为了让剩余代价最小，应删去最大的 $k-1$ 个相邻差值。",
+            "等价地，构造长度为 $n-1$ 的差值数组并排序后，答案就是其中最小的 $n-k$ 个元素之和，从而避免枚举切分方案。"
+          ],
+          "solutionBrief": "计算所有相邻元素的绝对差并排序。切口会使对应差值不再计入总代价，因此选最大的 $k-1$ 个差值作为切口，答案为剩余 $n-k$ 个差值之和，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1847B",
+          "index": "B",
+          "slot": "B",
+          "title": "Hamon Odyssey",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1847/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/117928",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定强度数组，每次只能把连续未切分的元素划入一组，最终将整个数组划分为若干连续且非空的组。每组强度是组内所有数的按位与，先使各组强度总和最小，再在所有最优划分中最大化组数。",
+          "transformedStatement": "把目标分两层处理：整个数组的按位与非零时，公共位会因分组被重复计算；为零时，最小总和等于零，于是只需寻找最多个按位与为零的连续段。",
+          "keyObservations": [
+            "若整个数组的按位与为正数，所有分组都包含这些公共位；拆成多个非空组会重复计入公共位，因此最小总强度只能由一个分组达到。",
+            "若整个数组的按位与为 $0$，最小总强度就是 $0$，问题转化为把数组划分成尽可能多段且每段按位与均为 $0$。",
+            "从左到右不断扩展当前段，直到按位与变为 $0$ 就立即切分；这种最早结束的切分保留了最多元素给后续段，因此能最大化段数。",
+            "若最后剩余段的按位与仍非 $0$，必须与前一段合并；合并后按位与仍为 $0$，且这是保持最小总强度所需的唯一调整。"
+          ],
+          "solutionBrief": "先计算整个数组的按位与。若结果非 $0$，答案为 $1$；否则从左到右维护当前段按位与，遇到 $0$ 就切段。若末段未达到 $0$，将其并入前段，统计最终段数。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1847C",
+          "index": "C",
+          "slot": "C",
+          "title": "Vampiric Powers, anyone?",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1847/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/117928",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定 $n$ 个初始强度，DIO 可以按题面规定反复利用已有用户召唤新用户，强度通过异或规则产生。要求求出所有可能召唤方案中，单个用户强度的最大值；给定记录没有保留该规则的具体更新公式。",
+          "transformedStatement": "题解将召唤过程等价转化为：答案是原数组某个连续子数组的异或值。于是只需枚举两个前缀异或值的异或，并在 $0$ 到 $2^8-1$ 的有限状态中维护已出现的前缀值。",
+          "keyObservations": [
+            "反复召唤后，最终能得到的强度恰好等价于原数组某个连续子数组的异或值，因此问题转为求所有子数组异或的最大值。",
+            "连续区间异或可表示为两个前缀异或的异或值，即区间 $(l,r]$ 的值为 $p_l \\oplus p_r$；枚举右端点时，只需记录已经出现过的前缀异或值。",
+            "由于每个 $a_i<2^8$，前缀异或值只有 $256$ 种；用布尔数组记录可达状态，就能避免枚举前缀位置并将每个元素的处理限制在 $2^8$ 次。"
+          ],
+          "solutionBrief": "维护当前前缀异或值，并用布尔数组记录此前出现过的所有前缀异或。每到一个位置，将当前值与所有已记录状态异或以更新答案，再记录当前前缀值；复杂度为 $O(n\\cdot 2^8)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1847D",
+          "index": "D",
+          "slot": "D",
+          "title": "Professor Higashikata",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1847/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/117928",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "字符串"
+          ],
+          "originalTags": [
+            "data structures",
+            "dsu",
+            "greedy",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定二进制串 $s$ 和按顺序排列的若干区间，将各区间对应的子串拼接为 $t(s)$；允许交换 $s$ 中任意两个不同位置的字符。每次翻转一个指定位置后，求把 $t(s)$ 变为字典序最大所需的最少交换次数。",
+          "transformedStatement": "把拼接串视为对原串位置的优先级列表：重复出现的位置只保留第一次出现。若 $s$ 中有 $x$ 个 $1$，目标就是让优先级列表前 $\\min(x,|t|)$ 个位置尽量为 $1$，答案转化为该前缀中的零数量。",
+          "keyObservations": [
+            "将所有区间按给定顺序拼接成位置序列，并对每个原串位置只保留它在序列中的第一次出现；同一位置后续出现不会改变优先级，因此可将关注长度压缩到至多 $n$。",
+            "字典序最大化等价于按序让保留位置尽可能取 $1$：先保证第一个位置为 $1$，再保证第二个位置为 $1$，依次处理，前面的选择优先于后面的选择。",
+            "若原串共有 $x$ 个 $1$，最优目标是让前 $\\min(x,|t|)$ 个保留位置为 $1$；答案就是这些位置中当前为 $0$ 的数量，因为每个错误位置需要与某个非目标位置交换。",
+            "翻转只会使 $x$ 增加或减少 $1$，所以只需检查新纳入或刚被移出目标前缀的那个位置，答案可在常数时间内更新。"
+          ],
+          "solutionBrief": "先用并查集等结构按区间顺序提取拼接串中每个原串位置的首次出现，形成优先级序列。维护当前 $1$ 的总数及优先级前缀中为 $0$ 的数量；翻转后仅因前缀边界移动而增减一个贡献，预处理复杂度为 $O(n\\log n)$，每次更新为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1847E",
+          "index": "E",
+          "slot": "E",
+          "title": "Triangle Platinum?",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1847/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/117928",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "交互",
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "implementation",
+            "interactive",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "有 $n$ 个隐藏整数，每个取值为 $1$ 到 $4$。每次可选择三个不同下标并询问它们能否组成非退化三角形及其面积；在不超过规定次数内，要么唯一确定全部数值并输出，要么判断无法唯一确定并输出 $-1$。",
+          "transformedStatement": "把每次三元查询看作对三个隐藏值多重集合的编码：除 $(1,4,4)$ 与 $(2,2,3)$ 的碰撞外通常可恢复该集合。核心是先找出三个相等值作为锚点，再将全局恢复转化为逐位置查询。",
+          "keyObservations": [
+            "任意三元查询基本能确定三个数的多重集合，唯一冲突是 $(1,4,4)$ 与 $(2,2,3)$，因此不能直接把查询结果当作有序三元组。",
+            "若找到三个相同的值 $C$，用它们中的两个与每个其他位置查询；当 $C\\ge 2$ 时，面积结果能唯一确定每个 $a_x$，从而线性恢复整个数组。",
+            "当锚点值为 $1$ 时，查询只能区分 $a_x=1$ 与 $a_x>1$；收集到至少四个大于 $1$ 的位置后，枚举其中两两组合即可找到相等的一对，或证明它们全不同且答案无法唯一确定。",
+            "当 $n\\ge 9$ 时，前九个位置中必有三个值相同；当 $n<9$ 时，枚举所有候选数组并与全部三元查询结果比对，唯一匹配时输出该数组，否则输出 $-1$。"
+          ],
+          "solutionBrief": "先寻找三个相同元素作为锚点。$n\\ge9$ 时枚举前九个位置的三元组；找到锚点后线性恢复。锚点为 $1$ 时先收集四个大于 $1$ 的位置并枚举配对。$n<9$ 则穷举 $4^n$ 个数组验证查询结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1847F",
+          "index": "F",
+          "slot": "F",
+          "title": "The Boss's Identity",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1847/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/117928",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "data structures",
+            "dfs and similar",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定正整数序列的前 $n$ 项，之后每项 $a_i$（$i>n$）等于 $a_{i-n}$ 与 $a_{i-n+1}$ 的按位或。对每个查询值 $v$，求序列中最小的下标 $i$ 使 $a_i>v$；若不存在则返回 $-1$。",
+          "transformedStatement": "将序列重排为若干个长度为 $n-1$ 的循环分组：下一组由当前组与其前一个循环元素按位或得到。再把每个二进制位独立看成会在分组中向右传播的 $1$，只记录传播产生的关键数值变化。",
+          "keyObservations": [
+            "将连续的递推项重排为大小为 $n-1$ 的循环分组后，下一组等于当前组与其前一个循环元素按位或，因此递推可转化为分组间的局部传播。",
+            "对单独的二进制位观察时，$1$ 只会向右传播；遇到当前组中已有的 $1$ 后，该传播就可以停止，从而每个分组只需维护仍在移动的少量位置。",
+            "每个位置的数值变化次数为 $O(\\log n)$，分别处理各二进制位即可得到总量为 $O(n\\log n)$ 的关键位置，而不必展开无限序列。",
+            "收集这些关键位置并按位置或数值整理后，查询可转化为在候选记录中寻找第一个超过 $v$ 的位置，因而能够用二分回答。"
+          ],
+          "solutionBrief": "把递推序列重排成长度为 $n-1$ 的循环分组，并对每个二进制位模拟 $1$ 的右移传播；传播相遇后停止，得到每个位置的有限个关键变化。收集并排序这些关键位置，再二分查找第一个值大于 $v$ 的位置；总关键记录数为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
