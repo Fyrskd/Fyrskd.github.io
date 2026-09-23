@@ -1,19 +1,19 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-09-22",
+  "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1265,
+    "total_problems": 1270,
     "source_total_problems": 1742,
-    "filtered_out_problems": 477,
-    "with_statement_brief": 1265,
-    "with_editorial_brief": 1050,
-    "with_solution_brief": 1051,
+    "filtered_out_problems": 472,
+    "with_statement_brief": 1270,
+    "with_editorial_brief": 1055,
+    "with_solution_brief": 1056,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 174,
+    "ai_override_count": 179,
     "primary_topic_count": 13,
-    "contest_count": 204,
+    "contest_count": 205,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 55,
-    "构造与贪心": 424,
+    "构造与贪心": 425,
     "图论与网络流": 76,
     "动态规划与状态设计": 123,
-    "数论与同余": 108,
+    "数论与同余": 110,
     "组合计数与概率": 103,
-    "数据结构": 93,
+    "数据结构": 94,
     "几何": 24,
     "树结构": 97,
-    "交互": 62,
+    "交互": 63,
     "基础实现与模拟": 46,
     "博弈": 42,
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 150,
+    "ai_generated_with_editorial": 155,
     "ai_generated_partial_editorial": 9,
     "missing_editorial": 214,
     "manual_override": 891,
@@ -33098,6 +33098,166 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1977,
+      "name": "Codeforces Round 948 (Div. 2)",
+      "date": "2024-05-26",
+      "url": "https://codeforces.com/contest/1977",
+      "type": "Div. 2",
+      "problemCount": 5,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1977A",
+          "index": "A",
+          "slot": "A",
+          "title": "Little Nikita",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1977/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/129858",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "塔初始高度为 $0$，每步可以在顶部放入一个方块，或在有方块时取出顶部一个方块。恰好进行 $n$ 步后，判断是否能得到高度为 $m$ 的塔。",
+          "transformedStatement": "把塔高视为从 $0$ 出发、每步加一或减一且不能低于 $0$ 的整数 walk；问题等价于判断长度为 $n$ 的 walk 是否能到达 $m$，其必要充分条件是距离不超过步数且奇偶性一致。",
+          "keyObservations": [
+            "每次放入或取出一个方块都会改变塔高的奇偶性，因此经过 $n$ 步后高度 $m$ 必须满足 $n$ 与 $m$ 同奇偶。",
+            "塔高从 $0$ 出发且每步最多增加 $1$，所以若 $n<m$，即使全部操作都放入方块也无法达到 $m$。",
+            "当 $n\\ge m$ 且两者同奇偶时，先连续放入 $m$ 个方块，再用剩余的偶数步交替放入和取出方块即可保持最终高度为 $m$。"
+          ],
+          "solutionBrief": "对每组 $(n,m)$，当且仅当 $n\\ge m$ 且 $n$、$m$ 奇偶性相同输出 Yes，否则输出 No。判断依据是先达到高度 $m$，剩余步数必须成对抵消。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1977B",
+          "index": "B",
+          "slot": "B",
+          "title": "Binary Colouring",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1977/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/129858",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $x$，构造一个长度不超过 $32$ 的整数数组，使每个系数属于 $\\{-1,0,1\\}$、相邻位置不能同时非零，并满足 $\\sum a_i2^i=x$。每组数据可输出任意一个满足条件的数组。",
+          "transformedStatement": "将问题看成带符号且禁止相邻非零位的二进制表示：从低位到高位处理 $x$ 的每个二进制位，用进位和局部的 $[1,1]\\rightarrow[-1,0,1]$ 替换维持合法表示。",
+          "keyObservations": [
+            "只需处理 $x$ 的二进制中为 $1$ 的位，因为为 $0$ 的位不需要贡献；逐位维护当前构造对已处理前缀的表示。",
+            "若第 $i$ 位已经放置了 $1$，将其改为 $0$ 并在第 $i+1$ 位放置 $1$，贡献从 $2^i$ 变为 $2^{i+1}$，恰好补上所需的 $2^i$。",
+            "若当前位需要放置 $1$ 且前一位也是 $1$，用 $[-1,0,1]$ 替换相邻的 $[1,1]$，因为 $2^{i-1}+2^i= -2^{i-1}+2^{i+1}$，同时消除相邻非零项。",
+            "处理过程中 $-1$ 只会被放在已经处理的位置，向前处理时不会出现在前一位，因此前一位为 $-1$ 的冲突情况不会发生。"
+          ],
+          "solutionBrief": "从低位到高位扫描 $x$ 的二进制位，维护系数为 $-1,0,1$ 且相邻非零项不同时出现的表示。遇到冲突时用进位或 $[-1,0,1]$ 局部替换，最终输出长度至多 $32$ 的数组，单组复杂度为 $O(\\log x)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1977C",
+          "index": "C",
+          "slot": "C",
+          "title": "Nikita and LCM",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1977/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/129858",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "math",
+            "number theory",
+            "sortings"
+          ],
+          "statementBrief": "给定一个正整数数组，可删除任意元素得到子序列，要求该子序列的 LCM 不在原数组中；空子序列的 LCM 为 $0$。求满足条件的最长子序列长度。",
+          "transformedStatement": "先判断全数组的 LCM 是否已超过最大元素；若没有，则把问题转化为：枚举最大值的、未出现在数组中的约数 $d$，选择所有整除 $d$ 且整体 LCM 为 $d$ 的元素，最大化其数量。",
+          "keyObservations": [
+            "若整个数组的 LCM 大于最大值，则该 LCM 必不在数组中，直接可取全部元素，答案为 $n$。",
+            "否则整个数组的 LCM 等于最大值，因此每个元素都整除最大值；任意子序列的 LCM 也只能是最大值的约数。",
+            "固定一个不在数组中的约数 $d$ 后，所有整除 $d$ 的元素都可以加入候选子序列而不改变 LCM；只有这些元素的整体 LCM 恰好为 $d$ 时才可行。",
+            "由于 LCM 不受元素顺序影响，固定 $d$ 的最优长度就是数组中整除 $d$ 的元素总数，再枚举所有约数取最大值。"
+          ],
+          "solutionBrief": "先计算全数组 LCM，若超过最大值则答案为 $n$。否则枚举最大值的每个约数 $d$，跳过数组中出现的 $d$，统计所有整除 $d$ 的元素；若它们的 LCM 等于 $d$，用其数量更新答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1977D",
+          "index": "D",
+          "slot": "D",
+          "title": "XORificator",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1977/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/129858",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "greedy",
+            "hashing"
+          ],
+          "statementBrief": "给定一个只含 $0/1$ 的 $n\\times m$ 矩阵。每次可以选择一行，将该行所有元素取反；操作完成后，若一列恰好含一个 $1$，则称其特殊，要求最大化特殊列数量，并输出一种达到最大值的行选择方案。",
+          "transformedStatement": "把行选择表示为长度为 $n$ 的二进制翻转掩码。固定某列最终唯一的 $1$ 所在行后，该掩码被唯一确定；于是问题转化为统计所有候选掩码分别能让多少列变成重量恰为 $1$ 的列。",
+          "keyObservations": [
+            "若指定第 $j$ 列最终唯一的 $1$ 位于第 $i$ 行，则翻转行集合被唯一确定：其掩码等于原第 $j$ 列与单位向量 $e_i$ 的异或，因此只需枚举这 $n m$ 个候选掩码。",
+            "一个翻转掩码能使某列特殊，当且仅当该列与掩码异或后恰好只有一个 $1$；所以相同掩码出现的列数就是该配置能得到的特殊列数。",
+            "用每一行的随机双哈希表示翻转集合，候选掩码可通过对原列哈希再异或对应行哈希得到；统计相同哈希即可合并等价配置，并在最大计数处恢复答案。"
+          ],
+          "solutionBrief": "枚举每个“特殊列及其唯一的 1 所在行”，由此确定翻转掩码。用随机双哈希统计相同掩码对应的列数，取出现次数最多的候选，再按该列和行恢复长度为 $n$ 的翻转字符串。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1977E",
+          "index": "E",
+          "slot": "E",
+          "title": "Tensor",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1977/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/129858",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "interactive"
+          ],
+          "statementBrief": "给定一个固定但隐藏的有向图，询问只能比较 $i<j$ 时顶点 $i$ 是否从顶点 $j$ 可达。需要在至多 $2n$ 次询问内为每个顶点染黑或白，使任意同色的 $i<j$ 都满足 $i$ 从 $j$ 可达，并输出一种合法染色。",
+          "transformedStatement": "将顶点按可达关系视为偏序中的元素，目标等价于把它们覆盖成两条链；在线按编号加入顶点，用黑白两条链和一条可整体换色的临时红链维护这一划分。",
+          "keyObservations": [
+            "隐藏图的可达关系构成偏序，题目给出的三元组保证使最大反链大小不超过 $2$，因此最多用两条链覆盖所有顶点。",
+            "维护黑、白两条已确定链和一条红色临时链；新顶点只需与各链栈顶比较，就能判断应加入哪条链或暂存。",
+            "红链中的顶点都可到达黑白链栈顶；红链无法继续归入时，可整体改染为新顶点的相反颜色，从而保持两种颜色内部的可达性。",
+            "每加入一个顶点至多询问两次，最终清空红链并输出黑白链颜色，因此总询问次数不超过 $2n$，处理时间为 $O(n)$。"
+          ],
+          "solutionBrief": "把顶点按可达关系在线划分为黑、白两条链，并用红栈暂存待重染顶点。依据新顶点与各栈顶的询问结果入栈或整体换色；每个顶点至多询问两次。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
