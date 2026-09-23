@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1284,
+    "total_problems": 1290,
     "source_total_problems": 1742,
-    "filtered_out_problems": 458,
-    "with_statement_brief": 1284,
-    "with_editorial_brief": 1069,
-    "with_solution_brief": 1070,
+    "filtered_out_problems": 452,
+    "with_statement_brief": 1290,
+    "with_editorial_brief": 1075,
+    "with_solution_brief": 1076,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 194,
+    "ai_override_count": 200,
     "primary_topic_count": 13,
-    "contest_count": 206,
+    "contest_count": 207,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 57,
-    "构造与贪心": 428,
-    "图论与网络流": 76,
+    "构造与贪心": 432,
+    "图论与网络流": 77,
     "动态规划与状态设计": 125,
     "数论与同余": 112,
     "组合计数与概率": 104,
-    "数据结构": 94,
+    "数据结构": 95,
     "几何": 26,
     "树结构": 97,
     "交互": 63,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 169,
+    "ai_generated_with_editorial": 175,
     "ai_generated_partial_editorial": 9,
     "missing_editorial": 214,
     "manual_override": 891,
@@ -32898,6 +32898,198 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1978,
+      "name": "Codeforces Round 953 (Div. 2)",
+      "date": "2024-06-16",
+      "url": "https://codeforces.com/contest/1978",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1978A",
+          "index": "A",
+          "slot": "A",
+          "title": "Alice and Books",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1978/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/130527",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定按编号排列的 $n$ 本书，每次将所有书分成两个非空书堆，并从每堆中阅读编号最大的那本书。求两本被阅读书的页数总和的最大值。",
+          "transformedStatement": "把分堆过程转化为选择两个被阅读的编号：一个编号必为 $n$，另一个可为任意 $k<n$。因此问题等价于求 $a_n+\\max(a_1,\\ldots,a_{n-1})$。",
+          "keyObservations": [
+            "两堆都必须非空，且编号为 $n$ 的书无论如何都会是某一堆中编号最大的书，因此它一定会被阅读，答案必然包含 $a_n$。",
+            "另一堆被阅读的书可以是任意编号 $k<n$ 的书：将 $k$ 单独放入一堆，其余书放入另一堆即可，因此只需在前 $n-1$ 本书中选择页数最大者。",
+            "所有可行答案都等价于 $a_n+a_k$（其中 $k<n$），所以最大值就是 $a_n+\\max_{1\\le k<n}a_k$，无需枚举分堆方案。"
+          ],
+          "solutionBrief": "观察到编号最大的书 $n$ 必然被阅读；另一堆的阅读书可任取前 $n-1$ 本中的一本。扫描前 $n-1$ 个页数取最大值，再加上 $a_n$ 即为答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1978B",
+          "index": "B",
+          "slot": "B",
+          "title": "New Bakery",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1978/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/130527",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math",
+            "ternary search"
+          ],
+          "statementBrief": "Bob 有 $n$ 个面包，普通售价为 $a$。他可以选择前 $k$ 个面包使用促销价，价格依次为 $b,b-1,\\ldots,b-k+1$，其余面包按 $a$ 出售，且 $k$ 可为 $0$；要求卖完所有面包并最大化总收益。",
+          "transformedStatement": "把问题转化为选择促销数量 $k$：促销部分贡献一个长度为 $k$ 的递减等差数列，其余数量按普通价出售。只需判断哪些促销价格仍不低于 $a$，即可确定最优边界。",
+          "keyObservations": [
+            "当 $b<a$ 时，所有递减促销价都低于普通价，选择 $k=0$ 最优，收益直接为 $n\\cdot a$。",
+            "当 $b\\ge a$ 时，促销价从 $b$ 递减到低于 $a$ 前都值得采用，因此最优促销数量为 $k=\\min(b-a,n)$。",
+            "固定 $k$ 后，促销部分是等差数列 $b+(b-1)+\\cdots+(b-k+1)$，可用首尾平均值计算，总收益为 $\\frac{b+(b-k+1)}{2}\\cdot k+(n-k)\\cdot a$。"
+          ],
+          "solutionBrief": "若 $b<a$，答案为 $n\\cdot a$；否则取 $k=\\min(b-a,n)$，将前 $k$ 个面包按 $b,b-1,\\ldots,b-k+1$ 出售，其余按 $a$ 出售，并用等差数列求和计算收益。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1978C",
+          "index": "C",
+          "slot": "C",
+          "title": "Manhattan Permutations",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1978/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/130527",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 和 $k$，需要把 $1$ 到 $n$ 的所有数各用一次组成排列。排列的曼哈顿值为 $\\sum_{i=1}^{n}|p_i-i|$，要求构造值恰好为 $k$ 的排列；若不存在则输出 No。",
+          "transformedStatement": "把构造过程看成从外向内选择不相交交换：交换当前区间两端可一次消耗该层的最大贡献，固定两端后进入更小区间；剩余不足一整层时，用一次较短距离的交换补足。",
+          "keyObservations": [
+            "曼哈顿值的每一项总和具有偶数性质，因此目标值为奇数时不可能构造出答案。",
+            "将首尾位置的元素交换，会贡献 $2(n-1)$；固定这两个位置后，剩余问题缩小为区间 $[2,n-1]$，可继续获得贡献 $2(n-3)$、$2(n-5)$ 等。",
+            "这些分层贡献的容量依次为 $2(n-1),2(n-3),\\ldots$，逐层选择并在最后一层交换适当距离的位置，可以覆盖从 $0$ 到反转排列最大值之间的所有偶数。",
+            "反转排列达到最大曼哈顿值，因此只需判断 $k$ 是否超过该值；确认可行后按外层到内层贪心交换即可在线性时间内完成构造。"
+          ],
+          "solutionBrief": "先计算反转排列的最大值。若 $k$ 为奇数或超过最大值则输出 No；否则从两端向内处理，每次用整层交换贡献，最后在当前区间内交换距离为剩余值一半的位置，构造出目标排列。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1978D",
+          "index": "D",
+          "slot": "D",
+          "title": "Elections",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1978/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/130527",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 名按编号排列的候选人，第 $i$ 名拥有 $a_i$ 名固定支持者，另有 $c$ 名未决定选民投给当前仍参选者中编号最小的人。对每个候选人 $i$，可在选举前淘汰其他候选人；被淘汰者的支持者转为未决定选民，最后要求使 $i$ 获胜所需的最少淘汰人数。",
+          "transformedStatement": "把目标候选人的获胜过程拆成两部分：先清除所有编号更小的候选人以获得未决定选民的投票，再判断是否需要清除一个高票候选人来增加转移票数；除初始获胜者外，答案只可能是这两部分对应的基础数量或再增加一次。",
+          "keyObservations": [
+            "若候选人 $i$ 初始不胜，必须淘汰所有编号小于 $i$ 的候选人；否则未决选民仍投给更小编号者，且 $i$ 的票数不会增加，其他人的最高票也不会下降。",
+            "淘汰候选人后，其粉丝会转为未决选民并投给当前仍在场的最小编号候选人，因此先处理所有更小编号候选人是让 $i$ 获得新增票数的必要条件。",
+            "在淘汰所有更小编号候选人后，若票数仍不足，再淘汰一个粉丝数最大的候选人即可保证转移的票数足以帮助 $i$ 获胜；因此答案只需在基础淘汰数量上判断是否需要额外一次操作。",
+            "初始获胜者无需淘汰任何候选人，其答案为 $0$；其余候选人的答案由是否需要额外淘汰一个候选人决定，可在线性扫描中完成。"
+          ],
+          "solutionBrief": "先求没有淘汰时的获胜者并令其答案为 $0$。对其他候选人，必须先淘汰所有更小编号者，再根据当前票数判断是否还需额外淘汰一个粉丝最多的候选人；由此每个答案只需在线性扫描中确定。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1978E",
+          "index": "E",
+          "slot": "E",
+          "title": "Computing Machine",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1978/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/130527",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定等长二进制串 $s,t$，计算机器可按题面规定的两类操作处理对应子串；对每个区间 $[l,r]$，求最终字符串 $a$ 中最多能得到多少个字符 $1$。当前记录未包含两类操作的具体规则，因此无法进一步说明每次操作的精确定义。",
+          "transformedStatement": "将所有查询统一转化为预处理后的字符串：先对 $t$ 执行全部第一类操作得到 $t'$，再借助 $t'$ 对 $s$ 执行全部第二类操作得到 $s'$。长区间的中间部分固定等于 $s'$，只有两端最多四个位置需要单独判断。",
+          "keyObservations": [
+            "两类操作可以先把第一类操作在 $t$ 上全部做完，再基于得到的 $t'$ 只做第二类操作处理 $s$，这样得到统一的 $s'$，避免查询时重复处理。",
+            "当查询长度小于 $5$ 时，边界位置可能相互影响，直接模拟完整过程即可覆盖所有情况。",
+            "当查询长度至少为 $5$ 时，最优结果的内部位置 $a_3\\ldots a_{len-2}$ 必须与 $s'_3\\ldots s'_{len-2}$ 一致，因此内部贡献可由 $s'$ 的前缀和直接计算。",
+            "长区间只需额外判断首两位和末两位是否能变成 $1$，把边界贡献与内部前缀和相加即可。"
+          ],
+          "solutionBrief": "预处理：先对 $t$ 完成全部第一类操作得到 $t'$，再用 $t'$ 对 $s$ 完成第二类操作得到 $s'$，并建立前缀和。长度小于 $5$ 的查询直接模拟；更长查询统计内部固定部分，再单独检查四个边界位置。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1978F",
+          "index": "F",
+          "slot": "F",
+          "title": "Large Graph",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1978/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/130527",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "number theory",
+            "two pointers"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组，将它的每个循环右移版本作为矩阵的一行，再按题目规定的数值关系和距离限制在矩阵顶点间连边。要求计算所得图的连通分量数量；其中每条与主对角线平行的对角线上的顶点具有相同的连通性结构。",
+          "transformedStatement": "把矩阵中的每条平行对角线压缩成一个代表元，问题等价于在一维数组上连接满足最大公约数大于 $1$ 且下标距离不超过 $k$ 的代表元，并统计这些代表元的连通块；全为 $1$ 的对角线另行计数。",
+          "keyObservations": [
+            "由于循环右移且 $k>1$，同一条与主对角线平行的对角线上的顶点必在同一连通分量中；全为 $1$ 的对角线没有有效连接，需要单独计数。",
+            "将每条对角线压缩为一个代表元后，两个代表元只有在对应数值的最大公约数大于 $1$ 且下标距离不超过 $k$ 时相连，从而把二维图转化为一维数组上的连通性问题。",
+            "对同一个质因数，所有可被其整除的代表元构成候选点集；只连接相邻候选下标且间距不超过 $k$ 的点，就能保留原完全连接图的连通分量，因为任意更远的有效边都可沿中间候选点逐段连通。",
+            "先用埃拉托斯特尼筛求出每个数的质因数，再按质因数合并代表元，DSU 或 DFS 即可统计最终连通分量。"
+          ],
+          "solutionBrief": "把二维循环移位矩阵按平行对角线压缩为一维代表元；全为 $1$ 的对角线单独处理。对每个质因数收集可整除元素，只连接相邻且下标差不超过 $k$ 的元素，并用 DSU 或 DFS 统计分量；质因数分解由筛法预处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
