@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1440,
+    "total_problems": 1449,
     "source_total_problems": 1742,
-    "filtered_out_problems": 302,
-    "with_statement_brief": 1440,
-    "with_editorial_brief": 1215,
-    "with_solution_brief": 1216,
+    "filtered_out_problems": 293,
+    "with_statement_brief": 1449,
+    "with_editorial_brief": 1224,
+    "with_solution_brief": 1225,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 374,
+    "ai_override_count": 383,
     "primary_topic_count": 13,
-    "contest_count": 230,
+    "contest_count": 231,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 470,
-    "图论与网络流": 87,
+    "构造与贪心": 474,
+    "图论与网络流": 88,
     "动态规划与状态设计": 140,
-    "数论与同余": 128,
-    "组合计数与概率": 112,
+    "数论与同余": 130,
+    "组合计数与概率": 113,
     "数据结构": 112,
     "几何": 32,
     "树结构": 105,
     "交互": 69,
     "基础实现与模拟": 59,
-    "博弈": 51,
+    "博弈": 52,
     "代数、矩阵与多项式": 13
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 309,
+    "ai_generated_with_editorial": 318,
     "ai_generated_partial_editorial": 15,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37352,6 +37352,298 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1844,
+      "name": "Codeforces Round 884 (Div. 1 + Div. 2)",
+      "date": "2023-07-11",
+      "url": "https://codeforces.com/contest/1844",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 9,
+      "maxRating": 3400,
+      "problems": [
+        {
+          "key": "1844A",
+          "index": "A",
+          "slot": "A",
+          "title": "Subtraction Game",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1844/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/118128",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "games"
+          ],
+          "statementBrief": "给定两个正整数 $a<b$，两名玩家轮流从一堆石子中恰好拿走 $a$ 或 $b$ 颗，无法操作者输。请构造一个正整数初始石子数 $n$，使先手无论如何操作，后手都能采取应对策略获胜。",
+          "transformedStatement": "将初始石子数固定为 $a+b$：先手拿走 $a$ 后剩下 $b$，拿走 $b$ 后剩下 $a$，后手始终拿走另一种数量，从而直接完成一次配对清空。",
+          "keyObservations": [
+            "取初始石子数 $n=a+b$ 时，第一步无论拿走 $a$ 还是 $b$，剩余石子数必为另一个数，因此第二步总能拿走剩余石子。",
+            "第二玩家采用“拿与第一玩家不同的数量”的应对策略，可在两步内清空石堆；第一玩家随后无法操作，所以该构造直接保证第二玩家获胜。",
+            "题目只要求输出任意合法的正整数，$a+b\\le 200$，满足上限 $10^6$，无需分析其他初始石子数。"
+          ],
+          "solutionBrief": "对每组 $a,b$ 直接输出 $n=a+b$。第一玩家拿走一种数量后，第二玩家拿走另一种数量，恰好清空石堆，因此第二玩家必胜；每组复杂度为 $\\mathcal{O}(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1844B",
+          "index": "B",
+          "slot": "B",
+          "title": "Permutations & Primes",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1844/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/118128",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $n$，要构造一个 $1$ 到 $n$ 的排列。每个连续子数组的 MEX 是其中未出现的最小正整数，数组的“primality”是 MEX 为素数的连续子数组数量，目标是使该数量最大。",
+          "transformedStatement": "把问题转化为最大化覆盖数字 $1$ 所在位置的区间数量：若区间的 MEX 是素数，它必须包含 $1$。因此先把 $1$ 放在使 $k(n+1-k)$ 最大的中间位置，再用 $2$ 和 $3$ 放在两端实现这个上界。",
+          "keyObservations": [
+            "任意子数组若其 MEX 为素数，则一定包含数值 $1$；因此所有可能计入答案的区间都必须覆盖 $1$ 所在位置。",
+            "设 $1$ 位于位置 $k$，覆盖该位置的区间数量为 $k(n+1-k)$，且整个数组的 MEX 恒为 $n+1$，当 $n+1$ 非素数时还必须扣除这一个区间。",
+            "函数 $k(n+1-k)$ 在 $k=\\left\\lfloor\\frac{n+1}{2}\\right\\rfloor$ 处最大，所以应将 $1$ 放在中间位置，以达到全局上界。",
+            "将 $2$ 和 $3$ 分别放在数组首尾后，所有覆盖中间位置的区间都同时包含 $1$、$2$、$3$ 中的必要结构，其 MEX 为素数；除整个数组外均可计入，从而达到上界。"
+          ],
+          "solutionBrief": "对 $n\\le2$ 单独处理。对 $n\\ge3$，令中间位置为 $\\left\\lfloor\\frac{n+1}{2}\\right\\rfloor$，放置 $1$，首位放 $2$、末位放 $3$，其余位置任意填入剩余数字；该构造达到由覆盖 $1$ 的区间数给出的上界，整体复杂度为 $\\mathcal{O}(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1844C",
+          "index": "C",
+          "slot": "C",
+          "title": "Particles",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1844/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/118128",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一列带整数电荷的粒子，每次使用设备选择一个粒子并按题目规定合并、重算相邻粒子，使粒子数量减少；持续操作直到只剩一个粒子，求最后剩余粒子能够获得的最大电荷。题面示例展示了选择不同位置后的具体变化。",
+          "transformedStatement": "把粒子按原始下标的奇偶性分成两组；操作过程中不同组不会合并，所以问题转化为分别求两组可保留的最大正电荷贡献，再处理所有电荷均为负的特例。",
+          "keyObservations": [
+            "粒子始终只能与原下标奇偶性相同的粒子合并，因此最终结果完全由奇数位集合或偶数位集合贡献，两个集合彼此独立。",
+            "固定最终所属的奇偶集合后，其他同集合中的负电荷应先被吸收；这样该集合能达到的上界就是其中所有正电荷之和，即 $\u001b[1m\\sum\\u001b[0m_{i\\in S}\\max(c_i,0)$。",
+            "若数组中至少有一个非负电荷，分别计算奇数位和偶数位的正电荷总和并取最大值即可；若所有电荷都为负，正电荷总和上界失效，只能保留单个粒子，因此答案是所有 $c_i$ 的最大值。"
+          ],
+          "solutionBrief": "按下标奇偶分组，分别累加每组的正电荷并取较大值；若所有电荷均为负，则答案改为数组最大值。每组只需线性扫描，使用 64 位整数保存结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1844D",
+          "index": "D",
+          "slot": "D",
+          "title": "Row Major",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1844/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/118128",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "number theory",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的小写字母串。对每个满足行数乘列数为 $n$ 的网格，把串按行填入；若存在共享边且字符相同的相邻格子，该网格就是坏网格。要求构造一个不是任何坏网格行优先序的串，并最小化其中不同字符的数量。",
+          "transformedStatement": "把串的位置看成图的顶点：每个因子 $d\\mid n$ 都让相距 $d$ 的位置连边，问题转化为给这张位置图染色并最小化颜色数。最小不整除数 $c$ 给出一个大小为 $c$ 的团，而长度为 $c$ 的周期染色正好避开全部边。",
+          "keyObservations": [
+            "每个因子 $d$ 对应一个 $n/d\\times d$ 网格，因此任意相距 $d$ 的位置都必须使用不同字符；所有 $d\\mid n$ 共同定义了位置图上的相邻约束。",
+            "令 $c$ 为不整除 $n$ 的最小正整数，则位置 $1,2,\\dots,c$ 两两之间的距离都整除 $n$，形成大小为 $c$ 的团，所以至少需要 $c$ 种字符。",
+            "按长度 $c$ 的周期重复不同字符即可使用恰好 $c$ 种字符；相同字符的位置差是 $kc$，而 $c\\nmid n$ 蕴含 $kc\\nmid n$，因此它们不会产生任何网格相邻约束。"
+          ],
+          "solutionBrief": "求最小的不整除 $n$ 的正整数 $c$，输出前 $c$ 个不同小写字母组成的周期串。前 $c$ 个位置构成团给出下界，周期构造满足所有因子间距约束，因此答案恰为 $c$；总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1844E",
+          "index": "E",
+          "slot": "E",
+          "title": "Great Grids",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1844/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/118128",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "2-sat",
+            "constructive algorithms",
+            "dfs and similar",
+            "dsu",
+            "graphs"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的字符网格，要求它满足题目规定的三条“great”网格条件。每条约束指定一对只共享一个角的斜对角单元格，并要求这两格字母相同；需要判断是否存在同时满足所有约束的 great grid。",
+          "transformedStatement": "不直接构造字符，而是为每对相邻行和每对相邻列设置一个二值类型。每条斜对角约束都转化为对应行变量与列变量必须相同或不同，最终只需判断这些奇偶关系是否可二染色。",
+          "keyObservations": [
+            "将字母 A、B、C 编码为模 3 的数后，伟大网格中相邻单元格的有向差值只能是 $1$ 或 $2$，且同一 $2\\times2$ 子网格的上下水平边差值相同、左右竖直边差值相同。",
+            "因此每个相邻行对和相邻列对分别只需记录一个二值类型，共有 $n-1$ 个行变量和 $m-1$ 个列变量。",
+            "约束 $(x,y)$ 与 $(x+1,y+1)$ 同字母等价于第 $x$ 个行变量与第 $y$ 个列变量取值不同；约束 $(x,y+1)$ 与 $(x+1,y)$ 同字母则等价于它们取值相同。",
+            "所有约束都转化为变量之间的相同或不同关系，问题于是变成带奇偶关系的二染色判定；每个连通分量只需检查是否出现矛盾。"
+          ],
+          "solutionBrief": "把相邻行对、列对建成二值变量，并将每条对角相邻单元格约束转成变量必须相同或不同的边。对该关系图做 DFS 二染色或带权 DSU；若出现奇环矛盾则输出 NO，否则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1844F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Min Cost Permutation (Easy Version)",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1844/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/118128",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个正整数数组和整数 $c$，只能重新排列数组得到排列 $b$，其代价为所有相邻元素满足目标差值 $c$ 的偏差之和，即 $\\sum_{i=1}^{n-1}|b_{i+1}-b_i-c|$。要求输出代价最小的排列；若有多个，输出字典序最小者。",
+          "transformedStatement": "按 $c$ 的符号重述：$c\\ge0$ 时问题等价于寻找升序排列；$c<0$ 时先以降序排列作为最优结构，再逐个确定前缀，并通过局部代价替换选择字典序最小的可行元素。",
+          "keyObservations": [
+            "当 $c\\ge 0$ 时，将数组按非递减顺序排列即可达到最小代价；该排列本身也是字典序最小的，因此无需额外选择。",
+            "当 $c<0$ 时，某个最优排列可由非递增顺序作为整体基准；在贪心已经到达的状态下，未使用元素的最优后缀仍可按非递增顺序排列。",
+            "固定前缀后，从剩余元素中按数值递增尝试当前位置；候选是否合法只需比较其替换前后相邻少数边的代价，若不增加总最优代价即可选取。",
+            "每个位置尝试每个剩余元素，候选判断是常数时间的局部计算，因此总复杂度为 $O(n^2)$。"
+          ],
+          "solutionBrief": "先按 $c$ 的符号分类。$c\\ge0$ 时直接升序输出；$c<0$ 时逐位选择字典序最小且不增加最优代价的未用元素，用局部边贡献比较判断，整体复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1844F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Min Cost Permutation (Hard Version)",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1844/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/118128",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定正整数数组 $a$ 和整数 $c$，将数组重排为排列 $b$，代价为相邻元素满足 $\\sum_{i=1}^{n-1}|b_{i+1}-b_i-c|$。要求在所有排列中找出使代价最小的排列；若有多个，输出字典序最小者。",
+          "transformedStatement": "题解先通过加入首尾连接边研究增广代价，并证明最优排列固定以最大值和最小值开头结尾。对 $c<0$，问题转化为在降序剩余链表中逐步选择满足阈值和邻居条件的最小候选。",
+          "keyObservations": [
+            "把目标看成在相邻边之外再加入首尾边的增广代价；将序列逐步整理为降序不会增加该代价，因此原问题的最优解首项必为最大值、末项必为最小值。",
+            "当 $c<0$ 时，固定已选前缀后，剩余元素仍可按降序处理；选择下一个元素时，只需找满足 $a_i\\ge b_{k-1}-|c|$ 的最小可行值，否则取当前最大值。",
+            "一个未使用元素是否可保持最优，只由它在当前未使用有序链表中的左右邻居决定：需满足 $a_{i-1}-a_{i+1}\\le |c|$，相等元素的特殊条件可一并覆盖。",
+            "用双向链表维护未使用元素及邻接关系，用有序集合按值寻找最小可行元素；删除后仅需更新被删元素的左右邻居，从而将逐步选择优化到 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "先利用对称性处理符号：$c\\ge0$ 时答案是数组升序排列；$c<0$ 时降序排列并贪心选点。对可选点维护双向链表和有序集合，按阈值取最小可行值，否则取最大剩余值，整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1844G",
+          "index": "G",
+          "slot": "G",
+          "title": "Tree Weights",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1844/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/118128",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "树结构",
+            "代数、矩阵与多项式",
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "data structures",
+            "dfs and similar",
+            "implementation",
+            "math",
+            "matrices",
+            "number theory",
+            "trees"
+          ],
+          "statementBrief": "给定一棵节点为 $1$ 到 $n$ 的树，每条边有未知正整数权重；同时给出每对相邻编号节点 $i,i+1$ 在树上的路径距离 $d_i$。要求恢复所有边权，任意合法解均可；若不存在满足全部距离且边权均为正的方案，输出 $-1$。",
+          "transformedStatement": "把每个节点改表示为根节点 $1$ 到它的路径权重和 $x_u$，于是每条边权是父子节点势值之差，而每个给定距离约束成为含 $lca(i,i+1)$ 的线性方程组；再按二进制位逐层模 $2$ 求解该方程组。",
+          "keyObservations": [
+            "令 $x_u$ 表示根节点 $1$ 到节点 $u$ 的路径权重和，则相邻编号节点的距离约束变为 $x_i+x_{i+1}-2x_{lca(i,i+1)}=d_i$。",
+            "模 $2$ 后最低位的 LCA 项消失，得到 $x_{i+1}\\equiv d_i-x_i\\pmod 2$，因此所有势值的当前二进制位可以按编号唯一确定。",
+            "写成 $x_u=2x'_u+b_u$ 后，剩余未知量仍满足同型方程，故可逐位提升，依次确定所有 $x_u$ 的二进制位。",
+            "势值范围至多为 $n\\cdot\\max d_i$，确定足够位数后恢复边权，并检查边权为正且所有距离约束成立即可判定无解。"
+          ],
+          "solutionBrief": "先以根到各点的距离和为变量，预处理每对相邻编号节点的 LCA。逐位模 $2$ 求解并进行二进制提升，得到所有势值后用父子势值差恢复边权，最后验证正性和全部约束；失败则输出 $-1$。复杂度为 $O(n(\\log n+\\log\\max d_i))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1844H",
+          "index": "H",
+          "slot": "H",
+          "title": "Multiple of Three Cycles",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1844/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/118128",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构",
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "dp",
+            "dsu",
+            "math"
+          ],
+          "statementBrief": "给定一个初始全为空的长度为 $n$ 的数组，第 $i$ 次操作把位置 $x_i$ 填成数值 $y_i$；所有操作完成后恰好形成 $1$ 到 $n$ 的一个排列。每次操作后，求补全剩余空位使其成为排列且每个置换环长度都是 $3$ 的倍数的方案数，结果对 $998244353$ 取模。",
+          "transformedStatement": "把已填元素看成由路径和环组成的部分函数，只保留每条路径或环长度模 $3$ 的信息。对未闭合结构按余数 $1,2,0$ 的数量建模为 $f(a,b,c)$，先消去 $c$，再在倒序更新形成的 $(a,b)$ 局部网格路径上用递推计算答案。",
+          "keyObservations": [
+            "部分置换由若干路径和环组成，DSU 只需记录各组件长度对 $3$ 的余数；一旦闭合出非 $3$ 的倍数环，当前及之后答案都为 $0$。",
+            "设未闭合对象中余数为 $0,1,2$ 的数量分别为 $c,a,b$，则加入余数为 $0$ 的对象只产生一个乘法因子，可将三维计数化为 $f(a,b,0)$。",
+            "从余数为 $1$ 或 $2$ 的对象出发可得到两组递推式；已知相邻的两个 $f$ 值时，可以反解出另外两个值，从而沿查询点构成的局部平面路径推进。",
+            "倒序处理更新后，查询状态只在 $(a,b)$、$(a-1,b+2)$、$(a+2,b-1)$、$(a+1,b+1)$ 间变化，维护 $f(a,b)$ 与 $f(a+1,b+1)$ 即可在线性数量的状态上完成转移。"
+          ],
+          "solutionBrief": "正向用 DSU 维护部分置换的路径与环，并按长度模 $3$ 统计组件；闭合出非法环时答案为 $0$。其余情况倒序处理更新，将状态转为余数计数 $(a,b)$，利用两组递推式沿相邻状态计算所需的 $f(a,b)$，再乘上消去余数 $0$ 对象带来的阶乘比值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
