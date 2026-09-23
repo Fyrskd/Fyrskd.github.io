@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1478,
+    "total_problems": 1483,
     "source_total_problems": 1742,
-    "filtered_out_problems": 264,
-    "with_statement_brief": 1478,
-    "with_editorial_brief": 1253,
-    "with_solution_brief": 1254,
+    "filtered_out_problems": 259,
+    "with_statement_brief": 1483,
+    "with_editorial_brief": 1258,
+    "with_solution_brief": 1259,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 412,
+    "ai_override_count": 418,
     "primary_topic_count": 13,
     "contest_count": 237,
     "rating_min": 800,
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 482,
+    "构造与贪心": 483,
     "图论与网络流": 90,
-    "动态规划与状态设计": 146,
-    "数论与同余": 136,
+    "动态规划与状态设计": 147,
+    "数论与同余": 137,
     "组合计数与概率": 113,
-    "数据结构": 114,
+    "数据结构": 116,
     "几何": 32,
-    "树结构": 106,
+    "树结构": 105,
     "交互": 69,
     "基础实现与模拟": 61,
-    "博弈": 53,
+    "博弈": 54,
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 346,
+    "ai_generated_with_editorial": 351,
     "ai_generated_partial_editorial": 16,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37154,9 +37154,129 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-08-15",
       "url": "https://codeforces.com/contest/1858",
       "type": "Div. 2",
-      "problemCount": 1,
-      "maxRating": 2500,
+      "problemCount": 6,
+      "maxRating": 2600,
       "problems": [
+        {
+          "key": "1858A",
+          "index": "A",
+          "slot": "A",
+          "title": "Buttons",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1858/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/119398",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "games",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有 $a$ 个只能由 Anna 按、$b$ 个只能由 Katie 按、$c$ 个双方都能按的按钮。两人轮流按下一个尚未按过的可用按钮，Anna 先手；无法操作者输，要求判断双方最优时谁获胜。",
+          "transformedStatement": "把游戏分为公共按钮阶段和专属按钮阶段：双方会交替消耗公共按钮，公共按钮数量的奇偶性决定谁先开始消耗自己的按钮；之后比较双方专属按钮数量及先手关系即可判定胜负。",
+          "keyObservations": [
+            "双方都会优先按轮流顺序消耗公共按钮，因为按下后该按钮同时从对手的可用集合中消失，公共按钮用完后只剩各自的专属按钮。",
+            "若公共按钮数为偶数，Anna 在公共按钮耗尽后先操作专属按钮；若为奇数，Katie 先操作专属按钮，因此先进入专属阶段的一方只有在专属按钮严格更多时才能获胜。",
+            "当专属按钮数量相等时，先进入专属阶段的一方会先耗尽按钮并输掉，所以奇数个公共按钮时 Anna 获胜，偶数个公共按钮时 Katie 获胜。"
+          ],
+          "solutionBrief": "公共按钮会被双方交替消耗，奇偶性决定专属按钮阶段由谁先手。若 $c$ 为偶数，Anna 需满足 $a>b$；若 $c$ 为奇数，Anna 需满足 $a\\ge b$，据此输出胜者。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1858B",
+          "index": "B",
+          "slot": "B",
+          "title": "The Walkway",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1858/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/119398",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 个按顺序排列的长凳和若干卖饼干的卖家，Petya 从第一个长凳走到第 $n$ 个长凳；到达卖家处或距上次吃饼干至少 $d$ 分钟时吃一个，且每个长凳最多吃一次。必须提前移除恰好一个卖家，求最少进食次数以及能达到该次数的卖家数量。",
+          "transformedStatement": "把卖家按位置分隔成若干区间：每个区间的进食次数只由两端卖家间的空长凳数量决定。删除一个卖家等价于将其左右两个区间合并，再比较所有卖家对应的总和变化。",
+          "keyObservations": [
+            "两个相邻卖家之间的贡献彼此独立，因为到达卖家会重置距上次吃饼干的计时；长度为 $s_{i+1}-s_i-1$ 的空段贡献为 $\\lfloor\\frac{s_{i+1}-s_i-1}{d}\\rfloor+1$。",
+            "删除卖家 $i$ 只会影响它左右两段：把两段贡献替换为合并区间的贡献，并额外减去被删除卖家本身的一次进食，因此每个删除方案可在 $O(1)$ 内计算。",
+            "首尾区间可分别按边界规则计算，或引入位置 $1-d$ 与 $n+1$ 的虚拟卖家统一表示；这样总进食次数能由相邻位置间距直接求和。",
+            "遍历所有卖家比较删除后的进食次数，同时维护最小值及达到该最小值的卖家数量即可。"
+          ],
+          "solutionBrief": "先按相邻卖家之间的间距求未删除时的总进食次数。枚举删除的卖家，用合并其左右区间后的贡献更新总数，端点单独处理；遍历过程中维护最小值及方案数，整体复杂度为 $O(m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1858C",
+          "index": "C",
+          "slot": "C",
+          "title": "Yet Another Permutation Problem",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1858/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/119398",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "对 $1$ 到 $n$ 的所有整数排列成一个置换，并把每个位置与环形意义下的下一个位置配对，记录这些相邻数的最大公约数。要求构造一个置换，使记录中不同最大公约数的数量最大。",
+          "transformedStatement": "将目标转化为覆盖尽可能多的 gcd 值：先利用倍数关系证明任何相邻 gcd 都不超过 $\\lfloor n/2\\rfloor$，再把每个目标值 $x$ 安排为相邻的 $x$ 与 $2x$，从而同时达到全部上界值。",
+          "keyObservations": [
+            "若某个相邻最大公约数为 $d>\\lfloor n/2\\rfloor$，则相邻两数中至少有一个是 $d$ 的更大倍数，因而至少为 $2d>n$，不可能出现。",
+            "因此不同最大公约数的数量上界是 $\\lfloor n/2\\rfloor$；只要让每个 $x\\in[1,\\lfloor n/2\\rfloor]$ 出现在某对相邻元素的最大公约数中即可达到最优。",
+            "按奇数基数 $x$ 分组排列 $x,2x,4x,\\ldots$，可保证每个 $x\\le\\lfloor n/2\\rfloor$ 后面紧接着 $2x$，且两者最大公约数恰为 $x$；各组覆盖所有 $1$ 到 $n$ 的数且不重复。"
+          ],
+          "solutionBrief": "先证明得分不超过 $\\lfloor n/2\\rfloor$。构造时从 $1$ 开始，依次对尚未使用的奇数 $x$ 输出 $x,2x,4x,\\ldots$ 的幂次乘积，直到超过 $n$；这样每个 $x\\le\\lfloor n/2\\rfloor$ 都成为一对相邻数的 gcd，达到上界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1858D",
+          "index": "D",
+          "slot": "D",
+          "title": "Trees and Segments",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1858/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/119398",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个由 0 和 1 构成的长度为 $n$ 的字符串，最多可独立翻转 $k$ 个位置。对每个参数 $a\\in[1,n]$，求翻转后按“最长连续 1 段长度加上 $a$ 倍最长连续 0 段长度”计算的最大美观值。",
+          "transformedStatement": "把一次方案抽象为选择一个连续区间作为全 1 段，计算把其中所有 0 翻成 1 的代价；剩余操作用于在区间左侧或右侧取得最长全 0 段，再按区间长度和 0 段长度合并答案。",
+          "keyObservations": [
+            "最优方案可固定一个连续的全 1 段，其长度为答案中的 1 段贡献；剩余预算只需在该段外最大化全 0 段长度。",
+            "$pref_{i,j}$ 表示前缀内以 $i$ 结尾、恰用 $j$ 次修改得到的最长全 0 段；遇到 1 时修改它即可延长状态，否则状态中断。",
+            "将前缀和后缀状态分别放宽为“不超过 $j$ 次修改且位置不晚于边界”，就能在固定 1 段后用两侧状态合并剩余预算。",
+            "枚举被改成全 1 的区间并按其长度更新 $dp_{len}$，最后对每个参数 $a$ 最大化 $a\\cdot dp_{len}+len$，同时覆盖所有可行的 0 段长度。"
+          ],
+          "solutionBrief": "建立前缀、后缀 DP，求在给定修改预算下的最长全 0 段。枚举连续区间并将其中的 0 改成 1，用两侧 DP 合并剩余预算，得到每个全 1 段长度对应的最大 0 段长度，最后对每个 $a$ 求最大值。总复杂度为 $O(nk+n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1858E1",
           "index": "E1",
@@ -37164,25 +37284,51 @@ window.CF_INSIGHTS_DATA = {
           "title": "Rollbacks (Easy Version)",
           "rating": 2500,
           "problemUrl": "https://codeforces.com/contest/1858/problem/E1",
-          "editorialUrl": "",
-          "primaryTopic": "树结构",
-          "secondaryTopics": [
-            "数据结构",
-            "构造与贪心",
-            "几何"
-          ],
+          "editorialUrl": "https://codeforces.com/blog/entry/119398",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "data structures",
             "dfs and similar",
             "trees"
           ],
-          "statementBrief": "题面已抓取：Rollbacks (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "维护一个初始为空的数组，按顺序处理共若干次查询；每次查询会按题目规定改变数组或请求其状态。对于第四类查询，输出当前数组中不同元素的数量，但给定题面未包含其他查询的具体操作规则。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1858E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Rollbacks (Hard Version)",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1858/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/119398",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "交互",
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "interactive",
+            "trees"
+          ],
+          "statementBrief": "有一个初始为空的数组，需要在线处理追加元素、删除末尾若干元素、回滚之前操作以及查询当前数组中不同元素数量等操作；每次查询要求输出当前不同值的个数，具体查询编号和参数在给定题面中有缺失。",
+          "transformedStatement": "把当前数组表示为历史数组 $A$ 的前缀，维护末端位置 $r$；将每个值的首次出现转成 $0/1$ 标记，并用支持单点修改和前缀和的数据结构统计前缀内的标记总数。",
+          "keyObservations": [
+            "把数组中每个值第一次出现的位置标为 $1$，其余出现位置标为 $0$，数组不同元素个数就等于当前前缀的标记和，因此查询转化为前缀和。",
+            "将所有追加过的元素保存在固定数组 $A$ 中，当前数组始终是 $A$ 的前缀，只需移动末端指针 $r$ 就能在 $O(1)$ 时间删除末尾元素。",
+            "为每个值维护它在 $A$ 中的所有位置，可判断追加位置是否会成为该值的新第一次出现，并据此修改树状数组中的标记。",
+            "追加和删除都会记录对末端指针、位置集合及树状数组的修改，因此回滚可以按相反顺序恢复这些变化，复杂度与原操作相同。"
+          ],
+          "solutionBrief": "用固定数组保存所有追加值，以前缀末端指针表示当前数组；按值维护出现位置，用树状数组统计前缀中的首次出现标记。删除和回滚记录并恢复修改，整体复杂度为 $O(q\\log q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
