@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1306,
+    "total_problems": 1312,
     "source_total_problems": 1742,
-    "filtered_out_problems": 436,
-    "with_statement_brief": 1306,
-    "with_editorial_brief": 1090,
-    "with_solution_brief": 1091,
+    "filtered_out_problems": 430,
+    "with_statement_brief": 1312,
+    "with_editorial_brief": 1096,
+    "with_solution_brief": 1097,
     "missing_editorial_brief": 215,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 216,
+    "ai_override_count": 222,
     "primary_topic_count": 13,
-    "contest_count": 209,
+    "contest_count": 210,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 57,
-    "构造与贪心": 437,
+    "构造与贪心": 440,
     "图论与网络流": 78,
-    "动态规划与状态设计": 129,
+    "动态规划与状态设计": 130,
     "数论与同余": 114,
-    "组合计数与概率": 104,
+    "组合计数与概率": 105,
     "数据结构": 96,
     "几何": 26,
-    "树结构": 98,
+    "树结构": 99,
     "交互": 64,
     "基础实现与模拟": 49,
     "博弈": 42,
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 190,
+    "ai_generated_with_editorial": 196,
     "ai_generated_partial_editorial": 9,
     "missing_editorial": 215,
     "manual_override": 891,
@@ -32706,6 +32706,198 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1988,
+      "name": "Codeforces Round 958 (Div. 2)",
+      "date": "2024-07-15",
+      "url": "https://codeforces.com/contest/1988",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1988A",
+          "index": "A",
+          "slot": "A",
+          "title": "Split the Multiset",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1988/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/131567",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "初始多重集合只有一个正整数 $n$。每次可选取一个数 $u$ 删除，并放入不超过 $k$ 个正整数，且它们的和必须为 $u$；求最终把集合变成包含 $n$ 个 $1$ 所需的最少操作次数。",
+          "transformedStatement": "把目标转化为将集合元素数量从 $1$ 增加到 $n$：一次拆分最多让元素数增加 $k-1$，同时构造始终达到这一增量，因此问题等价于计算达到总增量 $n-1$ 所需的步数。",
+          "keyObservations": [
+            "每次删除一个数后最多插入 $k$ 个数，因此集合元素总数每步最多增加 $k-1$；从 $1$ 个元素变为 $n$ 个元素至少需要 $\frac{n-1}{k-1}$ 次操作。",
+            "每次优先把当前数拆出 $k-1$ 个 $1$，剩余部分继续作为待拆分的数，可使元素数量每次达到最大增量 $k-1$。",
+            "当剩余数不超过 $k$ 时，可以直接将其拆成若干个 $1$，因此上述构造恰好在第 $\u001b[?m\\lceil\\frac{n-1}{k-1}\\rceil$\u001b[?m$ 次完成。"
+          ],
+          "solutionBrief": "维护当前尚未拆完的数，每次尽量加入 $k-1$ 个 $1$，使元素总数增加 $k-1$；最后一次直接拆成若干个 $1$。答案为 $\\left\\lceil\\frac{n-1}{k-1}\\right\\rceil$，可用整数上取整计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1988B",
+          "index": "B",
+          "slot": "B",
+          "title": "Make Majority",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1988/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/131567",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由 `0` 和 `1` 组成的序列。每次可选取任意连续子段，将其替换为该子段的多数元素，重复操作后判断能否最终变成单元素序列 `[1]`。",
+          "transformedStatement": "题解将问题转化为识别局部结构：序列可行当且仅当包含 `111`、至少两处 `11`、首尾均为 `1`，或一端为 `1` 且同时存在 `11`；否则不可行。",
+          "keyObservations": [
+            "存在子串 `111` 时，可以先合并出有利的 `1`，最终一定能得到 `[1]`，因此这是直接的可行条件。",
+            "相邻子串 `11` 至少出现两处时，这些局部结构足以持续制造多数为 `1` 的合并，序列可归约为 `[1]`。",
+            "若序列首尾都是 `1`，可利用两端的 `1` 逐步合并中间部分，保证最终结果为 `1`。",
+            "若首或尾为 `1` 且任意位置存在 `11`，也一定可变换为 `[1]`；若四种条件均不满足，则归纳可知无法变换。"
+          ],
+          "solutionBrief": "只需检查四个可行条件：含 `111`、`11` 至少两处、首尾均为 `1`，或首尾之一为 `1` 且含 `11`。满足任一条件输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1988C",
+          "index": "C",
+          "slot": "C",
+          "title": "Increasing Sequence with Fixed OR",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1988/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/131567",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定正整数 $n$，构造一个最长的严格递增正整数序列，使序列中所有数的按位或等于 $n$，并输出该序列。若存在多个最长序列，输出任意一个即可。",
+          "transformedStatement": "把 $n$ 看成由若干个二进制置位组成：对每个置位 $2^p$，构造去掉该位的数 $n-2^p$，按置位从高到低排列后补上 $n$，将长度最优化转化为按置位数递推。",
+          "keyObservations": [
+            "答案只取决于 $n$ 的二进制中 1 的个数，因此可以把问题归约为 $n=2^k-1$ 的情形，避免处理具体位值。",
+            "当 $n=2^k-1$ 且 $k>1$ 时，首个数不能使用最高位；为覆盖该位，后续序列必须从包含最高位的数开始，剩余部分等价于规模减一的子问题，因此有 $f(k)\\le f(k-1)+1$。",
+            "对每个从高位到低位的置位 $2^p$（排除 $2^p=n$），依次加入 $n-2^p$，最后加入 $n$；这些数严格递增，且逐步补齐所有置位，按位或恰为 $n$。",
+            "当 $n$ 含有 $k>1$ 个置位时上述构造长度为 $k+1$，结合递推上界达到最优；若 $n$ 是单个二次幂，答案只有序列 $[n]$。"
+          ],
+          "solutionBrief": "按置位从高到低枚举每个 $2^p$，若 $2^p\\ne n$ 就加入 $n-2^p$，最后加入 $n$。所得序列严格递增且按位或为 $n$；其长度等于 $n$ 的置位数加一（单置位时为 1），由递推上界可知最优。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1988D",
+          "index": "D",
+          "slot": "D",
+          "title": "The Omnipotent Monster Killer",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1988/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/131567",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "有一棵树，每个顶点放着攻击值为 $a_i$ 的怪物。每回合可以击杀任意数量的怪物，但同一回合不能击杀一条边两端的两个怪物；所有怪物都被击杀后，若第 $b_i$ 回合击杀顶点 $i$ 的怪物会造成 $a_i b_i$ 的损失，求最小总损失。",
+          "transformedStatement": "为每个树顶点分配一个正整数 $b_i$，相邻顶点必须取不同值，并最小化加权和 $\u0002sum_i a_i b_i$。题解利用最优编号可规范化为邻居编号的 MEX，并在树上按编号状态进行子树 DP。",
+          "keyObservations": [
+            "把怪物被击杀的回合编号记为 $b_i$，总损失恰好是 $\u00024\\sum_i a_i b_i$；同一条边两端不能在同回合被击杀，因此约束等价于相邻顶点的编号必须不同。",
+            "在最优安排中，每个顶点的 $b_i$ 可取为其邻居编号集合中未出现的最小正整数，即该集合的 MEX；这为树形 DP 提供了有限且规范化的状态。",
+            "若最大编号为 $u$，以对应顶点为根时，其相邻顶点必须覆盖 $1$ 到 $u-1$；递推得到至少需要 $2^{u-1}$ 个顶点，因此最优编号不超过 $\u0002lfloor\\log_2 n\\rfloor+1$。",
+            "固定父节点编号后，每个子树只需选择一个不同于父编号的状态，子树之间相互独立；因此状态转移为对子节点取“所有不同编号状态的最小值”之和。"
+          ],
+          "solutionBrief": "将击杀回合编号视为树的合法顶点编号，建立 $dp[v][c]$ 表示顶点 $v$ 在第 $c$ 回合被击杀时的子树最小损失。转移对子节点取编号不等于 $c$ 的最小状态，根节点取所有状态最小值；编号上界为 $O(\\log n)$，总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1988E",
+          "index": "E",
+          "slot": "E",
+          "title": "Range Minimum Sum",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1988/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/131567",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列，定义所有连续子数组最小值之和为 $f(a)$。对每个位置 $i$ 独立删除 $a_i$ 并保持其余元素顺序，分别求删除后数组的 $f$ 值。",
+          "transformedStatement": "把排列建成以数值为堆序、位置为中序的最小笛卡尔树；节点贡献表示包含该节点且以它为最小值的子数组数量。删除节点后，只需处理其左右子树边界链的重新连接。",
+          "keyObservations": [
+            "在最小笛卡尔树中，节点 $x$ 对所有子数组最小值和的贡献是 $(size_{L_x}+1)(size_{R_x}+1)a_x$，因为左右端点可独立向两侧扩展。",
+            "删除 $x$ 时，其子树外的贡献不变；子树内部只需将左子树的右链与右子树的左链重新合并。",
+            "两条待合并链上的节点按 $a$ 值归并后，从右向左维护已处理部分的子树规模，即可按 $(累计规模+1)(子树规模+1)a_p$ 重算每个节点贡献。",
+            "单调栈在线性时间内建树，且所有删除情形中链上的节点被处理次数总计为 $O(n)$，因此整体复杂度为 $O(n)$。"
+          ],
+          "solutionBrief": "用单调栈建立最小笛卡尔树，先计算未删除时各节点贡献。对每个节点删除时，仅归并其左右子树的两条边链并重算局部贡献；递归传递受影响的祖先贡献，整体 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1988F",
+          "index": "F",
+          "slot": "F",
+          "title": "Heartbeat",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1988/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/131567",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "对每个 $k=1,\\ldots,n$，考虑 $1\\sim k$ 的所有排列。若排列有 $x$ 个前缀最大值、$y$ 个后缀最大值、$z$ 个相邻上升位置，其代价为 $a_xb_yc_z$；求所有排列代价之和 $f(k)$，并输出全部结果。",
+          "transformedStatement": "把排列按最大元素 $k$ 的位置分成左右两段：分别统计两段的前缀最大值与上升数，并将右段反向处理为后缀最大值。左右段的加权统计通过长度和上升数两个维度合并，跨越最大值位置的上升数单独修正。",
+          "keyObservations": [
+            "按最大值 $n$ 所在位置切分排列，左、右两段的相对排列彼此独立，跨分割处只额外贡献一次上升关系（当 $n$ 不在首位时）。",
+            "插入新最大值时，前缀最大值数量、上升数的变化只由插入位置及已有上升数决定，因此可用三维 DP 统计排列数量。",
+            "后缀最大值统计可由前缀最大值 DP 反转对应维度得到，避免重新设计一套转移。",
+            "将加权后的两段统计视为二维多项式，按排列长度与上升数卷积即可合并；模数支持 FFT，也可用点值插值实现 $O(n^3)$ 方案。"
+          ],
+          "solutionBrief": "用插入最大值的 DP 统计排列的前缀最大值和上升数，再反转得到后缀版本。按最大值位置拆分，合并两侧权值并计入跨界上升；二维多项式卷积可在 $O(n^2\\log n)$ 完成，亦可用插值降为 $O(n^3)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
