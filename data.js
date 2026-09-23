@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1390,
+    "total_problems": 1392,
     "source_total_problems": 1742,
-    "filtered_out_problems": 352,
-    "with_statement_brief": 1390,
-    "with_editorial_brief": 1165,
-    "with_solution_brief": 1166,
+    "filtered_out_problems": 350,
+    "with_statement_brief": 1392,
+    "with_editorial_brief": 1167,
+    "with_solution_brief": 1168,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 324,
+    "ai_override_count": 326,
     "primary_topic_count": 13,
-    "contest_count": 220,
+    "contest_count": 221,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,10 +45,10 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 453,
+    "构造与贪心": 454,
     "图论与网络流": 84,
     "动态规划与状态设计": 132,
-    "数论与同余": 125,
+    "数论与同余": 126,
     "组合计数与概率": 108,
     "数据结构": 106,
     "几何": 31,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 13
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 261,
+    "ai_generated_with_editorial": 263,
     "ai_generated_partial_editorial": 13,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37352,6 +37352,69 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1828,
+      "name": "Codeforces Round 873 (Div. 2)",
+      "date": "2023-05-14",
+      "url": "https://codeforces.com/contest/1828",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 900,
+      "problems": [
+        {
+          "key": "1828A",
+          "index": "A",
+          "slot": "A",
+          "title": "Divisible Array",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1828/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/116109",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $n$，构造长度为 $n$ 的正整数数组，使第 $i$ 个元素满足题目的逐项整除条件，并且所有元素之和能被 $n$ 整除。每组数据输出任意一个满足条件的数组。",
+          "transformedStatement": "将构造目标重述为：先选取天然满足逐项条件的序列 $[1,2,\\ldots,n]$，再统一放大或调整元素，使数组总和变成 $n$ 的倍数；统一乘以 $2$ 可以直接实现这一点。",
+          "keyObservations": [
+            "取 $a_i=2i$ 后，每个元素仍是其下标 $i$ 的倍数，因此满足逐项整除条件。",
+            "原数组 $[1,2,\u0005ldots,n]$ 的和为 $\\frac{n(n+1)}{2}$，整体乘以 $2$ 后总和变为 $n(n+1)$，必然能被 $n$ 整除。",
+            "也可以固定 $a_i=i$（$i\\ge 2$），仅增加 $a_1$；由于 $1$ 整除任意正整数，最多增加 $n$ 即可调节总和模 $n$。"
+          ],
+          "solutionBrief": "直接输出 $a_i=2i$。每个元素是对应下标的倍数，数组和为 $n(n+1)$，同时满足整除条件与总和可被 $n$ 整除；每组复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1828B",
+          "index": "B",
+          "slot": "B",
+          "title": "Permutation Swap",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1828/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/116109",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的无序排列，先选择一个固定正整数 $k$，之后每次只能交换下标相差恰好为 $k$ 的两个位置。要求输出能够将排列恢复为 $1,2,\\ldots,n$ 的最大 $k$。",
+          "transformedStatement": "把每个元素当前位置 $i$ 到目标位置 $p_i$ 的位移表示为 $|p_i-i|$；由于移动只能沿下标差为 $k$ 的步长进行，问题转化为求所有位移的最大公约数。",
+          "keyObservations": [
+            "位置 $i$ 上的元素 $p_i$ 必须移动到位置 $p_i$，每次只能跨越固定距离 $k$，因此 $|p_i-i|$ 必须被 $k$ 整除。",
+            "所有位置偏移量都必须被同一个 $k$ 整除，故可行的最大 $k$ 等于所有 $|p_i-i|$ 的最大公约数。",
+            "允许交换的两个位置下标同余于模 $k$，因此交换不会改变元素所在的下标同余类；当 $k$ 整除每个偏移量时，每个元素都能在其对应同余类内归位。"
+          ],
+          "solutionBrief": "遍历每个位置，计算偏移量 $|p_i-i|$，并持续求这些偏移量的最大公约数。最终的最大公约数就是能够将排列排好序的最大 $k$，时间复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
