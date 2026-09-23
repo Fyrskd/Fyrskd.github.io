@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1276,
+    "total_problems": 1284,
     "source_total_problems": 1742,
-    "filtered_out_problems": 466,
-    "with_statement_brief": 1276,
-    "with_editorial_brief": 1061,
-    "with_solution_brief": 1062,
+    "filtered_out_problems": 458,
+    "with_statement_brief": 1284,
+    "with_editorial_brief": 1069,
+    "with_solution_brief": 1070,
     "missing_editorial_brief": 214,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 185,
+    "ai_override_count": 194,
     "primary_topic_count": 13,
     "contest_count": 206,
     "rating_min": 800,
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 56,
-    "构造与贪心": 427,
+    "字符串": 57,
+    "构造与贪心": 428,
     "图论与网络流": 76,
-    "动态规划与状态设计": 123,
+    "动态规划与状态设计": 125,
     "数论与同余": 112,
-    "组合计数与概率": 103,
+    "组合计数与概率": 104,
     "数据结构": 94,
-    "几何": 25,
+    "几何": 26,
     "树结构": 97,
     "交互": 63,
-    "基础实现与模拟": 46,
+    "基础实现与模拟": 48,
     "博弈": 42,
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 161,
+    "ai_generated_with_editorial": 169,
     "ai_generated_partial_editorial": 9,
     "missing_editorial": 214,
     "manual_override": 891,
@@ -32907,9 +32907,61 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-06-09",
       "url": "https://codeforces.com/contest/1984",
       "type": "Global",
-      "problemCount": 1,
-      "maxRating": 1300,
+      "problemCount": 9,
+      "maxRating": 3300,
       "problems": [
+        {
+          "key": "1984A",
+          "index": "A",
+          "slot": "A",
+          "title": "Strange Splitting",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1984/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/130252",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定一个长度至少为 $3$ 的非降数组，要把每个元素染成红色或蓝色，使红色元素集合与蓝色元素集合的范围（最大值减最小值）不同。若做不到输出 NO，否则输出任意满足条件的染色方案。",
+          "transformedStatement": "将目标转化为制造一个范围为 $0$ 的单元素颜色组，以及一个包含数组最小值和最大值、范围为正的另一颜色组；因此只需判断数组是否含有至少两个不同值。",
+          "keyObservations": [
+            "所有元素相等时，任意红蓝分组中的非空子数组范围都为 $0$，因此不可能让两组范围不同。",
+            "数组不全相等且已排序时，$a_1$ 与 $a_n$ 是两个不同值；把它们放入同一组即可保证该组范围为正。",
+            "由于 $n\\ge 3$，可以单独把内部元素 $a_2$ 染成红色，其范围为 $0$，其余元素染成蓝色且包含两端点，蓝色范围为正，因此两组范围必不同。"
+          ],
+          "solutionBrief": "检查 $a_1=a_n$：若相等则所有元素相同，输出 NO；否则输出 YES，将 $a_2$ 染红，其余元素染蓝。红组范围为 $0$，蓝组同时含有最小值和最大值，范围为正。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1984B",
+          "index": "B",
+          "slot": "B",
+          "title": "Large Addition",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1984/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/130252",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定正整数 x，判断它能否表示为两个位数相同、且每一位都在 5 到 9 之间的正整数之和。每个测试用例只需输出 YES 或 NO。",
+          "transformedStatement": "把加法改写为逐列处理的进位约束：由于每列都由两个 5 到 9 的数字相加，结果必然逐列进位；因此只需判断结果的最高位、中间位和个位是否落在对应的可行范围内。",
+          "keyObservations": [
+            "两个加数的每一位都至少为 5，因此每一列相加都会产生进位；结果位数比加数多一位，最高位必为 1。",
+            "除个位外，每一列都要加上前一列的进位，结果数字可取 1 到 9，因此结果的中间各位不能为 0。",
+            "个位没有前置进位，两位大数字之和产生的结果位只能是 0 到 8，因此个位不能为 9。",
+            "所以只需检查最高位为 1、中间各位非 0 且末位不为 9，这些条件同时满足时即可构成所需的两个加数。"
+          ],
+          "solutionBrief": "按十进制竖式分析每一列的进位约束：检查最高位是否为 1、中间各位是否非 0、个位是否不为 9。全部满足输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1984C1",
           "index": "C1",
@@ -32918,21 +32970,201 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1300,
           "problemUrl": "https://codeforces.com/contest/1984/problem/C1",
           "editorialUrl": "https://codeforces.com/blog/entry/130252",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "dp",
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：Magnitude (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "给定一个长度为 $n$ 的数组，从 $c=0$ 开始，按下标递增顺序逐个处理元素；题面说明每一步有两种操作可选，但本地记录缺失这两种操作的具体内容。目标是选择每一步的操作，使处理结束后的 $c$ 最大，并输出最大值 $k$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1984C2",
+          "index": "C2",
+          "slot": "C",
+          "title": "Magnitude (Hard Version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1984/problem/C2",
+          "editorialUrl": "https://codeforces.com/blog/entry/130252",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定数组并令 $c=0$，按下标顺序处理每个 $a_i$：要么把 $a_i$ 加到 $c$，要么把加法结果取绝对值后作为新的 $c$。先求所有操作方案中最终 $c$ 的最大值，再统计能达到该最大值的不同方案数，结果对 $998244353$ 取模。",
+          "transformedStatement": "把操作过程按前缀和分析：普通加法对应当前前缀和，取绝对值真正产生作用的位置只能是达到全局最小前缀和的位置。固定唯一的有效取绝对值位置后，前方非负前缀和处与后方位置的选择数分别独立贡献二进制幂。",
+          "keyObservations": [
+            "最优过程中真正改变数值的“取绝对值”最多需要一次；若两次都改变数值，改用第一次的普通加法会让后续第二次前的值更小，从而得到更大的最终绝对值。",
+            "取绝对值真正有贡献的位置必须是前缀和的全局最小值；在该位置之后，当前值已经不低于该最小值对应的绝对值，因此每个后续位置的两种操作都不会破坏最优结果。",
+            "固定贡献位置 $i$ 后，之前只有前缀和非负的位置可以任选两种操作而不改变数值，之后所有位置都可任选，因此该位置贡献为 $2^{x+y}$，其中 $x$ 是此前缀和非负的位置数，$y=n-i-1$。",
+            "若所有前缀和都非负，取绝对值从不改变结果，每个位置均有两种等价选择，答案直接为 $2^n$。"
+          ],
+          "solutionBrief": "先求前缀和的全局最小值。若最小值为 $0$，答案是 $2^n$；否则枚举每个达到该最小值的位置，统计其前面前缀和非负的位置数，贡献为 $2^{ ext{此前计数}+n-i-1}$，累加并对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1984D",
+          "index": "D",
+          "slot": "D",
+          "title": "''a'' String Problem",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1984/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/130252",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "hashing",
+            "implementation",
+            "math",
+            "string suffix structures",
+            "strings"
+          ],
+          "statementBrief": "给定一个由小写字母组成的字符串，需要统计多少个非空字符串 `t`（且 `t` 不等于 `a`），使原串能够按顺序分割成若干段，其中每段要么是单个 `a`，要么完整等于 `t`。输出满足条件的 `t` 的数量。",
+          "transformedStatement": "把每个候选 `t` 拆成若干个前导 `a` 与一个从首个非 `a` 字符开始的核心串；先枚举核心串长度并验证它能否依次匹配所有非 `a` 区域，再根据各匹配块前可利用的 `a` 数量恢复不同的 `t`。",
+          "keyObservations": [
+            "除全为 `a` 的特例外，合法的 `t` 必须包含非 `a` 字符，因此可先固定其从原串第一个非 `a` 字符开始的核心部分。",
+            "枚举核心长度后，分割时每次跳过当前位置之前连续的 `a`，再要求后面的长度为 `len` 的子串等于核心；任一块不匹配即可判定该长度无效。",
+            "若核心可以覆盖整串，核心前后可吸收的连续 `a` 数量受所有分块前间隙的最小值限制，因此该核心对应的实际字符串数量是最小间隙加一。",
+            "每个长度至多检查一个核心，长度为 `len` 时只需检查约 $n/len$ 个分块，所有长度的总复杂度由调和级数得到 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "全为 `a` 时答案为 $n-1$。否则枚举从第一个非 `a` 字符开始的核心长度，用 Z 函数快速验证它能否反复出现在分割中；对可行核心按所有间隙中最少的 `a` 数量贡献加一，累加得到答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1984E",
+          "index": "E",
+          "slot": "E",
+          "title": "Shuffle",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1984/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/130252",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，恰好执行一次 shuffle，按允许的选根和节点加入顺序用全部原节点构造新树；新树根若只有一个孩子也算叶子。求一次操作后最多能得到多少个叶子。",
+          "transformedStatement": "把一次 shuffle 重述为选择一个原树叶子作为新树根，并在删去该叶子的剩余树中最大化可成为叶子的节点数；这些节点必须且可以恰好对应一个最大独立集，最终再加上根这一片叶子。",
+          "keyObservations": [
+            "将新树根以外的叶子集合看作原树删去一个叶子后的树中的点集；任意相邻点不可能同时成为叶子，因此该集合必须是独立集。",
+            "删去的原树叶子作为新树根后，根本身也计作叶子；而删去叶子后的树中任意独立集都能通过先加入非独立集节点实现为叶子，所以答案是最大独立集加一。",
+            "对每个可能删去的叶子求树上最大独立集，并比较其最大值；沿有向边维护端点选或不选的两种状态，即可复用子树贡献。"
+          ],
+          "solutionBrief": "枚举作为新根的原树叶子，将其删去后对剩余树求最大独立集，答案为最大值加一。用有向边 DP 维护端点选入或不选入独立集时的最优值，并汇总所有候选叶子。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1984F",
+          "index": "F",
+          "slot": "F",
+          "title": "Reconstruction",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1984/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/130252",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数数组 $b$、由 `P`、`S`、`?` 组成的字符串，以及上界 $m$。把每个 `?` 替换成 `P` 或 `S`，要求存在所有 $|a_i|\\le m$ 的隐藏数组 $a$ 满足相应的前缀/后缀约束，求合法替换方案数。",
+          "transformedStatement": "将字符串两端扩展为 `P` 和 `S`，同时在 $a,b$ 两端补零。固定隐藏数组总和后，问题转化为沿字符串扫描相邻标签：`PP`、`SS` 局部确定元素，`PS` 校验总和，`SP` 校验两元素能否在范围内分配。",
+          "keyObservations": [
+            "在数组两端补零，并在字符串首尾补上 `P`、`S`，因此一定出现相邻的 `PS`；该位置的 $b_i+b_{i+1}$ 就确定了隐藏数组总和。",
+            "固定总和后，相邻标签为 `PP` 或 `SS` 时可直接由相邻 $b$ 的差确定一个 $a_i$；因此只需检查该值是否满足 $|a_i|\\le m$。",
+            "相邻标签为 `PS` 时必须满足 $b_i+b_{i+1}=\\mathrm{SUM}$；为 `SP` 时只知道 $a_i+a_{i+1}=b_i+b_{i+1}-\\mathrm{SUM}$，将两项尽量均匀分配即可最小化最大绝对值。",
+            "总和只可能是某个相邻和 $b_i+b_{i+1}$；枚举这些候选值，并用 `dp[i][j]` 统计扫描到位置 $i$ 且最近标签为 $j$ 的合法替换，得到所有可行字符串数量。"
+          ],
+          "solutionBrief": "枚举去重后的候选总和 $b_i+b_{i+1}$。固定总和后，按相邻标签检查或确定对应的 $a$，并以当前位置和末尾标签做线性 DP 统计 `?` 的合法替换，累加结果并取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1984G",
+          "index": "G",
+          "slot": "G",
+          "title": "Magic Trick II",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1984/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/130252",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列，选择一个整数 $k$，每次取长度为 $k$ 的连续子数组并从原位置删除，再插入到任意允许位置；要求找出能将排列升序排列的最大 $k$，并输出不超过 $5n^2$ 次操作的方案。",
+          "transformedStatement": "将长度为 $n-2$ 的操作表示为循环排列上的分界点运动：可单独移动两格，或交换分界点两侧元素后移动一格；问题转化为利用分界点运动把元素依次归位，并用逆序数奇偶判断偶数长度时的可行性。",
+          "keyObservations": [
+            "当排列已排序时无需操作且可取 $k=n$；当排列是有序排列的循环移位时可取 $k=n-1$，反复移动长度为 $n-1$ 的段即可复原。",
+            "对 $k=n-2$，把排列视为首尾相接并设一个分界点：一次操作等价于让分界点移动两格，或交换分界点两侧元素后移动一格。",
+            "当 $n$ 为奇数时，分界点可通过移动两格到达任意位置，因此能逐个把目标最大值冒泡到末端，保证 $k=n-2$ 可行。",
+            "当 $n$ 为偶数时，$k=n-2$ 为偶数，操作保持逆序数奇偶；逆序数为奇数时不可能到达有序排列，只能取 $k=n-3$，逆序数为偶数时可用分界点构造完成排序。"
+          ],
+          "solutionBrief": "先处理已排序和循环移位两种特例。一般情况下，奇数长度取 $k=n-2$；偶数长度若逆序数为奇数，先将最大值固定到末端并降为 $n-3$，否则取 $n-2$。维护循环数组中的分界点，通过两类等价操作逐个将最大元素移到正确位置。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1984H",
+          "index": "H",
+          "slot": "H",
+          "title": "Tower Capturing",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1984/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/130252",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计",
+            "树结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "geometry"
+          ],
+          "statementBrief": "给定平面上两两不同、无三点共线且无四点共圆的塔，初始拥有第 $1$、$2$ 座。每次可选择已拥有的两座塔，并捕获一座未拥有的塔；该三点的外接圆必须包含所有塔。求以最少操作捕获全部塔的方案数，无法完成时输出 $0$。",
+          "transformedStatement": "只保留凸包顶点，把满足“外接圆包含全部点”的三角形视为覆盖三角形；这些三角形组成唯一的凸包三角剖分。捕获过程等价于从初始边两侧的三角形开始，按顺序扩展三角剖分对偶树。",
+          "keyObservations": [
+            "若初始两座塔不在所有点的凸包上，则不可能完成捕获；凸包内部的塔可忽略，因为凸包可由覆盖三角形逐步覆盖。",
+            "所有外接圆包含全部点的覆盖三角形两两内部不相交，并且能够递归填满凸包，因此它们唯一确定一个三角剖分。",
+            "一次捕获对应在三角剖分对偶树上给当前三角形接入一个叶子；初始边两侧的两个三角形都可能作为根，需要分别计数。",
+            "反向删除叶子时，必须先处理完所有子树；若子树大小为 $s_1,\\ldots,s_k$，当前方案数乘以多重组合数 $\\binom{s_1+\\cdots+s_k}{s_1,\\ldots,s_k}$，从而得到树形 DP。"
+          ],
+          "solutionBrief": "先求所有点的凸包并检查初始两点是否在其上，再递归寻找每条边另一侧使外接圆覆盖全部点的顶点，构造唯一三角剖分及其对偶树。分别以初始边两侧三角形为根，使用子树大小和多重组合数统计叶子加入顺序，累加两种根的结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
