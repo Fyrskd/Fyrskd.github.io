@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1322,
+    "total_problems": 1327,
     "source_total_problems": 1742,
-    "filtered_out_problems": 420,
-    "with_statement_brief": 1322,
-    "with_editorial_brief": 1103,
-    "with_solution_brief": 1104,
-    "missing_editorial_brief": 218,
+    "filtered_out_problems": 415,
+    "with_statement_brief": 1327,
+    "with_editorial_brief": 1107,
+    "with_solution_brief": 1108,
+    "missing_editorial_brief": 219,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 252,
+    "ai_override_count": 258,
     "primary_topic_count": 13,
     "contest_count": 211,
     "rating_min": 800,
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 58,
-    "构造与贪心": 434,
+    "构造与贪心": 439,
     "图论与网络流": 79,
     "动态规划与状态设计": 129,
     "数论与同余": 117,
@@ -60,8 +60,8 @@ window.CF_INSIGHTS_DATA = {
   },
   "statusCounts": {
     "ai_generated_with_editorial": 203,
-    "ai_generated_partial_editorial": 9,
-    "missing_editorial": 218,
+    "ai_generated_partial_editorial": 13,
+    "missing_editorial": 219,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -31881,9 +31881,93 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-08-10",
       "url": "https://codeforces.com/contest/1998",
       "type": "Div. 2",
-      "problemCount": 1,
-      "maxRating": 2100,
+      "problemCount": 6,
+      "maxRating": 2500,
       "problems": [
+        {
+          "key": "1998A",
+          "index": "A",
+          "slot": "A",
+          "title": "Find K Distinct Points with Fixed Center",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1998/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/132512",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定目标中心 $(x_c,y_c)$ 和数量 $k$，要求输出 $k$ 个坐标为整数且两两不同的平面点，使所有点坐标的平均值恰好为该中心；点坐标还必须处于指定范围内，任意合法方案均可。",
+          "transformedStatement": "由平均值条件改写为坐标总和条件：横坐标总和为 $k x_c$、纵坐标总和为 $k y_c$。题解进一步固定一个点为 $(k x_c,k y_c)$，把剩余构造转成横纵坐标分别零和的问题。",
+          "keyObservations": [
+            "中心条件等价于所有点的横坐标和为 $k x_c$、纵坐标和为 $k y_c$，因此只需控制两维坐标的总和。",
+            "将一个点取为 $(k x_c,k y_c)$ 后，其余点只需满足横纵坐标和都为 $0$，问题被转化为构造零和的互异整数点。",
+            "题解未说明如何具体构造其余点并保证它们与首点互异，因此构造细节和完整正确性依据不足。"
+          ],
+          "solutionBrief": "题解给出的核心做法是先取点 $(k x_c,k y_c)$，再构造若干个横纵坐标总和均为 $0$ 的互异点；但本地题解正文不足，未提供后续点的具体构造及去重保证。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1998B",
+          "index": "B",
+          "slot": "B",
+          "title": "Minimize Equal Sum Subarrays",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1998/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/132512",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的排列 $p$，需要构造另一个排列 $q$。统计所有连续区间 $[i,j]$ 中两排列区间和相等的数量，并使这个数量最小。",
+          "transformedStatement": "把 $q$ 建模为 $p$ 的左循环移位：每个位置取原排列的下一个元素，末位取首元素。利用排列元素互不相同，排除所有非完整区间的等和情况，只保留总和必相等的完整区间。",
+          "keyObservations": [
+            "两种排列的所有元素总和必然相同，因此整个数组对应的区间一定计入，答案不可能小于 $1$。",
+            "将 $p$ 左循环移位得到 $q$：若比较的是非整段区间，两个区间和相等会在消去公共部分后推出两个位置的元素相等；由于 $p$ 是排列，这不可能发生。",
+            "循环移位后的 $q$ 仍是排列，且只有覆盖全部元素的区间满足等和，从而达到不可突破的下界 $1$。"
+          ],
+          "solutionBrief": "先观察答案至少为 $1$，因为两排列总和相同。令 $q_i=p_{i+1}$，并令 $q_n=p_1$，即将 $p$ 左循环移位；除整段数组外，其余等和区间都会推出排列中两个不同位置元素相等，因此计数恰为 $1$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1998C",
+          "index": "C",
+          "slot": "C",
+          "title": "Perform Operations to Maximize Score",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1998/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/132512",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定数组 $a$、可操作标记数组 $b$ 和最多 $k$ 次操作；每次选择 $b_i=1$ 的位置并将 $a_i$ 增加 $1$。最终得分是所有 $i$ 的 $a_i$ 加上删除该元素后数组的中位数中的最大值，求最多操作后能达到的最大得分。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "partial"
+        },
         {
           "key": "1998D",
           "index": "D",
@@ -31891,12 +31975,11 @@ window.CF_INSIGHTS_DATA = {
           "title": "Determine Winning Islands in Race",
           "rating": 2100,
           "problemUrl": "https://codeforces.com/contest/1998/problem/D",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/132512",
           "primaryTopic": "图论与网络流",
           "secondaryTopics": [
-            "动态规划与状态设计",
-            "数据结构",
-            "构造与贪心"
+            "博弈",
+            "基础实现与模拟"
           ],
           "originalTags": [
             "data structures",
@@ -31905,12 +31988,74 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "shortest paths"
           ],
-          "statementBrief": "题面已抓取：Determine Winning Islands in Race；本地暂无可用题解正文。",
+          "statementBrief": "有$n$个按编号排列的岛屿，主桥连接相邻岛屿，另有单向替代桥且只能从小编号通向大编号。Elsie可走所有桥，Bessie只能走主桥；双方轮流移动且Bessie先手，移动后出发岛屿坍塌、相关桥梁失效，无路可走者淘汰，先到$n$者获胜。对每个起点$s$判断Bessie在双方最优策略下是否获胜。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1998E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Eliminating Balls With Merging (Easy Version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1998/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/132512",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 个按顺序排列、带初始权值的球。对当前保留集合中的相邻球进行合并：较大权值的球保留并加上另一球权值，较小者被删除；权值相等时可任选一个删除。题面在定义 $f(i)$ 的位置截断，因此无法从给定内容确定最后要求统计的具体对象。",
+          "transformedStatement": "把每个存活球视为原数组某个连续区间的总和；题解进一步定义区间状态 $solve(L,R)$，判断区间总和能否通过合法相邻合并集中到一个球，并通过向左右寻找满足和约束的最小边界进行状态跳转。",
+          "keyObservations": [
+            "任意时刻留下的每个球都对应原数组中的一个连续子数组，因此合并后的数值始终是该区间元素和，状态可以用区间端点表示。",
+            "定义 $solve(L,R)$ 判断区间 $[L,R]$ 的总和能否通过合法合并，最终形成一个权值为该区间和的元素，从而把原过程转化为区间可达性判断。",
+            "固定当前区间 $[L,R]$ 后，向左寻找满足左侧连续区间和不超过当前区间和的最小起点，并直接跳到该新区间；这种贪心跳跃减少了逐次模拟合并的分支。",
+            "向右侧进行对称的贪心跳跃，并记忆化所有 $solve(L,R)$ 的结果，避免相同区间被重复判定。"
+          ],
+          "solutionBrief": "题解将合并过程抽象为连续区间和，并用 $solve(L,R)$ 判断区间能否合并成一个元素。固定区间后，利用两侧连续区间和的单调性贪心跳到最小可行边界，再对状态进行记忆化；但给定题面在定义 $f(i)$ 的位置截断，最终统计目标无法完整确认。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1998E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Eliminating Balls With Merging (Hard Version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1998/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/132512",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 个按顺序排列、带权值的球。对当前保留的球，可选择相邻的两个保留位置合并：较小值并入较大值，值相等时任选其一删除，合并值为两者之和；题面截断在 $f(i)$ 的定义处，无法确认最终要求统计哪些前缀或输出形式。",
+          "transformedStatement": "题解把过程改写为：对每个原位置 $j$，研究它能否在某个前缀的反复合并后作为最后保留的元素，并记录所有可行前缀长度的区间 $[L_j,R_j]$；其中 $L_j$ 是它首次能代表前缀和的最小边界，$R_j$ 由向右最远可达范围推出。",
+          "keyObservations": [
+            "对固定元素 $j$，它能够作为合并后的最后元素保留下来的前缀长度构成区间 $[L_j,R_j]$，因此可行性不必逐个前缀独立判断。",
+            "题解将原先返回布尔可行性的 Solve 改为返回最小起点 $L_j$，并把“元素 $j$ 成为最后元素”重述为它最终代表前缀和 $A_1+A_2+\\cdots+A_{L_j}$。",
+            "每个位置 $i$ 预先计算其向右可到达的最远范围，再结合 $L_j$ 推出 $R_j$，从而把每个元素的可行前缀集合压缩为两个端点。"
+          ],
+          "solutionBrief": "根据题解提示，为每个元素求其可作为最后元素的最小前缀端点 $L_j$，并预处理各位置向右的最远可达范围以得到 $R_j$；随后利用区间 $[L_j,R_j]$ 统计题目要求的 $f(i)$。但给定题解未说明具体 Solve 实现及最终统计细节。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
         }
       ]
     },
