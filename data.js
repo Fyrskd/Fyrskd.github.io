@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1378,
+    "total_problems": 1384,
     "source_total_problems": 1742,
-    "filtered_out_problems": 364,
-    "with_statement_brief": 1378,
-    "with_editorial_brief": 1153,
-    "with_solution_brief": 1154,
+    "filtered_out_problems": 358,
+    "with_statement_brief": 1384,
+    "with_editorial_brief": 1159,
+    "with_solution_brief": 1160,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 311,
+    "ai_override_count": 317,
     "primary_topic_count": 13,
-    "contest_count": 219,
+    "contest_count": 220,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,13 +45,13 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 61,
-    "构造与贪心": 452,
-    "图论与网络流": 83,
+    "构造与贪心": 454,
+    "图论与网络流": 84,
     "动态规划与状态设计": 132,
-    "数论与同余": 123,
+    "数论与同余": 125,
     "组合计数与概率": 107,
     "数据结构": 103,
-    "几何": 30,
+    "几何": 31,
     "树结构": 102,
     "交互": 68,
     "基础实现与模拟": 56,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 13
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 249,
+    "ai_generated_with_editorial": 255,
     "ai_generated_partial_editorial": 13,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37615,6 +37615,196 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1826,
+      "name": "Codeforces Round 870 (Div. 2)",
+      "date": "2023-05-05",
+      "url": "https://codeforces.com/contest/1826",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1826A",
+          "index": "A",
+          "slot": "A",
+          "title": "Trust Nobody",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1826/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/115892",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个人，每人声称群体中至少有 $l_i$ 个骗子；诚实者永远说真话，骗子永远说假话。需要判断这些说法是否自洽：若自洽输出任意可能的骗子人数，否则输出 $-1$。",
+          "transformedStatement": "枚举实际骗子数 $x$，将每个人的陈述与 $x$ 比较：$l_i>x$ 时陈述为假，该人必须是骗子；$l_i\\le x$ 时陈述为真，该人必须诚实。于是只需检查满足 $l_i>x$ 的人数是否正好为 $x$。",
+          "keyObservations": [
+            "固定实际骗子数为 $x$ 后，声称 $l_i>x$ 的人必然说假话，因此必是骗子；声称 $l_i\\le x$ 的人说法为真，因此必是诚实者。",
+            "对每个候选 $x$，骗子身份被唯一确定为满足 $l_i>x$ 的人，问题只需检查这类人的数量是否恰好等于 $x$。",
+            "若某个候选 $x$ 满足计数一致，则该配置自洽；遍历所有 $0\\le x\\le n$ 仍无解时，所有可能的骗子数量都会产生矛盾。"
+          ],
+          "solutionBrief": "枚举骗子总数 $x$。统计满足 $l_i>x$ 的人数，这些人必须是骗子；若统计值等于 $x$，就输出 $x$，否则所有候选都失败时输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1826B",
+          "index": "B",
+          "slot": "B",
+          "title": "Lunatic Never Content",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1826/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/115892",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个非负整数数组，可选择正整数 $x$，将每个元素替换为除以 $x$ 的余数。要求替换后的数组是回文，求满足条件的最大 $x$；若任意大的 $x$ 都可以，输出 $0$。",
+          "transformedStatement": "把回文条件按对称位置拆开：每对元素 $a_i$ 与 $a_{n-i+1}$ 取模后相等，等价于 $x$ 整除它们的差。因此问题转化为求所有对称差绝对值的最大公约数。",
+          "keyObservations": [
+            "两端元素取模后相等，当且仅当它们的差能被 $x$ 整除，因此每一对对称位置都会给出一个关于 $x$ 的整除约束。",
+            "所有对称差都必须被 $x$ 整除，所以满足条件的最大正整数 $x$ 就是所有 $|a_i-a_{n-i+1}|$ 的最大公约数。",
+            "对称差为 $0$ 的位置不会限制答案，因为 $\\\\gcd(x,0)=x$；若所有差都为 $0$，最大 $x$ 无穷大，按题意输出 $0$。"
+          ],
+          "solutionBrief": "遍历每个测试用例的对称位置，计算所有差值绝对值的最大公约数。初始值设为 $0$，可自然处理差值为 $0$ 的情况；若最终最大公约数为 $0$，输出 $0$，否则输出该值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1826C",
+          "index": "C",
+          "slot": "C",
+          "title": "Dreaming of Freedom",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1826/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/115892",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 名程序员和 $m$ 个选项。每轮所有人只能给当前仍保留的一个选项投票，下一轮只保留得票最多的选项；判断无论如何投票是否最终只剩一个选项，输出 YES，否则输出 NO。",
+          "transformedStatement": "把“能否无限进行”转化为能否长期维持至少两个并列最高票选项：若保留 $k$ 个选项，就必须让 $k$ 整除 $n$ 并均分选票，因此只需比较 $m$ 与 $n$ 的最小非平凡因数。",
+          "keyObservations": [
+            "若想让至少两个选项永远保留，每轮必须把 $n$ 张票平均分给这些选项，因此保留数量必须是 $n$ 的一个大于 $1$ 的因数。",
+            "设 $d$ 为 $n$ 的最小非平凡因数；若 $d\\le m$，就能始终让前 $d$ 个选项各得相同票数，投票过程不会结束。",
+            "若 $d>m$，当前剩余选项数始终小于 $d$，不可能平均分票且保持多个并列最高票选项，因此每轮都会减少选项数，最终只剩一个。",
+            "$d$ 就是 $n$ 的最小大于 $1$ 的因数，可枚举到 $\\sqrt n$ 查找；若未找到，则 $n$ 为质数且 $d=n$。"
+          ],
+          "solutionBrief": "求 $n$ 的最小非平凡因数 $d$。若 $d\\le m$，可让 $d$ 个选项每轮均分票数并永久平局，答案为 NO；否则每轮都会减少选项，答案为 YES。$d$ 可枚举 $2$ 到 $\\sqrt n$ 求得。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1826D",
+          "index": "D",
+          "slot": "D",
+          "title": "Running Miles",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1826/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/115892",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "街道上第 $i$ 英里处有一处美景， beauty 为 $b_i$。选择起点 $l$ 和终点 $r$，跑过并观赏区间 $[l,r]$ 内的所有美景，要求区间至少包含三处；目标是让其中三大 beauty 之和减去跑步距离 $r-l$ 最大。",
+          "transformedStatement": "可把任意合法区间压缩为三个下标 $l<m<r$：左、右端点承担三个最优美景中的两个，中间下标承担第三个。于是只需最大化 $b_m+(b_l+l)+(b_r-r)$，并分别独立寻找左右贡献的最大值。",
+          "keyObservations": [
+            "最优区间中三个最高美景至少有两个位于左右端点；否则可将相应边界向内移动而不损失这三个美景，并减少跑步距离。",
+            "因此问题等价于选择三个下标 $l<m<r$，最大化 $b_l+b_m+b_r-(r-l)$。",
+            "固定中间下标 $m$ 后，目标可拆为 $b_m+(b_l+l)+(b_r-r)$，左右下标的贡献彼此独立。",
+            "预处理前缀最大值 $\\max(b_l+l)$ 和后缀最大值 $\\max(b_r-r)$，即可对每个 $m$ 在 $O(1)$ 时间求最优两端，整体复杂度为 $O(n)$。"
+          ],
+          "solutionBrief": "先利用端点性质把区间转化为三个下标 $l<m<r$，再枚举 $m$。将目标拆成 $b_m+(b_l+l)+(b_r-r)$，用前缀最大值和后缀最大值分别维护两端贡献，线性扫描求最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1826E",
+          "index": "E",
+          "slot": "E",
+          "title": "Walk the Runway",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1826/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/115892",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "dp",
+            "graphs",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "有 $m$ 个城市和 $n$ 个模型，每次巡演都按同一顺序让选中的模型依次走台；对每个城市，该顺序中的评分必须严格递增。选择模型 $j$ 可获得利润 $p_j$，求满足所有城市要求时能取得的最大总利润。",
+          "transformedStatement": "把模型视为图上的顶点：若模型 $a$ 在每个城市的评分都低于模型 $b$，就连边 $a\\to b$，问题转化为求该无环关系图上顶点权路径的最大权值。",
+          "keyObservations": [
+            "两名模型能相邻的充要条件是前者在每个城市的评分都严格低于后者，因此可把所有合法相邻关系统一成有向边。",
+            "由于每条边都使所有城市的评分严格上升，关系图不可能存在环；按评分关系进行拓扑式动态规划即可求出以各模型结尾的最大收益。",
+            "逐城市处理时按该城市评分从低到高扫描，用位集维护当前模型之前可能出现的模型集合，并与已有关系更新，从而把全体关系计算降至 $O(n^2m/64)$。",
+            "设 $dp_j$ 为以模型 $j$ 作为最后一个模型时的最大收益，则只需从所有能直接排在 $j$ 前面的模型转移，并加上 $p_j$，最终取最大值。"
+          ],
+          "solutionBrief": "先用位集求出每对模型是否满足所有城市的严格评分关系，构成无环有向图；再按关系进行动态规划，令 $dp_j$ 表示以模型 $j$ 结尾的最大收益，取所有状态最大值。关系计算复杂度为 $O(n^2m/64)$，转移为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1826F",
+          "index": "F",
+          "slot": "F",
+          "title": "Fading into Fog",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1826/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/115892",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "交互",
+            "数论与同余",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "geometry",
+            "interactive",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "平面上有 $n$ 个坐标互不重复且预先固定的隐藏点。每次可指定一条直线，交互器以无序且带误差的形式返回所有点在该直线上的投影；要求用最少查询次数恢复全部隐藏点。",
+          "transformedStatement": "把前两次查询固定为两条坐标轴：横、纵投影的任意配对形成候选点集合，真实点必在其中。第三次选择能拉开候选投影间距的方向，将带误差的无序结果转化为候选点匹配问题。",
+          "keyObservations": [
+            "查询 $x=0$ 与 $y=0$ 后，将任意一个横坐标投影和任意一个纵坐标投影配对，可得到 $O(n^2)$ 个候选点，其中包含所有真实点。",
+            "坐标两两至少相差 $1$，使这些候选点之间保持可利用的间隔，从而能在带误差的投影结果中区分候选。",
+            "对候选点选择合适的第三条直线，使不同候选点在该直线上的投影间距足够大；通过尝试常数条方向并取最优者即可保证存在这样的方向。",
+            "第三次查询后，将返回的无序、有误差投影与候选点投影逐一匹配，即可唯一恢复全部真实点；候选构造和筛选总复杂度为 $O(n^2\\log n)$。"
+          ],
+          "solutionBrief": "先查询两条坐标轴，枚举横纵投影配成 $O(n^2)$ 个候选点；再选择让候选投影间距足够大的第三条直线，利用第三次带误差投影将真实点与候选唯一匹配。最少需要 3 次查询，每组复杂度为 $O(n^2\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
