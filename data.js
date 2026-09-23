@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1398,
+    "total_problems": 1400,
     "source_total_problems": 1742,
-    "filtered_out_problems": 344,
-    "with_statement_brief": 1398,
-    "with_editorial_brief": 1173,
-    "with_solution_brief": 1174,
+    "filtered_out_problems": 342,
+    "with_statement_brief": 1400,
+    "with_editorial_brief": 1175,
+    "with_solution_brief": 1176,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 332,
+    "ai_override_count": 334,
     "primary_topic_count": 13,
-    "contest_count": 222,
+    "contest_count": 223,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 454,
+    "构造与贪心": 456,
     "图论与网络流": 84,
     "动态规划与状态设计": 133,
     "数论与同余": 127,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 13
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 268,
+    "ai_generated_with_editorial": 270,
     "ai_generated_partial_editorial": 14,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37352,6 +37352,69 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1831,
+      "name": "Codeforces Round 875 (Div. 2)",
+      "date": "2023-05-28",
+      "url": "https://codeforces.com/contest/1831",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1000,
+      "problems": [
+        {
+          "key": "1831A",
+          "index": "A",
+          "slot": "A",
+          "title": "Twin Permutations",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1831/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/116527",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定一个长度为 $n$、由 $1$ 到 $n$ 组成的排列 $a$，需要构造另一个排列 $b$，使逐项相加得到的序列满足 $a_1+b_1\\le a_2+b_2\\le\\cdots\\le a_n+b_n$。输出任意满足条件的排列 $b$。",
+          "transformedStatement": "把“相邻位置的和非降”转化为更强的目标：让所有位置的 $a_i+b_i$ 都相同。由于 $a_i$ 取遍 $1$ 到 $n$，用互补映射 $b_i=n+1-a_i$ 即可同时保证 $b$ 是排列且各项和恒为 $n+1$。",
+          "keyObservations": [
+            "将目标中的非降序条件强化为所有位置的和都相等，即令 $a_i+b_i=n+1$，等式自然满足非降序要求。",
+            "因为 $a$ 是 $1$ 到 $n$ 的排列，逐项映射 $x\\mapsto n+1-x$ 仍会得到恰好包含 $1$ 到 $n$ 的排列，因此 $b$ 合法。",
+            "取 $b_i=n+1-a_i$ 后，每个位置都有 $a_i+b_i=n+1$，无需比较相邻位置即可直接验证构造正确。"
+          ],
+          "solutionBrief": "对每个位置直接输出 $b_i=n+1-a_i$。该映射将排列中的每个数与其互补数对应，结果仍是排列，并使所有 $a_i+b_i$ 都等于 $n+1$，因此满足非降序条件；每组复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1831B",
+          "index": "B",
+          "slot": "B",
+          "title": "Array merging",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1831/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/116527",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定两个长度均为 $n$ 的数组，每次从任意一个尚未取空的数组头部取出一个元素，依次组成长度为 $2n$ 的数组 $c$。求所有可能的合并结果中，元素全部相同的连续子数组的最大长度。",
+          "transformedStatement": "把问题转化为按值统计两数组中的最长连续段：对每个值 $x$，可将 $a$ 中一段连续的 $x$ 与 $b$ 中一段连续的 $x$ 安排为相邻区间，因此答案是所有 $x$ 的两段最长长度之和的最大值。",
+          "keyObservations": [
+            "合并时可以把数组 $a$ 中任意一段连续区间紧接在数组 $b$ 的任意一段连续区间前后，因此两段相同值连续段可以拼接，候选长度是两段长度之和。",
+            "固定值 $x$ 后，能贡献的最长连续段只需分别取 $a$ 和 $b$ 中 $x$ 的最长连续段；更短的区间不会得到更优答案。",
+            "所有可能的合并答案等于 $\\max_x(max_a(x)+max_b(x))$，因为任意值的两段最长连续块都能按题解给出的顺序构造为相邻子数组。",
+            "扫描每个数组时只需在元素变化处结算当前连续段长度，并更新对应值的最大长度，从而在线性时间内完成统计。"
+          ],
+          "solutionBrief": "分别扫描 $a,b$，统计每个值在各数组中的最长连续段长度 $max_a(x),max_b(x)$，最后遍历所有值取 $max_a(x)+max_b(x)$ 的最大值。每组数据复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
