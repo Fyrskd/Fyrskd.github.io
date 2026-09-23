@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1455,
+    "total_problems": 1461,
     "source_total_problems": 1742,
-    "filtered_out_problems": 287,
-    "with_statement_brief": 1455,
-    "with_editorial_brief": 1230,
-    "with_solution_brief": 1231,
+    "filtered_out_problems": 281,
+    "with_statement_brief": 1461,
+    "with_editorial_brief": 1236,
+    "with_solution_brief": 1237,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 389,
+    "ai_override_count": 395,
     "primary_topic_count": 13,
-    "contest_count": 232,
+    "contest_count": 233,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -32,8 +32,8 @@ window.CF_INSIGHTS_DATA = {
     "构造与贪心",
     "动态规划与状态设计",
     "数论与同余",
-    "组合计数与概率",
     "数据结构",
+    "组合计数与概率",
     "树结构",
     "图论与网络流",
     "交互",
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 475,
+    "构造与贪心": 477,
     "图论与网络流": 88,
-    "动态规划与状态设计": 140,
+    "动态规划与状态设计": 141,
     "数论与同余": 133,
     "组合计数与概率": 113,
-    "数据结构": 112,
+    "数据结构": 114,
     "几何": 32,
     "树结构": 105,
     "交互": 69,
-    "基础实现与模拟": 59,
+    "基础实现与模拟": 60,
     "博弈": 53,
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 324,
+    "ai_generated_with_editorial": 330,
     "ai_generated_partial_editorial": 15,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37352,6 +37352,196 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1852,
+      "name": "Codeforces Round 887 (Div. 1)",
+      "date": "2023-07-23",
+      "url": "https://codeforces.com/contest/1852",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1852A",
+          "index": "A",
+          "slot": "A",
+          "title": "Ntarsis' Set",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1852/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/116940",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "集合初始按升序包含 $1$ 到 $10^{1000}$。每天同时删除当前集合中第 $a_1,a_2,\\ldots,a_n$ 小的数，重复 $k$ 天后，求集合中的最小元素。",
+          "transformedStatement": "将删除过程逆向看成向有序序列中插入占位元素：第 $i$ 个删除位置对应插入点 $a_i-i$。从元素 $1$ 位于序列开头开始，模拟 $k$ 次插入并追踪它最终移动到的位置。",
+          "keyObservations": [
+            "若第一天不删除当前位置为 $1$ 的元素，即 $a_1\\ne1$，则最小元素始终是 $1$，可直接结束。",
+            "逆向恢复时，把每次删除的位置视为插入的占位元素；第 $i$ 个删除位置对应插入点 $a_i-i$，因此只需维护元素 $1$ 的当前位置。",
+            "当若干插入点位于当前位置之前时，当前位置会一次增加这些插入点的数量；插入点指针只向前移动，可将每次更新摊还到 $O(n)$。"
+          ],
+          "solutionBrief": "先将每个位置改写为 $a_i-i$。若 $a_1\\ne1$，答案为 $1$；否则逆向模拟删除过程对应的插入过程，维护元素 $1$ 的位置，并按插入点单调前移批量处理，整体可做到每组 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1852B",
+          "index": "B",
+          "slot": "B",
+          "title": "Imbalanced Arrays",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1852/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/116940",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "math",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定长度为 $n$ 的非负整数数组 $a$，要构造一个每个元素都非零的整数数组 $b$，使对每个位置 $i$，满足 $b_i+b_j>0$ 的下标 $j$ 恰好有 $a_i$ 个。若无法构造则输出 NO，否则输出任意合法的 $b$。",
+          "transformedStatement": "把每个 $b_i$ 的条件看成“它能与多少个元素形成正和”的排名约束，并从绝对值最大的元素开始确定符号。确定并移除该元素后，剩余计数只发生统一偏移，问题因此转化为不断从排序数组两端剥离极值。",
+          "keyObservations": [
+            "令 $|b_x|$ 最大；若 $b_x<0$，则必须有 $a_x=0$，若 $b_x>0$，则必须有 $a_x=n$，因此最大绝对值元素只能由当前两端的极值条件确定。",
+            "不能同时存在某个位置满足 $a_y=0$、另一个位置满足 $a_z=n$，否则对应的 $b_y+b_z$ 会被迫同时为负和为正，故每轮只能满足其中一个端点条件。",
+            "删除已确定的最大绝对值元素后，其余元素的计数会统一减少或保持可换算；因此问题可递归缩小为同类问题，并据符号确定赋值为正或负。",
+            "将 $a$ 排序后，尚未处理的候选始终位于双端；用左右指针记录已删除的负数和正数数量，即可在 $O(1)$ 时间检查当前两个端点，整体复杂度为 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "排序并保留原下标，反复检查两端是否恰有一个满足当前极值条件。满足上端就赋予对应的最大正数，满足下端就赋予最大负数；每次删除该元素并更新偏移。若某轮两者同时满足或都不满足，输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1852C",
+          "index": "C",
+          "slot": "C",
+          "title": "Ina of the Mountain",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1852/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/116940",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有一排健康值为 $a_i$ 的章鱼；每次可选择任意连续区间 $[l,r]$，使区间内所有健康值减 $1$，降到 $0$ 的章鱼会立即恢复为 $k$。求让所有健康值最终都为 $k$ 所需的最少石块次数。",
+          "transformedStatement": "把健康值按模 $k$ 重新表示，并为每个位置选择一个与其余数相同的非负命中次数 $c_i$。于是问题转化为构造这样的序列，使补零后的相邻正差之和最小，因为这些正差正是区间覆盖层数的必要且可实现的数量。",
+          "keyObservations": [
+            "把健康值 $k$ 改记为 $0$，令 $b_i=a_i\\bmod k$；给第 $i$ 个章鱼补充若干个 $k$ 后得到的 $c_i$，恰好表示它需要被石块命中的次数。",
+            "对固定的命中次数数组 $c$，两端补 $0$ 后，最少石块数等于相邻差值正部之和，即 $\\sum_{i=0}^{n}\\max(c_{i+1}-c_i,0)$；每个正差至少需要对应数量的区间左端点，分层覆盖可达到该下界。",
+            "存在最优方案使所有相邻差值的绝对值小于 $k$，因此确定一个 $c_i$ 后，$c_{i+1}$ 至多只有两个候选值，问题可视为在这些状态间寻找最小代价路径。",
+            "扫描相邻的 $b$ 值时，下降边可暂存其对应的上升代价；遇到必须上升的位置，选择代价最小的暂存项即可，用最小堆维护这些候选代价。"
+          ],
+          "solutionBrief": "将每个章鱼的命中次数表示为与 $b_i=a_i\\bmod k$ 同余的 $c_i$，答案是相邻正差之和。利用相邻差绝对值小于 $k$ 的最优性，线性扫描并把候选代价放入最小堆；遇到必须上升时取最小值累加。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1852D",
+          "index": "D",
+          "slot": "D",
+          "title": "Miriany and Matchstick",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1852/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/116940",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定一个 $2\\times n$ 网格的第一行字符串，只能为第二行每列填入 A 或 B。相邻上下或左右的两个格子字符不同就计数一次，要求构造第二行，使所有不同字符的相邻对恰好为 $k$；无法做到时输出 NO。",
+          "transformedStatement": "把第二行从左到右的每次选字视为 DAG 中的一层节点，节点表示当前字符，边和节点附带该选择新增的不同相邻对数量；问题转为寻找总代价为 $k$ 的路径，并记录每个末字符状态的可达代价集合。",
+          "keyObservations": [
+            "从左到右填底行时，新列增加的代价只由上一列和当前底行字符决定，因此整个构造等价于在两层 DAG 中寻找总代价为 $k$ 的路径。",
+            "令状态表示处理前 $i$ 列且底行末字符固定为 $A$ 或 $B$ 时的所有可达代价；转移只需合并“保持字符”和“切换字符”两类前驱，再加上当前竖边与新增横边的代价。",
+            "归纳可得每个状态的可达代价集合始终可压缩为至多两个区间；区间并集合并相邻区间后即可在总长度 $O(n)$ 内维护，而不必逐个枚举代价。",
+            "若最终状态集合包含 $k$，则从最后一列反向检查前驱状态是否能补出剩余代价，即可逐列确定底行字符，并保证构造出的路径总代价恰为 $k$。"
+          ],
+          "solutionBrief": "用两种末字符状态的可达代价集合做 DP。每个集合以至多两个区间表示并按转移合并；若最终包含 $k$，再从右向左利用 DP 集合回溯出底行，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1852E",
+          "index": "E",
+          "slot": "E",
+          "title": "Rivalries",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1852/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/116940",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a$，题面通过每个子数组的 power 定义 rival 数组 $b$；需要按该定义构造一个满足所有 rival 条件的数组。目标是最大化 $b_1+b_2+\\cdots+b_n$，多个最优答案任意输出。原始记录中的 power 公式缺失，具体判定条件无法从 statement_text 完整还原。",
+          "transformedStatement": "将每个不同数值 $x$ 只保留其最左、最右出现位置，视为带权区间 $[L_x,R_x]$；先删除被更大权值区间严格包含的无效区间，再把构造过程转化为至多添加一个新区间并最大化位置权值总和。",
+          "keyObservations": [
+            "每个不同数值只需关注其第一次和最后一次出现的位置，因此可将它抽象为端点区间 $[L_x,R_x]$，中间出现位置不会单独影响 power。",
+            "若区间 $[L_x,R_x]$ 严格包含某个更大数值对应的区间，则 $x$ 对 power 没有独立贡献，可以删除；按数值降序并用区间端点维护即可筛出相关区间。",
+            "为保持 power 不变，新增数值 $x$ 对应的区间必须严格包含一个更大数值区间；所有未被更大区间覆盖的位置可赋为 $x$，若两侧已有赋值，则只需在两侧各替换最小的已填值。",
+            "最优解至多新增一个这样的区间；若能同时新增多个区间，把较小值区间并入较大值区间不会变差，因此只需枚举候选 $x$ 并取最大总和。"
+          ],
+          "solutionBrief": "把不同值转成由首末位置确定的区间，降序删除被更大区间严格包含的区间。枚举候选新值 $x$，用线段树维护可替换位置和最小已填值，尝试让一个相关区间包含它，并选择总和最大的构造。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1852F",
+          "index": "F",
+          "slot": "F",
+          "title": "Panda Meetups",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1852/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/116940",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "flows"
+          ],
+          "statementBrief": "城镇是一条数轴，按非递减的横坐标依次加入事件 $(x,t,c)$，其中带符号数量表示红熊或蓝熊事件。每次加入后，可重新安排红熊的移动顺序，要求按题目规定的追赶规则计算当前所有事件最多能形成多少对友谊。",
+          "transformedStatement": "把每个红熊事件与蓝熊事件看成二分图顶点，能互相对应追赶的红蓝事件连边；最大友谊数转为最大流，并进一步把最小割表示成 $x$-$t$ 平面上的斜率为 $\\pm1$ 的分界折线。",
+          "keyObservations": [
+            "把红、蓝熊事件分别视为二分图两侧，若红熊能按移动规则追上蓝熊就连无限容量边；最大友谊数等价于该网络的最大流。",
+            "由最大流最小割定理，最小割可表示为 $x$-$t$ 平面上一条每条竖线恰交一次、线段斜率为 $\\pm1$ 的折线；折线下方的红熊和线上方的蓝熊需要被删除。",
+            "按横坐标推进时，折线到达时间 $t$ 的代价满足 $dp_{x+1}[t]=\\min(dp_x[t-1],dp_x[t],dp_x[t+1])$，因此只需维护相邻状态差值及其合并变化。",
+            "所有非零相邻差值按时间顺序存入 Treap；事件只对一段前缀或后缀统一加值，答案则由差值序列的最小前缀和恢复，从而在线处理全部更新。"
+          ],
+          "solutionBrief": "将问题转为红蓝事件二分图最大流，再转为斜率为 $\\pm1$ 的折线最小割。按 $x$ 推进维护 DP 相邻差值，用带懒标记的 Treap 支持区间加、差值合并和最小前缀和查询，总体在线处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
