@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1315,
+    "total_problems": 1322,
     "source_total_problems": 1742,
-    "filtered_out_problems": 427,
-    "with_statement_brief": 1315,
-    "with_editorial_brief": 1096,
-    "with_solution_brief": 1097,
+    "filtered_out_problems": 420,
+    "with_statement_brief": 1322,
+    "with_editorial_brief": 1103,
+    "with_solution_brief": 1104,
     "missing_editorial_brief": 218,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 245,
+    "ai_override_count": 252,
     "primary_topic_count": 13,
-    "contest_count": 210,
+    "contest_count": 211,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,10 +45,10 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 58,
-    "构造与贪心": 432,
+    "构造与贪心": 434,
     "图论与网络流": 79,
-    "动态规划与状态设计": 127,
-    "数论与同余": 114,
+    "动态规划与状态设计": 129,
+    "数论与同余": 117,
     "组合计数与概率": 105,
     "数据结构": 97,
     "几何": 27,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 196,
+    "ai_generated_with_editorial": 203,
     "ai_generated_partial_editorial": 9,
     "missing_editorial": 218,
     "manual_override": 891,
@@ -31911,6 +31911,220 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1993,
+      "name": "Codeforces Round 963 (Div. 2)",
+      "date": "2024-08-04",
+      "url": "https://codeforces.com/contest/1993",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1993A",
+          "index": "A",
+          "slot": "A",
+          "title": "Question Marks",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1993/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/132185",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "每组有 $4n$ 道选择题，正确答案中 $A、B、C、D$ 各恰好出现 $n$ 次。给定 Tim 在每题写下的答案或问号，要求计算他最多能获得的正确题数。",
+          "transformedStatement": "把四种选项分别看成拥有容量 $n$ 的得分类别：答案表中某字母出现次数超过 $n$ 时只能保留其中 $n$ 次得分，四类独立计分后求和，问号贡献为零。",
+          "keyObservations": [
+            "每个选项的正确答案位置恰好有 $n$ 个，因此答对某选项的数量最多只能计入 $n$ 分，多出的同类作答无法继续得分。",
+            "四种选项的得分上限彼此独立，统计答案表中各字母出现次数后，选项 $c$ 的贡献就是 $\\min(n,\\mathrm{count}(c))$。",
+            "问号既不对应任何正确选项，也不会占用四种选项的正确答案配额，因此直接忽略即可；总分是四种贡献之和。"
+          ],
+          "solutionBrief": "分别统计 $A、B、C、D$ 的出现次数，对每种字母累加 $\\min(n,\\text{出现次数})$。问号不贡献分数，单组复杂度为 $O(4n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1993B",
+          "index": "B",
+          "slot": "B",
+          "title": "Parity and Sum",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1993/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/132185",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定一个正整数数组。每次选择奇偶性不同的两个元素，将其中较小者替换为两者之和；求把所有元素变成相同奇偶性所需的最少操作次数。",
+          "transformedStatement": "混合奇数和偶数时，统一成偶数不可行，只需将所有偶数逐个转成奇数。每次有效操作都必须让一个较小的偶数与当前足够大的奇数相加，因此问题转化为维护奇数上界并按大小消除偶数。",
+          "keyObservations": [
+            "数组同时含奇数和偶数时，不可能把所有数变成偶数，因此目标只能统一为奇数，避免无效的目标方向。",
+            "偶数与偶数相加仍为偶数、奇数与奇数会产生偶数，只有让较小的偶数与较大的奇数相加，才能消除一个偶数。",
+            "维护当前最大的奇数并按非递减顺序处理偶数；若某个偶数不小于当前奇数，先用最大偶数与奇数操作一次使其变大，这种额外操作最多发生一次。"
+          ],
+          "solutionBrief": "若所有数同奇偶，答案为 0。否则取最大奇数作为当前值，将偶数排序后依次处理；小于当前奇数时直接合并，否则先额外操作一次，再计入所有偶数的处理次数，答案为偶数个数加可能的一次额外操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1993C",
+          "index": "C",
+          "slot": "C",
+          "title": "Light Switches",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1993/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/132185",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个房间，每个房间在时刻 $a_i$ 安装芯片；安装后该灯从安装时刻起每 $k$ 分钟切换一次，连续亮 $k$ 分钟、灭 $k$ 分钟并循环。求所有芯片都已安装且所有房间同时亮起的最早时刻；若不存在则输出 $-1$。",
+          "transformedStatement": "把每个房间的亮灯时段按周期 $2k$ 投影到余数环上：芯片余数对应一个长度为 $k$ 的亮灯区间。问题转为寻找覆盖所有芯片余数的环形窗口，并在满足时刻不早于 $\\max(a_i)$ 的前提下恢复最早实际时刻。",
+          "keyObservations": [
+            "每个房间的亮灯时段是长度为 $k$ 的区间，并且后续区间只是在时间轴上每次平移 $2k$，因此只需研究时刻对 $2k$ 取模后的状态。",
+            "若令 $r=s\\bmod 2k$，所有房间在时刻 $s$ 亮起，当且仅当每个安装时刻的余数都落在环形区间 $[r-k+1,r]$ 内，从而把交集判定转成余数计数。",
+            "答案必须满足 $s\\ge\\max(a)$；固定可行余数 $r$ 后，最早时刻可直接写成 $s=\\max(a)+((r-\\max(a))\\bmod 2k)$，因此只需枚举所有余数并取最小值。",
+            "用数组统计各余数出现次数后，长度为 $k$ 的环形窗口可在移动右端点时增删计数，窗口计数等于 $n$ 即表示该余数可行，整体复杂度为 $O(n)$。"
+          ],
+          "solutionBrief": "统计每个 $a_i\\bmod 2k$ 的出现次数，在模 $2k$ 的环上用滑动窗口检查长度为 $k$ 的区间是否覆盖全部房间。对每个可行余数 $r$，计算不早于 $\\max(a)$ 的最小时刻并取最小值；若无可行窗口则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1993D",
+          "index": "D",
+          "slot": "D",
+          "title": "Med-imize",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1993/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/132185",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定数组，每次数组长度大于 $k$ 时可任选一个连续的 $k$ 个元素删除，其他元素保持相对顺序，直到长度不超过 $k$。求所有可能最终数组中，中位数的最大值。",
+          "transformedStatement": "把中位数最大化改为判定某个阈值 $x$ 是否可行：将元素按是否至少为 $x$ 转成 $\\pm1$，问题变为在允许删除连续 $k$ 个元素的规则下，使最终保留元素总和大于 $0$。由于删除不会改变下标模 $k$，可用按位置扫描的 DP 求最大和。",
+          "keyObservations": [
+            "固定候选值 $x$ 后，将 $a_i\\ge x$ 编为 $1$、否则编为 $-1$；保留数组的和大于 $0$ 等价于其下中位数至少为 $x$，因此答案具有单调性。",
+            "每次删除恰好 $k$ 个连续元素，最终长度固定为 $m=(n-1)\\bmod k+1$，与具体删除位置无关。",
+            "删除长度为 $k$ 的区间只会让右侧元素左移 $k$ 位，所以元素的下标模 $k$ 不变；最终第 $j$ 个位置只能来自原数组下标模 $k$ 为 $j$ 的元素。",
+            "在二值数组上扫描原数组，$dp[i]$ 表示处理到位置 $i$ 时可获得的最大保留和；按模 $k$ 的位置衔接保留方案，并用跨越 $k$ 位的转移表示删除区间，从而得到最优可行和。"
+          ],
+          "solutionBrief": "对答案值二分。每次把数组转成 $\\pm1$，用上述 DP 求删除若干长度为 $k$ 的区间后能得到的最大和；最大和大于 $0$ 即说明候选值可作为最终中位数。总复杂度为 $O(n\\log \\max a)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1993E",
+          "index": "E",
+          "slot": "E",
+          "title": "Xor-Grid Problem",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1993/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/132185",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 非负整数矩阵。每次可选一行并把该行改为当前各列的异或值，或选一列并把该列改为当前各行的异或值；操作可进行任意次，要求所得矩阵中所有相邻格子的绝对差之和最小。",
+          "transformedStatement": "在矩阵外增加一行列异或值，使一次行列操作分别等价于与辅助行或辅助列交换。于是最终状态是行列的排列，并且去掉各自未参与 beauty 的辅助行列后，横向、纵向代价可独立转化为最短哈密顿路径。",
+          "keyObservations": [
+            "增加一行记录各行异或、增加一列记录各列异或后，行操作等价于与辅助行交换，列操作等价于与辅助列交换，因此所有可达状态都可表示为行列排列。",
+            "最终被排除的辅助行和辅助列不参与 beauty，固定它们后，剩余行列分别只影响横向与纵向代价，问题可拆成两个独立的最短排列问题。",
+            "两行相邻时的横向代价可预先定义为它们在未排除列上的绝对差之和，两列同理；于是总 beauty 就是排列中相邻节点边权之和。",
+            "固定起点不重要，只需用子集 DP 求覆盖所有保留行或列的最短路径，并枚举被排除的辅助行、辅助列取最小总和。"
+          ],
+          "solutionBrief": "扩展矩阵并将操作转化为行列交换。枚举被排除的辅助行和辅助列，分别计算行、列间边权，用子集 DP 求两条最短覆盖路径，取两者代价之和的最小值，复杂度为 $O(n^3 2^n)$ 量级。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1993F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Dyn-scripted Robot (Easy Version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1993/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/132185",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "chinese remainder theorem",
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "机器人从矩形左下角出发，依次执行由 L、R、U、D 组成的脚本；若某步越过边界，就翻转对应轴上的全部指令，并从失败位置继续执行。脚本连续执行 $k$ 次且修改保留，要求统计机器人到达 $(0,0)$ 的次数，初始位置不计入。",
+          "transformedStatement": "把矩形内的反弹过程镜像展开到无限平面：原机器人到达原点对应展开路径到达横坐标为 $2w$ 倍数、纵坐标为 $2h$ 倍数的点。于是问题转化为在重复脚本的所有前缀位移中统计同时满足这两个同余条件的位置。",
+          "keyObservations": [
+            "把受边界反射影响的机器人展开到无限平面后，机器人回到原点等价于展开路径同时满足 $x\\equiv0\\pmod{2w}$ 和 $y\\equiv0\\pmod{2h}$，从而消除脚本动态修改的影响。",
+            "设前缀位移为 $t_j=(x_j,y_j)$、整段脚本位移为 $t_n=(x_n,y_n)$，第 $i$ 次执行后的第 $j$ 步位置是 $it_n+t_j$，因此只需匹配对应的模 $2w$、模 $2h$ 余数。",
+            "固定执行轮次 $i$ 后，所需前缀余数唯一确定为 $(-ix_n\\bmod 2w,-iy_n\\bmod 2h)$；预先统计所有前缀余数的出现次数，就能一次累加该轮对原点的贡献。",
+            "由于简单版本满足 $k\\le n$，逐轮查询 $k$ 个目标余数并统计前缀即可，避免模拟边界碰撞和脚本翻转。"
+          ],
+          "solutionBrief": "将机器人路径展开到无限平面，边界翻转对应以周期 $2w,2h$ 镜像延拓。计算每个前缀位移对这两个周期的余数并计数；对每轮 $i$ 查询目标余数 $(-ix_n,-iy_n)$，累加匹配数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1993F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Dyn-scripted Robot (Hard Version)",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1993/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/132185",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "chinese remainder theorem",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "机器人从矩形左下角出发，按脚本逐字符移动；撞到竖直边界就交换所有 L/R，撞到水平边界就交换所有 U/D，并从未执行的字符继续，修改会保留到后续重复。连续执行脚本 $k$ 次，求除初始位置外回到左下角的总次数。",
+          "transformedStatement": "把边界反弹展开为两个独立的周期坐标：横纵位移分别按 $2w$、$2h$ 取模。对每个脚本内前缀，寻找重复次数 $i$ 使总位移同时为零，再将两条关于 $i$ 的同余式合并并计数。",
+          "keyObservations": [
+            "边界反弹可等价为坐标分别在模 $2w$、$2h$ 下运动，因此回到原点只需同时满足两条模同余式。",
+            "固定脚本内前缀 $j$ 后，重复脚本次数 $i$ 只通过总位移 $x_n,y_n$ 影响位置，返回条件化为 $ix_n+x_j\\equiv0\\pmod{2w}$ 与 $iy_n+y_j\\equiv0\\pmod{2h}$。",
+            "线性同余式 $ia\\equiv b\\pmod M$ 先按 $\\gcd(a,M)$ 判断可解性并约分，再用逆元得到 $i$ 的剩余类。",
+            "两个剩余类用中国剩余定理合并成一个等差数列；只需统计其中小于 $k$ 的非负重复次数，避免逐次模拟。"
+          ],
+          "solutionBrief": "计算脚本前缀位移并按 $2w,2h$ 取模。对每个前缀分别求关于重复次数的线性同余式，再用 CRT 合并，最后按合并后的周期统计 $[0,k-1]$ 内的解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
