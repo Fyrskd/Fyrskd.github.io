@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1336,
+    "total_problems": 1342,
     "source_total_problems": 1742,
-    "filtered_out_problems": 406,
-    "with_statement_brief": 1336,
-    "with_editorial_brief": 1116,
-    "with_solution_brief": 1117,
+    "filtered_out_problems": 400,
+    "with_statement_brief": 1342,
+    "with_editorial_brief": 1122,
+    "with_solution_brief": 1123,
     "missing_editorial_brief": 219,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 268,
+    "ai_override_count": 275,
     "primary_topic_count": 13,
     "contest_count": 211,
     "rating_min": 800,
@@ -46,20 +46,20 @@ window.CF_INSIGHTS_DATA = {
   "topicCounts": {
     "字符串": 58,
     "构造与贪心": 440,
-    "图论与网络流": 79,
+    "图论与网络流": 80,
     "动态规划与状态设计": 131,
-    "数论与同余": 118,
+    "数论与同余": 119,
     "组合计数与概率": 105,
     "数据结构": 100,
-    "几何": 28,
-    "树结构": 98,
+    "几何": 29,
+    "树结构": 99,
     "交互": 66,
-    "基础实现与模拟": 54,
+    "基础实现与模拟": 56,
     "博弈": 47,
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 212,
+    "ai_generated_with_editorial": 218,
     "ai_generated_partial_editorial": 13,
     "missing_editorial": 219,
     "manual_override": 891,
@@ -37624,9 +37624,156 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-04-02",
       "url": "https://codeforces.com/contest/1805",
       "type": "Div. 2",
-      "problemCount": 1,
-      "maxRating": 2600,
+      "problemCount": 7,
+      "maxRating": 3100,
       "problems": [
+        {
+          "key": "1805A",
+          "index": "A",
+          "slot": "A",
+          "title": "We Need the Zero",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1805/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/114644",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "brute force"
+          ],
+          "statementBrief": "给定一个非负整数数组，选择一个整数 $x$，将每个元素都替换为 $b_i=a_i\\oplus x$，然后计算所有 $b_i$ 的异或和。要求对每组数组输出一个满足最终异或和为 $0$ 的 $x$，若不存在则输出 $-1$。",
+          "transformedStatement": "把最终表达式按 $x$ 出现的次数展开：数组长度为偶数时 $x$ 两两抵消，长度为奇数时结果等于原数组异或和再异或 $x$，于是问题只需判断整体异或和。",
+          "keyObservations": [
+            "所有变换后的元素异或结果可按 $x$ 的出现次数化简：$n$ 为偶数时两个 $x$ 抵消，$n$ 为奇数时只剩一个 $x$。",
+            "当 $n$ 为奇数时，令 $x$ 等于整个数组的异或和，就能使最终结果变为 $0$，因此答案直接确定。",
+            "当 $n$ 为偶数时，操作无法改变数组异或和；只有原数组异或和已经是 $0$ 时才存在答案，此时输出任意合法 $x$ 即可。"
+          ],
+          "solutionBrief": "先计算数组所有元素的异或和。若 $n$ 为奇数，输出该异或和；若 $n$ 为偶数且异或和为 $0$，输出任意合法值（如 $0$），否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1805B",
+          "index": "B",
+          "slot": "B",
+          "title": "The String Has a Target",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1805/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/114644",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定一个由小写字母组成的字符串，必须恰好选择一个位置，把该位置的字符移到字符串最开头，并从原位置删除。求所有可能结果中字典序最小的字符串。",
+          "transformedStatement": "把选择位置转化为选择最终首字符：首字符必须是原串最小字符；若该字符出现多次，则比较这些候选移动结果，最终选择它最后一次出现的位置。",
+          "keyObservations": [
+            "结果字符串的首字符一定应尽可能小，因此被移动到开头的字符必须是原串中的最小字符；否则直接选择最小字符会得到更优结果。",
+            "当最小字符出现多次时，应移动它的最后一次出现位置；选择更早的位置时，两种结果的前缀相同，而在后续首次产生差异的位置，移动最后一个最小字符的结果仍含有最小字符，因此更小。",
+            "因此最优方案唯一归结为找到最小字符的最后出现位置，并将该字符移到字符串开头，原位置之后的字符整体向前补位。"
+          ],
+          "solutionBrief": "扫描字符串找出最小字符及其最后一次出现的位置，将该位置的字符移到开头，并按原顺序保留其余字符。这样首字符最小；在最小字符重复时取最后一次出现可使后续字典序最小。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1805C",
+          "index": "C",
+          "slot": "C",
+          "title": "Place for a Selfie",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1805/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/114644",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "geometry",
+            "math"
+          ],
+          "statementBrief": "平面上给出若干经过原点的直线 $y=kx$，以及若干开口向上的抛物线 $y=ax^2+bx+c$。对每条抛物线选择一条不与其相交、也不与其相切的给定直线，同一条直线可重复使用；输出任意可行斜率或判定不存在。",
+          "transformedStatement": "对候选直线斜率 $k$，考察抛物线与直线之差 $ax^2+(b-k)x+c$；问题转化为从斜率集合中寻找使该二次式判别式为负的元素，即寻找满足 $(b-k)^2<4ac$ 的 $k$。",
+          "keyObservations": [
+            "直线与抛物线相交等价于二次式 $ax^2+(b-k)x+c$ 有实根，因此“不相交且不相切”恰好转化为 $(b-k)^2<4ac$。",
+            "固定抛物线后，可行的斜率 $k$ 必须落在开区间 $b-\\sqrt{4ac}<k<b+sqrt{4ac}$ 内；只需检查有序斜率中最接近 $b$ 的左右两个候选。",
+            "若左右相邻斜率都不满足严格不等式，则区间内不存在其他斜率，因为它们距离中心 $b$ 更远；判定时比较平方值即可避免浮点误差。"
+          ],
+          "solutionBrief": "将每条直线与抛物线的关系转为判别式条件 $(b-k)^2<4ac$。排序所有斜率后，对每个抛物线二分查找 $b$ 的相邻斜率，检查它们是否满足条件，找到则输出，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1805D",
+          "index": "D",
+          "slot": "D",
+          "title": "A Wide, Wide Graph",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1805/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/114644",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵有 $n$ 个顶点的树。对每个 $k=1,2,\\ldots,n$，构造图 $G_k$：若树中两点距离至少为 $k$，就在它们之间连无向边；要求输出每个 $G_k$ 的连通分量数。",
+          "transformedStatement": "先固定原树的一条直径及其两个端点，把 $G_k$ 中与直径端点连入的顶点视为同一个核心连通块；随着阈值 $k$ 降低，该连通块只会吸收距离端点达到阈值的新顶点。",
+          "keyObservations": [
+            "设原树直径端点为 $a,b$、长度为 $D$；当 $k>D$ 时任意两点距离都小于 $k$，因此 $G_k$ 没有边，答案为 $n$。",
+            "当 $k\\le D$ 时，$a$ 与 $b$ 必然相连，并且所有满足 $\\max(\\operatorname{dist}(a,v),\\operatorname{dist}(b,v))\\ge k$ 的顶点都能接入同一个连通块。",
+            "其余顶点不会与该连通块或彼此形成跨越阈值 $k$ 的边，因此答案可写为 $n-\\lvert S_k\\rvert+1$，其中 $S_k$ 是上述可达顶点集合。",
+            "按 $k$ 从大到小处理时，$S_k$ 只会新增到直径端点距离恰为 $k$ 的顶点；预处理两端距离计数即可逐步维护集合大小和答案。"
+          ],
+          "solutionBrief": "先用两次搜索求树的直径端点 $a,b$ 和长度 $D$，再统计每个顶点到两端的距离。倒序枚举 $k$，维护满足两端距离至少为 $k$ 的顶点数；当 $k\\le D$ 时答案为未加入顶点数加一，$k>D$ 时答案为 $n$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1805E",
+          "index": "E",
+          "slot": "E",
+          "title": "There Should Be a Lot of Maximums",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1805/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/114644",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "trees",
+            "two pointers"
+          ],
+          "statementBrief": "给定一棵带整数点权的树，定义 MAD 为出现至少两次的最大整数；独立删除每条边后，树会分成两个连通块。对每条边，求两个连通块 MAD 的较大值，并按输入顺序输出。",
+          "transformedStatement": "先观察整棵树的全局 MAD 及其出现次数：出现次数为零或至少三次时所有边答案可直接确定；恰好两次时，只有连接这两个点的唯一路径上的边需要逐边维护两侧的数值集合。",
+          "keyObservations": [
+            "若整棵树中没有任何重复值，则删除任意边后两个连通块都没有重复值，所有答案均为 $0$。",
+            "设整棵树的 MAD 为 $M$；若 $M$ 出现至少 $3$ 次，按抽屉原理删除任意一条边后仍有一个连通块包含至少两个 $M$，因此所有答案都是 $M$。",
+            "若 $M$ 恰好出现两次，只有位于这两个出现位置路径上的边可能把它们分开；路径外的边不会改变答案，仍为整树的 MAD。",
+            "处理关键路径上的边时，需要随边移动维护两侧连通块中的数值集合，从而判断各侧的最大重复值并取较大者。"
+          ],
+          "solutionBrief": "先统计整棵树的 MAD。无重复时答案全为 $0$；若 MAD 至少出现三次，答案全为该 MAD；恰好出现两次时，只处理两次出现位置之间路径上的边，并在遍历中维护两侧数值集合，求每条边的较大 MAD。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1805F1",
           "index": "F1",
@@ -37634,8 +37781,8 @@ window.CF_INSIGHTS_DATA = {
           "title": "Survival of the Weakest (easy version)",
           "rating": 2600,
           "problemUrl": "https://codeforces.com/contest/1805/problem/F1",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
+          "editorialUrl": "https://codeforces.com/blog/entry/114644",
+          "primaryTopic": "基础实现与模拟",
           "secondaryTopics": [
             "数论与同余"
           ],
@@ -37646,12 +37793,44 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "sortings"
           ],
-          "statementBrief": "题面已抓取：Survival of the Weakest (easy version)；本地暂无可用题解正文。",
+          "statementBrief": "给定一个非负整数数组。每次将所有不同下标元素的两两和排序，只保留最小的当前长度减一项作为新数组，重复直到只剩一个数，输出该数对 $10^9+7$ 取模的结果。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1805F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Survival of the Weakest (hard version)",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1805/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/114644",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构",
+            "几何"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个非负整数数组。每次将所有元素两两配对，按和排序后只保留最小的若干个（数组长度减一），重复执行 $n-1$ 次，直到只剩一个数，求该数模 $10^9+7$ 的结果。",
+          "transformedStatement": "把过程看成反复取最小配对和的数组变换，并利用整体平移只影响可累计的偏移量。证明较大的元素很快会被淘汰或使末值减半，因此只需追踪前 $64$ 个最小元素。",
+          "keyObservations": [
+            "整体减去同一个数不会改变各元素及配对和的相对顺序；在最终答案中，该偏移量按后续变换次数以 $2$ 的幂放大，因此可先记录贡献，再把当前数组最小值减为 $0$，避免数值爆炸。",
+            "当数组形如 $[0,a_1,\u001ca_2,\u001c\\ldots,a_n]$ 时，$F$ 的最小元素是 $a_1$，最大元素不超过 $a_n$；归一化后最大值不增，所有中间数组都能限制在初始数值范围内。",
+            "若某个配对 $a_i+a_j$ 被选入前若干小和，则同一行中更靠左的配对也必然被选入，因此可为每个 $i$ 维护当前最小未取的 $a_i+a_j$，用优先队列依次生成前若干个配对和。",
+            "只保留最小的 $K=64$ 个元素就足够：未知元素的任意配对和至少达到已知部分的末项；若无法继续确定 $K$ 个最小和，则连续两次变换会丢失两个末端元素，并使末值至少减半，所以超过 $2\\log_2(10^9)$ 个位置的元素不可能影响最终答案。"
+          ],
+          "solutionBrief": "先排序，并在每轮减去当前最小值、记录整体偏移贡献。只维护最小的 $K=64$ 个元素；每次用优先队列生成所需的最小配对和，前 $n-K$ 轮保留 $K$ 个，之后完整执行剩余 $K-1$ 轮，最后按模数输出累计答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
