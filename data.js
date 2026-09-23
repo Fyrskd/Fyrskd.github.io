@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1425,
+    "total_problems": 1434,
     "source_total_problems": 1742,
-    "filtered_out_problems": 317,
-    "with_statement_brief": 1425,
-    "with_editorial_brief": 1200,
-    "with_solution_brief": 1201,
+    "filtered_out_problems": 308,
+    "with_statement_brief": 1434,
+    "with_editorial_brief": 1209,
+    "with_solution_brief": 1210,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 359,
+    "ai_override_count": 368,
     "primary_topic_count": 13,
-    "contest_count": 228,
+    "contest_count": 229,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 467,
-    "图论与网络流": 86,
-    "动态规划与状态设计": 135,
+    "构造与贪心": 468,
+    "图论与网络流": 87,
+    "动态规划与状态设计": 139,
     "数论与同余": 128,
-    "组合计数与概率": 110,
+    "组合计数与概率": 111,
     "数据结构": 110,
     "几何": 32,
-    "树结构": 104,
+    "树结构": 105,
     "交互": 69,
     "基础实现与模拟": 59,
-    "博弈": 50,
+    "博弈": 51,
     "代数、矩阵与多项式": 13
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 294,
+    "ai_generated_with_editorial": 303,
     "ai_generated_partial_editorial": 15,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37352,6 +37352,284 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1842,
+      "name": "CodeTON Round 5 (Div. 1 + Div. 2, Rated, Prizes!)",
+      "date": "2023-06-24",
+      "url": "https://codeforces.com/contest/1842",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 9,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1842A",
+          "index": "A",
+          "slot": "A",
+          "title": "Tenzing and Tsondu",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1842/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/117606",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "games",
+            "math"
+          ],
+          "statementBrief": "双方各有一组怪物并轮流行动，先手每次选择己方和对方各一只怪物进行战斗；双方生命值分别变为差值，生命值不大于零的怪物死亡。所有怪物死亡的一方失败，要求在双方最优行动下判断谁获胜或是否平局。",
+          "transformedStatement": "把每只怪物的生命值视为可消耗总量：一场战斗等价于从双方总生命值中同时减去两只怪物生命值的较小值。因此游戏结果可抽象为比较双方初始总生命值。",
+          "keyObservations": [
+            "一次战斗会让双方怪物的生命值分别减少同一个量，即较小生命值，因此双方总生命值始终同步减少相同数值。",
+            "由于每次操作只会同时扣除双方相同的总量，最终哪一方先耗尽全部生命值只由初始总生命值大小决定，与具体选怪顺序和策略无关。",
+            "比较双方所有怪物生命值之和即可判定结果：总和较大者获胜，总和相等时双方会同时耗尽并平局。"
+          ],
+          "solutionBrief": "分别累加两方怪物的生命值。总和较大的一方获胜；总和相等则输出 Draw。因为每次战斗双方总生命值减少相同数值，所以策略和操作顺序不会影响结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1842B",
+          "index": "B",
+          "slot": "B",
+          "title": "Tenzing and Books",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1842/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/117606",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定三个各有 $n$ 本书的书堆，书只能从顶部开始逐本读取；读取难度为 $v$ 的书会把当前知识值 $u$ 变为 $u|v$，可以随时停止，也可以一本不读。判断能否通过选择并交错读取各堆的顶部书籍，使最终知识值恰好等于 $x$。",
+          "transformedStatement": "把每个书堆转化为其满足 $x|v=x$ 的最长合法前缀，问题变为判断三个合法前缀的按位或是否能覆盖 $x$ 且不产生额外位。由于合法前缀内部的读取顺序不影响按位或结果，三堆之间无需枚举交错方式。",
+          "keyObservations": [
+            "知识值通过按位或只会增加二进制中的 $1$ 位，因此一旦读入使 $x|y\\ne x$ 的书，就会永久超出目标 $x$，这类书不能被读取。",
+            "对每个书堆，只能从顶部连续读取；因此可安全读取的部分恰好是满足 $x|y=x$ 的最长前缀，遇到第一个不合法的难度值后必须停止使用该堆。",
+            "三堆可读取前缀之间可以任意交错，最终知识值只取决于三个前缀的按位或；将它们合并后的结果等于 $x$，当且仅当目标可达。"
+          ],
+          "solutionBrief": "逐堆扫描书籍，累加满足 $(x|v)=x$ 的最长前缀；遇到首个不满足条件的书就停止该堆。将三堆前缀的按位或合并，结果等于 $x$ 则输出 Yes，否则输出 No，单个测试用例复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1842C",
+          "index": "C",
+          "slot": "C",
+          "title": "Tenzing and Balls",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1842/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/117606",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "给定一列颜色为 $a_i$ 的球。每次可选择两个同色端点并删除它们之间的整段球，删除后剩余球会重新排列；重复操作，求最多能删除多少个球。",
+          "transformedStatement": "把所有实际删除操作记录回原数组，寻找若干互不相交的区间 $[l,r]$，要求 $a_l=a_r$，最大化这些区间长度之和；再用前缀最小保留数进行动态规划。",
+          "keyObservations": [
+            "删除区间在原数组中的端点必须颜色相同；交叉区间无法同时实现，而嵌套区间先删内层再删外层等价于只删外层，因此最优方案可限制为互不相交的区间。",
+            "问题可转化为选择若干互不相交区间，使每个区间两端颜色相同且覆盖长度总和最大；这样操作顺序和删除后的下标变化都无需显式模拟。",
+            "令 $dp_i$ 表示前 $i$ 个球中最少保留的数量，则不删除第 $i$ 个球时转移为 $dp_{i-1}+1$，若以第 $i$ 个球作为区间右端点，则可接在满足 $a_{j+1}=a_i$ 的位置 $j$ 后，转移为 $dp_j$。",
+            "对每种颜色维护所有可作为区间左端前一位置的 $dp_j$ 最小值，即可在处理每个位置时快速完成区间转移，总复杂度为 $O(n)$。"
+          ],
+          "solutionBrief": "将操作等价为选择互不相交的同色端点区间并最大化覆盖长度。用 $dp_i$ 求前缀最少保留数，并按颜色维护可连接位置的最小 $dp_j$，最后答案为 $n-dp_n$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1842D",
+          "index": "D",
+          "slot": "D",
+          "title": "Tenzing and His Animal Friends ",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1842/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/117606",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "给定 $n$ 个动物和若干带权限制，每场游戏选择一个动物子集并持续整数分钟，所有场次需满足每条限制对两端动物加入时刻差的约束。求最多能进行的总时间；若可无限进行输出 inf，否则输出总时间及不超过 $n^2$ 场的具体安排。",
+          "transformedStatement": "把动物视为带权无向图的顶点，为每个顶点赋予加入集合的时刻 $T_i$，使每条边满足 $|T_u-T_v|\\le y$；最大总时间等价于最大化点 $n$ 的可行加入时刻，并用最短路距离构造前缀集合。",
+          "keyObservations": [
+            "把每条限制看成边权为 $y$ 的无向边，并为每个点设定加入集合的时刻 $T_i$；边约束等价于 $|T_u-T_v|\\le y$，从而将游戏安排转化为差分约束。",
+            "点 $n$ 的加入时刻不能早于从点 $1$ 到点 $n$ 的最短路长度，因此总游戏时间至多为该最短路长度；若两点不连通，则可以无限延长。",
+            "按点到 $1$ 的最短距离递增加入点，连续两个距离之差就是对应前缀集合应持续的时间，所有边的时刻差约束由最短路三角不等式保证。",
+            "使用按距离递增的前缀集合输出方案；每加入一个点只新增一个游戏，最多输出 $n-1$ 个游戏，满足游戏数量限制。"
+          ],
+          "solutionBrief": "将限制建成带权无向图，计算点 $1$ 到各点的最短距离。若 $n$ 不可达则输出 inf；否则按距离排序逐点加入，前缀集合持续相邻距离差，总代价为 $1$ 到 $n$ 的最短路。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1842E",
+          "index": "E",
+          "slot": "E",
+          "title": "Tenzing and Triangle",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1842/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/117606",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "几何",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "geometry",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "平面上给出若干位于直线 $x+y=k$ 下方的点。可以单独删除一个点并支付其代价，也可以绘制由该直线上的一段斜边确定的三角形，支付其面积系数代价并删除其中所有点；求删除全部点的最小总费用。",
+          "transformedStatement": "用斜边端点参数 $[L,R]$ 表示三角形，点 $(x,y)$ 等价为区间 $[x,k-y]$：选择一个三角形就是选择覆盖这些区间的参数范围，且有重叠的三角形可合并。因此问题变成在长度轴上选互不重叠区间，最大化覆盖点代价减去绘制代价。",
+          "keyObservations": [
+            "一个三角形可由斜边在线段 $y=k-x$ 上的端点参数 $[L,R]$ 表示，点 $(x,y)$ 被覆盖当且仅当 $L\\le x$ 且 $k-y\\le R$，因此每个点可转成区间 $[x,k-y]$。",
+            "若两个三角形有重叠，将它们合并不会增加代价，因此只需选择若干互不重叠的参数区间；这把几何覆盖转化为区间上的最优划分。",
+            "先把所有点的单独删除代价计入总和，选择区间获得的收益为“覆盖点代价之和减去 $A\\times(R-L)$”，于是目标变为最大化不重叠区间收益。",
+            "处理右端点 $i$ 时，所有状态 $g_j=dp_j+f(j+1,i)$ 只需对整体区间减去 $A$，再对满足 $x\\ge j$ 的点给 $g_j$ 加代价；区间加与全局最大值可由线段树维护。"
+          ],
+          "solutionBrief": "把三角形表示为参数区间，求互不重叠区间的最大覆盖收益。令 $dp_i$ 表示前缀最优值，维护所有转移状态的区间加和最大值；按 $i=k-y$ 加入点贡献，线段树实现，总复杂度为 $O((n+k)\\log k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1842F",
+          "index": "F",
+          "slot": "F",
+          "title": "Tenzing and Tree",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1842/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/117606",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "greedy",
+            "shortest paths",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，删除每条边后，定义该边的价值为两侧黑色顶点数量之差的绝对值；恰好选择 $k$ 个顶点染黑、其余染白，要求对每个 $k=0,1,\\ldots,n$ 求所有染色方案中的最大树价值。",
+          "transformedStatement": "将黑色顶点集选取问题改写为：枚举一个根，使黑点集以它为重心；固定根后，答案是 $(n-1)k$ 减去所选 $k$ 个顶点到根的距离总和的两倍，因此只需选择距离最小的顶点。",
+          "keyObservations": [
+            "把黑色点集的重心作为根后，每条非根边两侧的黑点数差可写成 $k-2\\cdot size_i$，整棵树的值等于 $(n-1)k-2\\sum depth_v$，其中求和遍历所有黑点。",
+            "固定根时，选中一个顶点对目标值的损失恰好是其到根的距离乘 $2$，因此应选择距离最小的 $k$ 个顶点，按距离从小到大累加即可。",
+            "无需显式判断所选黑点集的重心：枚举每个顶点作为根并取最大值，非重心根会产生负向边贡献，不能超过正确重心对应的最优方案。",
+            "从每个根按距离进行 BFS，可同时得到所有顶点的距离前缀和，从而在 $O(n)$ 时间计算该根对所有 $k$ 的候选答案。"
+          ],
+          "solutionBrief": "枚举每个顶点作为根，用 BFS 按距离排序所有顶点。对固定根维护距离前缀和，计算前 $k$ 个顶点作为黑点时的 $(n-1)k-2\\sum depth$，并对所有根取最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1842G",
+          "index": "G",
+          "slot": "G",
+          "title": "Tenzing and Random Operations",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1842/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/117606",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组，重复 $m$ 次随机选择一个位置并将其加上 $v$；每次选择相互独立。求所有操作完成后数组元素乘积的期望，并将结果按模 $10^9+7$ 的分数形式输出。",
+          "transformedStatement": "把每个位置的最终值写成初值加上各轮操作对它产生的随机增量，并展开整个乘积。按展开项中出现过的操作轮次数分类；处理数组前缀时，只需维护已出现轮次数及其总期望贡献。",
+          "keyObservations": [
+            "将第 $j$ 次操作对位置 $i$ 的增量记为随机变量 $x_{j,i}$，则最终乘积可展开为各位置选择初值或某次增量的所有项，期望可以逐项相加。",
+            "同一操作轮次中的多个增量并不独立；若该轮次首次在某项中出现时已选中前 $i$ 个位置之一，则后续相关增量共同贡献 $v$，因此只需记录已出现的操作轮次数。",
+            "不同操作轮次相互独立，所以一项的期望只由已出现轮次数决定；处理第 $i$ 个位置时，已有轮次贡献 $jv$，未出现轮次新增贡献为 $\\frac{i}{n}v$。",
+            "令 $dp[i][j]$ 表示处理前 $i$ 个位置且展开项中出现了 $j$ 个操作轮次的总期望贡献，既能追加初值，也能追加已有或全新的轮次，最终对所有 $j$ 求和。"
+          ],
+          "solutionBrief": "把乘积展开成初值与各次增量的组合项，按已出现的操作轮次数做 DP。处理第 $i$ 个位置时，已有轮次转移贡献 $jv$，新轮次贡献 $\\frac{i}{n}v$，复杂度为 $O(n\\min(n,m))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1842H",
+          "index": "H",
+          "slot": "H",
+          "title": "Tenzing and Random Real Numbers",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1842/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/117606",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "图论与网络流",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dp",
+            "graphs",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "给定 $n$ 个独立且均匀分布在 $[0,1]$ 的实数，以及若干形如 $x_i+x_j\\le1$ 或 $x_i+x_j\\ge1$ 的条件。要求计算所有条件同时成立的概率，并将该有理数按模 $998244353$ 的意义输出。",
+          "transformedStatement": "把每个变量映射为所在 $0.5$ 两侧的颜色和距离 $y_i=\\min(x_i,1-x_i)$；固定颜色后，原条件等价于不同颜色顶点之间的 $y$ 大小关系。于是问题转为统计满足这些有向先后约束的排列及颜色分配。",
+          "keyObservations": [
+            "忽略恰好等于 $0.5$ 的零概率情况后，每个变量可按位于 $0.5$ 两侧二染色，所有染色等概率，因此可分别统计每种染色下的可行概率。",
+            "令 $y_i=\\min(x_i,1-x_i)$，则 $x_i+x_j\\le1$ 转化为白点的 $y$ 不大于黑点的 $y$，而 $x_i+x_j\\ge1$ 转化为黑点的 $y$ 不大于白点的 $y$；这把数值约束变成有向边的先后约束。",
+            "固定 $y$ 的升序排列后，满足条件的染色恰好对应该排列上的合法颜色分配；反过来直接枚举排列，并用集合表示已放入前缀的顶点，可避免枚举 $2^n$ 种染色。",
+            "加入顶点 $i$ 时，若将其染黑，则所有与它的 $\u001b[1m\\le1\u001b[0m$ 条件相连的顶点必须已在前缀；若染白，则所有 $\u001b[1m\\ge1\u001b[0m$ 条件相连的顶点必须已在前缀，因而可用子集 DP 计数。"
+          ],
+          "solutionBrief": "将变量按 $0.5$ 两侧染色，并令 $y_i=\\min(x_i,1-x_i)$，把条件转为颜色相关的先后关系。用子集 DP 统计所有合法的“升序排列+染色”方案，答案为方案数除以 $2^n n!$，再对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1842I",
+          "index": "I",
+          "slot": "I",
+          "title": "Tenzing and Necklace",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1842/problem/I",
+          "editorialUrl": "https://codeforces.com/blog/entry/117606",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "divide and conquer",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定由 $n$ 颗珍珠组成的环，每条连接相邻珍珠的绳子有切割代价 $a_i$。可以切断任意若干条绳子，要求切开后每个连续部分至多含 $k$ 颗珍珠，求所需的最小总切割代价。",
+          "transformedStatement": "将问题改写为在环上选择若干条切边，使相邻所选边沿环的间距都不超过 $k$，并最小化所选边权之和；固定选择数量后，再研究这些有序位置之间的最优转移。",
+          "keyObservations": [
+            "把一次切割方案表示为环上被选中的边集合；相邻被选边之间的距离就是一个连通部分包含的珍珠数，因此约束等价于所有环上相邻切边的间距不超过 $k$。",
+            "固定切边数量 $m$ 后，若比较两个最优方案，可以通过交换连续的一段切边位置，使后一个方案的各位置落在前一个方案对应位置与下一个位置之间，同时不增加代价。",
+            "上述交换性质保证固定第一条切边后，每个候选切边都落在一个确定区间内；固定某个位置时，其余位置的最优代价可由相邻状态的区间 DP 求出。",
+            "对第一条切边的位置使用分治递归，左右子问题继承由当前最优方案划分出的区间；可行方案的切边数量至多为 $O(n/k)$，因此总复杂度可达到 $O(n\\log k)$。"
+          ],
+          "solutionBrief": "先固定切边数量和一条基准切边，用区间 DP 求其余切边的最优位置。交换论证将其他最优方案限制在基准方案划出的区间内，再对基准位置分治求解；枚举同一或相邻的切边数量并取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
