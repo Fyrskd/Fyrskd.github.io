@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1312,
+    "total_problems": 1313,
     "source_total_problems": 1742,
-    "filtered_out_problems": 430,
-    "with_statement_brief": 1312,
+    "filtered_out_problems": 429,
+    "with_statement_brief": 1313,
     "with_editorial_brief": 1096,
     "with_solution_brief": 1097,
-    "missing_editorial_brief": 215,
+    "missing_editorial_brief": 216,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 222,
+    "ai_override_count": 229,
     "primary_topic_count": 13,
     "contest_count": 210,
     "rating_min": 800,
@@ -45,23 +45,23 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 57,
-    "构造与贪心": 440,
+    "构造与贪心": 436,
     "图论与网络流": 78,
     "动态规划与状态设计": 130,
     "数论与同余": 114,
     "组合计数与概率": 105,
-    "数据结构": 96,
+    "数据结构": 97,
     "几何": 26,
-    "树结构": 99,
-    "交互": 64,
-    "基础实现与模拟": 49,
-    "博弈": 42,
+    "树结构": 98,
+    "交互": 66,
+    "基础实现与模拟": 51,
+    "博弈": 43,
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
     "ai_generated_with_editorial": 196,
     "ai_generated_partial_editorial": 9,
-    "missing_editorial": 215,
+    "missing_editorial": 216,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -32315,7 +32315,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-07-20",
       "url": "https://codeforces.com/contest/1990",
       "type": "Div. 2",
-      "problemCount": 6,
+      "problemCount": 7,
       "maxRating": 2800,
       "problems": [
         {
@@ -32326,18 +32326,15 @@ window.CF_INSIGHTS_DATA = {
           "rating": 900,
           "problemUrl": "https://codeforces.com/contest/1990/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/131738",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "博弈",
-            "数据结构"
-          ],
+          "primaryTopic": "博弈",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "games",
             "greedy",
             "sortings"
           ],
-          "statementBrief": "题面已抓取：Submission Bait；本地暂无可用题解正文。",
+          "statementBrief": "给定数组，Alice 与 Bob 轮流操作且 Alice 先手，初始 $mx=0$；根据示例，玩家可选择满足 $a_i\\ge mx$ 的元素，将其置为 $0$ 并把 $mx$ 更新为该元素原值。无法操作者输，要求判断 Alice 是否有必胜策略。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -32353,14 +32350,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1990/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/131738",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "组合计数与概率"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Array Craft；本地暂无可用题解正文。",
+          "statementBrief": "给定多个测试用例，每组包含整数 $n$、$x$、$y$，其中 $x>y$，需要构造一个长度为 $n$ 的整数数组并输出任意满足题目条件的答案。当前记录缺少“数组满足什么条件”的关键定义，因此无法准确说明允许的具体操作或合法性判定。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -32375,17 +32370,14 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1500,
           "problemUrl": "https://codeforces.com/contest/1990/problem/C",
           "editorialUrl": "https://codeforces.com/blog/entry/131738",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "图论与网络流",
-            "数据结构"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：Mad MAD Sum；本地暂无可用题解正文。",
+          "statementBrief": "给定一个数组，并定义 MAD 为数组中至少出现两次的最大数；若没有重复数则 MAD 为 $0$。程序会按题目规定反复处理数组、每轮更新 sum，直到所有元素变为 $0$，最后求 sum；但当前题面片段缺失每轮具体操作。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -32400,11 +32392,9 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1800,
           "problemUrl": "https://codeforces.com/contest/1990/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/131738",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "基础实现与模拟",
           "secondaryTopics": [
-            "动态规划与状态设计",
-            "博弈",
-            "几何"
+            "构造与贪心"
           ],
           "originalTags": [
             "bitmasks",
@@ -32413,7 +32403,7 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Grid Puzzle；本地暂无可用题解正文。",
+          "statementBrief": "给定长度为 $n$ 的数组 $a$ 和一个 $n\\times n$ 网格，第 $i$ 行前 $a_i$ 个格子为黑色，其余为白色。题目要求按照未完整提供的染色操作规则进行若干次操作，把所有格子染成白色，并求最少操作次数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -32427,12 +32417,10 @@ window.CF_INSIGHTS_DATA = {
           "title": "Catch the Mole(Easy Version)",
           "rating": 2500,
           "problemUrl": "https://codeforces.com/contest/1990/problem/E1",
-          "editorialUrl": "",
-          "primaryTopic": "树结构",
+          "editorialUrl": "https://codeforces.com/blog/entry/131738",
+          "primaryTopic": "交互",
           "secondaryTopics": [
-            "交互",
-            "数据结构",
-            "构造与贪心"
+            "树结构"
           ],
           "originalTags": [
             "binary search",
@@ -32441,12 +32429,39 @@ window.CF_INSIGHTS_DATA = {
             "interactive",
             "trees"
           ],
-          "statementBrief": "题面已抓取：Catch the Mole(Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "给定一棵以节点 $1$ 为根的树，鼹鼠藏在某个节点。每次可询问一个节点 $x$，裁判返回鼹鼠是否在 $x$ 的子树中；若返回 $0$ 且鼹鼠不在根节点，它会移动到父节点。需在每组最多 $300$ 次询问内找出鼹鼠当前所在节点。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1990E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Catch the Mole(Hard Version)",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1990/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/131738",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dfs and similar",
+            "divide and conquer",
+            "interactive",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以节点 $1$ 为根的树，鼹鼠初始隐藏在某个节点。每次可询问一个节点 $x$：若鼹鼠在 $x$ 的子树中返回 $1$，否则返回 $0$；返回 $0$ 且鼹鼠不在根节点时，它会移动到父节点。要求每个测试用例最多询问 $160$ 次，找出鼹鼠当前所在节点。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "complete"
         },
         {
           "key": "1990F",
@@ -32455,13 +32470,9 @@ window.CF_INSIGHTS_DATA = {
           "title": "Polygonal Segments",
           "rating": 2800,
           "problemUrl": "https://codeforces.com/contest/1990/problem/F",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "数据结构",
-            "几何"
-          ],
+          "editorialUrl": "https://codeforces.com/blog/entry/131738",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "data structures",
@@ -32470,7 +32481,7 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Polygonal Segments；本地暂无可用题解正文。",
+          "statementBrief": "给定一个长度为 $n$ 的数组，区间 $[l,r]$ 需满足 $1\\le l<r\\le n$，并根据题面未完整提供的条件判断是否为 polygonal segment。对若干查询，需要在没有合适区间时输出 $-1$，否则输出最长合适区间的长度；具体查询操作和判定规则缺失。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
