@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1384,
+    "total_problems": 1390,
     "source_total_problems": 1742,
-    "filtered_out_problems": 358,
-    "with_statement_brief": 1384,
-    "with_editorial_brief": 1159,
-    "with_solution_brief": 1160,
+    "filtered_out_problems": 352,
+    "with_statement_brief": 1390,
+    "with_editorial_brief": 1165,
+    "with_solution_brief": 1166,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 317,
+    "ai_override_count": 324,
     "primary_topic_count": 13,
     "contest_count": 220,
     "rating_min": 800,
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 61,
-    "构造与贪心": 454,
+    "字符串": 62,
+    "构造与贪心": 453,
     "图论与网络流": 84,
     "动态规划与状态设计": 132,
     "数论与同余": 125,
-    "组合计数与概率": 107,
-    "数据结构": 103,
+    "组合计数与概率": 108,
+    "数据结构": 106,
     "几何": 31,
-    "树结构": 102,
+    "树结构": 103,
     "交互": 68,
-    "基础实现与模拟": 56,
+    "基础实现与模拟": 57,
     "博弈": 48,
     "代数、矩阵与多项式": 13
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 255,
+    "ai_generated_with_editorial": 261,
     "ai_generated_partial_editorial": 13,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37361,9 +37361,39 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-05-14",
       "url": "https://codeforces.com/contest/1827",
       "type": "Div. 1",
-      "problemCount": 1,
-      "maxRating": 2000,
+      "problemCount": 7,
+      "maxRating": 3500,
       "problems": [
+        {
+          "key": "1827A",
+          "index": "A",
+          "slot": "A",
+          "title": "Counting Orders",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1827/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/116109",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定长度均为 $n$ 的数组 $a,b$，其中 $a$ 的元素互不相同。可以任意重排 $a$，要求重排后每个位置都满足 $a_i>b_i$，求满足条件的不同重排数量，并对 $10^9+7$ 取模。",
+          "transformedStatement": "先将 $b$ 按非递增顺序排列，再从最大阈值到最小阈值依次为各位置分配 $a$ 中尚未使用且大于该阈值的元素；每一步的可选数相乘即为合法重排数。",
+          "keyObservations": [
+            "将 $b$ 排成非递增后，从最大的阈值开始分配 $a$，这样此前已选的每个元素都一定满足当前阈值，已占用元素数量固定为已处理位置数。",
+            "处理第 $i$ 个位置时，可选元素数等于数组 $a$ 中满足 $a_k>b_i$ 的元素总数减去已经分配的 $i$ 个元素，因此答案是这些选择数的乘积。",
+            "由于 $a$ 的元素互异，按阈值统计严格大于 $b_i$ 的元素数量可由排序后的二分或双指针完成，避免逐位置枚举。"
+          ],
+          "solutionBrief": "分别排序 $a$ 与降序排列的 $b$，按阈值从大到小处理。第 $i$ 项贡献为满足 $a_k>b_i$ 的元素数减去已使用的 $i$ 个元素，将所有贡献相乘并对 $10^9+7$ 取模；统计可用二分完成，复杂度为 $O(n\\\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1827B1",
           "index": "B1",
@@ -37371,13 +37401,9 @@ window.CF_INSIGHTS_DATA = {
           "title": "Range Sorting (Easy Version)",
           "rating": 2000,
           "problemUrl": "https://codeforces.com/contest/1827/problem/B1",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "图论与网络流",
-            "动态规划与状态设计",
-            "树结构"
-          ],
+          "editorialUrl": "https://codeforces.com/blog/entry/116109",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "dp",
@@ -37386,12 +37412,167 @@ window.CF_INSIGHTS_DATA = {
             "trees",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Range Sorting (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "给定一个元素两两不同的数组。对每个连续子数组，可以进行任意次 range-sort 操作；该子数组的 beauty 是将其排好序所需的最少操作次数，要求所有子数组 beauty 之和。但给定文本缺少一次操作的具体规则。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1827B2",
+          "index": "B2",
+          "slot": "B",
+          "title": "Range Sorting (Hard Version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1827/problem/B2",
+          "editorialUrl": "https://codeforces.com/blog/entry/116109",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定一个由互不相同整数组成的数组。对任意连续子数组，可以反复选择一个连续区间并将其中元素升序排列；该子数组的美丽值是排好序所需的最少操作次数，要求求所有子数组美丽值之和。",
+          "transformedStatement": "把每个子数组看成若干连续段的划分：每段执行一次排序，只有当前段元素整体小于下一段时，段间切分才能独立完成。于是美丽值等于子数组长度减一，再扣除所有满足前缀最大值小于后缀最小值的有效切分。",
+          "keyObservations": [
+            "最优操作区间不会相交；相交区间可合并为一个更大的排序区间且操作次数不增加，因此问题可转为划分若干不重叠区间。",
+            "相邻两段能独立排序，当且仅当前段所有元素都小于后段所有元素；因此每个满足前缀最大值小于后缀最小值的位置都能减少一次操作。",
+            "子数组 $[l,r]$ 的美丽值等于 $r-l$ 减去其中满足 $\\max(a[l..k])<\\min(a[k+1..r])$ 的切分位置数量，将答案转化为所有切分贡献之和。",
+            "固定右侧最小值为 $a_i$ 后，可用单调结构确定其左侧最近较小元素、左侧阻挡位置和右侧最近较小元素；对应切分数量为 $(k-x)(y-i)$，再通过稀疏表与二进制跳跃快速定位。"
+          ],
+          "solutionBrief": "先把所有子数组的初始贡献 $r-l$ 求和，再减去可独立切分位置的贡献。利用单调栈寻找边界，并用稀疏表和二进制跳跃定位关键位置，整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1827C",
+          "index": "C",
+          "slot": "C",
+          "title": "Palindrome Partition",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1827/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/116109",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "dp",
+            "hashing",
+            "strings"
+          ],
+          "statementBrief": "给定由小写字母组成的字符串，连续非空子串若本身是偶数长度回文，或能按原顺序划分成若干个偶数长度回文，就称为美丽子串。需要统计所有美丽子串的数量。",
+          "transformedStatement": "把每个位置 `i` 看成一个状态，只保留从 `i` 开始的最短偶回文，并令其终点为 `next_i`；美丽子串等价于沿这些确定转移连续取若干段后结束。",
+          "keyObservations": [
+            "任意美丽串都存在唯一的“每段尽量短”的贪心划分；若首段不是最短偶回文，则可进一步拆分或导出更短的首段，因此该划分足以唯一确定后续转移。",
+            "设 `next_i` 为从位置 `i` 开始的最短偶回文终点，则以 `i` 开头的美丽子串只能不断接上 `next_i`，答案可由这些确定性转移上的路径数量累加得到。",
+            "以字符间隙 `j` 为偶回文中心，最大半径为 `pal[j]` 时其覆盖区间是 $[j-pal[j],j+pal[j])$；寻找最小满足 $j-pal[j]\\le i$ 的中心，就能得到从 `i` 开始的最短偶回文。",
+            "所有中心的左端点查询可转为区间最小值，并通过倍增跳过仍无法覆盖 `i` 的中心，从而在 $O(n\\log n)$ 时间内求出全部 `next_i`。"
+          ],
+          "solutionBrief": "用 Manacher 求每个字符间隙为中心的最长偶回文半径，再用 RMQ 与倍增找到每个起点的最短偶回文终点 `next_i`。沿 `i\\to next_i` 的确定性转移统计可形成的美丽子串数量，累加得到答案，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1827D",
+          "index": "D",
+          "slot": "D",
+          "title": "Two Centroids",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1827/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/116109",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "树从顶点 $1$ 开始逐步增长，第 $i$ 次查询把新顶点 $i+1$ 连接到指定的已有顶点。每次查询后，可以继续执行“添加一个顶点和一条边且仍为树”的操作，求最少操作次数使当前树拥有两个重心。",
+          "transformedStatement": "将所有查询视为最终树的前缀，并以 $1$ 为根离线处理。对每个前缀，只需跟踪当前重心及其子树中最大的规模 $mx$，答案等价为 $n-2mx$；重心变化最多跨越一条边。",
+          "keyObservations": [
+            "当前树的答案只由重心及其子树中的最大规模 $mx$ 决定，最少操作数等于 $n-2mx$，因此无需直接尝试构造新增节点。",
+            "加入一个顶点后，重心最多沿一条边移动；若发生移动，加入前的树必已有两个重心，这使得在线维护重心时只需处理当前位置或相邻位置。",
+            "把最终树固定以 $1$ 为根，利用欧拉序将每个子树变成连续区间；按顶点出现顺序激活节点后，可用区间计数维护重心子树规模及 $mx$。"
+          ],
+          "solutionBrief": "先离线建立最终树并求欧拉序、倍增祖先。按前缀激活顶点，用树状数组查询子树大小；维护当前重心及其最大子树规模。重心不变时更新该最大值，重心移动时令 $mx=\\lfloor n/2\\rfloor$，输出 $n-2mx$，总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1827E",
+          "index": "E",
+          "slot": "E",
+          "title": "Bus Routes",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1827/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/116109",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "dfs and similar",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵连接所有城市的树，以及若干条公交线路；线路连接两端城市，并允许在其端点间简单路径上的任意两座城市之间通行。判断任意城市对是否都能使用不超过两条线路互达；若不能，还需输出一对反例城市。",
+          "transformedStatement": "把“任意城市对两条线路可达”改写为只检查叶子对：对每个叶子 $l$ 建立一条线路可达集合 $S(l)$，问题等价于判断所有 $S(l)$ 是否有公共节点，即是否存在一个城市能被所有叶子用一条线路到达。",
+          "keyObservations": [
+            "任意非叶子节点对之间的路径，都能被某个叶子到另一节点的路径覆盖，因此只需检查所有叶子之间能否在两条线路内互达。",
+            "令 $S(l)$ 表示从叶子 $l$ 使用一条公交线路可到达的节点集合；所有叶子两两可用两条线路互达，当且仅当存在节点 $c$ 同时属于所有 $S(l)$，这是树上子树集合的 Helly 性质。",
+            "每个 $S(l)$ 是若干条树路径的并，可用基于 LCA 的差分事件和子树累加统计每个节点被多少个叶子的集合覆盖，从而判断是否存在覆盖全部叶子的节点。",
+            "按叶子顺序寻找第一个使公共交集为空的前缀即可二分定位；固定该叶子后，再找一个其集合无法与之通过公共中间节点连接的叶子，作为不可达见证。"
+          ],
+          "solutionBrief": "只检查叶子集合。对每个叶子计算其一条线路可达区域 $S(l)$，用 LCA 差分统计所有区域的公共节点；若存在则输出 YES，否则二分找到破坏公共交集的叶子，再构造一对无法两条线路互达的叶子。整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1827F",
+          "index": "F",
+          "slot": "F",
+          "title": "Copium Permutation",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1827/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/116109",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定一个 $1\\ldots n$ 的排列。对每个 $k\\in[0,n]$，可以任意重排最后 $n-k$ 个元素，要求最大化最终排列中 copium 子数组的数量；子数组 $[l,r]$ 在最大值减最小值等于 $r-l$ 时可重排为连续整数。",
+          "transformedStatement": "固定 $k$ 后，将后缀元素标记为特殊元素，并把它们按原位置形成的极大连续段作为整体处理；答案拆成前缀内部、后缀内部和跨越分界线三部分，再通过 `good` 位置描述跨界区间的连续值扩展。",
+          "keyObservations": [
+            "最优重排中，特殊元素的每个极大连续段都应保持连续，并按升序或降序放置，从而只需研究这些段的整体贡献。",
+            "将答案按子数组完全位于前缀、完全位于后缀、跨越分界线三类拆开，前缀部分独立统计，后缀部分可由特殊段的结构直接计算。",
+            "定义位置集合 `good`，使对应前缀区间包含连续的非特殊值；具有相同最小值或最大值的一段 `good` 位置，若相邻间隔本身是 copium 区间，就能共同利用同一特殊段，贡献等于段长乘以可覆盖的最长位置段。",
+            "从 $k-1$ 增加到 $k$ 时，只有 `good` 的后缀会失效，且最多需要额外更新两个边界位置，因此可用单调结构、RMQ 和线段树维护全部答案，整体复杂度为 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "固定 $k$，把后缀视为特殊元素，按极大连续段的升降排列性质统计前缀、后缀及跨界子数组。维护 `good` 位置及其最小值/最大值等价段，随 $k$ 扫描更新贡献；结合单调栈、RMQ、链表和线段树，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
