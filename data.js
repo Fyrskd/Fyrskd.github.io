@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1348,
+    "total_problems": 1354,
     "source_total_problems": 1742,
-    "filtered_out_problems": 394,
-    "with_statement_brief": 1348,
-    "with_editorial_brief": 1128,
-    "with_solution_brief": 1129,
+    "filtered_out_problems": 388,
+    "with_statement_brief": 1354,
+    "with_editorial_brief": 1134,
+    "with_solution_brief": 1135,
     "missing_editorial_brief": 219,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 281,
+    "ai_override_count": 287,
     "primary_topic_count": 13,
-    "contest_count": 212,
+    "contest_count": 213,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 58,
-    "构造与贪心": 442,
-    "图论与网络流": 80,
+    "构造与贪心": 443,
+    "图论与网络流": 81,
     "动态规划与状态设计": 131,
-    "数论与同余": 119,
-    "组合计数与概率": 105,
+    "数论与同余": 121,
+    "组合计数与概率": 106,
     "数据结构": 101,
     "几何": 29,
     "树结构": 101,
-    "交互": 67,
+    "交互": 68,
     "基础实现与模拟": 56,
     "博弈": 47,
     "代数、矩阵与多项式": 12
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 224,
+    "ai_generated_with_editorial": 230,
     "ai_generated_partial_editorial": 13,
     "missing_editorial": 219,
     "manual_override": 891,
@@ -37615,6 +37615,201 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1815,
+      "name": "Codeforces Round 865 (Div. 1)",
+      "date": "2023-04-09",
+      "url": "https://codeforces.com/contest/1815",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1815A",
+          "index": "A",
+          "slot": "A",
+          "title": "Ian and Array Sorting",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1815/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/114899",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组，每次可选择一对相邻元素，同时将它们都加 $1$ 或都减 $1$，操作可进行任意有限次且元素允许变为负数。判断能否通过这些操作把数组变成非递减序列。",
+          "transformedStatement": "把目标改写为差分数组 $b_i=a_{i+1}-a_i$ 的所有元素非负；原操作对应于在相同奇偶性的差分位置之间转移数值，偶数长度时奇数位置差分和构成不可变的可行性条件。",
+          "keyObservations": [
+            "将数组转为差分数组 $b_i=a_{i+1}-a_i$ 后，目标等价于让所有 $b_i\\ge 0$，因为这正是原数组非递减的充要条件。",
+            "对原数组相邻位置同时加减 $1$，在差分数组中只会沿同一奇偶下标链转移数值；边界操作还能调整链端，因此问题的核心变成两类下标上的数值分配。",
+            "当 $n$ 为奇数时，两类差分下标都能通过边界操作获得足够的非负资源，再沿链分配，所以任意数组都可变为非递减，答案恒为 YES。",
+            "当 $n$ 为偶数时，奇数下标差分值之和在所有操作下保持不变；它等于原数组的交错和 $-a_1+a_2-a_3+\\cdots+a_n$，因此该和非负当且仅当可以让全部差分值非负。"
+          ],
+          "solutionBrief": "计算交错和 $S=-a_1+a_2-a_3+\\cdots+a_n$。若 $n$ 为奇数，直接输出 YES；若 $n$ 为偶数，则当且仅当 $S\\ge0$ 时输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1815B",
+          "index": "B",
+          "slot": "B",
+          "title": "Sum Graph",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1815/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/114899",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "graphs",
+            "implementation",
+            "interactive",
+            "shortest paths",
+            "trees"
+          ],
+          "statementBrief": "隐藏数组是一个长度为 $n$ 的排列，围绕它维护一个初始无边图。每次可执行类型 1 或类型 2 查询，并且在不超过 $2n$ 次操作后提交两个排列；只要其中一个等于隐藏排列即可。",
+          "transformedStatement": "把两次类型 1 操作后的图抽象成一条已知顺序的交错链，再通过最短路距离确定隐藏排列中某个位置对应的链端点，最后从该端点测出所有元素的链上位置；链的左右方向不确定时同时保留两种反向映射。",
+          "keyObservations": [
+            "对 $x=n+1$ 和 $x=n+2$ 各执行一次类型 1 操作后，图会变成链 $1- n-2-2-\\cdots$ 的交错结构，因此节点间距离直接对应链上的位置。",
+            "从节点 $1$ 到所有其他节点查询距离，距离最大的节点 $k$ 必在隐藏排列对应链的某个端点；这把未知排列的定位问题化为从端点测距。",
+            "以 $k$ 为起点查询到其余节点时，所有距离互不相同，因此每个返回距离都能唯一确定目标节点在链上的位置，并恢复排列。",
+            "无法判断 $p_k$ 对应链的左端还是右端，但两种端点方向分别得到两个候选排列，题目允许提交这两个排列。"
+          ],
+          "solutionBrief": "先用两次类型 1 操作构造交错链。查询节点 $1$ 到其余节点的距离，取最远点 $k$；再查询 $k$ 到所有节点，根据互异距离恢复链上位置，并分别假设 $k$ 是左右端点，输出两种候选排列。共使用 $2+ (n-1)+(n-1)=2n$ 次操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1815C",
+          "index": "C",
+          "slot": "C",
+          "title": "Between",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1815/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/114899",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "给定 $1$ 到 $n$ 的不同有序数对 $(a,b)$，要求构造一个由这些数值组成的最长序列，使任意两个出现的 $a$ 之间都至少出现一个 $b$。若序列长度可以无限增加，输出 INFINITE；否则输出有限最大长度及任意达到最大值的序列。",
+          "transformedStatement": "把每条规则 $(a,b)$ 抽象成有向边 $a\\to b$，并把序列问题转化为各顶点出现次数的约束。核心是计算每个顶点到 $1$ 的最短有向距离，用它确定可实现的最大出现次数和分层构造。",
+          "keyObservations": [
+            "若存在边 $a\\to b$，则序列中每两个相邻出现的 $a$ 之间至少要出现一个 $b$，因此出现次数满足 $v_a\\le v_b+1$。",
+            "从顶点 $s$ 到顶点 $1$ 的最短有向路径长度加一记为 $d_s$，沿路径反复应用次数不等式可得 $v_s\\le d_s$，所以有限答案长度至多为 $\\sum_s d_s$。",
+            "若某个顶点无法沿有向边到达 $1$，把所有这类顶点放在唯一的 $1$ 之后重复排列，就能不断延长序列，因此答案为 INFINITE。",
+            "按 $d_s$ 将顶点分组，并依次拼接嵌套层，使距离为 $i$ 的每个顶点恰好出现 $i$ 次，即达到上界 $\\sum_s d_s$；同一组在不同层中的相对顺序保持一致以满足所有约束。"
+          ],
+          "solutionBrief": "建图表示“两个 $a$ 之间必须出现 $b$”，反向从 $1$ BFS 求每个顶点到 $1$ 的最短距离。若有顶点不可达则输出 INFINITE；否则按距离分组构造嵌套序列，使顶点 $s$ 出现 $d_s$ 次，答案长度为 $\\sum d_s$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1815D",
+          "index": "D",
+          "slot": "D",
+          "title": "XOR Counting",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1815/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/114899",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定非负整数 $a_1,\\ldots,a_m$，要求它们的和为 $n$。考虑所有满足条件的取值方案，收集其中不同的异或结果各一次，求这些不同结果之和并对 $998244353$ 取模。",
+          "transformedStatement": "将问题按 $m=1$、$m=2$ 和 $m\\ge3$ 分类。前后两类可直接确定异或值集合；难点 $m=2$ 转化为递归状态 $f(n)$（异或值总和）与 $g(n)$（异或值数量），按最低二进制位递推。",
+          "keyObservations": [
+            "当 $m\\ge3$ 时，取 $(x,(n-x)/2,(n-x)/2,0,\\ldots)$ 可构造任意与 $n$ 同奇偶且不超过 $n$ 的异或值；而异或结果必与总和同奇偶且不超过 $n$，因此可行值集合被精确确定。",
+            "$m=2$ 时，定义 $f(n)$ 为所有不同异或值之和、$g(n)$ 为不同异或值的数量，统计数量是递推计算总和时不可缺少的辅助状态。",
+            "当 $n$ 为奇数时，两个数一奇一偶，除去最低位后问题缩小到 $(n-1)/2$，因此 $g(n)=g((n-1)/2)$ 且 $f(n)=2f((n-1)/2)+g((n-1)/2)$。",
+            "当 $n$ 为偶数时，按两个数同为偶数或同为奇数拆分，分别缩小到 $n/2$ 与 $n/2-1$；两类异或值都整体乘 $2$，从而得到对应的 $f,g$ 递推。"
+          ],
+          "solutionBrief": "$m=1$ 时答案为 $n$。$m\\ge3$ 时答案是所有不超过 $n$ 且与 $n$ 同奇偶的数之和。$m=2$ 维护 $f(n),g(n)$，按 $n$ 奇偶递归到更小参数，记忆化计算并对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1815E",
+          "index": "E",
+          "slot": "E",
+          "title": "Bosco and Particle",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1815/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/114899",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "字符串",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "dp",
+            "math",
+            "number theory",
+            "strings"
+          ],
+          "statementBrief": "有一条从位置 $0$ 到 $n+1$ 的线，粒子从 $0$ 出发向下移动；经过位置 $i$ 时，若振荡器当前字符为 $1$ 就反向，否则继续前进，并将该振荡器切换到下一个字符，端点会强制反向。求粒子位置序列的最短循环长度，答案对 $998244353$ 取模。",
+          "transformedStatement": "把每个振荡器视为周期状态机，先压缩其字符串周期；再用粒子在每个位置向下、向上的命中次数描述全局循环，并通过单振荡器基准倍数和相邻位置的流量守恒求最小可行周期。",
+          "keyObservations": [
+            "将每个振荡器字符串压缩为最短周期不会改变过程，因此只需处理其本质周期，避免重复状态干扰计数。",
+            "对单个振荡器先计算粒子在向下、向上运动时的命中次数 $a'_i,b'_i$，多振荡器中的对应次数必须分别是它们的同一整数倍。",
+            "相邻振荡器之间满足流量守恒 $a_i=b_{i-1}$，因此全局周期可转化为寻找满足这些倍数与守恒约束的最小正整数命中次数。",
+            "对每个素数分别维护这些次数的 $p$-进赋值即可求出最小解，最终周期为 $2(a_1+a_2+\\cdots+a_n+b_n)$。"
+          ],
+          "solutionBrief": "先用 KMP 去除每个二进制串的重复周期，再模拟单个振荡器得到向下、向上命中次数。利用相邻位置的流量守恒建立倍数约束，并按素数分解分别合并各项的 $p$-进赋值，得到最小命中次数后计算 $2(a_1+\\cdots+a_n+b_n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1815F",
+          "index": "F",
+          "slot": "F",
+          "title": "OH NO1 (-2-3-4)",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1815/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/114899",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "给定一个无自环、允许重边的无向图，所有边被分成若干个三角形；每条边恰好操作一次，为其选择一个增量并加到两个端点的权值上。要求输出所有边的选择，使操作结束后每条边两端的最终权值都不同。",
+          "transformedStatement": "把问题重述为：为每个三角形的三条边分配增量，使按顶点编号递增确定最终权值时，每个顶点都能避开已确定的较小编号邻居。只要每个三角形在第一、第二、第三位置分别提供至少 $1、2、3$ 种局部选择，就能组合成全局可行构造。",
+          "keyObservations": [
+            "按顶点编号从小到大确定最终权值时，只需避开已经确定的较小编号邻居，尚未确定的邻居不会影响当前选择。",
+            "对一个顶点编号递增的三角形，可分别保证第一、第二、第三个顶点至少有 $1、2、3$ 个可选结果，从而为全局贪心提供足够选择。",
+            "若顶点处于 $B$ 个三角形的第二位置、$C$ 个三角形的第三位置，则它有 $B+2C$ 个较小编号邻居；由于可用选项至少为 $B+2C+1$，总能避开已有权值。",
+            "三角形边增量的六种调整模式由 $(+1,-1,-1)$ 与 $(0,0,-1)$ 两类变化组合而成，既保持局部可选性，又能消除当前顶点与较小邻居的冲突。"
+          ],
+          "solutionBrief": "将每个三角形初始化为边增量 $(3,1,1)$，得到各点权值。按顶点编号递增处理，记录当前冲突，并用三角形的局部调整模式修改边增量和端点权值，保证当前点避开所有较小编号邻居；最后输出每条三角形三条边的增量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
