@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1470,
+    "total_problems": 1472,
     "source_total_problems": 1742,
-    "filtered_out_problems": 272,
-    "with_statement_brief": 1470,
-    "with_editorial_brief": 1245,
-    "with_solution_brief": 1246,
+    "filtered_out_problems": 270,
+    "with_statement_brief": 1472,
+    "with_editorial_brief": 1247,
+    "with_solution_brief": 1248,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 404,
+    "ai_override_count": 406,
     "primary_topic_count": 13,
-    "contest_count": 235,
+    "contest_count": 236,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,10 +45,10 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 481,
+    "构造与贪心": 482,
     "图论与网络流": 89,
     "动态规划与状态设计": 144,
-    "数论与同余": 134,
+    "数论与同余": 135,
     "组合计数与概率": 113,
     "数据结构": 114,
     "几何": 32,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 338,
+    "ai_generated_with_editorial": 340,
     "ai_generated_partial_editorial": 16,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37352,6 +37352,72 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1855,
+      "name": "Codeforces Round 889 (Div. 2)",
+      "date": "2023-07-29",
+      "url": "https://codeforces.com/contest/1855",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 900,
+      "problems": [
+        {
+          "key": "1855A",
+          "index": "A",
+          "slot": "A",
+          "title": "Dalton the Teacher",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1855/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/118540",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 名学生和 $n$ 把椅子，学生 $i$ 当前坐在椅子 $p_i$ 上，且 $p$ 是一个排列。每次可选择两名不同学生交换座位，学生坐在编号不同的椅子上才算开心；求让所有学生开心所需的最少交换次数。",
+          "transformedStatement": "把坐在同编号椅子上的学生视为“不开心”对象，问题转化为用一次交换消除至多两名对象：两名不开心学生可直接配对消除，若剩一名则与任意其他学生交换。",
+          "keyObservations": [
+            "一次交换最多改变两名学生是否开心，因此若初始有 $s$ 名不开心学生，至少需要 $\\\\lceil s/2 \\\\rceil$ 次操作。",
+            "任意两名不开心学生交换座位后，两人都会坐到与自己编号不同的椅子上，因此每次可同时消除两名不开心学生。",
+            "若最后只剩一名不开心学生，将其与任意另一名学生交换即可使两人都开心，从而达到下界。"
+          ],
+          "solutionBrief": "统计置换中满足 $p_i=i$ 的学生数 $s$，这些学生是不开心的。根据每次最多解决两人且总能按两人配对处理，答案为 $\\lceil s/2\\rceil$，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1855B",
+          "index": "B",
+          "slot": "B",
+          "title": "Longest Divisors Interval",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1855/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/118540",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $n$，要找一个连续正整数区间 $[l,r]$，使区间内每个整数都能整除 $n$。区间长度为 $r-l+1$，要求输出所有满足条件的区间中最大长度。",
+          "transformedStatement": "把任意长度为 $k$ 的合法区间转化为前缀区间 $[1,k]$：原区间包含每个 $x\\le k$ 的某个倍数，该倍数整除 $n$ 会推出 $x$ 也整除 $n$。因此只需寻找第一个不整除 $n$ 的正整数 $x$，答案就是 $x-1$。",
+          "keyObservations": [
+            "若合法区间长度为 $k$，则对每个 $1\\le x\\le k$，区间中至少包含一个 $x$ 的倍数；该倍数是 $n$ 的因数，因此 $x$ 也必须整除 $n$。",
+            "任意长度为 $k$ 的合法区间都能推出 $1,2,\\ldots,k$ 全部整除 $n$，所以区间 $[1,k]$ 也是合法的，原问题可固定左端点为 $1$。",
+            "答案等于最小的不整除 $n$ 的正整数减一；逐个检查从 $1$ 开始的整数即可，检查到答案后立即停止。"
+          ],
+          "solutionBrief": "设最小的不整除 $n$ 的正整数为 $x$。长度为 $x-1$ 的区间 $[1,x-1]$ 合法，而任何长度至少为 $x$ 的合法区间都会迫使 $x$ 整除 $n$，矛盾，因此答案是 $x-1$。逐个试除即可，复杂度为 $O(\\log(\\max n))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
