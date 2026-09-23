@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "cf-knowledge/problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1417,
+    "total_problems": 1423,
     "source_total_problems": 1742,
-    "filtered_out_problems": 325,
-    "with_statement_brief": 1417,
-    "with_editorial_brief": 1192,
-    "with_solution_brief": 1193,
+    "filtered_out_problems": 319,
+    "with_statement_brief": 1423,
+    "with_editorial_brief": 1198,
+    "with_solution_brief": 1199,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 351,
+    "ai_override_count": 357,
     "primary_topic_count": 13,
-    "contest_count": 226,
+    "contest_count": 227,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 465,
-    "图论与网络流": 84,
-    "动态规划与状态设计": 134,
+    "构造与贪心": 466,
+    "图论与网络流": 86,
+    "动态规划与状态设计": 135,
     "数论与同余": 128,
     "组合计数与概率": 110,
     "数据结构": 110,
-    "几何": 31,
+    "几何": 32,
     "树结构": 104,
     "交互": 69,
-    "基础实现与模拟": 57,
+    "基础实现与模拟": 58,
     "博弈": 50,
     "代数、矩阵与多项式": 13
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 286,
+    "ai_generated_with_editorial": 292,
     "ai_generated_partial_editorial": 15,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -37352,6 +37352,199 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1835,
+      "name": "Codeforces Round 880 (Div. 1)",
+      "date": "2023-06-18",
+      "url": "https://codeforces.com/contest/1835",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1835A",
+          "index": "A",
+          "slot": "A",
+          "title": "k-th equality",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1835/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/117394",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定数字位数 $A、B、C$，考虑所有无前导零的正整数等式 $a+b=c$，其中三者分别有对应位数。按完整字符串的字典序排列，输出第 $k$ 个等式，若不存在则输出 $-1$。",
+          "transformedStatement": "将字典序排列的等式视为按 $a$ 分组、组内按 $b$ 递增排列；固定 $a$ 后，把满足 $b$ 有 $B$ 位且 $a+b$ 有 $C$ 位的候选转化为一个连续整数区间。",
+          "keyObservations": [
+            "由于所有数字长度固定，字符串字典序等价于先按 $a$ 递增、再按 $b$ 递增，因此可按 $a$ 分组定位第 $k$ 个等式。",
+            "固定 $a$ 后，合法的 $b$ 必须同时满足位数和 $a+b$ 的位数要求，范围为 $\\max(10^{C-1}-a,10^{B-1})\\le b<\\min(10^C-a,10^B)$。",
+            "区间长度直接给出当前 $a$ 贡献的等式数量；若数量小于 $k$ 就整体跳过，否则在该组内继续按 $b$ 递增查找。",
+            "$A,B,C\\le6$ 使得枚举所有 $a$ 的规模至多为 $10^6-1$，固定 $a$ 后再枚举 $b$ 即可完成构造。"
+          ],
+          "solutionBrief": "按 $a$ 从小到大枚举。对每个 $a$ 用位数约束计算合法 $b$ 的连续区间，并据其数量跳过整组；定位到目标组后枚举对应的 $b$，令 $c=a+b$ 输出，否则输出 $-1$。复杂度为 $O(10^A+10^B)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1835B",
+          "index": "B",
+          "slot": "B",
+          "title": "Lottery",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1835/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/117394",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 张已知票，票值在 $0$ 到 $m$ 之间；抽出目标值后，距离目标最近的至多 $k$ 张票获胜，距离相同则较小编号优先。Bytek 作为最后一人选择票值，要求最大化自己获胜的目标值数量，并在最优票值中取最小者。",
+          "transformedStatement": "把 Bytek 的票值看作一维位置 $c$。固定 $c$ 后，只需关注其左右第 $k$ 个已有票值 $a,b$：能使他获胜的目标值构成严格位于两个中点之间的整数区间，再在相邻已有位置和边界中压缩枚举候选 $c$。",
+          "keyObservations": [
+            "若 Bytek 选在位置 $c$，其左右第 $k$ 个参与者位置分别为 $a,b$，则目标值必须满足 $(a+c)/2<x<(b+c)/2$；这把获胜判定转化为整数区间计数。",
+            "获胜区间的长度只取决于 $a,b$ 的间距以及 $c$ 相对两端的奇偶性，因此同一相邻人员间隔内只需检查最左和次左位置，其余位置不会得到更优的最小答案。",
+            "除了站在空闲位置之间，还必须检查与已有票值重合的位置，因为相邻人员间距不足时，重合位置可能仍能获得最优获胜范围。",
+            "区间两端需要单独处理：站在左侧第 $k$ 个参与者前一或两格可最大化覆盖目标值 $0$，右侧情况对称；这样不会遗漏边界最优解。"
+          ],
+          "solutionBrief": "按票值顺序扫描每个相邻间隔，并确定候选位置左右第 $k$ 个参与者，利用中点严格不等式计算获胜目标值数量；同时检查重合位置和左右边界候选，按获胜数量最大、位置最小更新答案。整体可做到 $O(n)$ 或 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1835C",
+          "index": "C",
+          "slot": "C",
+          "title": "Twin Clusters",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1835/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/117394",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "constructive algorithms",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "给定长度为 $2^{k+1}$ 的数组，每个元素小于 $4^k$。一个区间的特征是其中所有元素的按位异或；需要找出两个非空、不相交且特征相同的连续区间，并输出它们的端点，若不存在则输出 $-1$。",
+          "transformedStatement": "把区间异或表示为两个前缀异或的差异，先利用低 $k$ 位相同构造大量候选区间，再利用高 $k$ 位只有 $2^k$ 种这一限制制造异或碰撞；重叠区间通过异或消去公共部分转成不相交区间。",
+          "keyObservations": [
+            "共有 $2^{k+1}+1$ 个前缀异或值，而低 $k$ 位只有 $2^k$ 种；按相同低位配对可得到至少 $2^k+1$ 个区间，且它们的左右端点分别不会重复。",
+            "这些区间的异或值只需比较剩余的高 $k$ 位，因此由抽屉原理，至少有两个区间的完整异或值相同。",
+            "若两个相同异或值的区间相交，取它们各自独占的部分；公共部分在异或中抵消，得到两个非空且不相交的区间，并保持异或值相同。",
+            "区间端点的不同保证相交时独占部分不会为空，因此无需额外处理重合或嵌套情况。"
+          ],
+          "solutionBrief": "计算前缀异或并按低 $k$ 位相同配对，得到至少 $2^k+1$ 个候选区间；再按高 $k$ 位分类，找出异或值相同的两个区间。若相交，则取双方独占部分作为答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1835D",
+          "index": "D",
+          "slot": "D",
+          "title": "Doctor's Brown Hypothesis",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1835/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/117394",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "graphs",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 个星球和单向虫洞，每条虫洞通行恰好 1 小时。战斗前恰有 $k$ 小时，需选择一艘船让它飞行 $k$ 小时后回到原地，或选择两艘船让它们分别经过 $k$ 小时后交换位置，求可行选择数。",
+          "transformedStatement": "把每个强连通分量视为独立问题，并用该分量所有环长度的最大公约数 $g$ 描述长路径长度的模类；再将可行的起点终点关系转化为顶点颜色之间的关系。",
+          "keyObservations": [
+            "两艘船必须互相到达，因此起点属于同一个强连通分量；不同分量之间的选择可以直接排除，问题可按分量独立处理。",
+            "在固定强连通分量中，所有环长度的最大公约数 $g$ 决定路径长度的模类；当路径足够长时，满足对应余数的路径都存在。",
+            "用染色约束 $color(v)=(color(u)+1)\\bmod d$ 检验某个因子 $d$ 是否整除环长最大公约数，再由质因子及其幂合并得到 $g$。",
+            "两点互换的条件只剩颜色关系：若 $g\\mid k$，需颜色相同；若 $g$ 为偶数且 $k\\equiv g/2\\pmod g$，需颜色相差 $g/2$，因此可按颜色统计配对。"
+          ],
+          "solutionBrief": "先求所有强连通分量。对每个分量计算所有环长的最大公约数 $g$，通过模 $d$ 的 DFS 染色检验其因子；再按颜色统计满足 $k$ 的单船回路和双船互换选择。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1835E",
+          "index": "E",
+          "slot": "E",
+          "title": "Old Mobile",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1835/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/117394",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "probabilities"
+          ],
+          "statementBrief": "键盘有 $m$ 个数字按钮和一个退格按钮，但按钮上的符号不可见，只有按下后才能知道其功能。每次可根据已获得的信息选择按钮；数字会追加到屏幕，退格删除末位（空屏时也计一次），求输入给定 $m$ 进制号码所需按键次数的期望值。",
+          "transformedStatement": "将目标号码中的重复数字压缩，因为同一数字首次发现后再次输入只需一次按键；再把问题抽象为剩余必需按钮数、剩余无用按钮数，以及当前前缀和退格键是否已发现的四类状态。",
+          "keyObservations": [
+            "同一数字第二次及以后都只需按已知按键一次，因此重复数字可从目标中压缩掉。",
+            "初始所有按键完全 indistinguishable，发现过程只依赖未发现的必需键和无用键数量，与目标数字原有顺序无关。",
+            "屏幕状态必须区分空前缀、正确非空前缀、错误前缀和已发现退格键四类，否则无法计算清除错误前缀的代价。",
+            "把状态写成剩余必需键数 $i$ 与剩余无用键数 $j$，按下不同类别按键后的期望可由对应概率加权递推。"
+          ],
+          "solutionBrief": "先压缩目标中的重复数字，再用 $dp[i][j][state]$ 表示剩余必需键、无用键及屏幕状态。分别处理正确键、其他必需键、无用键和退格键，并按各类按键被选中的概率递推期望值，结果在模数下计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1835F",
+          "index": "F",
+          "slot": "F",
+          "title": "Good Graph",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1835/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/117394",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dfs and similar",
+            "graph matchings",
+            "graphs",
+            "implementation"
+          ],
+          "statementBrief": "给定左右两侧各有 $n$ 个顶点的二分图。若存在左侧集合 $S$ 使 $|S|>|N(S)|$，输出这样的集合；否则构造一个边数尽可能少的新二分图，使所有左侧集合是否满足 $|S|=|N(S)|$ 与原图完全一致。",
+          "transformedStatement": "先把 good 图等价看作存在完美匹配的问题；在成功情况下，将保持全部紧集结构的问题进一步化为保持每个极小紧集，并按其大小逐步构造最小边集。",
+          "keyObservations": [
+            "由 Hall 定理，条件对所有 $S$ 满足 $|S|\\le |N(S)|$ 等价于存在完美匹配；找不到完美匹配时，从左侧未匹配点沿交替边可直接得到反例集合。",
+            "邻域函数 $|N(S)|$ 的子模性保证紧集对交集和并集封闭，因此所有紧集都能由包含各顶点的极小紧集组合表示，只需保持这些极小紧集不变。",
+            "按极小紧集大小递增处理未覆盖顶点：单个新顶点连接其匹配点，多个新顶点通过匹配边组成交替环，否则会产生更小的极小紧集。",
+            "已覆盖顶点需要按尽可能少的紧集划分，并连接各集合代表；使用并查集维护代表关系，从而避免引入额外的极小紧集并实现最少边数。"
+          ],
+          "solutionBrief": "先用完美匹配判定 Hall 条件；失败时由交替 DFS 提取 $|S|>|N(S)|$ 的集合。成功后利用紧集的交并封闭性提取极小紧集，按大小递增用匹配边和交替环构造最少边的新图，并用并查集处理重叠集合的代表。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
