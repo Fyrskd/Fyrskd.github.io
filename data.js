@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2947,
+    "total_problems": 2948,
     "source_total_problems": 2948,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 2947,
-    "with_editorial_brief": 2675,
-    "with_solution_brief": 2676,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2948,
+    "with_editorial_brief": 2676,
+    "with_solution_brief": 2677,
     "missing_editorial_brief": 271,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2009,
+    "ai_override_count": 2010,
     "primary_topic_count": 13,
     "contest_count": 448,
     "rating_min": 800,
@@ -34,8 +34,8 @@ window.CF_INSIGHTS_DATA = {
     "数据结构",
     "动态规划与状态设计",
     "组合计数与概率",
-    "图论与网络流",
     "基础实现与模拟",
+    "图论与网络流",
     "字符串",
     "树结构",
     "博弈",
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "基础实现与模拟": 177,
+    "基础实现与模拟": 178,
     "构造与贪心": 930,
     "数论与同余": 319,
     "数据结构": 277,
@@ -60,7 +60,7 @@ window.CF_INSIGHTS_DATA = {
   },
   "statusCounts": {
     "missing_editorial": 271,
-    "ai_generated_with_editorial": 1724,
+    "ai_generated_with_editorial": 1725,
     "ai_generated_partial_editorial": 60,
     "manual_override": 891,
     "statement_derived": 1
@@ -547,17 +547,18 @@ window.CF_INSIGHTS_DATA = {
           "primaryTopic": "动态规划与状态设计",
           "secondaryTopics": [],
           "originalTags": [
-            "dp"
+            "dp",
+            "fft"
           ],
-          "statementBrief": "给定起点 $0$、终点 $n$ 和费用数组 $c$。每次在位置 $i$ 选择正整数 $x$，要求 $m\\&x=x$，移动到 $i+x$ 并支付 $c_x$；所有步长和为 $n$ 的移动序列都算不同，求全部序列费用总和对 $10^9+7$ 取模。",
-          "transformedStatement": "把每条行程视为由允许步长组成的有序组合：先统计每个总位移的组合数，再统计所有组合的步数加一。固定步长 $x$ 时，它在总位移 $n$ 的行程中的出现次数等于位移 $n-x$ 的每条行程可插入该步的 $p+1$ 个位置。",
+          "statementBrief": "给定起点 $0$、终点 $n$ 以及费用数组 $c$。每次可选择正整数 $x$，要求 $m\\&x=x$，从当前位置前进 $x$ 并支付 $c_x$；求所有按顺序进行且最终到达 $n$ 的行程费用总和，答案对 $10^9+7$ 取模。",
+          "transformedStatement": "将每条行程看成由可用步长集合 $I=\\{x>0\\mid m\\&x=x\\}$ 构成的有序组合，其步长总和为 $n$；目标是统计所有组合中每个步长费用出现次数的加权总和。通过计算组合数及插入一个指定步长的总插入位置数来汇总费用。",
           "keyObservations": [
-            "允许的步长恰好是二进制掩码 $m$ 的正子掩码，因此按步长是否为 $2^j$ 分层，可用 $st[i][j]$ 汇总所有小于 $2^j$ 的转移，避免逐个枚举步长。",
-            "路径数满足按最后一步分类的递推；利用 $st$ 后，$dp[i]$ 能在 $O(\\log n)$ 时间内得到，从而统计所有到达位置 $i$ 的路径。",
-            "固定步长 $x$ 后，包含该步的路径删去一次 $x$ 就变成位移 $n-x$ 的路径；若原路径有 $p$ 步，则可将 $x$ 插入 $p+1$ 个位置，因此其总贡献由所有此类路径的 $p+1$ 之和决定。",
-            "令 $cnt[i]$ 表示位移为 $i$ 的所有路径中 $p+1$ 的总和，则按最后一步转移后再加上 $dp[i]$，即可递推这些插入位置数量，并将答案写成 $\\sum_{x\\in I}c_x\\,cnt[n-x]$。"
+            "把所有满足 $m\\&x=x$ 的步长视为可用物品，$dp[i]$ 就是和为 $i$ 的有序步长序列数，从而将路径计数转成带限制的序列 DP。",
+            "用 $st[i][j]$ 汇总小于 $2^j$ 的可用步长转移；加入步长 $2^j$ 时可由 $dp[i-2^j]+st[i-2^j][j]$ 一次性补齐，避免对每个 $i$ 枚举全部步长。",
+            "一条去掉某次长度为 $x$ 的移动后得到的路径若有 $p$ 步，则可将该移动插入 $p+1$ 个位置，因此长度为 $n-x$ 的路径对 $c_x$ 的总贡献由 $cnt[n-x]$ 统一表示。",
+            "$cnt$ 使用与 $dp$ 相同的步长转移，并在每个长度上额外累加 $dp[i]$，正好反映插入新移动后路径步数加一的影响。"
           ],
-          "solutionBrief": "先用分层辅助数组优化路径数 DP，得到所有 $dp[i]$；再递推路径步数权重 $cnt[i]$。每个允许步长 $x$ 的总贡献为 $c_xcnt[n-x]$，累加后取模，整体复杂度为 $O(n\\log n)$。",
+          "solutionBrief": "先用分层辅助数组在 $O(n\\log n)$ 内求出所有长度的路径数 $dp$，再求表示插入一步后位置数的 $cnt$。对每个可用步长 $x$，将 $c_x\\cdot cnt[n-x]$ 累加到答案，结果取模。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
@@ -89622,9 +89623,35 @@ window.CF_INSIGHTS_DATA = {
       "date": "2022-10-23",
       "url": "https://codeforces.com/contest/1754",
       "type": "Div. 2",
-      "problemCount": 1,
+      "problemCount": 2,
       "maxRating": 800,
       "problems": [
+        {
+          "key": "1754A",
+          "index": "A",
+          "slot": "A",
+          "title": "Technical Support",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1754/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/108336",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定按时间排列、只标记为客户提问 `Q` 或客服回答 `A` 的对话，且第一条一定是提问。客服回答可以延迟到后续提问之后；判断是否存在一种对应关系，使每个提问最终都得到至少一条回答。",
+          "transformedStatement": "把对话转化为未匹配提问数的单次扫描：提问产生待处理需求，回答优先消去一个需求；当需求已为空时，后续回答视为同一提问的额外回答。最终是否归零决定对话是否合法。",
+          "keyObservations": [
+            "用未处理问题数表示当前仍需回答的客户提问：遇到 `Q` 加一，遇到 `A` 减一，从而只需关注消息类型而不必知道具体文本。",
+            "当回答使计数变为负数时，说明它属于某个问题的额外回答，将计数归零即可；额外回答不会产生新的待处理问题。",
+            "扫描结束时计数必须为零，才表示每个客户问题后都出现过回答；若仍为正数，则必有问题没有得到回答。"
+          ],
+          "solutionBrief": "从左到右维护未回答问题数。`Q` 使计数加一，`A` 使计数减一；计数为负时归零，表示出现了额外回答。遍历结束计数为零输出“是”，否则输出“否”，每组复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1754B",
           "index": "B",
