@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2213,
-    "source_total_problems": 2213,
+    "total_problems": 2220,
+    "source_total_problems": 2220,
     "filtered_out_problems": 0,
-    "with_statement_brief": 2213,
+    "with_statement_brief": 2220,
     "with_editorial_brief": 1960,
     "with_solution_brief": 1961,
-    "missing_editorial_brief": 252,
+    "missing_editorial_brief": 259,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1154,
+    "ai_override_count": 1161,
     "primary_topic_count": 13,
-    "contest_count": 343,
+    "contest_count": 344,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 98,
+    "字符串": 100,
     "构造与贪心": 743,
     "图论与网络流": 130,
     "动态规划与状态设计": 205,
-    "数论与同余": 230,
+    "数论与同余": 232,
     "组合计数与概率": 167,
     "数据结构": 189,
     "几何": 49,
-    "树结构": 133,
+    "树结构": 134,
     "代数、矩阵与多项式": 18,
     "交互": 78,
-    "基础实现与模拟": 97,
+    "基础实现与模拟": 99,
     "博弈": 76
   },
   "statusCounts": {
     "ai_generated_with_editorial": 1031,
     "ai_generated_partial_editorial": 38,
-    "missing_editorial": 252,
+    "missing_editorial": 259,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -40001,6 +40001,173 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "关键观察：不是枚举染色，而是枚举平移。对某个平移，处在同一轨道的小立方体必须同色，因此固定方案数是 k^{轨道数}；三维轨道数由各维循环长度的 lcm/gcd 关系算出。最后对所有平移固定点数取平均。",
           "extractionStatus": "manual_override",
           "editorialQuality": "partial"
+        }
+      ]
+    },
+    {
+      "id": 2050,
+      "name": "Codeforces Round 991 (Div. 3)",
+      "date": "2024-12-05",
+      "url": "https://codeforces.com/contest/2050",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 1900,
+      "problems": [
+        {
+          "key": "2050A",
+          "index": "A",
+          "slot": "A",
+          "title": "Line Breaks",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2050/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/137018",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定按顺序排列的 $n$ 个单词和容量为 $m$ 的第一条纸带。选择前缀长度 $x$，把前 $x$ 个单词无空格写在第一条纸带，其余写在第二条纸带；要求第一条纸带完整容纳这些单词，并求最大的 $x$。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "2050B",
+          "index": "B",
+          "slot": "B",
+          "title": "Transfusion",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2050/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/137018",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个正整数数组，每次可选中间下标 $i$，在 $a_{i-1}$ 与 $a_{i+1}$ 之间转移 $1$，方向任选，但操作后所有元素必须非负。判断经过任意次操作后，能否使数组所有元素相等。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "2050C",
+          "index": "C",
+          "slot": "C",
+          "title": "Uninteresting Number",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2050/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/137018",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定一个不含前导零的十进制数，每次可选择一个数字并将其替换为平方值，但平方结果必须仍是一位数，操作次数不限。判断是否能通过这些操作得到一个 divisible by $9$ 的数。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "2050D",
+          "index": "D",
+          "slot": "D",
+          "title": "Digital string maximization",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/2050/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/137018",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定一个不含前导零的数字字符串。每次可选择一个非首位且非零的数字，将它减一后与左侧相邻数字交换；可进行任意次操作，要求得到字典序最大的字符串。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "2050E",
+          "index": "E",
+          "slot": "E",
+          "title": "Three Strings",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2050/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/137018",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定字符串 $a$、$b$ 和长度为 $|a|+|b|$ 的字符串 $c$。$c$ 原本由每次从 $a$ 或 $b$ 的首字符取出并追加而成，直到两串耗尽，之后其中剩余字符串整体追加；随后 $c$ 中若干字符被替换。要求最少可能替换了多少个字符。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "2050F",
+          "index": "F",
+          "slot": "F",
+          "title": "Maximum modulo equality",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/2050/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/137018",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个正整数数组。对每个区间 $[l,r]$，寻找最大的模数 $m$，使区间内所有元素除以 $m$ 的余数都相同；若这样的最大值可视为无穷大，则输出 $0$。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "2050G",
+          "index": "G",
+          "slot": "G",
+          "title": "Tree Destruction",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2050/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/137018",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，可以选择两个顶点，并一次性删除它们之间路径上的所有顶点（端点相同则只删除一个顶点）。要求最大化删除后剩余图的连通分量数量。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
         }
       ]
     },
