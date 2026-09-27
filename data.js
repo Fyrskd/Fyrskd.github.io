@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1998,
-    "source_total_problems": 1998,
+    "total_problems": 2005,
+    "source_total_problems": 2005,
     "filtered_out_problems": 0,
-    "with_statement_brief": 1998,
+    "with_statement_brief": 2005,
     "with_editorial_brief": 1753,
     "with_solution_brief": 1754,
-    "missing_editorial_brief": 244,
+    "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 939,
+    "ai_override_count": 946,
     "primary_topic_count": 13,
-    "contest_count": 313,
+    "contest_count": 314,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 84,
-    "构造与贪心": 673,
+    "字符串": 85,
+    "构造与贪心": 676,
     "图论与网络流": 119,
     "动态规划与状态设计": 189,
-    "数论与同余": 194,
+    "数论与同余": 195,
     "组合计数与概率": 155,
-    "数据结构": 163,
+    "数据结构": 165,
     "几何": 42,
     "树结构": 129,
     "代数、矩阵与多项式": 18,
@@ -61,7 +61,7 @@ window.CF_INSIGHTS_DATA = {
   "statusCounts": {
     "ai_generated_with_editorial": 825,
     "ai_generated_partial_editorial": 37,
-    "missing_editorial": 244,
+    "missing_editorial": 251,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -21421,6 +21421,165 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "关键观察：不要对每个查询重新跑树 DP，而是把 DP 结果作为函数预处理出来。每个节点维护函数斜率变化的断点堆；合并孩子时合并断点，应用 `max` 操作时找到与直线的交点并截断旧函数。所有断点总增量可摊还控制，查询时在根函数上求值即可。",
           "extractionStatus": "manual_override",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2149,
+      "name": "Codeforces Round 1054 (Div. 3)",
+      "date": "2025-09-25",
+      "url": "https://codeforces.com/contest/2149",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2100,
+      "problems": [
+        {
+          "key": "2149A",
+          "index": "A",
+          "slot": "A",
+          "title": "Be Positive",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2149/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定一个只含 $-1$、$0$、$1$ 的数组。每次可任选一个位置并将该元素增加 $1$，重复任意次，要求用最少操作使所有元素的乘积严格为正。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2149B",
+          "index": "B",
+          "slot": "B",
+          "title": "Unconventional Pairs",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2149/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定一个长度为偶数的整数数组，需要将所有下标两两配成恰好 $n/2$ 对，每个下标只能使用一次。每对元素的代价是绝对差值，要求最小化所有配对中最大代价。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2149C",
+          "index": "C",
+          "slot": "C",
+          "title": "MEX rose",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2149/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组和目标值 $k$，每次可任选一个位置，将其改成 $0$ 到 $n$ 中的任意整数。求使数组的 MEX（最小未出现的非负整数）恰好为 $k$ 所需的最少修改次数。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2149D",
+          "index": "D",
+          "slot": "D",
+          "title": "A and B",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2149/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
+          "originalTags": [
+            "strings"
+          ],
+          "statementBrief": "给定只含 `a` 和 `b` 的字符串，每次可交换一对相邻字符。要求用最少操作使 `a` 或 `b` 的所有字符集中成恰好一个连续块，另一种字符可分布在该块前后，并输出最少操作次数。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2149E",
+          "index": "E",
+          "slot": "E",
+          "title": "Hidden Knowledge of the Ancients",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2149/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "two pointers"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数数组，以及整数 $k,l,r$。需要统计连续子数组的数量：子数组长度必须在 $[l,r]$ 内，且其中恰好包含 $k$ 个不同的数。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2149F",
+          "index": "F",
+          "slot": "F",
+          "title": "Nezuko in the Clearing",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2149/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "math",
+            "ternary search"
+          ],
+          "statementBrief": "角色从数轴上的 $0$ 点出发，初始有 $h$ 点生命，每回合可休息并恢复 $1$ 点生命，或向右移动 $1$；若这是连续移动的第 $j$ 次，则损失 $j$ 点生命，移动后生命不能降至 $0$ 或以下。求到达 $d$ 点所需的最少回合数。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2149G",
+          "index": "G",
+          "slot": "G",
+          "title": "Buratsuta 3",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/2149/problem/G",
+          "editorialUrl": "",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "probabilities"
+          ],
+          "statementBrief": "给定一个整数数组，处理多个区间查询 $(l,r)$。对每个区间统计各数值出现次数，输出所有出现次数严格大于该区间长度除以 $3$ 的整数下取整值，并按升序排列；若没有则输出 $-1$。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
         }
       ]
     },
