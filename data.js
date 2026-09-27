@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2925,
-    "source_total_problems": 2926,
+    "total_problems": 2932,
+    "source_total_problems": 2933,
     "filtered_out_problems": 1,
-    "with_statement_brief": 2925,
+    "with_statement_brief": 2932,
     "with_editorial_brief": 2661,
     "with_solution_brief": 2662,
-    "missing_editorial_brief": 263,
+    "missing_editorial_brief": 270,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1987,
+    "ai_override_count": 1994,
     "primary_topic_count": 13,
-    "contest_count": 445,
+    "contest_count": 446,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "组合计数与概率": 231,
+    "基础实现与模拟": 175,
+    "数论与同余": 318,
+    "组合计数与概率": 232,
     "构造与贪心": 924,
     "动态规划与状态设计": 246,
     "数据结构": 275,
     "图论与网络流": 178,
-    "数论与同余": 315,
     "几何": 70,
     "树结构": 149,
     "博弈": 96,
     "字符串": 155,
     "交互": 93,
-    "基础实现与模拟": 172,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
+    "missing_editorial": 270,
     "ai_generated_with_editorial": 1710,
     "ai_generated_partial_editorial": 60,
-    "missing_editorial": 263,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -90478,6 +90478,172 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "按字符在线处理前缀，用转移总和减去所有以 Fibonacci 串结尾的非法切分。维护仍匹配公共长 Fibonacci 串前缀的 $(j,dp_j)$，用 Zeckendorf 式分解判断下一位并筛选候选；$f_0$ 单独处理，答案取模。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1744,
+      "name": "Codeforces Round  828 (Div. 3)",
+      "date": "2022-10-16",
+      "url": "https://codeforces.com/contest/1744",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2000,
+      "problems": [
+        {
+          "key": "1744A",
+          "index": "A",
+          "slot": "A",
+          "title": "Number Replacement",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1744/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/108101",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数数组和长度同为 $n$ 的小写字符串。每次选择数组中的一个数字并把它替换成一个字母；题面示例表明同一数字的出现位置会统一替换，最终判断能否得到给定字符串。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "1744B",
+          "index": "B",
+          "slot": "B",
+          "title": "Even-Odd Increments ",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1744/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/108101",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个整数数组，依次处理两类查询：按照元素当前是奇数还是偶数，给对应的全部元素增加查询中的数值；每次操作后输出整个数组的元素总和。筛选依据是元素的奇偶值，而不是下标。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "1744C",
+          "index": "C",
+          "slot": "C",
+          "title": "Traffic Light",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1744/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/108101",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "交通灯有一个长度为 $n$ 的循环颜色串，每秒依次显示一个字符并不断重复。已知当前颜色但不知道处于周期中的哪个位置，只能在绿色时过马路；求无论当前位置如何都能保证过马路所需的最少时间。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "1744D",
+          "index": "D",
+          "slot": "D",
+          "title": "Divisibility by 2^n",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1744/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/108101",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 个正整数。按示例，选择下标 $i$ 时可将对应元素 $a_i$ 乘以 $i$，每个下标最多操作一次；要求用最少操作使所有元素的乘积能被 $2^n$ 整除，无解时输出 $-1$。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "1744E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Divisible Numbers (easy version)",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1744/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/108101",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $a<b? $ 的区间参数，实际条件为 $a<c$、$b<d$。需要分别选择 $a<x\\le c$ 和 $b<y\\le d$，使乘积 $xy$ 能被 $ab$ 整除；若不存在这样的数对，输出 $-1\\ -1$。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "1744E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Divisible Numbers (hard version)",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1744/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/108101",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $a,b,c,d$，其中 $a<c$、$b<d$。需要分别从区间 $(a,c]$ 和 $(b,d]$ 中选取整数 $x,y$，使 $xy$ 能被 $ab$ 整除；若不存在这样的数对，输出 $-1\\ -1$。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "1744F",
+          "index": "F",
+          "slot": "F",
+          "title": "MEX vs MED",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1744/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/108101",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个包含 $0$ 到 $n-1$ 的排列，考虑其中每个连续子段。对每个子段计算其 MEX（未出现的最小非负整数）和排序后的下中位数，统计满足 MEX 严格大于中位数的子段数量。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
         }
       ]
     }
