@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3839,
-    "source_total_problems": 3841,
+    "total_problems": 3845,
+    "source_total_problems": 3847,
     "filtered_out_problems": 2,
-    "with_statement_brief": 3839,
+    "with_statement_brief": 3845,
     "with_editorial_brief": 3522,
     "with_solution_brief": 3524,
-    "missing_editorial_brief": 315,
+    "missing_editorial_brief": 321,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2901,
+    "ai_override_count": 2907,
     "primary_topic_count": 13,
-    "contest_count": 595,
+    "contest_count": 596,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 406,
-    "动态规划与状态设计": 315,
-    "构造与贪心": 1245,
-    "组合计数与概率": 293,
-    "图论与网络流": 250,
+    "数论与同余": 407,
+    "动态规划与状态设计": 316,
+    "构造与贪心": 1246,
+    "组合计数与概率": 294,
+    "图论与网络流": 251,
+    "基础实现与模拟": 242,
     "数据结构": 367,
-    "基础实现与模拟": 241,
     "交互": 112,
     "字符串": 200,
     "树结构": 183,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "missing_editorial": 321,
     "ai_generated_with_editorial": 2544,
-    "missing_editorial": 315,
     "ai_generated_partial_editorial": 87,
     "low_confidence": 1,
     "manual_override": 891,
@@ -118297,6 +118297,137 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "将排列转为所有阈值序列 $[a_i\\ge x]$，分别求奇偶交替相邻交换所需轮数。用零的位置、左侧一数和位置奇偶得到贡献公式；按 $x$ 扫描时单点翻转，在线段树上进行区间加与区间最大值维护，所有测试总复杂度为 $O(n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1563,
+      "name": "VK Cup 2021 - Final (Engine)",
+      "date": "2021-08-22",
+      "url": "https://codeforces.com/contest/1563",
+      "type": "Others",
+      "problemCount": 6,
+      "maxRating": 3300,
+      "problems": [
+        {
+          "key": "1563A",
+          "index": "A",
+          "slot": "A",
+          "title": "Charmed by the Game",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1563/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/94216",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "网球比赛由若干局组成，每局一人发球、另一人接发，发球者在相邻两局间交替。已知 Alice 和 Borys 分别赢了 $a$、$b$ 局，但首局谁发球及各局胜者顺序未知；求所有可能出现的破发总数，其中破发指接发球者赢得该局。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1563B",
+          "index": "B",
+          "slot": "B",
+          "title": "Up the Strip",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1563/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/94216",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "有一条编号为 $1$ 到 $n$ 的竖直条带，棋子从 $n$ 出发，反复向上移动直到 $1$。处于 $x>1$ 时，可选择减去任意 $y\\in[1,x-1]$，或选择 $z\\in[2,x]$ 移到 $\\lfloor x/z\\rfloor$；参数不同即使终点相同也算不同方案，求所有移动序列数量对 $m$ 取模。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1563C",
+          "index": "C",
+          "slot": "C",
+          "title": "Bottom-Tier Reversals",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1563/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/94216",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定一个长度为奇数的排列。每次可以选择任意奇数长度的前缀并将其反转，要求输出不超过 $\\frac{5n}{2}$ 次操作后变为升序排列的操作长度序列；若不存在则输出 $-1$。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1563D",
+          "index": "D",
+          "slot": "D",
+          "title": "Top-Notch Insertions",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1563/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/94216",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
+          "originalTags": [
+            "combinatorics"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数序列，按插入排序从左到右处理每个位置：若当前值不小于前一项则跳过，否则将它插入前缀中第一个严格更大的位置，并记录原位置到新位置。要求统计取值均在 $1$ 到 $n$（允许重复）且恰好按给定顺序产生全部 $m$ 次插入的初始序列数量，结果对 $998244353$ 取模。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1563E",
+          "index": "E",
+          "slot": "E",
+          "title": "Down Below",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1563/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/94216",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "graphs"
+          ],
+          "statementBrief": "给定一个连通无向洞穴图，英雄从洞穴 $1$ 出发，每次沿隧道移动但不能连续两次使用同一条隧道反向返回。首次进入其他洞穴时，若当前力量严格大于怪物值 $a_i$ 就击败它并增加 $b_i$，求能击败所有怪物所需的最小初始力量。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1563F",
+          "index": "F",
+          "slot": "F",
+          "title": "Strange Sort",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1563/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/94216",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "sortings"
+          ],
+          "statementBrief": "给定一个长度为奇数的 $1$ 到 $n$ 的排列。第 $i$ 轮中，若 $i$ 为奇数就依次比较 $(1,2),(3,4),\\ldots$，否则比较 $(2,3),(4,5),\\ldots$；每对相邻元素在左值更大时交换，求排列第一次变为升序所需的轮数，初始有序则为 $0$。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
