@@ -46,11 +46,11 @@ window.CF_INSIGHTS_DATA = {
   "topicCounts": {
     "数论与同余": 407,
     "动态规划与状态设计": 316,
-    "构造与贪心": 1246,
+    "构造与贪心": 1245,
     "组合计数与概率": 294,
     "图论与网络流": 251,
     "基础实现与模拟": 242,
-    "数据结构": 367,
+    "数据结构": 368,
     "交互": 112,
     "字符串": 200,
     "树结构": 183,
@@ -188,22 +188,23 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/157140",
           "primaryTopic": "数论与同余",
           "secondaryTopics": [
-            "构造与贪心"
+            "数据结构"
           ],
           "originalTags": [
             "bitmasks",
             "brute force",
+            "data structures",
             "math"
           ],
-          "statementBrief": "给定 $n$ 个小于 $16$ 的数量，并进行若干次永久更新。每次回答时，可任意多次选择相邻两个元素，并对二者同时异或 $3k$（$1\\le k\\le5$）；求最多能让多少个元素变成 $3$ 的倍数。操作只用于当前状态，不影响后续更新。",
-          "transformedStatement": "将相邻操作等价扩展为：可选择任意两个元素，同时异或任意置位数为偶数的四位掩码。于是奇数 popcount 元素不可达，而所有偶数 popcount 元素总能同时构造为 $3$ 的倍数，问题转化为统计这类元素。",
+          "statementBrief": "给定每个口味的数量，更新会永久地把某个位置改为指定值。每次求最大可使数量被 $3$ 整除的元素数；可反复选择相邻两个位置，并对它们同时异或 $3k$（$1\\leq k\\leq5$），这些操作只对当前状态假设进行。",
+          "transformedStatement": "把每个数量视为四位二进制数，操作是在两个位置上同步异或特定掩码。题目等价于判断每个元素的 popcount 奇偶性是否能成为 $3$ 的倍数，最终答案转化为统计 popcount 为偶数的位置数。",
           "keyObservations": [
-            "所有可用掩码 $3,6,9,12,15$ 的二进制置位数均为偶数，因此操作保持每个数的 popcount 奇偶性；奇数 popcount 的元素永远不能变成 $3$ 的倍数。",
-            "沿相邻边连续操作可把同一掩码只作用于任意两个元素；组合操作后，任意偶数 popcount 的四位掩码都可以用于这两个元素。",
-            "若存在奇数 popcount 元素，可将其作为缓冲，对每个偶数 popcount 元素与缓冲同时异或该元素，使前者变为 $0$，从而达到所有可行元素都计入答案。",
-            "若全部元素的 popcount 均为偶数，可先把数组化为 $[x,0,\u001b[0m\\ldots,0]$，其中 $x$ 为全数组异或和；仅剩 $x=5$ 或 $10$ 时，再对前两个元素异或 $3$ 即可全部变为 $3$ 的倍数。"
+            "每次操作使用的掩码为 $3,6,9,12,15$，它们都含偶数个 $1$，所以每个位置的二进制 $1$ 的奇偶性始终不变。",
+            "连续操作相邻位置后，可等价于对任意两个位置同时异或同一掩码；组合这些掩码还能得到任意四位中含偶数个 $1$ 的掩码。",
+            "奇数个 $1$ 的元素不可能变成 $3$ 的倍数，而偶数个 $1$ 的元素总能通过与其他位置配合变成 $0$ 或其他 $3$ 的倍数，因此答案恰为偶数 popcount 元素的数量。",
+            "更新只改变一个元素的贡献，因此维护旧值和新值是否具有偶数 popcount 即可在 $O(1)$ 时间修正答案。"
           ],
-          "solutionBrief": "答案恰为数组中 popcount 为偶数的元素个数。维护该计数即可：更新时减去旧值是否满足偶数 popcount，再加上新值，初始处理为 $O(n)$，每次更新为 $O(1)$。",
+          "solutionBrief": "维护数组中二进制 popcount 为偶数的元素数量。操作保持 popcount 奇偶性，且题解证明所有偶数 popcount 元素都能同时变为 All-Meat；每次更新删除旧贡献并加入新贡献。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
@@ -215,9 +216,9 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2268/problem/C",
           "editorialUrl": "https://codeforces.com/blog/entry/157140",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "数据结构",
           "secondaryTopics": [
-            "数据结构"
+            "构造与贪心"
           ],
           "originalTags": [
             "binary search",
@@ -226,17 +227,18 @@ window.CF_INSIGHTS_DATA = {
             "data structures",
             "divide and conquer",
             "greedy",
+            "trees",
             "two pointers"
           ],
-          "statementBrief": "给定数组，每次选择一个至少包含两个元素的连续区间，取区间最大值 $m$，将区间内每个数与 $m$ 按位与后全部按位异或。求所有合法区间能产生的最大结果。",
-          "transformedStatement": "将每个区间表示为两个前缀异或端点，并用最大笛卡尔树的 LCA 表示区间最大值；问题转为寻找满足指定掩码的端点对，再逐位贪心构造答案。",
+          "statementBrief": "给定数组，每次选择满足 $l<r$ 的连续区间，令区间最大值为 $m$，将区间内每个数与 $m$ 按位与后全部异或。要求在所有区间中求这个结果的最大值。",
+          "transformedStatement": "把区间结果表示为两个前缀异或的按位与，并用最大笛卡尔树按区间最大值划分候选区间；固定答案掩码后，问题变成寻找满足异或关系的两组前缀端点。",
           "keyObservations": [
-            "按位与可分配到异或上，因此区间值等于 $(p_{l-1}\\oplus p_r)\\mathbin{\\&}m$，只需关注两个前缀端点和区间最大值。",
-            "最大笛卡尔树中，区间 $[l,r]$ 的最大值对应其端点节点的 LCA；若 LCA 为 $v$，两端前缀下标分别落在 $[L-1,v-1]$ 与 $[v,R]$。",
-            "固定候选掩码 $M$ 后，令 $s_i$ 为 $a_i\\mathbin{\\&}M$ 的前缀异或；可行条件化为 $(a_v\\mathbin{\\&}M)=M$ 且存在 $s_x\\oplus s_y=M$。",
-            "小子树优先扫描并将大子树前缀异或保留在计数表中，每个端点至多被扫描 $O(\\log n)$ 次；同时必须排除 $(v-1,v)$ 对应的单元素区间。"
+            "按位与可分配到异或上，因此区间值等于 $(p_{l-1}\\oplus p_r)\\mathbin{\\&}m$，问题转为匹配两个前缀端点及区间最大值。",
+            "最大笛卡尔树中，区间 $[l,r]$ 的最大值对应其端点的最近公共祖先；若该祖先为 $v$，两端前缀下标分别落在 $[L_v-1,v-1]$ 与 $[v,R_v]$。",
+            "固定候选掩码 $M$ 后，令 $s_i$ 为 $a_i\\mathbin{\\&}M$ 的前缀异或，则可行条件是 $(a_v\\mathbin{\\&}M)=M$ 且存在 $s_x\\oplus s_y=M$；必须排除 $(x,y)=(v-1,v)$ 对应的单元素区间。",
+            "在笛卡尔树上优先处理较小子树并将其端点与较大侧频次数组合，可使每个端点至多被扫描 $O(\\log n)$ 次，从而在线性对数时间内完成一次掩码判定。"
           ],
-          "solutionBrief": "建立最大笛卡尔树，按答案高位到低位贪心试加掩码 $M$。每次用掩码后的前缀异或，在树上以小合并大检查互补值；单次检查 $O(n\\log n)$，总复杂度 $O(18n\\log n)$。",
+          "solutionBrief": "从最高位到最低位贪心构造答案掩码。每次用最大笛卡尔树和小并大遍历检查前缀异或配对，单次判定为 $O(n\\log n)$，总复杂度为 $O(18n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
