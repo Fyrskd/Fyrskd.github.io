@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3405,
-    "source_total_problems": 3408,
+    "total_problems": 3412,
+    "source_total_problems": 3415,
     "filtered_out_problems": 3,
-    "with_statement_brief": 3405,
+    "with_statement_brief": 3412,
     "with_editorial_brief": 3119,
     "with_solution_brief": 3121,
-    "missing_editorial_brief": 284,
+    "missing_editorial_brief": 291,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2467,
+    "ai_override_count": 2474,
     "primary_topic_count": 13,
-    "contest_count": 523,
+    "contest_count": 524,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1099,
-    "字符串": 179,
-    "数论与同余": 361,
+    "基础实现与模拟": 211,
+    "字符串": 181,
+    "构造与贪心": 1100,
+    "数论与同余": 362,
+    "代数、矩阵与多项式": 24,
+    "图论与网络流": 220,
     "数据结构": 322,
     "树结构": 166,
     "组合计数与概率": 258,
     "几何": 81,
-    "图论与网络流": 219,
     "博弈": 106,
     "动态规划与状态设计": 280,
-    "基础实现与模拟": 210,
-    "交互": 101,
-    "代数、矩阵与多项式": 23
+    "交互": 101
   },
   "statusCounts": {
+    "missing_editorial": 291,
     "ai_generated_with_editorial": 2159,
-    "missing_editorial": 284,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
     "manual_override": 891,
@@ -105126,6 +105126,179 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "用五类区间计数描述最小值端点状态，先在受约束前缀内递推，再利用后缀平移不变性转成卷积；通过生成函数解微分方程，整体复杂度为 $O(nm+n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1652,
+      "name": "Технокубок 2022 - Финал",
+      "date": "2022-03-20",
+      "url": "https://codeforces.com/contest/1652",
+      "type": "Others",
+      "problemCount": 7,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1652A",
+          "index": "A",
+          "slot": "A",
+          "title": "Maximum Cake Tastiness",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1652/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定一列重量为 $a_i$ 的蛋糕块，蛋糕美味度是所有相邻两块重量之和的最大值。最多一次选择一个连续子段并将其反转，求操作后能达到的最大美味度。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1652B",
+          "index": "B",
+          "slot": "B",
+          "title": "Prefix Removals",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1652/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
+          "originalTags": [
+            "strings"
+          ],
+          "statementBrief": "给定一个由小写字母组成的字符串。每次找出当前串中还能在其他位置作为连续子串出现的最长非空前缀，删除这段前缀并重复；若不存在这样的前缀就停止，输出最终字符串。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1652C",
+          "index": "C",
+          "slot": "C",
+          "title": "Alice and the Cake",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1652/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定最终排成任意顺序的 $n$ 块蛋糕及其重量。蛋糕起初是一整块，每次选择重量至少为 $2$ 的一块，将其切成重量分别为向下取整的 $w/2$ 和向上取整的 $w/2$ 的两块，共切 $n-1$ 次；判断是否存在某个初始重量和切分顺序得到给定数组。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1652D",
+          "index": "D",
+          "slot": "D",
+          "title": "Potion Brewing Class",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1652/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "implementation",
+            "math",
+            "number theory",
+            "trees"
+          ],
+          "statementBrief": "给定 $n$ 种原料及 $n-1$ 条比例要求，每条要求规定两种原料用量之比为 $x:y$。需要为每种原料选取正整数用量，使所有比例同时满足，并使总用量最小，输出该最小总量对 $998244353$ 取模。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1652E",
+          "index": "E",
+          "slot": "E",
+          "title": "Arithmetic Operations",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1652/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "代数、矩阵与多项式",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "给定整数数组，每次可任选一个下标，并把该位置改成任意整数，操作可进行任意次。要求把数组变成等差数列，并求所需的最少修改次数。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1652F",
+          "index": "F",
+          "slot": "F",
+          "title": "Minimal String Xoration",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1652/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $2^n$ 的字符串 $s$。选择一个 $j\\in[0,2^n-1]$，将新串第 $i$ 位设为 $s_{i\\oplus j}$，得到一种 xoration；要求在所有选择中输出字典序最小的新串。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1652G",
+          "index": "G",
+          "slot": "G",
+          "title": "Snowy Mountain",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1652/problem/G",
+          "editorialUrl": "",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "graphs",
+            "shortest paths",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树和若干基地，点的高度是到最近基地的距离。每名滑雪者从一个点、初始能量为 $0$ 出发，每次可沿边移动：下坡获得 $1$ 点能量，同高消耗 $1$ 点能量，上坡禁止；能量始终不能为负，求每个起点能连续移动的最大边数。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
         }
       ]
     }
