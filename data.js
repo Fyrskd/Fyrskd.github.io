@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3668,
-    "source_total_problems": 3670,
+    "total_problems": 3674,
+    "source_total_problems": 3676,
     "filtered_out_problems": 2,
-    "with_statement_brief": 3668,
+    "with_statement_brief": 3674,
     "with_editorial_brief": 3362,
     "with_solution_brief": 3364,
-    "missing_editorial_brief": 304,
+    "missing_editorial_brief": 310,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2730,
+    "ai_override_count": 2736,
     "primary_topic_count": 13,
-    "contest_count": 565,
+    "contest_count": 566,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1192,
+    "数论与同余": 382,
+    "构造与贪心": 1194,
+    "交互": 107,
+    "博弈": 112,
+    "字符串": 193,
     "基础实现与模拟": 232,
-    "数论与同余": 381,
     "图论与网络流": 239,
     "组合计数与概率": 277,
     "数据结构": 350,
     "树结构": 177,
-    "博弈": 111,
     "动态规划与状态设计": 297,
-    "字符串": 192,
     "几何": 89,
-    "交互": 106,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "missing_editorial": 310,
     "ai_generated_partial_editorial": 77,
     "ai_generated_with_editorial": 2394,
-    "missing_editorial": 304,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -113100,6 +113100,150 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "维护当前各元素出现次数及其频次分布。反复取最高频 $h$ 的 $k$ 个元素，加入 $(h-1)k(n-k)$，方案数乘 $(k!)^2$，并将它们次数各减 $2$；若 $h=1$，乘剩余元素排列数 $k!$ 后结束。按频次计数可在 $O(n+C)$ 内完成。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1589,
+      "name": "Codeforces Round 755 (Div. 2, based on Technocup 2022 Elimination Round 2)",
+      "date": "2021-11-14",
+      "url": "https://codeforces.com/contest/1589",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1589A",
+          "index": "A",
+          "slot": "A",
+          "title": "Mathematical Addition",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1589/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定正整数 $u,v$，需要输出整数 $x,y$，使 $\\frac{x}{u}+\\frac{y}{v}=\\frac{x+y}{u+v}$。每组数据可输出任意满足 $|x|,|y|\\le 10^{18}$ 且 $(x,y)\\ne(0,0)$ 的解。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1589B",
+          "index": "B",
+          "slot": "B",
+          "title": "Coloring Rectangles",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1589/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的方格矩形，可以反复沿网格线把原矩形或已有矩形切成两块，但最终所有矩形块都不能是 $1\\times1$。随后将每块中的部分单元格涂蓝，使同一块内共边相邻单元格颜色不同，求最少需要涂蓝的单元格数。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1589C",
+          "index": "C",
+          "slot": "C",
+          "title": "Two Arrays",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1589/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定两个长度相同的整数数组。对数组 $a$ 进行一次变换时，可任选若干个不同位置各加 $1$，随后任意重排整个数组；判断是否能使结果恰好等于数组 $b$。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1589D",
+          "index": "D",
+          "slot": "D",
+          "title": "Guess the Permutation",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1589/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "交互",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "combinatorics",
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "初始排列为 $1,2,\\ldots,n$，先选定 $i<j<k$ 且 $j-i>1$，再分别反转区间 $[i,j-1]$ 和 $[j,k]$。你只能询问任意子区间的逆序对数量，并需在不超过 40 次询问内找出这三个位置。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1589E",
+          "index": "E",
+          "slot": "E",
+          "title": "Game with Stones",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1589/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "games",
+            "greedy"
+          ],
+          "statementBrief": "给定一个非负整数数组，每次只能从一对原本相邻且都非空的石堆中各取走一颗；石堆变空后两侧不会重新相邻。统计所有能通过某种操作顺序把整个子段清空的连续子段数量。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1589F",
+          "index": "F",
+          "slot": "F",
+          "title": "Strange LCS",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1589/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "dp",
+            "graphs",
+            "strings"
+          ],
+          "statementBrief": "给定 $n$ 个仅含大小写英文字母的字符串，且每个字符在每个字符串中最多出现两次。可以从每个字符串中删除任意字符但保持剩余顺序，要求找出同时作为所有字符串子序列的最长字符串，并输出其长度和任意一个答案。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
