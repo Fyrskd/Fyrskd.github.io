@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3954,
-    "source_total_problems": 3954,
+    "total_problems": 3960,
+    "source_total_problems": 3960,
     "filtered_out_problems": 0,
-    "with_statement_brief": 3954,
+    "with_statement_brief": 3960,
     "with_editorial_brief": 3616,
     "with_solution_brief": 3618,
-    "missing_editorial_brief": 336,
+    "missing_editorial_brief": 342,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3016,
+    "ai_override_count": 3022,
     "primary_topic_count": 13,
-    "contest_count": 613,
+    "contest_count": 614,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,9 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 418,
-    "构造与贪心": 1285,
-    "组合计数与概率": 305,
+    "构造与贪心": 1286,
+    "数论与同余": 420,
+    "组合计数与概率": 308,
     "交互": 116,
     "基础实现与模拟": 246,
     "字符串": 211,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "missing_editorial": 342,
     "ai_generated_with_editorial": 2633,
     "ai_generated_partial_editorial": 92,
-    "missing_editorial": 336,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -121692,6 +121692,152 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "先利用标准超立方体的二进制邻接结构，按编号递增恢复输入图到标准图的顶点映射。若 $n$ 不是 2 的幂则输出无解；否则按二进制位异或构造标准图着色，再通过映射还原到输入图。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1542,
+      "name": "Codeforces Round 729 (Div. 2)",
+      "date": "2021-07-03",
+      "url": "https://codeforces.com/contest/1542",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1542A",
+          "index": "A",
+          "slot": "A",
+          "title": "Odd Set",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1542/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/92492",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定一个含 $2n$ 个整数的多重集，需要把每个数恰好使用一次，分成 $n$ 对；每对由两个数构成，要求这两个数的和为奇数。判断是否存在这样的配对。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1542B",
+          "index": "B",
+          "slot": "B",
+          "title": "Plus and Multiply",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1542/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/92492",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题目定义一个从初始元素开始、反复按给定规则乘以 $a$ 或加上 $b$ 生成的无限集合。给定正整数 $n,a,b$，需要判断 $n$ 是否属于该集合。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1542C",
+          "index": "C",
+          "slot": "C",
+          "title": "Strange Function",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1542/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/92492",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "对每个给定的正整数 $n$，定义 $f(i)$ 为最小的正整数 $x$，使得 $x$ 不是 $i$ 的因数。要求计算 $f(1)+f(2)+\\cdots+f(n)$，并对 $10^9+7$ 取模。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1542D",
+          "index": "D",
+          "slot": "D",
+          "title": "Priority Queue",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1542/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/92492",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "implementation",
+            "math",
+            "ternary search"
+          ],
+          "statementBrief": "给定一个由“+ x”和“-”组成的序列，考虑从原序列中删除任意数量元素且保持剩余顺序得到的所有子序列。题目定义了每个子序列的函数值 $f(B)$，要求计算所有子序列的 $f(B)$ 之和并对 $998244353$ 取模；但当前记录未给出 $f$ 的定义。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1542E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Abnormal Permutation Pairs (easy version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1542/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/92492",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "给定 $n$，考虑所有由 $1$ 到 $n$ 各出现一次构成的排列对 $(p,q)$。题目要求统计满足题面条件的排列对数量，并对给定的模数取模；但当前题面文本未包含具体条件。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1542E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Abnormal Permutation Pairs (hard version)",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1542/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/92492",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $n$，考虑所有由 $1$ 到 $n$ 各出现一次构成的排列对 $(p,q)$。题目要求统计满足题面所列条件的排列对数量，并对给定的模数取模；但当前提供的题面未显示具体条件。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
