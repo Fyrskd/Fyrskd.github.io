@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4140,
-    "source_total_problems": 4140,
+    "total_problems": 4146,
+    "source_total_problems": 4146,
     "filtered_out_problems": 0,
-    "with_statement_brief": 4140,
+    "with_statement_brief": 4146,
     "with_editorial_brief": 3794,
     "with_solution_brief": 3796,
-    "missing_editorial_brief": 344,
+    "missing_editorial_brief": 350,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3202,
+    "ai_override_count": 3208,
     "primary_topic_count": 13,
-    "contest_count": 644,
+    "contest_count": 645,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 434,
-    "构造与贪心": 1348,
+    "构造与贪心": 1350,
+    "数论与同余": 435,
+    "数据结构": 390,
+    "动态规划与状态设计": 339,
+    "图论与网络流": 278,
     "字符串": 222,
-    "图论与网络流": 277,
-    "动态规划与状态设计": 338,
     "博弈": 119,
     "组合计数与概率": 323,
     "基础实现与模拟": 254,
-    "数据结构": 389,
     "树结构": 193,
     "几何": 96,
     "交互": 121,
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
+    "missing_editorial": 350,
     "ai_generated_with_editorial": 2792,
     "ai_generated_partial_editorial": 111,
-    "missing_editorial": 344,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -127313,6 +127313,146 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "从空串开始逐个构造结果。每轮按字符从大到小尝试尚未选过的字符，并用子序列位置及剩余后缀是否含有所有未选字符来检验可行性；选取最大的可行字符，直至原串中的每种字符都出现一次。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1484,
+      "name": "Codeforces Round 709 (Div. 2, based on Technocup 2021 Final Round)",
+      "date": "2021-03-21",
+      "url": "https://codeforces.com/contest/1484",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1484A",
+          "index": "A",
+          "slot": "A",
+          "title": "Prison Break",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1484/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "监狱由 $a \\times b$ 个相邻方格组成，方格之间及方格与外界之间都有墙。可以预先打通若干面墙，要求无论囚犯被关在哪个方格，都能沿通路到达外界；求至少需要打通多少面墙。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1484B",
+          "index": "B",
+          "slot": "B",
+          "title": "Restore Modulo",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1484/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "对每个整数数组，判断它能否由参数 $n,m,c,s$ 的生成器产生，其中 $n,m$ 为正数、$s$ 非负且 $0\\le c<m$；若能生成，则求可能的最大模数 $m$。题面给出的示例符合从初值开始每步加固定步长并对 $m$ 取模的规律，但生成规则正文缺失。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1484C",
+          "index": "C",
+          "slot": "C",
+          "title": "Basic Diplomacy",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1484/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "combinatorics",
+            "flows",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 位朋友和 $m$ 天，每天给出当天可参与的朋友名单，必须从名单中选一人作为队友。要求安排每天的选择，使任何一位朋友被选中的次数都不超过 $\\lceil m/2\\rceil$；若做不到则报告无解。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1484D",
+          "index": "D",
+          "slot": "D",
+          "title": "Playlist",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1484/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "dsu",
+            "implementation"
+          ],
+          "statementBrief": "歌单按环形顺序循环播放，每首歌有一个 genre。若刚听完的歌与此前最近听过的歌的 genre 最大公约数为 1，就删除刚听完的歌；删除后忘记此前的播放记录，继续跳过已删歌曲播放。求最终会删除哪些歌曲及其删除顺序。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1484E",
+          "index": "E",
+          "slot": "E",
+          "title": "Skyline Photo",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1484/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "给定一排高度互不相同、各自带有美值的建筑。需要把整排建筑划分成若干个非空连续区间，每栋建筑恰好属于一个区间；每段得分为其中最低建筑的美值，求总得分最大值。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1484F",
+          "index": "F",
+          "slot": "F",
+          "title": "Useful Edges",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1484/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个带正权边的无向图，以及若干互不相同的三元组 $(u,v,l)$。若存在一条连接 $u$ 和 $v$、总边权不超过 $l$ 且经过某条边的路径（允许重复经过顶点），则该边有用；要求统计有用边的数量。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
