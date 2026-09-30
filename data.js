@@ -1,5 +1,5 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-09-29",
+  "generatedAt": "2026-09-30",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
     "total_problems": 4312,
@@ -218,6 +218,7 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/157140",
           "primaryTopic": "数据结构",
           "secondaryTopics": [
+            "树结构",
             "构造与贪心"
           ],
           "originalTags": [
@@ -226,19 +227,20 @@ window.CF_INSIGHTS_DATA = {
             "brute force",
             "data structures",
             "divide and conquer",
+            "dsu",
             "greedy",
             "trees",
             "two pointers"
           ],
-          "statementBrief": "给定数组，每次选择满足 $l<r$ 的连续区间，令区间最大值为 $m$，将区间内每个数与 $m$ 按位与后全部异或。要求在所有区间中求这个结果的最大值。",
-          "transformedStatement": "把区间结果表示为两个前缀异或的按位与，并用最大笛卡尔树按区间最大值划分候选区间；固定答案掩码后，问题变成寻找满足异或关系的两组前缀端点。",
+          "statementBrief": "给定数组，任选长度至少为 2 的连续区间，令区间最大值为 $m$，将区间每个元素分别与 $m$ 按位与后再全部按位异或。求所有区间中该结果的最大值。",
+          "transformedStatement": "用前缀异或把区间结果改写为 $(p_{l-1}\\oplus p_r)\\&m$；再用最大笛卡尔树按区间最大值分组，使每个区间由其 LCA 节点及左右两侧前缀端点表示。",
           "keyObservations": [
-            "按位与可分配到异或上，因此区间值等于 $(p_{l-1}\\oplus p_r)\\mathbin{\\&}m$，问题转为匹配两个前缀端点及区间最大值。",
-            "最大笛卡尔树中，区间 $[l,r]$ 的最大值对应其端点的最近公共祖先；若该祖先为 $v$，两端前缀下标分别落在 $[L_v-1,v-1]$ 与 $[v,R_v]$。",
-            "固定候选掩码 $M$ 后，令 $s_i$ 为 $a_i\\mathbin{\\&}M$ 的前缀异或，则可行条件是 $(a_v\\mathbin{\\&}M)=M$ 且存在 $s_x\\oplus s_y=M$；必须排除 $(x,y)=(v-1,v)$ 对应的单元素区间。",
-            "在笛卡尔树上优先处理较小子树并将其端点与较大侧频次数组合，可使每个端点至多被扫描 $O(\\log n)$ 次，从而在线性对数时间内完成一次掩码判定。"
+            "按位与对异或可分配，因此区间值等于前缀异或端点的异或再与区间最大值相与，即 $(p_{l-1}\\oplus p_r)\\&m$。",
+            "最大笛卡尔树中，区间 $[l,r]$ 的最大值对应节点是其端点位置的 LCA；固定节点后，合法区间端点被限制在该节点左右子树覆盖的两段前缀范围内。",
+            "从高位到低位贪心构造候选掩码 $M$；可行性等价于存在节点 $v$ 满足 $(a_v\\&M)=M$，且两端前缀异或为 $M$。",
+            "对每个节点保留较大侧的前缀异或频次，枚举较小侧寻找互补值；必须排除端点 $(v-1,v)$，否则会把禁止的单元素区间误判为合法。"
           ],
-          "solutionBrief": "从最高位到最低位贪心构造答案掩码。每次用最大笛卡尔树和小并大遍历检查前缀异或配对，单次判定为 $O(n\\log n)$，总复杂度为 $O(18n\\log n)$。",
+          "solutionBrief": "先用最大笛卡尔树确定区间最大值，再按位贪心尝试答案掩码。每次检查将数组按掩码取与，用前缀异或和小侧合并维护频次，判断互补端点是否存在并排除单元素区间；单次检查为 $O(n\\log n)$，总计 $O(18n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
