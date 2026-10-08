@@ -1,5 +1,5 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-10-07",
+  "generatedAt": "2026-10-08",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
     "total_problems": 4321,
@@ -44,17 +44,17 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1417,
-    "动态规划与状态设计": 358,
+    "构造与贪心": 1416,
+    "动态规划与状态设计": 357,
     "数据结构": 402,
-    "图论与网络流": 293,
+    "图论与网络流": 294,
     "数论与同余": 450,
     "交互": 129,
     "组合计数与概率": 332,
     "几何": 101,
     "树结构": 200,
     "字符串": 229,
-    "基础实现与模拟": 261,
+    "基础实现与模拟": 262,
     "代数、矩阵与多项式": 28,
     "博弈": 121
   },
@@ -159,13 +159,15 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2275/problem/D",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "基础实现与模拟",
           "secondaryTopics": [],
           "originalTags": [
             "binary search",
-            "greedy"
+            "brute force",
+            "greedy",
+            "implementation"
           ],
-          "statementBrief": "有 $n$ 个实验室，每个实验室有按顺序区分的三个读数 $(a_i,b_i,c_i)$。每次可任选一个实验室，并按三种规定之一，将某个读数加上另外两个读数按指定顺序相减后的符号值；最多操作 $k$ 次，求操作后所有实验室读数和的最小值的最大可能值。",
+          "statementBrief": "有 $n$ 个实验室，每个实验室有按顺序排列的三个读数 $(a_i,b_i,c_i)$。每次可选择一个实验室并执行三种调整之一：将某个读数加上另外两个读数按题面指定顺序作差后的符号值；总共至多操作 $k$ 次，求操作后所有实验室读数和的最小值最大能是多少。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -180,13 +182,16 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2275/problem/E",
           "editorialUrl": "",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [],
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "基础实现与模拟"
+          ],
           "originalTags": [
             "dp",
             "implementation"
           ],
-          "statementBrief": "两排各有 $n$ 栋建筑，建筑 $a_i$ 与 $b_i$ 相连，且 $a_i$ 还与相邻列的 $b_{i-1}$、$b_{i+1}$ 相连（下标合法时）。从 $a_1$ 出发，沿这些双向道路恰好访问全部 $2n$ 栋建筑各一次，终点不限；同公司建筑间道路长 $2$，不同公司间长 $1$，要求路线总长度最大值。",
+          "statementBrief": "给定两排各有 $n$ 栋建筑，$a_i$ 与 $b_i$、$b_{i-1}$（若存在）、$b_{i+1}$（若存在）之间有双向道路。每次只能沿道路前往相邻建筑；同公司建筑之间的路长为 $2$，不同公司之间为 $1$，从 $a_1$ 出发且每栋楼恰好访问一次，可在任意建筑结束，求路线最大长度。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -208,7 +213,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "number theory"
           ],
-          "statementBrief": "给定 $n$ 个正整数强度。对每个有序对 $(i,j)$，把前 $j$ 包茶的强度相乘，再乘上第 $i$ 包的强度；若所得正整数的自然约数个数为奇数，则该对称为任性混合。要求统计这样的有序对数量。",
+          "statementBrief": "给定正整数数组 $a$。对每个 $1\\le j\\le n$，先取数组前 $j$ 项，再额外取一份编号为 $i$ 的茶包，得到乘积 $a_i\\prod_{k=1}^{j}a_k$；统计所有 $1\\le i,j\\le n$ 中，使该乘积的正约数个数为奇数的配对数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -231,9 +236,11 @@ window.CF_INSIGHTS_DATA = {
             "dsu",
             "graphs",
             "greedy",
+            "math",
+            "sortings",
             "ternary search"
           ],
-          "statementBrief": "给定一张由建筑和双向电缆组成的图，可以先拆除任意一些电缆并按其价值回收铜材，再按每条 $x,2x,3x,\\ldots$ 的费用顺序新增任意建筑间的电缆。每种费用增量 $x$ 下，都要使最终网络连通，并求最大利润。",
+          "statementBrief": "给定由 $n$ 栋建筑和若干双向电缆组成的网络，每条旧电缆含价值为 $d_i$ 的铜。重建时可先拆除任意旧电缆并回收其铜，再按新电缆安装次序支付 $x,2x,3x,$ 的费用，最后必须使网络连通；对每个给定的 $x$，求最大利润。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
