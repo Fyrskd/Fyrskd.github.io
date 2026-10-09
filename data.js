@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 121
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2951,
-    "ai_generated_partial_editorial": 120,
+    "ai_generated_with_editorial": 2952,
+    "ai_generated_partial_editorial": 119,
     "missing_editorial": 357,
     "low_confidence": 1,
     "manual_override": 891,
@@ -68015,15 +68015,15 @@ window.CF_INSIGHTS_DATA = {
           "originalTags": [
             "greedy"
           ],
-          "statementBrief": "给定整数序列 $a$，需要构造一个正的严格递增序列 $b$，其中每个位置的 $b_i$ 不能与对应的 $a_i$ 冲突。每一步都应尽量取当前允许的最小值，最后求所有合法序列中末项 $b_n$ 的最小值。",
-          "transformedStatement": "把问题视为逐位置选择最小合法值：当前 $b_i$ 至少比前一项大 $1$，若这个候选恰好等于 $a_i$，就再增加 $1$；因此无需回溯，末项由局部最小选择唯一确定。",
+          "statementBrief": "给定整数序列 $a$，要构造正整数序列 $b$，使其严格递增且每个位置满足 $b_i\\ne a_i$。对每组数据，求所有符合条件的序列中末项 $b_n$ 的最小值。",
+          "transformedStatement": "将每个 $a_i$ 看作位置 $i$ 的一个禁用值：在前一项确定后，只需从严格递增要求给出的最小候选 $b_{i-1}+1$ 开始，若撞上禁值便跳过它，逐项得到最小可行前缀。",
           "keyObservations": [
-            "每个 $b_i$ 只需在保持严格递增的前提下避开对应的 $a_i$；因此当前值越小，后续构造的下界也越小。",
-            "首项从 $1$ 开始时，若 $a_1=1$ 必须改取 $2$，否则取 $1$，这是最小的合法起点。",
-            "对 $i\\ge2$，若 $a_i=b_{i-1}+1$，最小递增候选会冲突，必须跳到 $b_{i-1}+2$；否则直接取 $b_{i-1}+1$，逐步得到最小的 $b_n$。"
+            "为了让最终的 $b_n$ 最小，每一项都应取满足严格递增且避开当前位置禁值的最小正整数；更大的选择只会让后续下界增大。",
+            "给定上一项 $b_{i-1}$ 后，下一项的最小候选是 $b_{i-1}+1$；只有它恰好等于 $a_i$ 时才需再加 $1$，因此每步只需检查一个候选值。",
+            "第一项同理取最小正整数 $1$，若 $a_1=1$ 则改取 $2$；按此规则构造出的每个前缀都尽可能小，故最终项达到最小值。"
           ],
-          "solutionBrief": "从左到右构造最小的严格递增序列 $b$：首项在 $1$ 与 $2$ 中避开 $a_1$；之后优先取 $b_{i-1}+1$，若它等于 $a_i$ 就取 $b_{i-1}+2$。最终输出 $b_n$，每组复杂度为 $O(n)$。",
-          "extractionStatus": "ai_generated_partial_editorial",
+          "solutionBrief": "从 $b_1=1$ 开始，若它等于 $a_1$ 就改为 $2$。之后依次令 $b_i=b_{i-1}+1$，若该值等于 $a_i$ 则再加 $1$；最终输出 $b_n$，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "partial"
         },
         {
