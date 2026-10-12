@@ -155,9 +155,10 @@ window.CF_INSIGHTS_DATA = {
           "originalTags": [
             "binary search",
             "constructive algorithms",
+            "dp",
             "greedy"
           ],
-          "statementBrief": "给定 $n$ 个橙子和 $n$ 个袋子，将第 $i$ 个橙子放入编号为 $a_i$ 的袋子，其中 $1\\le a_i\\le n$。若某袋恰有 $s$ 个橙子，监管者可选择该数量并没收所有此类袋子；代价为所有 $s$ 中的最大值 $s\\cdot c_s$，要求构造数组使代价最小。",
+          "statementBrief": "给定 $n$ 个橙子和 $n$ 个袋子，用数组 $a$ 指定每个橙子放入哪个袋子。监管者选择一个装橙子数量 $s$，没收所有恰好装有 $s$ 个橙子的袋子；要求构造 $a$，使所有可能的没收数量中的最大值最小。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
