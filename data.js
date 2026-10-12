@@ -1,5 +1,5 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-10-11",
+  "generatedAt": "2026-10-12",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
     "total_problems": 4338,
@@ -249,9 +249,11 @@ window.CF_INSIGHTS_DATA = {
           "primaryTopic": "交互",
           "secondaryTopics": [],
           "originalTags": [
+            "brute force",
+            "greedy",
             "interactive"
           ],
-          "statementBrief": "有 $n$ 个袋子，第 $k$ 个袋子装有每枚重 6 克的硬币，其余袋子装有每枚重 7 克的硬币，且已知各袋硬币数量但未知 $k$。每次可从各袋选取任意不超过库存的硬币，读取总重量并将硬币放回，需在保证正确的查询次数内确定装有 6 克硬币的袋子；交互器可在不违背历史回答时调整隐藏袋。",
+          "statementBrief": "有 $n$ 个袋子，第 $i$ 袋有 $a_i$ 枚硬币；恰有一袋装 6 克硬币，其余装 7 克硬币。每次可从每袋取任意不超过库存的数量并查询总重量，硬币随后放回；要求在最坏情况下用最少的查询确定 6 克硬币所在袋，并使用不超过 $f(a)$ 次查询。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
