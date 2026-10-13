@@ -198,16 +198,17 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "数据结构",
           "secondaryTopics": [
-            "代数、矩阵与多项式",
+            "数论与同余",
             "基础实现与模拟"
           ],
           "originalTags": [
+            "brute force",
             "data structures",
             "implementation",
             "math",
             "matrices"
           ],
-          "statementBrief": "给定两个 $n\\times n$ 矩阵 $a,b$，更新操作可把一个矩形内所有元素同时加上常数。查询时可假设分别给该矩形的每行、每列加任意常数，判断能否将 $a$ 的子矩阵变成 $b$ 的对应子矩阵。",
+          "statementBrief": "给定两个 $n\\times n$ 矩阵 $a,b$，对 $a$ 进行子矩阵加法更新；查询时可在指定子矩阵内分别给每行、每列加任意常数，判断能否使其等于 $b$ 的对应子矩阵。每次查询独立且不修改矩阵，要求输出 YES 或 NO。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
