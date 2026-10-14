@@ -6,9 +6,9 @@ window.CF_INSIGHTS_DATA = {
     "source_total_problems": 4345,
     "filtered_out_problems": 0,
     "with_statement_brief": 4345,
-    "with_editorial_brief": 3978,
-    "with_solution_brief": 3980,
-    "missing_editorial_brief": 365,
+    "with_editorial_brief": 3985,
+    "with_solution_brief": 3987,
+    "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 3407,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 125
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2970,
+    "ai_generated_with_editorial": 2977,
     "ai_generated_partial_editorial": 117,
-    "missing_editorial": 365,
+    "missing_editorial": 358,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -93,19 +93,25 @@ window.CF_INSIGHTS_DATA = {
           "title": "Perfect Sandwiches",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2276/problem/A",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/157752",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "数论与同余"
+          ],
           "originalTags": [
             "greedy",
             "math"
           ],
-          "statementBrief": "给定 $a$ 片奶酪和 $b$ 片香肠，需要把它们全部且各使用一次分配到若干个三明治中。每个三明治至少含一片奶酪和一片香肠，且奶酪片数必须严格多于香肠片数；求最多能制作的三明治数量，无法完成则输出 $-1$。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "statementBrief": "给定 $a$ 片奶酪和 $b$ 片香肠，要把所有材料分配到若干个三明治中；每个三明治至少含一片两类材料，且奶酪片数必须严格多于香肠片数。求最多能制作多少个三明治，若无法按规则用完全部材料则输出 $-1$。",
+          "transformedStatement": "把答案设为三明治数量 $k$：每个三明治至少消耗一片香肠，并且整体奶酪比香肠至少多 $k$ 片，所以 $k\\le\\min(b,a-b)$；当 $a>b$ 时，这个上界可由先分配 $(2,1)$ 再均匀补余料实现。",
+          "keyObservations": [
+            "若有 $k$ 个三明治，每个至少用一片香肠，因此必须满足 $k\\le b$；每个三明治的奶酪至少比香肠多一片，总体还必须满足 $a-b\\ge k$，从而得到 $k\\le a-b$。",
+            "当 $b\\ge a$ 时总奶酪数不多于香肠数，而每个三明治都要求奶酪严格更多，所有材料无法同时用完，因此无解。",
+            "当 $a>b$ 时，取 $k=\\min(b,a-b)$，先给每个三明治分配 $2$ 片奶酪和 $1$ 片香肠；剩余材料中奶酪不少于香肠，可成对补入各三明治，剩余奶酪单独补入，因此该上界一定可实现。"
+          ],
+          "solutionBrief": "若 $b\\ge a$ 输出 $-1$。否则答案为 $\\min(b,a-b)$：这是由香肠数量和奶酪相对盈余分别得到的上界，且可通过先分配 $(2,1)$ 再补充分材料实现。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         },
         {
           "key": "2276B",
@@ -114,7 +120,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Replace and Compress",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2276/problem/B",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/157752",
           "primaryTopic": "字符串",
           "secondaryTopics": [
             "基础实现与模拟"
@@ -123,12 +129,17 @@ window.CF_INSIGHTS_DATA = {
             "implementation",
             "strings"
           ],
-          "statementBrief": "给定一个只含 0 和 1 的字符串。必须先至多翻转一个下标在 $2$ 到 $n-1$ 之间的字符（也可以不翻转，首尾不能改），再把每个极大连续相同字符块压缩为一个字符，求所有可能得到的不同字符串数量。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "statementBrief": "给定只含 $0$ 和 $1$ 的字符串，至多翻转一个下标在 $2$ 到 $n-1$ 的字符，首尾不能改；随后把每个极大连续相同字符块压成一个字符，求所有可能得到的不同字符串数量。",
+          "transformedStatement": "把结果表示为压缩串长度：首尾字符固定且压缩串必然交替，所以固定长度时结果唯一。翻转内部字符只改变相邻不同对的数量，因而只需判断长度 $L$、$L+2$、$L-2$ 是否可达。",
+          "keyObservations": [
+            "首尾字符不能修改，因此压缩串的首尾固定；在首尾固定时，压缩串只由长度唯一决定，计数可转化为统计可能的长度。",
+            "压缩串长度等于原串中相邻字符不同的对数加 $1$；翻转一个内部字符最多影响两对相邻字符，所以长度最多变化 $2$。",
+            "首尾不变使压缩串长度奇偶性保持不变，因此长度不可能只变化 $1$，只需判断能否增加或减少 $2$。",
+            "存在 $000/111$ 时翻转中间字符可让长度增加 $2$，存在 $010/101$ 时可让长度减少 $2$；每种可达长度对应一个不同结果。"
+          ],
+          "solutionBrief": "先统计原串压缩后的长度 $L$。答案初始为 $1$；若存在 $000$ 或 $111$，加入长度 $L+2$ 的结果；若存在 $010$ 或 $101$，加入长度 $L-2$ 的结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         },
         {
           "key": "2276C",
@@ -137,19 +148,24 @@ window.CF_INSIGHTS_DATA = {
           "title": "Subarrays",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2276/problem/C",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/157752",
           "primaryTopic": "数论与同余",
           "secondaryTopics": [],
           "originalTags": [
             "math",
             "number theory"
           ],
-          "statementBrief": "给定一个含正整数的数组和整数 $k$，每次考察一个连续子数组；只有当子数组元素和能被 $k$ 整除且长度严格大于 $k$ 时才算合格。要求统计所有合格子数组的数量。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "statementBrief": "给定含正整数的数组和整数 $k$，连续子数组被称为合法，当且仅当其元素和能被 $k$ 整除且长度严格大于 $k$。需要统计所有合法连续子数组的数量。",
+          "transformedStatement": "把每个子数组对应为两个前缀和下标 $(i,j)$；问题转化为统计满足 $j-i>k$ 且两个前缀和模 $k$ 相同的下标对。",
+          "keyObservations": [
+            "将子数组端点改写为前缀和下标对 $(i,j)$ 后，区间和可被 $k$ 整除等价于两个前缀和模 $k$ 相同，从而只需比较余数。",
+            "长度限制严格大于 $k$ 等价于端点下标满足 $j-i>k$，因此每个右端点只需统计至少位于其前方 $k+1$ 个位置的同余数前缀。",
+            "按右端点从左到右处理时，把下标不超过 $j-k-1$ 的前缀余数加入计数数组，计数数组中的对应值恰好是当前右端点的合法左端点数量。",
+            "前缀和只保留模 $k$ 的结果即可；每个前缀只被加入和查询一次，因此计数过程为线性复杂度。"
+          ],
+          "solutionBrief": "计算前缀和模 $k$，把每个子数组转为两个前缀端点。按右端点扫描，用计数数组维护下标不超过 $j-k-1$ 的各余数出现次数，并累加当前余数的计数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         },
         {
           "key": "2276D",
@@ -158,7 +174,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Caveman",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2276/problem/D",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/157752",
           "primaryTopic": "图论与网络流",
           "secondaryTopics": [
             "组合计数与概率"
@@ -167,12 +183,17 @@ window.CF_INSIGHTS_DATA = {
             "combinatorics",
             "graphs"
           ],
-          "statementBrief": "给定一个无向图，要把每个顶点染成红色或蓝色，并保证每个顶点至少有一个相邻顶点使用相反颜色。需要统计合法染色方案数，并将结果分别输出为 1、2、Many（超过 2）或 Brain Melt（为 0）。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "statementBrief": "给定一个无向图，将每个顶点染成红色或蓝色，并要求每个顶点至少有一个邻居颜色与它不同。请按合法染色方案数输出 1、2、Many（超过 2）或 Brain Melt（为 0）。",
+          "transformedStatement": "把问题转化为按图结构分类合法染色数：孤立点对应零解，星形图恰有两解，其余无孤立点的图都有超过两解；因此只需识别是否为星形图。",
+          "keyObservations": [
+            "若存在孤立顶点，它无法拥有异色邻居，因此合法染色数为 $0$；反之每个非平凡连通分量都至少能构造一种合法染色，且颜色整体翻转会得到另一种。",
+            "合法染色数始终为偶数，所以答案不可能是 $1$；多个连通分量的染色方案数相乘，因此非连通图必然有至少 $4$ 种合法染色。",
+            "若图含有 4 个顶点的路径，则该路径已有至少 $4$ 种合法染色，并可扩展到整图；含环的图也会产生超过 $2$ 种染色，因此答案为 $2$ 时图必须是无环且直径不超过 $2$ 的连通图。",
+            "满足上述条件的树恰好是星形图：一个顶点连接其余所有顶点，中心颜色确定后所有叶子颜色唯一确定，所以恰有 $2$ 种合法染色。"
+          ],
+          "solutionBrief": "先检查孤立点；存在则输出 Brain Melt。否则若图不是连通星形图，合法染色数大于 $2$，输出 Many；只有星形图输出 2。用最大度数顶点验证其度数为 $n-1$ 且其他顶点度数均为 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         },
         {
           "key": "2276E",
@@ -181,10 +202,12 @@ window.CF_INSIGHTS_DATA = {
           "title": "Good Substrings",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2276/problem/E",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/157752",
           "primaryTopic": "字符串",
           "secondaryTopics": [
-            "组合计数与概率"
+            "数据结构",
+            "组合计数与概率",
+            "构造与贪心"
           ],
           "originalTags": [
             "combinatorics",
@@ -193,12 +216,17 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "strings"
           ],
-          "statementBrief": "给定一个只含数字的字符串，连续子串若包含子序列 2025 且不包含子序列 2026，则为坏子串，否则为好子串。对每个位置 $i$，统计所有包含该位置的好子串数量。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "statementBrief": "给定只含数字的字符串，连续子串若包含子序列“2025”但不包含子序列“2026”则为坏，否则为好。对每个位置 $i$，统计所有包含该位置的好子串数量。",
+          "transformedStatement": "按左端点逐一处理：寻找首次能组成“2025”和“2026”的右端点，将所有右端点划分为好、坏、好三段；再把每段对各位置的计数贡献转化为区间一次函数加法。",
+          "keyObservations": [
+            "固定左端点 $l$ 后，只需比较首次形成子序列“2025”和“2026”的右端点 $r25、r26$，无需逐个判断所有子串。",
+            "若 $r25<r26$，右端点区间 $[r25,r26-1]$ 恰好对应坏子串；其前后两个区间都对应好子串，因此有效右端点被拆成至多三段。",
+            "固定 $l$ 时，一个右端点区间对各位置的贡献呈等差变化，所以可将贡献写成位置的一次函数，并用差分数组批量加入。",
+            "用 $nxt[i][d]$ 表示当前位置之后数字 $d$ 的最近位置，按子序列顺序跳转即可求出 $r25、r26$，避免为每个右端点重复匹配。"
+          ],
+          "solutionBrief": "预处理每个位置到各数字的最近出现位置，用跳转求固定左端点下的 $r25、r26$，据此把好右端点划成至多三段。每段对所有包含位置的子串贡献一个等差函数，使用线性函数差分数组汇总答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         },
         {
           "key": "2276F",
@@ -207,21 +235,32 @@ window.CF_INSIGHTS_DATA = {
           "title": "Permutation Coloring Game",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2276/problem/F",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/157752",
           "primaryTopic": "博弈",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "图论与网络流",
+            "构造与贪心"
+          ],
           "originalTags": [
             "dp",
             "dsu",
             "games",
+            "greedy",
+            "implementation",
             "math"
           ],
-          "statementBrief": "给定一个排列，所有元素初始为白色。Alice 和 Bob 轮流行动，每次选择 $1$ 到 $k$ 个白色元素并把它们全部染成红色或蓝色；全部染色后，若只交换同色元素就能将排列升序排列，则 Alice 获胜，否则 Bob 获胜。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "statementBrief": "给定一个置换，所有位置起初为白色。Alice 与 Bob 轮流选择 $1$ 到 $k$ 个白色元素，并把本回合选中的元素统一染成红色或蓝色；全部染色后，只能交换同色元素，判断置换能否升序排列以及最优双方的胜者。",
+          "transformedStatement": "将置换视为每个位置指向其值的有向环；最终可排序等价于每个环的所有顶点同色，于是游戏转化为 Alice 阻止任何环出现两种颜色、Bob 试图制造混色环。",
+          "keyObservations": [
+            "把置换表示成若干有向环后，能排序当且仅当每个环内颜色完全相同；因此 Bob 只需制造一个混色环即可获胜。",
+            "当 $k\\ge2$ 时，存在长度至少 $k+2$ 的环，或至少两个长度为 $k+1$ 的环，Bob 都能跨回合给同一环补上相反颜色。",
+            "恰有一个长度为 $k+1$ 的环时，Alice 首回合必须处理所有长度 $2$ 到 $k$ 的环；设其总长度为 $l$、单点环数量模 $k+1$ 为 $c$，则仅当 $0<l+c\\le k$ 才能借对称策略获胜。",
+            "其余环长均不超过 $k$ 时，Bob 的威胁等价于选至多 $k$ 个环且总长度至少为 $d+k+1$；只需考虑最长的 $2k$ 个环，并用状态 $dp_{i,j,x}$ 选择 Alice 首回合染色的环，使 Bob 的最大可威胁集合不存在。"
+          ],
+          "solutionBrief": "先按置换环分解判断混色环条件。$k=1$ 单独依据最长环长度与 $n$ 的奇偶处理；$k\\ge2$ 按环长分类，特殊情形用模 $k+1$ 的对称策略，环长均不超过 $k$ 时在最长 $2k$ 个环上做 DP 选择 Alice 的首步。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         },
         {
           "key": "2276G",
@@ -230,20 +269,27 @@ window.CF_INSIGHTS_DATA = {
           "title": "Elimination of Players",
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2276/problem/G",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/157752",
           "primaryTopic": "组合计数与概率",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
           "originalTags": [
             "combinatorics",
             "dp",
             "math"
           ],
-          "statementBrief": "有 $n$ 名强度互不相同的玩家，给定每轮被保护的玩家。共进行 $n-1$ 轮：若当前最弱者未受保护则淘汰他，否则淘汰当前第二弱者；要求统计每名玩家在每轮被淘汰的强度排列数，并按题目规定取模后加权 XOR。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
+          "statementBrief": "有 $n$ 名强度互不相同的玩家，给定每轮受保护的玩家。每轮恰好消灭一人：若当前最弱者未受保护就消灭他，否则消灭当前第二弱者；求每个玩家在每轮被消灭的强度排列数量，并按题目指定的乘积进行异或汇总。",
+          "transformedStatement": "把“保护生效”单独建模：令 $F_i$ 表示第 $i$ 轮受保护者确实是当前最弱者，令 $G_{i,j}$ 表示保护生效且因此消灭 $j$。按受保护序列的相同值连续块进行交替计数，即可重建所有消灭计数。",
+          "keyObservations": [
+            "若第 $i$ 轮消灭的玩家 $j$ 不是受保护者，则他要么当前最弱、强度为 $i$，要么上一轮受保护而被保留；因此答案可由 $G_{i,j}$、$(n-1)!$、$G_{i-1,j}$ 及特例 $F_{i-1}$ 组合得到。",
+            "保护在第 $i$ 轮生效时，受保护玩家的强度由当前相同受保护者连续块决定；从右向左按块做交替加减，得到 $F_i=L_0(n-1)!-L_1(n-2)!+\noindent L_2(n-3)!-\u0011dots$，遇到已出现过的玩家即可停止。",
+            "计算 $G_{i,j}$ 等价于在上述块计数中额外固定玩家 $j$ 的强度为 $i+1$，所以每项阶乘少一个元素，并在向左遇到包含 $j$ 的块时截断。",
+            "将块贡献预处理为交替前缀和，并记录每个玩家向左最近出现的块位置，就能把每个 $G_{i,j}$ 的计算降为 $O(1)$，整体达到 $O(n^2)$。"
+          ],
+          "solutionBrief": "按相同受保护者的连续块维护交替阶乘和，计算保护生效数 $F_i$；再固定被消灭者强度为 $i+1$ 得到 $G_{i,j}$，用最近块位置和前缀和在 $O(1)$ 求值，整体 $O(n^2)$ 后汇总 XOR。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
