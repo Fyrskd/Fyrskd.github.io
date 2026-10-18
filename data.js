@@ -1,5 +1,5 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-10-17",
+  "generatedAt": "2026-10-18",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
     "total_problems": 4355,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1433,
+    "构造与贪心": 1432,
     "动态规划与状态设计": 357,
     "数据结构": 406,
     "图论与网络流": 294,
@@ -53,7 +53,7 @@ window.CF_INSIGHTS_DATA = {
     "组合计数与概率": 333,
     "几何": 101,
     "树结构": 200,
-    "字符串": 231,
+    "字符串": 232,
     "基础实现与模拟": 260,
     "代数、矩阵与多项式": 28,
     "博弈": 127
@@ -147,7 +147,7 @@ window.CF_INSIGHTS_DATA = {
             "games",
             "math"
           ],
-          "statementBrief": "给定一个正整数数组，两名玩家轮流选择任意非空位置集合并删除对应元素；删除一个元素总是合法，删除多个元素则要求其元素和为偶数。无法操作时判负，求先手 Moggity 或后手 Larpity 获胜。",
+          "statementBrief": "给定一个正整数数组，两名玩家轮流操作；每次可删除任意非空位置集合，但若删除多个元素，则这些元素之和必须为偶数，删除一个元素则始终允许。无法操作时失败，要求判断先手 Moggity 还是后手 Larpity 获胜。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -170,7 +170,7 @@ window.CF_INSIGHTS_DATA = {
             "constructive algorithms",
             "math"
           ],
-          "statementBrief": "有 $n$ 个排成一行的位置，当前位置只能藏在其中一个。由于 $m=0$，需要预先安装若干覆盖连续区间的探测器；所有探测器同时报告是否覆盖藏身位置，要求用最少新增探测器唯一确定位置，并输出一种安装方案。",
+          "statementBrief": "有一排编号为 $1$ 到 $n$ 的隐藏位置，当前没有探测器（易版本中 $m=0$）。每个新增探测器覆盖一个连续区间并报告你是否在其中；需预先同时安装最少的探测器，使任意位置都能由全部报告唯一识别，并输出一种安装方案。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -186,7 +186,9 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2261/problem/D2",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "数据结构"
+          ],
           "originalTags": [
             "constructive algorithms",
             "data structures",
@@ -195,7 +197,7 @@ window.CF_INSIGHTS_DATA = {
             "trees",
             "two pointers"
           ],
-          "statementBrief": "有 $n$ 个按顺序排列的位置，已有 $m$ 个区间探测器；每个探测器同时报告藏身位置是否落在其覆盖区间内。需要一次性新增尽可能少的区间探测器，使所有位置的报告组合互不相同，并输出这些新增区间。",
+          "statementBrief": "有 $n$ 个按顺序排列的藏身位置，已安装的每个探测器覆盖一个连续区间，并同时报告你是否在该区间内。需要再安装最少数量的区间探测器，使所有探测器的报告能够唯一确定位置，并输出一种安装方案。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -210,10 +212,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2261/problem/E",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "基础实现与模拟"
-          ],
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "data structures",
@@ -221,7 +221,7 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "trees"
           ],
-          "statementBrief": "给定一个长度为 $n$ 的合法括号序列和整数 $k$。每次可选择相邻的 `()`，删除它们后在剩余字符串外层加上 `(` 和 `)`，最多操作 $k$ 次；要求最大化最终字符串中连续开括号的最长长度。",
+          "statementBrief": "给定一个正规括号序列和整数 $k$。每次可选择当前相邻的 `()`，删除它们并在剩余字符串外包上一对括号，最多操作 $k$ 次；求最终序列中最长连续 `(` 的最大长度。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -237,15 +237,16 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2261/problem/F1",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
           "originalTags": [
             "brute force",
-            "communication",
             "constructive algorithms",
             "dp",
             "math"
           ],
-          "statementBrief": "给定一个 $n\\times n$ 网格，要为每个目标格分别设置 0/1 信标布局，且每个布局最多有 $k$ 个零。机器人从整张网格开始，连续执行 $2n-2$ 次动作；每次只能根据当前子矩形内的信标数选择缩小上、下、左或右边界，最终必须唯一剩下目标格，并输出所有布局及统一的计数到动作映射。",
+          "statementBrief": "给定一个 $n\\times n$ 网格，需为每个目标单元格分别输出一个仅含 $0/1$ 的网格，且每个网格至多有 $k$ 个零。机器人从整张网格开始，恰好根据当前子网格中的 $1$ 数量，通过固定的 $S\\to U/D/L/R$ 规则逐步删去一行或一列，最终必须定位到对应目标；还需输出这套规则。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -265,7 +266,7 @@ window.CF_INSIGHTS_DATA = {
           "originalTags": [
             "constructive algorithms"
           ],
-          "statementBrief": "给定 $n\\times n$ 网格中的任意目标单元，需要为每个目标分别布置信标，使零最多为 $k=f(n)$。机器人从整张网格开始，恰好进行 $2n-2$ 次操作；每次只能根据当前子网格内的信标数 $S$，按统一映射选择向上、下、左或右收缩一个边界，最终必须唯一到达目标单元。",
+          "statementBrief": "给定一个 $n\\times n$ 网格，需要为每个目标单元格分别构造一张 0/1 网格，且每张网格至多含 $k=f(n)$ 个零。机器人从整张网格开始，恰好进行 $2n-2$ 次操作；每次只能根据当前矩形内的 1 的数量 $S$，从上、下、左、右边界中删除一行或一列，最终必须唯一停在目标单元格；同时输出对所有 $S$ 的统一动作映射。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
