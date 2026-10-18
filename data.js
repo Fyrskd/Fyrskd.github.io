@@ -46,9 +46,9 @@ window.CF_INSIGHTS_DATA = {
   "topicCounts": {
     "构造与贪心": 1432,
     "动态规划与状态设计": 357,
-    "数据结构": 406,
+    "数据结构": 405,
     "图论与网络流": 294,
-    "数论与同余": 453,
+    "数论与同余": 454,
     "交互": 132,
     "组合计数与概率": 333,
     "几何": 101,
@@ -187,17 +187,19 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "数据结构"
+            "数据结构",
+            "图论与网络流"
           ],
           "originalTags": [
             "constructive algorithms",
             "data structures",
             "dsu",
+            "graphs",
             "hashing",
             "trees",
             "two pointers"
           ],
-          "statementBrief": "有 $n$ 个按顺序排列的藏身位置，已安装的每个探测器覆盖一个连续区间，并同时报告你是否在该区间内。需要再安装最少数量的区间探测器，使所有探测器的报告能够唯一确定位置，并输出一种安装方案。",
+          "statementBrief": "有 $n$ 个按顺序排列的位置，已有 $m$ 个区间探测器；所有探测器必须在获得任何报告前同时确定。你可以再安装覆盖任意连续区间的探测器，要求无论藏在哪个位置，全部报告都能唯一确定位置，并求最少新增数量及一种安装方案。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -238,15 +240,17 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "基础实现与模拟"
+            "基础实现与模拟",
+            "交互"
           ],
           "originalTags": [
             "brute force",
             "constructive algorithms",
             "dp",
+            "greedy",
             "math"
           ],
-          "statementBrief": "给定一个 $n\\times n$ 网格，需为每个目标单元格分别输出一个仅含 $0/1$ 的网格，且每个网格至多有 $k$ 个零。机器人从整张网格开始，恰好根据当前子网格中的 $1$ 数量，通过固定的 $S\\to U/D/L/R$ 规则逐步删去一行或一列，最终必须定位到对应目标；还需输出这套规则。",
+          "statementBrief": "给定 $n\\times n$ 网格中的任意目标单元格，需要为每个目标分别设置 0/1 网格，且每张网格至多有 $k$ 个零。解码器从整张网格开始，恰好进行 $2n-2$ 次：每次统计当前矩形内的 1 的数量 $S$，按照统一的查表动作执行 U/L/D/R，缩小一条边界，最终必须唯一剩下目标单元格。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -281,15 +285,18 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2261/problem/G",
           "editorialUrl": "",
-          "primaryTopic": "数据结构",
-          "secondaryTopics": [],
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
           "originalTags": [
             "bitmasks",
             "data structures",
             "divide and conquer",
+            "dp",
             "greedy"
           ],
-          "statementBrief": "给定非负整数序列。对每个连续子数组，必须恰好选择一个元素并给它加上任意非负整数，然后使整个子数组的按位异或值尽可能小；要求所有连续子数组的这些最小值之和。",
+          "statementBrief": "给定非负整数数组。对每个连续子数组，必须恰好一次选择一个元素，并给它加上任意非负整数；定义操作后所有元素按位异或的最小值，要求计算所有连续子数组对应最小值之和。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
