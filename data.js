@@ -1,5 +1,5 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-10-21",
+  "generatedAt": "2026-10-22",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
     "total_problems": 4355,
@@ -179,20 +179,23 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2261/problem/D1",
           "editorialUrl": "https://codeforces.com/blog/entry/157917",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
           "originalTags": [
             "constructive algorithms",
+            "greedy",
             "math"
           ],
-          "statementBrief": "有 $n$ 个按顺序排列的位置，且当前没有探测器。可以同时新增若干个覆盖连续区间的探测器；根据所有探测器的真假报告，任意两个藏身位置都必须能被区分，求最少新增数量并输出一种方案。",
-          "transformedStatement": "把每个位置表示为由区间覆盖情况组成的二进制报告向量，要求这些向量两两不同。沿位置从左到右观察报告变化次数，用每个区间至多两次变化建立下界，再用长度为 $k$ 的滑动区间构造达到下界。",
+          "statementBrief": "有 $n$ 个按顺序排列的藏身位置，当前没有检测器。可以预先安装若干个覆盖连续位置的区间检测器，所有检测器同时报告是否覆盖藏身处；要求用最少的新增检测器让每个位置的报告组合都不同，并输出一种安装方案。",
+          "transformedStatement": "把每个位置表示成所有区间指示值组成的二进制签名。问题转化为用最少区间产生互不相同的 $n$ 个签名，并利用每个区间沿序列最多发生两次状态变化来建立下界。",
           "keyObservations": [
-            "相邻位置必须至少有一个探测器报告不同，因此从左到右至少需要发生 $n-1$ 次报告变化；这是区分所有位置的必要条件。",
-            "一个区间探测器沿位置移动时最多只产生两次变化，而首尾位置不能同时得到全零报告，所以还需要额外一次端点变化，得到 $2k\\ge n$，即 $k\\ge\\lceil n/2\\rceil$。",
-            "取 $k=\\lceil n/2\\rceil$ 个区间 $[i,i+k-1]$；前 $k$ 个位置依次开启不同探测器，后续位置依次关闭不同探测器，因此报告向量两两不同。",
-            "当 $n$ 为偶数时，位置 $n$ 的报告全为零，且其他位置至少被一个区间覆盖，所以它也能与所有位置区分。"
+            "相邻位置也必须有不同的检测结果，因此从左到右至少需要 $n-1$ 次结果变化；首尾不能同时全为 $0$，还需额外一次变化。",
+            "一个区间的检测结果沿位置移动最多经历一次 $0\\to1$ 和一次 $1\\to0$，所以 $k$ 个检测器最多产生 $2k$ 次变化，从而得到 $k\\ge\\lceil n/2\\rceil$。",
+            "取 $k=\\lceil n/2\\rceil$，安装区间 $[i,i+k-1]$；前 $k$ 个位置因区间依次开始而不同，后续位置因区间依次结束而不同。",
+            "当 $n$ 为偶数时，最后一个位置的结果全为 $0$，且前面位置都被第一个区间覆盖，因此它也不会与其他位置混淆。"
           ],
-          "solutionBrief": "无已有探测器时，变化次数下界给出至少 $\\lceil n/2\\rceil$ 个区间。令 $k=\\lceil n/2\\rceil$，输出区间 $[i,i+k-1]$（$1\\le i\\le k$）；该构造恰好达到下界并能区分所有位置。",
+          "solutionBrief": "若 $n=1$ 无需检测器；否则令 $k=\\lceil n/2\\rceil$，输出 $k$ 个区间 $[i,i+k-1]$（$1\\le i\\le k$）。变化次数下界证明至少需要 $k$ 个，该构造达到下界。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
