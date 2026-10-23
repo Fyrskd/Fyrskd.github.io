@@ -1,5 +1,5 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-10-22",
+  "generatedAt": "2026-10-23",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
     "total_problems": 4355,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 127
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2986,
-    "ai_generated_partial_editorial": 118,
+    "ai_generated_with_editorial": 2988,
+    "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
     "manual_override": 891,
@@ -6152,23 +6152,21 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2241/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/154698",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "基础实现与模拟"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "dp",
             "greedy",
             "math"
           ],
-          "statementBrief": "给定等长数组 $a,b$，可反复选择区间 $[l,r]$，从左端开始对区间元素交替执行 $+1,-1,+1,-1,\\dots$。判断能否经过任意次操作使数组 $a$ 完全变为 $b$。",
-          "transformedStatement": "令 $p_i$ 和 $q_i$ 分别表示 $a$、$b$ 的前 $i$ 项和。一次区间操作只会让各前缀和增加 $0$ 或 $1$；同时长度为 $2$ 的区间操作可以单独增加一个指定前缀和，因此问题等价于判断是否对所有 $i$ 都有 $p_i\\le q_i$。",
+          "statementBrief": "给定等长数组 $a,b$，可反复选择区间 $[l,r]$，从左端开始交替对元素执行 $+1,-1,+1,-1,\\ldots$。要求判断能否通过这些操作把 $a$ 变成 $b$。",
+          "transformedStatement": "把数组变换改写为前缀和变换：每次操作只增加若干个前缀和且不减少任何一个；长度为 $2$ 的区间和长度为 $1$ 的区间还能分别独立增加指定前缀和，因此问题等价于逐个检查目标前缀和是否至少达到初始值。",
           "keyObservations": [
-            "一次操作在前缀和上只会产生 $0$ 或 $1$ 的增量，因此任何前缀和都不可能减少；这把数组操作转化为前缀和的单调性约束。",
-            "对相邻位置 $[i,i+1]$ 操作只会让第 $i$ 个前缀和增加 $1$，而对 $[n,n]$ 操作只会让第 $n$ 个前缀和增加 $1$；因此每个前缀和都能独立增加。",
-            "所以目标数组可达当且仅当所有位置满足 $\\sum_{j=1}^{i}a_j\\le\\sum_{j=1}^{i}b_j$；逐项比较前缀和即可完成判定。"
+            "对前缀和而言，一次区间操作只会让部分前缀和增加 $1$，其余前缀和不变，因此任何前缀和都不可能减少。",
+            "区间 $[i,i+1]$ 只会使第 $i$ 个前缀和增加 $1$，而区间 $[n,n]$ 只影响第 $n$ 个前缀和，说明每个前缀和的增加可以独立实现。",
+            "因此目标数组可达当且仅当所有位置满足初始前缀和不超过目标前缀和，即对每个 $i$ 有 $p_i\\le q_i$；逐项比较即可完成判定。"
           ],
-          "solutionBrief": "计算两个数组的前缀和并逐项比较。若存在某个位置使 $a$ 的前缀和大于 $b$，则操作无法修复；否则可通过长度为 $2$ 或 $1$ 的操作独立增加各前缀和，答案为 YES。",
-          "extractionStatus": "ai_generated_partial_editorial",
+          "solutionBrief": "计算数组 $a,b$ 的前缀和 $p_i,q_i$，逐项检查是否存在 $p_i>q_i$。若所有 $p_i\\le q_i$，就能用长度为 $2$ 或 $1$ 的操作独立补足各个前缀和，输出 YES，否则输出 NO；复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "partial"
         },
         {
@@ -95179,15 +95177,15 @@ window.CF_INSIGHTS_DATA = {
             "constructive algorithms",
             "greedy"
           ],
-          "statementBrief": "给定长度为 $n$ 的数组，要求构造 $n$ 个互不相同的非负整数，且每个数小于 $2^{31}$。数组按 1-based 编号后，所有奇数位置元素的按位异或必须等于所有偶数位置元素的按位异或，输出任意满足条件的数组。",
-          "transformedStatement": "把奇数位异或记为 $a$、偶数位异或记为 $b$，原条件等价于全体元素异或为 $a\\mathbin{\\oplus}b=0$。因此构造前 $n-1$ 个数后，将最后一个数设为它们的异或值即可，再用最高位 $2^{30}$ 隔离重复风险。",
+          "statementBrief": "给定整数 $n$，构造一个长度为 $n$ 的数组，所有元素互不相同且均为不超过 $2^{31}-1$ 的非负整数。要求数组奇数位置元素的按位异或等于偶数位置元素的按位异或，并输出任意可行数组。",
+          "transformedStatement": "把奇数位与偶数位异或相等改写为全数组异或为 $0$。因此只需先选 $n-2$ 个不含最高位的不同数，再利用一个带最高位的数和总异或补出最后两个元素。",
           "keyObservations": [
-            "奇偶位置异或相等，当且仅当整个数组的异或和为 $0$，因此问题转化为构造互不相同且总异或为 $0$ 的数组。",
-            "先取 $n-2$ 个小于 $2^{30}$ 的不同数，再放入 $2^{30}$；最后一个数设为前 $n-1$ 个数的异或值，它必带有最高位，因此不会与前面的低位数重复。",
-            "只有当前 $n-2$ 个数的异或为 $0$ 时，最后一个数才会等于 $2^{30}$；在 $0,1,\u0000dots,n-3$ 的异或为零时改用 $1,2,\u0000dots,n-2$，即可保证该异或非零。"
+            "奇数位异或为 $a$、偶数位异或为 $b$ 时，全体异或为 $a\\oplus b$，因此目标等价于让数组总异或为 $0$。",
+            "先选 $n-2$ 个最高位为 $0$ 的不同数，再加入 $2^{30}$；最后一个数设为前面所有数的异或，可保证总异或为 $0$，且它带有最高位而不会与前 $n-2$ 个数重复。",
+            "最后两个数相同当且仅当前 $n-2$ 个数的异或为 $0$；用区间 $0\\ldots n-3$ 和 $1\\ldots n-2$ 两组候选替换，二者异或不同，至少一组可行。"
           ],
-          "solutionBrief": "将奇偶位置条件转为全数组异或为 $0$。取 $n-2$ 个连续小数，追加 $2^{30}$，最后追加前面所有数的异或；若首段异或为零，就改用 $1$ 到 $n-2$。",
-          "extractionStatus": "ai_generated_partial_editorial",
+          "solutionBrief": "将奇偶位异或相等转化为全数组异或为 $0$。选取 $n-2$ 个低于 $2^{30}$ 的不同数，加入 $2^{30}$，再加入它们的总异或；若前缀异或为 $0$，改用另一组连续数即可避免重复。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "partial"
         }
       ]
