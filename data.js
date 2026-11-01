@@ -48,13 +48,13 @@ window.CF_INSIGHTS_DATA = {
     "动态规划与状态设计": 359,
     "数据结构": 411,
     "图论与网络流": 295,
-    "数论与同余": 455,
+    "数论与同余": 454,
     "交互": 133,
     "组合计数与概率": 333,
     "几何": 101,
-    "树结构": 201,
-    "字符串": 230,
-    "基础实现与模拟": 261,
+    "树结构": 202,
+    "字符串": 231,
+    "基础实现与模拟": 260,
     "代数、矩阵与多项式": 28,
     "博弈": 128
   },
@@ -94,21 +94,22 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2278/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/158300",
-          "primaryTopic": "基础实现与模拟",
+          "primaryTopic": "字符串",
           "secondaryTopics": [
-            "字符串"
+            "基础实现与模拟"
           ],
           "originalTags": [
-            "implementation"
+            "implementation",
+            "sortings",
+            "strings"
           ],
-          "statementBrief": "给定分子字符串 `p` 和分母字符串 `q`，可任意重排两边字符，并逐个抵消分子、分母中相同的字符。判断是否能抵消到分母为空，且分子恰好剩下可重排成 `six` 的三个字符。",
-          "transformedStatement": "把约分过程转化为字符多重集合判断：`p` 必须与 `q` 加上一个 `s`、一个 `i`、一个 `x` 完全相同，因此只需比较两者的字母频数。",
+          "statementBrief": "给定分子字符串 $p$ 和分母字符串 $q$，可任意重排两边字符，并逐个消去分子、分母中相同的字符。判断能否消去全部分母字符，使分子剩余字符恰好重排成 `six`。",
+          "transformedStatement": "把消去过程转化为多重集合匹配：判断 $p$ 的字符集合是否恰好等于 $q$ 的字符集合加上 `s`、`i`、`x` 各一个，即比较两者的字母频率。",
           "keyObservations": [
-            "由于字符可以任意重排，分子最终留下的内容只由各字母出现次数决定，而不受原顺序影响。",
-            "要使分母全部消失并在分子留下 `six`，分子字符 multiset 必须恰好等于分母字符 multiset 与 `s`、`i`、`x` 各一个的合并。",
-            "将 `six` 追加到分母后比较两边的字符频数；频数完全相同当且仅当可以完成所需约分。"
+            "分母最终必须全部被约掉，因此分子字符的总多重集合必须恰好等于分母字符与 `six` 的合并集合。",
+            "字符顺序不影响交换与消去过程，所以只需比较分子与 `q` 拼接 `six` 后各字母的出现次数，避免显式模拟取消。"
           ],
-          "solutionBrief": "统计分子 `p` 与字符串 `q+\"six\"` 中每个小写字母的出现次数，若两组频数完全相同则输出 YES，否则输出 NO。",
+          "solutionBrief": "将 `six` 拼接到分母字符串后，统计分子和新字符串中每个字母的出现次数；两者频率完全相同则输出 YES，否则输出 NO，复杂度为 $O(n+m)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
@@ -125,16 +126,17 @@ window.CF_INSIGHTS_DATA = {
             "博弈"
           ],
           "originalTags": [
-            "constructive algorithms"
+            "constructive algorithms",
+            "greedy"
           ],
-          "statementBrief": "Alice 按未知顺序进行恰好 $x+y+z$ 轮石头剪刀布，其中石头、剪刀、布分别出现 $x,y,z$ 次。Bob 必须在游戏开始前确定全部手势，使任意排列下 Bob 的胜场数都不少于 Alice，输出任意满足条件的序列。",
-          "transformedStatement": "将 Bob 的策略限制为全程使用同一种手势，此时每种结果的胜负只取决于 Alice 各手势的频次；选择克制最高频手势的手势即可把比较转化为最大频次与另一频次的比较。",
+          "statementBrief": "Alice 共进行 $x+y+z$ 局，出石头、剪刀、布的次数分别固定为 $x,y,z$，但 Bob 不知道她的出牌顺序。Bob 必须提前确定全部出牌，使任意顺序下自己的胜局数都不少于 Alice，输出任意满足条件的序列。",
+          "transformedStatement": "不必针对 Alice 的具体顺序安排出牌：令 Bob 全程使用同一种手势，并选择能击败 Alice 出现次数最多的手势。此时 Bob 的胜局数是最大频次，Alice 的胜局数只对应另一个频次。",
           "keyObservations": [
-            "让 Bob 全程使用同一种手势后，胜负只由 Alice 三种手势的出现次数决定，与具体排列顺序无关。",
-            "选择能击败 Alice 出现次数最多手势的手势，Bob 的胜场数固定为最大频次。",
-            "Alice 能击败该固定手势的手势只对应另外两类之一，其次数不超过最大频次，因此 Bob 必胜场数不少于 Alice。"
+            "让 Bob 全程使用同一种手势时，胜负只由 Alice 三种手势的出现次数决定，与具体顺序无关。",
+            "选择能击败 Alice 出现次数最多手势的反制手势，Bob 的胜局数等于三种次数的最大值。",
+            "Alice 能获胜的局数至多是另外一种手势的次数，而最大值不小于任一其他次数，因此 Bob 必然不败。"
           ],
-          "solutionBrief": "统计 Alice 三种手势的次数，找出最大频次对应的手势，并让 Bob 全程使用它的克制手势。输出该手势重复 $x+y+z$ 次，复杂度为 $O(x+y+z)$。",
+          "solutionBrief": "找出 $x,y,z$ 中的最大值，令 Bob 在全部 $x+y+z$ 局都使用能击败该手势的选择。这样胜负数量与 Alice 的出牌顺序无关，且 Bob 的胜局数不少于 Alice。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
@@ -250,26 +252,27 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2278/problem/G",
           "editorialUrl": "https://codeforces.com/blog/entry/158300",
-          "primaryTopic": "数论与同余",
+          "primaryTopic": "树结构",
           "secondaryTopics": [
-            "树结构",
-            "动态规划与状态设计"
+            "数论与同余"
           ],
           "originalTags": [
+            "bitmasks",
+            "dfs and similar",
             "dp",
             "hashing",
             "number theory",
             "trees"
           ],
-          "statementBrief": "给定一棵以 1 为根的树，每个节点有初始二进制状态和目标状态。每次向根注入脉冲：遇到 0 就变为 1 并停止，遇到 1 就变为 0 并向所有子节点继续发送；求能否达到所有目标状态，并求所需脉冲数的最小值。",
-          "transformedStatement": "把根到每个节点的状态序列看成根为最低位的二进制数；向根注入 $K$ 次等价于每条路径的数加上同一个 $K$，于是按树的深度逐位确定这个全局加数及各路径的进位。扁平化_codeforces_local_browser 不能。",
+          "statementBrief": "给定一棵以 1 为根的树，每个节点有初始二进制状态和目标状态。每次向根注入脉冲：遇到 0 就变 1 并停止，遇到 1 就变 0 并同时传给所有子节点；求使全树达到目标的最少脉冲数，无法做到则输出 $-1$，答案对 $998244353$ 取模。",
+          "transformedStatement": "把每条从根到节点的状态序列视为二进制整数，根为最低位；全局注入 $K$ 次等价于每条路径同时加上 $K$。于是按深度逐位确定 $K$，并沿树传播加法产生的进位。",
           "keyObservations": [
-            "沿根到节点的路径把状态视为二进制数，向根注入一次脉冲等价于该路径上的数加一，因此注入 $K$ 次后节点状态是 $X_v+K$ 的对应位。",
-            "同一深度的所有节点共享 $K$ 的同一位；由当前节点状态、目标状态和父节点进位得到 $k_d=y_v\\oplus x_v\\oplus C_v$，若同层出现两种结果则无解。",
-            "确定第 $d$ 位后，可用 $x_v+k_d+C_v\\ge 2$ 判断各节点向下一层传出的进位，从而独立推进所有根到叶路径。",
-            "最小脉冲数就是满足约束的二进制数 $K$，因此每个确定为 $1$ 的深度贡献 $2^d$，按模数累加即可。"
+            "沿根到节点的路径把状态看作二进制数，根是最低位；向根注入一次脉冲等价于所有路径上的数加一。",
+            "注入 $K$ 次后，深度为 $d$ 的节点状态等于对应路径数加 $K$ 的第 $d$ 位，因此同一深度的节点必须得到相同的 $k_d$。",
+            "对节点 $v$，所需位满足 $k_d=y_v\\oplus x_v\\oplus C_v$；若同层出现两种结果则无解，否则可据此计算各子节点的进位。",
+            "确定所有深度的 $k_d$ 后，最小脉冲数就是这些二进制位组成的唯一整数，按 $\\sum k_d2^d$ 计算并取模。"
           ],
-          "solutionBrief": "按深度处理节点，将脉冲总数视为全局二进制数。由节点状态、目标状态和父进位确定该层的 $K$ 位；同层不一致则输出 $-1$，否则传播进位并累加对应的 $2^d$，总复杂度为 $O(n)$。",
+          "solutionBrief": "按深度处理节点，把每条根路径视为二进制加法。维护各节点收到的进位，计算本层必须统一的 $k_d$；若同层冲突则输出 $-1$，否则累加 $k_d2^d$ 并取模。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
