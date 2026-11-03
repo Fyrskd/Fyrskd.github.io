@@ -6,9 +6,9 @@ window.CF_INSIGHTS_DATA = {
     "source_total_problems": 4376,
     "filtered_out_problems": 0,
     "with_statement_brief": 4376,
-    "with_editorial_brief": 4015,
-    "with_solution_brief": 4017,
-    "missing_editorial_brief": 359,
+    "with_editorial_brief": 4016,
+    "with_solution_brief": 4018,
+    "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 3438,
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "构造与贪心": 1441,
-    "动态规划与状态设计": 358,
+    "动态规划与状态设计": 359,
     "数据结构": 411,
     "图论与网络流": 295,
     "数论与同余": 454,
@@ -54,14 +54,14 @@ window.CF_INSIGHTS_DATA = {
     "几何": 101,
     "树结构": 202,
     "字符串": 231,
-    "基础实现与模拟": 261,
+    "基础实现与模拟": 260,
     "代数、矩阵与多项式": 28,
     "博弈": 128
   },
   "statusCounts": {
     "ai_generated_with_editorial": 3009,
-    "ai_generated_partial_editorial": 115,
-    "missing_editorial": 359,
+    "ai_generated_partial_editorial": 116,
+    "missing_editorial": 358,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -132895,19 +132895,26 @@ window.CF_INSIGHTS_DATA = {
           "rating": 3000,
           "problemUrl": "https://codeforces.com/contest/1476/problem/F",
           "editorialUrl": "https://codeforces.com/blog/entry/87356",
-          "primaryTopic": "基础实现与模拟",
-          "secondaryTopics": [],
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
           "originalTags": [
             "binary search",
             "data structures",
             "dp"
           ],
-          "statementBrief": "有 $n$ 盏灯按位置排成一行，第 $i$ 盏灯的照明范围为 $p_i$。每盏灯必须选择向左照亮相邻至多 $p_i$ 个位置，或向右照亮相邻至多 $p_i$ 个位置；要求为所有灯选择方向，使每盏灯都至少被另一盏灯照亮，并输出任意方案或判定无解。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "url_only"
+          "statementBrief": "有 $n$ 个按位置排列的灯，第 $i$ 个灯必须选择向左或向右；向左照亮距离不超过 $p_i$ 的左侧灯，向右则照亮对应右侧区间。要求为每个灯选择方向，使每个灯都至少被另一个灯照亮，并输出任意可行方向串或判定无解。",
+          "transformedStatement": "把方向选择转化为从左到右扩展“已完整照亮前缀”的问题。状态 $dp_i$ 记录使用前 $i$ 个灯时的最远完整前缀；处理向左的第 $i$ 个灯时，寻找一个已覆盖前缀与其照明区间相接，再合并中间灯向右产生的最大延伸。",
+          "keyObservations": [
+            "用 $dp_i$ 表示只考虑前 $i$ 个灯时能够完整照亮的最远前缀；后续转移只需关注这个边界，而不必保留前缀内部的具体照明关系。",
+            "若让第 $i$ 个灯向左照明，它必须连接到某个已覆盖前缀 $j$，条件是 $dp_j\\ge i-p_i-1$；连接后可覆盖到至少 $i-1$，中间区间的最远覆盖还需通过区间最大值合并。",
+            "满足条件的前缀只需选择最小的 $j$，因为它能留下最长的区间 $[j+1,i-1]$ 供其他灯向右延伸，从而不劣于更大的连接位置。",
+            "将每个 $(i,dp_i)$ 按 $dp_i$ 作为位置、$i$ 作为值建立最小值结构，即可查询满足阈值的最小 $j$；另用区间最大值结构维护中间区间的覆盖结果。"
+          ],
+          "solutionBrief": "以可覆盖前缀的最远位置为 DP 状态，反向处理每个向左的灯，利用最小值结构找到最早可连接前缀，再用区间最大值更新覆盖边界；记录转移以恢复方向串。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
         },
         {
           "key": "1476G",
